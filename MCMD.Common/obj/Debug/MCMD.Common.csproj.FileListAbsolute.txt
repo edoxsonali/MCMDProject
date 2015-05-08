@@ -1,0 +1,5 @@
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Common\bin\Debug\MCMD.Common.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Common\bin\Debug\MCMD.Common.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Common\obj\Debug\MCMD.Common.csprojResolveAssemblyReference.cache
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Common\obj\Debug\MCMD.Common.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Common\obj\Debug\MCMD.Common.pdb

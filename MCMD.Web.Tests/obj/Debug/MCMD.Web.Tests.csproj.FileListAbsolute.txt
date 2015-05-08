@@ -1,0 +1,177 @@
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.Tests.dll.config
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.Tests.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.Tests.pdb
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Newtonsoft.Json.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Helpers.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Mvc.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Razor.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Optimization.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Owin.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Owin.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\EntityFramework.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Owin.Security.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.pdb
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Newtonsoft.Json.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Helpers.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Mvc.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Razor.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Optimization.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Owin.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\EntityFramework.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Owin.Security.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\obj\Debug\MCMD.Web.Tests.csprojResolveAssemblyReference.cache
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\obj\Debug\MCMD.Web.Tests.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\obj\Debug\MCMD.Web.Tests.pdb
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.EntityModel.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.ViewModel.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.EntityModel.pdb
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.ViewModel.pdb
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.Tests.dll.config
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.Tests.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.Tests.pdb
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Newtonsoft.Json.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Helpers.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Mvc.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Razor.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Optimization.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.EntityModel.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.ViewModel.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.IRepository.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Owin.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Owin.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\SimpleCrypto.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\EntityFramework.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.DependencyResolution.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Ninject.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.EntityRepository.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.pdb
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Newtonsoft.Json.xml
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Helpers.xml
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Mvc.xml
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Razor.xml
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.xml
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Optimization.xml
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.EntityModel.pdb
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.ViewModel.pdb
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.IRepository.pdb
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Owin.xml
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\EntityFramework.xml
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.DependencyResolution.pdb
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Ninject.xml
+E:\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.EntityRepository.pdb
+E:\MyCityMyDoctor\MCMD.Web.Tests\obj\Debug\MCMD.Web.Tests.csprojResolveAssemblyReference.cache
+E:\MyCityMyDoctor\MCMD.Web.Tests\obj\Debug\MCMD.Web.Tests.dll
+E:\MyCityMyDoctor\MCMD.Web.Tests\obj\Debug\MCMD.Web.Tests.pdb
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.Tests.dll.config
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.Tests.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.Tests.pdb
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Helpers.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Mvc.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Razor.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Optimization.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.EntityModel.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.ViewModel.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.IRepository.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Owin.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Owin.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\SimpleCrypto.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\EntityFramework.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.DependencyResolution.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Ninject.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.EntityRepository.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.pdb
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Helpers.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Mvc.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Razor.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Optimization.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.EntityModel.pdb
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.ViewModel.pdb
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.IRepository.pdb
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Owin.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\EntityFramework.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.DependencyResolution.pdb
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Ninject.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.EntityRepository.pdb
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\obj\Debug\MCMD.Web.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\obj\Debug\MCMD.Web.Tests.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.Web.Tests\obj\Debug\MCMD.Web.Tests.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.Tests.dll.config
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.Tests.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.Tests.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Helpers.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Mvc.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Razor.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Optimization.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.EntityModel.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.ViewModel.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.IRepository.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Owin.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Owin.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\SimpleCrypto.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\EntityFramework.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Common.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.DependencyResolution.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Ninject.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.EntityRepository.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Web.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Helpers.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Mvc.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Razor.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\System.Web.Optimization.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.EntityModel.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.ViewModel.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.IRepository.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Microsoft.Owin.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\EntityFramework.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.Common.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.DependencyResolution.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\Ninject.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\bin\Debug\MCMD.EntityRepository.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\obj\Debug\MCMD.Web.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\obj\Debug\MCMD.Web.Tests.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.Web.Tests\obj\Debug\MCMD.Web.Tests.pdb

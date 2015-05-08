@@ -1,0 +1,123 @@
+﻿@model MCMD.ViewModel.doctor.RegisterVM
+@using MCMD.EntityModel.Doctor
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+}
+
+<div class="container">
+
+
+    <div class="login-container">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form">
+
+                <div class="col-sm-12">
+
+                    <div class="form-horizontal">
+                        <h2>Registration For Doctor</h2>
+                        <hr />
+                        @Html.HiddenFor(model => model.Registers.CreatedById, new { @Value = Convert.ToInt32(ViewData["PageRole"]) })
+                    
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">Title<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                           
+                                @Html.DropDownListFor(m => m.TitleId, new SelectList(Model.Titles, "TitleId", "TitleName"),
+                                "-Select-", new { @class = "form-control" })
+                              
+                                <span id="RolelabelTitleId" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Title is required.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">First Name<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(model => model.Registers.FirstName, new { @class = "form-control", @placeholder = "Enter First Name", @maxlength = "30", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(model => model.Registers.FirstName, "", new { @class = "text-danger" })
+                                <span id="RolelabelFirstName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">FirstName is required.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">Last Name<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(model => model.Registers.LastName, new { @class = "form-control", @placeholder = "Enter Last Name", @maxlength = "30", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(model => model.Registers.LastName, "", new { @class = "text-danger" })
+                                <span id="RolelabelLastName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">LastName is required.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">Email Id<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(model => model.Registers.EmailId, new { @class = "form-control", @placeholder = "Enter Email Id", @maxlength = "30", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(model => model.Registers.EmailId,"", new { @class = "text-danger" })
+                                
+                                <span id="RolelabelEmailId" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">EmailId is required.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">Password<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(model => model.Registers.Password, new { @type = "password", @class = "form-control", @placeholder = "Enter Password", @maxlength = "50", autocomplete = "off" })
+                                @Html.ValidationMessageFor(model => model.Registers.Password)
+                                <span id="RolelabelPassword" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Password is required.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">Confirm Password<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(model => model.Registers.ConfirmPassword, new { @type = "password", @class = "form-control", @placeholder = "Enter ConformPassword", @maxlength = "50", autocomplete = "off" })
+                                @Html.ValidationMessageFor(model => model.Registers.ConfirmPassword)
+                                <span id="RolelabelConfirmPassword" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">ConfirmPassword is required.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">Speciality<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+
+                                @Html.DropDownListFor(m => m.ID, new SelectList(Model.Specialitys, "ID", "SpecialityName"),
+                                "-Select-", new { @class = "form-control" })
+                              
+                                <span id="RolelabelSpeciality" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Speciality is required.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">Mobile No<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(model => model.Registers.Phone, new { @class = "form-control", @placeholder = "Enter Phone Number", @maxlength = "30", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(model => model.Registers.Phone, "", new { @class = "text-danger" })
+                                <span id="RolelabelPhone" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Phone is required.</span>
+                            </div>
+                        </div>
+
+                        <span class="login-row red field-validation-error">@ViewBag.Message</span>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                               
+                                <div class="buttons">
+                                    <button type="Submit" id="btnRegister" name="btnRegister">Register</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            
+            
+        }
+        <div class="clear"></div>
+    </div>
+
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

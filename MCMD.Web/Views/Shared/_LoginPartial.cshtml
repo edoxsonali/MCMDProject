@@ -1,0 +1,29 @@
+﻿@using MCMD.ViewModel;
+
+<div>
+    @{
+        if (Request.IsAuthenticated)
+        {
+            var manager = new MCMD.EntityModel.ApplicationDbContext();
+            var currentUser = manager.UserLogins.FirstOrDefault(u => u.EmailID == User.Identity.Name);
+            int RoleID = (from i in manager.UserLoginRoles
+                          where i.LoginRoleId == currentUser.LoginId
+                          select i.RoleId).FirstOrDefault();
+            ViewData["PageRole"] = RoleID;
+            var RoleName = (from i in manager.Roles
+                            where i.RoleId == RoleID
+                            select i.Name).FirstOrDefault();
+            var currentRole = manager.Roles.FirstOrDefault(u => u.RoleId == currentUser.LoginId);
+
+            <p>
+                Hi <span class="username">@Html.ActionLink(currentUser.FirstName + " " + currentUser.LastName, "EditUser", "Administration", new { id = currentUser.LoginId }, null), @RoleName</span> |
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("Log Out", "LogOff", "Account")
+                }
+            </p>
+
+        }
+    }
+
+</div>

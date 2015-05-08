@@ -1,0 +1,186 @@
+﻿
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="~/Images/favicon.jpg">
+    <title>MyCityMyDoctor</title>
+
+    <!-- Bootstrap core CSS -->
+    @Styles.Render("~/Content/bootstrap.css")
+    <!-- Custom styles for this template -->
+    @Styles.Render("~/Content/table-styles.css")
+    @Styles.Render("~/Content/custom-styles.css")
+    @Styles.Render("~/Content/bootstrap-datetimepicker.min.css")
+
+
+
+    <script src="js/ie-emulation-modes-warning.js"></script>
+    @Scripts.Render("~/Scripts/ie-emulation-modes-warning.js")
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+        $('.menu a').filter(function () {
+            return this.href == url;
+        }).addClass('better-active');
+    </script>
+
+    <script>
+        function ShowProgress() {
+        $('#loading').show();
+        $("#loading").fadeIn();
+        var opts = {
+            lines: 12, // The number of lines to draw
+            length: 7, // The length of each line
+            width: 4, // The line thickness
+            radius: 10, // The radius of the inner circle
+            corners: 1, // Corner roundness (0..1)
+            rotate: 0, // The rotation offset
+            direction: 1, // 1: clockwise, -1: counterclockwise
+            color: '#000', // #rgb or #rrggbb or array of colors
+            speed: 0.5, // Rounds per second
+            trail: 87, // Afterglow percentage
+            shadow: false, // Whether to render a shadow
+            hwaccel: false, // Whether to use hardware acceleration
+            className: 'spinner', // The CSS class to assign to the spinner
+            zIndex: 2e9, // The z-index (defaults to 2000000000)
+            top: '50%', // Top position relative to parent
+            left: '50%' // Left position relative to parent
+        };
+
+
+    </script>
+</head>
+
+
+
+
+<style type="text/css">
+    #loading {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,0.8);
+        z-index: 1000;
+    }
+
+    #loadingcontent {
+        display: table;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    #loadingspinner {
+        display: table-cell;
+        vertical-align: middle;
+        width: 100%;
+        text-align: center;
+        font-size: larger;
+        padding-top: 80px;
+    }
+</style>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="#">@*<img src="~/Images/edox-logo.png" />*@</a>
+            </div>
+
+            <div class="header-top">
+                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <ul>
+                        <li>@Html.ActionLink("Users", "Index", "UsersAdmin")</li>
+                        <li>@Html.ActionLink("Roles", "Index", "RolesAdmin")</li>
+                    </ul>
+                }
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+        <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="container">
+                <div class="navbar-header">
+
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+
+                            @Html.ActionLink("Home", "Index", "Home")
+
+                        </li>
+                        <li>
+
+                            @Html.ActionLink("About", "About", "Home")
+
+                        </li>
+                        <li>
+
+                            @Html.ActionLink("Contact", "Contact", "Home")
+
+                        </li>
+
+
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+        </nav>
+    </div>
+
+    <div>
+        <div id="loading">
+            <div id="loadingcontent">
+                <p id="loadingspinner">
+                    Please wait.....
+                </p>
+            </div>
+        </div>
+        @RenderBody()
+    </div>
+
+    <!-- /.container -->
+    <footer>
+        <div class="container">
+            <p>
+                © EdoxHealthCare.com
+                <br>
+                Increase capture rate with our fully staffed solution
+            </p>
+        </div>
+    </footer>
+    <!-- /.footerr -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+    @Scripts.Render("~/Scripts/footable.js")
+    @Scripts.Render("~/Scripts/bootstrap-datetimepicker.min.js")
+
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.date-picker').datepicker({
+                format: "mm/dd/yyyy",
+                autoclose: true
+            });
+
+        });
+    </script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+
+</body>
+</html>

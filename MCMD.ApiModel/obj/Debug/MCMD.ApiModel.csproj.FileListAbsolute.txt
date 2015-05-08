@@ -1,0 +1,12 @@
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.ApiModel\bin\Debug\MCMD.ApiModel.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.ApiModel\bin\Debug\MCMD.ApiModel.pdb
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.ApiModel\obj\Debug\MCMD.ApiModel.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.ApiModel\obj\Debug\MCMD.ApiModel.pdb
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.ApiModel\bin\Debug\MCMD.ApiModel.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.ApiModel\bin\Debug\MCMD.ApiModel.pdb
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.ApiModel\obj\Debug\MCMD.ApiModel.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.ApiModel\obj\Debug\MCMD.ApiModel.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ApiModel\bin\Debug\MCMD.ApiModel.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ApiModel\bin\Debug\MCMD.ApiModel.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ApiModel\obj\Debug\MCMD.ApiModel.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ApiModel\obj\Debug\MCMD.ApiModel.pdb

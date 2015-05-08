@@ -1,0 +1,180 @@
+﻿@model MCMD.ViewModel.Administration.MembershipViewModel
+@using MCMD.EntityModel.Administration
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.reveal.js")"></script>
+<link rel="stylesheet" href="@Url.Content("~/Content/reveal.css")" />
+<script type="text/javascript" src="@Url.Content("~/Scripts/spin.min.js")"></script>
+
+@{
+
+    int Pages = 10;
+    WebGrid grid = new WebGrid(Model.Membership, canPage: true, rowsPerPage: Pages);
+    grid.Pager(WebGridPagerModes.NextPrevious);
+}
+<script type="text/javascript">
+
+
+
+    //Delete User on click
+    @*function EditMemberData(varid) {
+        if (varid != null) {
+            if (confirm('Are you sure want to delete the selected user')) {
+                var deleteInputs = [];
+                //$('.chkview:checked').each(function (i, chk) {
+                deleteInputs.push(varid);
+                //});
+                var url = '@Url.Action("BatchDelete", "Membership")';
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    cache: false,
+                    url: url,
+                    traditional: true,
+                    data: { deleteInputs: deleteInputs },
+                    success: function (data) {
+                        var url = '@Url.Action("Create", "Membership")';
+                        window.location.href = url;
+
+                    }
+                });
+            }
+        }
+    }*@
+
+
+</script>
+
+
+<div class="container">
+    <div class="content">
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            @Html.AntiForgeryToken()
+
+            <div class="form">
+                <div class="col-sm-5">
+                    <h2>Add Members Type </h2>
+                    <hr />
+                    @ViewBag.Message
+                    <div class="form-group">
+                        <div class="col-sm-4 control-label">Membership Type<span>*</span><b>:</b></div>
+                        <div class="col-sm-8">
+                            @Html.TextBoxFor(u => u.MembershipType, new { @class = "form-control", @placeholder = "Enter Membership Type", @maxlength = "30", @autocomplete = "off" })
+                            @Html.ValidationMessageFor(u => u.member.MembershipType, string.Empty)
+                            <span id="MembershipType" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Membership Type is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 control-label">Fees<span>*</span><b>:</b></div>
+                        <div class="col-sm-8">
+                            @Html.TextBoxFor(u => u.Fees, new { @class = "form-control", @placeholder = "Enter Fees", @maxlength = "30", @autocomplete = "off" })
+                            @Html.ValidationMessageFor(u => u.member.Fees, string.Empty)
+                            <span id="Fees" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Fee is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 control-label">Durations<span>*</span><b>:</b></div>
+                        <div class="col-sm-8">
+                            @Html.DropDownListFor(m => m.Durations, new SelectList(Model.Duration_s, "DurationId", "Durations"),
+                                "-Select-", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(u => u.Duration_s)
+                            <span id="Durations" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Durations is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 control-label">Auto Renaval<span>*</span><b>:</b></div>
+                        <div class="col-sm-8">
+                            @Html.DropDownListFor(m => m.Renaval, new SelectList(Model.Months, "AutoRenavalId", "Renaval"),
+                                "-Select-", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(u => u.member.AutoRenaval)
+                            <span id="Renaval" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">AutoRenaval time is required.</span>
+                        </div>
+                    </div>
+
+                    <div class="buttons">
+                        <button type="Submit" id="btnCreate" name="btnCreate">Submit</button>
+                        <button type="button" id="btnReset" name="btnscd" onclick="location.href='@Url.Action("Create", "Membership")'">Reset</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-7">
+
+                <div class="data-table">
+
+                    @grid.GetHtml(
+                   tableStyle: "footable",
+                 footerStyle: "gridFooter",
+                        alternatingRowStyle: "alt",
+                         htmlAttributes: new { id = "grdUsers" },
+                         mode: WebGridPagerModes.All,
+                       firstText: "<< First",
+    previousText: "< Previous", nextText: "Next >",
+    lastText: "Last >>",
+                     columns: new[] {
+                     grid.Column("MembershipType",header: "Membership Type", canSort: false),
+                     grid.Column("Fees",header: "Fees", canSort: false),
+                     grid.Column("Durations",header: "Durations", canSort: false),
+                     grid.Column("AutoRenaval",header: "AutoRenaval", canSort: false),
+                     //grid.Column("UserRole",header: "User Role", canSort: false),
+                     // grid.Column("Status",header: "Status", canSort: false),
+                    grid.Column(header: "Option", format: @<text>
+
+                        <a id="btnEdit" style="cursor:pointer;" onclick="EditMemberData( @item.MembershipId)">Edit</a>
+
+                        @*<a id="btnDelete" style="cursor:pointer;" onclick="DeleteMemberData( @item.MembershipId)">Delete</a>*@
+                    </text>)
+                })
+
+
+
+                </div>
+            </div>
+        }
+        <div class="clear"></div>
+    </div>
+</div>
+
+@section Scripts
+{
+
+
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+<script type="text/javascript">
+
+    function EditMemberData(varid) {
+        if (varid != null) {
+            if (confirm('Are you sure want to edit the details selected user')) {
+                var Inputs = [];
+                //$('.chkview:checked').each(function (i, chk) {
+                Inputs.push(varid);
+                //});
+                var url = '@Url.Action("UserEditMembership", "Membership")';
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    cache: false,
+                    url: url,
+                    traditional: true,
+                    data: { Id: Inputs },
+                    success: function (data) {
+                        alert(data)
+                        window.location.reload();
+                    }
+                });
+            }
+        }
+    }
+</script>
+
+
+

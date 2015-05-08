@@ -1,0 +1,9 @@
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.DependencyResolution\bin\Debug\MCMD.DependencyResolution.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.DependencyResolution\bin\Debug\MCMD.DependencyResolution.pdb
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.DependencyResolution\obj\Debug\MCMD.DependencyResolution.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.DependencyResolution\obj\Debug\MCMD.DependencyResolution.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.DependencyResolution\bin\Debug\MCMD.DependencyResolution.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.DependencyResolution\bin\Debug\MCMD.DependencyResolution.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.DependencyResolution\obj\Debug\MCMD.DependencyResolution.csprojResolveAssemblyReference.cache
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.DependencyResolution\obj\Debug\MCMD.DependencyResolution.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.DependencyResolution\obj\Debug\MCMD.DependencyResolution.pdb

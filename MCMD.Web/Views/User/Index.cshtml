@@ -1,0 +1,139 @@
+﻿@model IEnumerable<MCMD.EntityModel.Administration.User>
+@using MCMD.EntityModel.Administration;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@*@{
+    
+    int Pages = 10;
+    WebGrid grid = new WebGrid(Model, canPage: true, rowsPerPage: Pages);
+    grid.Pager(WebGridPagerModes.NextPrevious);
+}*@
+
+
+
+<div class="container">
+    <div class="content">
+        <div class="data-table">
+            <table class="footable">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmailID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmployeeId)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Password)
+                        </th>*@
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.ConfirmPassword)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserRole)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifyedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedID)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmailID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeId)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Password)
+                            </td>*@
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.ConfirmPassword)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserRole)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifyedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedID)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            @*<div class="data-table">
+
+                @grid.GetHtml(
+                   tableStyle: "footable",
+                 footerStyle: "gridFooter",
+                        alternatingRowStyle: "alt",
+                         htmlAttributes: new { id = "grdUsers" },
+                         mode: WebGridPagerModes.All,
+                       firstText: "<< First",
+    previousText: "< Previous", nextText: "Next >",
+    lastText: "Last >>",
+                     columns: new[] {
+                     grid.Column("FirstName",header: "First Name", canSort: false),
+                     grid.Column("LastName",header: "Last Name", canSort: false),
+                     grid.Column("EmailID",header: "Eamil Id", canSort: false),
+                     grid.Column("EmployeeId",header: "Employee Id", canSort: false),
+                     grid.Column("UserRole",header: "User Role", canSort: false),
+                      grid.Column("Status",header: "Status", canSort: false),
+                      grid.Column(header: "Option", format: @<text> 
+                
+                <a ="btnEdit" style="cursor:pointer;" onclick="EditUserData( @item.UserId)">Edit</a>|
+                <a ="btnDelete" style="cursor:pointer;" onclick="DeleteUserData( @item.UserId)">Delete</a> 
+                </text>)
+                })
+                
+                
+            
+            </div>*@
+        </div>
+    </div>
+</div>

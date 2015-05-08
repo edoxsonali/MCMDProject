@@ -1,0 +1,114 @@
+﻿@model MCMD.EntityModel.Administration.ShortDoctorReg
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+}
+
+
+<div class="container">
+
+
+    <div class="login-container">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form">
+
+                <div class="col-sm-12">
+
+                    <div class="form-horizontal">
+                        <h2>Registration For Doctor</h2>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">Title<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                <span id="RolelabelLastName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Title is required.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">FirstName<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                <span id="RolelabelLastName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">FirstName is required.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">LastName<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                <span id="RolelabelLastName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">LastName is required.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">EmailId<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+                                <span id="RolelabelLastName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">EmailId is required.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">Password<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                <span id="RolelabelLastName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Password is required.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">ConfirmPassword<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                <span id="RolelabelLastName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">ConfirmPassword is required.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">Speciality<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(model => model.Speciality, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Speciality, "", new { @class = "text-danger" })
+                                <span id="RolelabelLastName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Speciality is required.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">Phone<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                <span id="RolelabelLastName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Phone is required.</span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+
+                                <div class="buttons">
+                                    <button type="Submit" id="btnCreate" name="btnCreate">Registor</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+        <div class="clear"></div>
+    </div>
+
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

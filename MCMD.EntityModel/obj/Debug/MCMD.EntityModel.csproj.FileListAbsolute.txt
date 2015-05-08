@@ -1,0 +1,87 @@
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\MCMD.EntityModel.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\MCMD.EntityModel.pdb
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\obj\Debug\MCMD.EntityModel.csprojResolveAssemblyReference.cache
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\obj\Debug\MCMD.EntityModel.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\obj\Debug\MCMD.EntityModel.pdb
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\MCMD.EntityModel.dll.config
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\EntityFramework.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.OAuth.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Newtonsoft.Json.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Owin.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\EntityFramework.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Newtonsoft.Json.xml
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
+c:\users\ud\documents\visual studio 2013\Projects\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\MCMD.EntityModel.dll.config
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\MCMD.EntityModel.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\MCMD.EntityModel.pdb
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\EntityFramework.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Owin.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\EntityFramework.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\obj\Debug\MCMD.EntityModel.csprojResolveAssemblyReference.cache
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\obj\Debug\MCMD.EntityModel.dll
+C:\Users\Shri\Desktop\sonali\somnath_sirfile_MCMD\MyCityMyDoctor\MCMD.EntityModel\obj\Debug\MCMD.EntityModel.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\MCMD.EntityModel.dll.config
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\MCMD.EntityModel.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\MCMD.EntityModel.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\EntityFramework.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Owin.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\EntityFramework.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\obj\Debug\MCMD.EntityModel.csprojResolveAssemblyReference.cache
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\obj\Debug\MCMD.EntityModel.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.EntityModel\obj\Debug\MCMD.EntityModel.pdb

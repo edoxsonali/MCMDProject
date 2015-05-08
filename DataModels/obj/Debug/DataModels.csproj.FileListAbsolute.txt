@@ -1,0 +1,5 @@
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\DataModels\bin\Debug\DataModels.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\DataModels\bin\Debug\DataModels.pdb
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\DataModels\obj\Debug\DataModels.csprojResolveAssemblyReference.cache
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\DataModels\obj\Debug\DataModels.dll
+C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\DataModels\obj\Debug\DataModels.pdb

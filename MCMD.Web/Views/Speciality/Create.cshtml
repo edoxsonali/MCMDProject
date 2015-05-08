@@ -1,0 +1,121 @@
+﻿@model MCMD.ViewModel.Administration.SpecialityViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{
+
+    int Pages = 10;
+    WebGrid grid = new WebGrid(Model.SpecialityList, canPage: true, rowsPerPage: Pages);
+    grid.Pager(WebGridPagerModes.NextPrevious);
+}
+ 
+    <script type="text/javascript">
+
+        //Delete User on click
+        function DeleteUserData(varid) {
+            if (varid != null) {
+                if (confirm('Are you sure want to delete the selected user')) {
+                    var deleteInputs = [];
+                    //$('.chkview:checked').each(function (i, chk) {
+                    deleteInputs.push(varid);
+                    //});
+                    var url = '@Url.Action("BatchDelete", "Speciality")';
+                    $.ajax({
+                        type: "POST",
+                        async: false,
+                        cache: false,
+                        url: url,
+                        traditional: true,
+                        data: { deleteInputs: deleteInputs },
+                        success: function (data) {
+                            var url = '@Url.Action("Create", "Speciality")';
+                            window.location.href = url;
+
+                        }
+                    });
+                }
+            }
+        }
+    
+    </script>
+
+
+
+
+<div class="container">
+    <div class="content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form">
+                <div class="col-sm-5">
+                    <div class="form-horizontal">
+                        <h2>Add Speciality</h2>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        
+                        <div class="form-group">
+                            <div class="col-sm-4 control-label">Speciality Name<span>*</span><b>:</b></div>
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(model => model.specialitys.SpecialityName, new { @class = "form-control", @placeholder = "Enter Speciality Name", @maxlength = "30", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(model => model.specialitys.SpecialityName, "", new { @class = "text-danger" })
+                                <span id="RolelabelFirstName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">First Name is required.</span>
+                            </div>
+                        </div>
+                     
+
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="buttons">
+                                <button type="Submit" id="btnCreate" name="btnCreate">Submit</button>
+                                <button type="button" id="btnReset" name="btnscd" onclick="location.href='@Url.Action("Create", "Speciality")'">Reset</button>
+                            </div>
+
+                        </div>
+                        <span class="fancybox-error" style="color:red;">
+
+                            @TempData["AddNewItemMessage"]
+                        </span>
+                        
+                    </div>
+
+                </div>
+                <div class="col-sm-7">
+
+                    <div class="data-table">
+
+                        @grid.GetHtml(
+                                           tableStyle: "footable",
+                                         footerStyle: "gridFooter",
+                                                alternatingRowStyle: "alt",
+                                                 htmlAttributes: new { id = "grdUsers" },
+                                                 mode: WebGridPagerModes.All,
+                                               firstText: "<< First",
+                            previousText: "< Previous", nextText: "Next >",
+                            lastText: "Last >>",
+                                             columns: new[] {
+                                             //grid.Column("ID",header: "Speciality ID", canSort: false),
+                                             grid.Column("SpecialityName",header: "Speciality Name", canSort: false),
+                                              grid.Column(header: "Option", format: @<text>
+
+                                                @*<a id="btnEdit" style="cursor:pointer;" onclick="EditUserData( @item.ID)">Edit</a>|*@
+                                                <a id="btnDelete" style="cursor:pointer;" onclick="DeleteUserData( @item.SpecialityID)">Delete</a>
+                                            </text>)
+                                        })
+
+
+
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="clear"></div>
+    </div>
+</div>
+@*@section Scripts
+        {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
