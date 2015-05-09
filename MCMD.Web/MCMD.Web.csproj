@@ -164,6 +164,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Controllers\Account\AccountController.cs" />
+    <Compile Include="Controllers\Administration\DoctorClinicInfoController.cs" />
+    <Compile Include="Controllers\Administration\DoctorInfoController.cs" />
     <Compile Include="Controllers\Administration\MembershipController.cs" />
     <Compile Include="Controllers\Administration\SpecialityController.cs" />
     <Compile Include="Controllers\Administration\UserController.cs" />
@@ -893,6 +895,8 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\User\ViewDoctor.cshtml" />
     <Content Include="Views\Help\Create.cshtml" />
+    <Content Include="Views\DoctorClinicInfo\Create.cshtml" />
+    <Content Include="Views\DoctorInfo\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -10,3 +10,7 @@ C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ApiService\bin\Debug\MCMD.ApiSe
 C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ApiService\bin\Debug\MCMD.ApiService.pdb
 C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ApiService\obj\Debug\MCMD.ApiService.dll
 C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ApiService\obj\Debug\MCMD.ApiService.pdb
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiService\bin\Debug\MCMD.ApiService.dll
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiService\bin\Debug\MCMD.ApiService.pdb
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiService\obj\Debug\MCMD.ApiService.dll
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiService\obj\Debug\MCMD.ApiService.pdb

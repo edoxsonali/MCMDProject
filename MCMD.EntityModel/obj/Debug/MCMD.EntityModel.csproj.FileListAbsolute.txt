@@ -111,6 +111,5 @@ C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.EntityModel\bin\Debug\Mic
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.EntityModel\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.EntityModel\obj\Debug\MCMD.EntityModel.csprojResolveAssemblyReference.cache
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.EntityModel\obj\Debug\MCMD.EntityModel.dll
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.EntityModel\obj\Debug\MCMD.EntityModel.pdb

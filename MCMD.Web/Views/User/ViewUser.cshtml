@@ -7,7 +7,7 @@
 @{
 
     int Pages = 10;
-    WebGrid grid = new WebGrid(Model.UserInfos, canPage: true, rowsPerPage: Pages);
+    WebGrid grid = new WebGrid(Model.GetViewUsers, canPage: true, rowsPerPage: Pages);
     grid.Pager(WebGridPagerModes.NextPrevious);
 }
 @section Scripts

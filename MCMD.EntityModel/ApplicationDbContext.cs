@@ -40,6 +40,11 @@ namespace MCMD.EntityModel
 
         public DbSet<Help> Helps { get; set; }
 
+        public DbSet<DoctorPersonalInformation> DoctorsPersonals { get; set; }
+        public DbSet<DoctorClinicInformation> DoctorsClinicInfos { get; set; }
+        public DbSet<Country> countrys { get; set; }
+        public DbSet<State> states { get; set; }
+        public DbSet<City> cities { get; set; }
 
         public static ApplicationDbContext Create()
         {
@@ -83,6 +88,21 @@ namespace MCMD.EntityModel
 
             modelBuilder.Entity<Help>().ToTable("Help");
             modelBuilder.Entity<Help>().HasKey<int>(r => r.HelpId);
+
+            modelBuilder.Entity<Country>().ToTable("Country");
+            modelBuilder.Entity<Country>().HasKey<int>(r => r.CountryId);
+
+            modelBuilder.Entity<State>().ToTable("State");
+            modelBuilder.Entity<State>().HasKey<int>(r => r.StateId);
+
+            modelBuilder.Entity<City>().ToTable("City");
+            modelBuilder.Entity<City>().HasKey<int>(r => r.CityId);
+
+            modelBuilder.Entity<DoctorPersonalInformation>().ToTable("DoctorPersonalInformation");
+            modelBuilder.Entity<DoctorPersonalInformation>().HasKey<int>(r => r.PersonalInfoId);
+
+            modelBuilder.Entity<DoctorClinicInformation>().ToTable("DoctorClinicInformation");
+            modelBuilder.Entity<DoctorClinicInformation>().HasKey<int>(r => r.ClinicInfoId);
 
 
 

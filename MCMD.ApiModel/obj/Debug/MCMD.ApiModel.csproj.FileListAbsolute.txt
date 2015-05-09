@@ -10,3 +10,7 @@ C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ApiModel\bin\Debug\MCMD.ApiMode
 C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ApiModel\bin\Debug\MCMD.ApiModel.pdb
 C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ApiModel\obj\Debug\MCMD.ApiModel.dll
 C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ApiModel\obj\Debug\MCMD.ApiModel.pdb
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiModel\bin\Debug\MCMD.ApiModel.dll
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiModel\bin\Debug\MCMD.ApiModel.pdb
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiModel\obj\Debug\MCMD.ApiModel.dll
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiModel\obj\Debug\MCMD.ApiModel.pdb

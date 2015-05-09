@@ -34,7 +34,9 @@ namespace MCMD.DependencyInjection
             // ninjectKernel.Bind<IProductRepository>().To<EFProductRepository>();
             ninjectKernel.Bind<IUserRepository>().To<UserRepository>();      
             ninjectKernel.Bind<ISpecialityRepository>().To<SpecialityRepository>();      
-            ninjectKernel.Bind<IMembershipRepository>().To<MembershipRepository>();      
+            ninjectKernel.Bind<IMembershipRepository>().To<MembershipRepository>();
+            ninjectKernel.Bind<IDoctorPersonalInfoRepository>().To<DoctorPersonalInfoRepository>();
+            ninjectKernel.Bind<IDoctorClinicInformation>().To<DoctorClinicInformationRepository>();
         }
      
     }

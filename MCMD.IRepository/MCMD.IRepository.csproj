@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminInterfaces\IDoctorClinicInformation.cs" />
+    <Compile Include="AdminInterfaces\IDoctorPersonalInfoRepository.cs" />
     <Compile Include="AdminInterfaces\IMembershipRepository.cs" />
     <Compile Include="AdminInterfaces\ISpecialityRepository.cs" />
     <Compile Include="AdminInterfaces\IUserRepository.cs" />

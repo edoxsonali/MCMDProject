@@ -78,6 +78,8 @@
     <Compile Include="Account\ForgetPasswordModel.cs" />
     <Compile Include="Account\LoginViewModel.cs" />
     <Compile Include="Account\ResetPasswordConfirmModel.cs" />
+    <Compile Include="Administration\DoctorClinicInformationViewModel.cs" />
+    <Compile Include="Administration\DoctorPersonalInfoViewModel.cs" />
     <Compile Include="Administration\EditMembershipVM.cs" />
     <Compile Include="Administration\MembershipViewModel.cs" />
     <Compile Include="Administration\SpecialityViewModel.cs" />

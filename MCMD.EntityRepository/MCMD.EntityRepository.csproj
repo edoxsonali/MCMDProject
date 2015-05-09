@@ -58,6 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminRepository\DoctorClinicInformationRepository.cs" />
+    <Compile Include="AdminRepository\DoctorPersonalInfoRepository.cs" />
     <Compile Include="AdminRepository\MembershipRepository.cs" />
     <Compile Include="AdminRepository\SpecialityRepository.cs" />
     <Compile Include="AdminRepository\UserRepository.cs" />

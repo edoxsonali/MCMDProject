@@ -6,3 +6,7 @@ C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ErrorLogging\bin\Debug\MCMD.Err
 C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ErrorLogging\bin\Debug\MCMD.ErrorLogging.pdb
 C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ErrorLogging\obj\Debug\MCMD.ErrorLogging.dll
 C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.ErrorLogging\obj\Debug\MCMD.ErrorLogging.pdb
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ErrorLogging\bin\Debug\MCMD.ErrorLogging.dll
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ErrorLogging\bin\Debug\MCMD.ErrorLogging.pdb
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ErrorLogging\obj\Debug\MCMD.ErrorLogging.dll
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ErrorLogging\obj\Debug\MCMD.ErrorLogging.pdb
