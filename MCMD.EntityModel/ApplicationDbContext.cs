@@ -38,6 +38,8 @@ namespace MCMD.EntityModel
 
         public DbSet<UserInfo> UserInfos { get; set; }
 
+        public DbSet<Help> Helps { get; set; }
+
 
         public static ApplicationDbContext Create()
         {
@@ -78,6 +80,11 @@ namespace MCMD.EntityModel
 
             modelBuilder.Entity<AutoRenaval>().ToTable("AutoRenaval");
             modelBuilder.Entity<AutoRenaval>().HasKey<int>(r => r.AutoRenavalId);
+
+            modelBuilder.Entity<Help>().ToTable("Help");
+            modelBuilder.Entity<Help>().HasKey<int>(r => r.HelpId);
+
+
 
             //  modelBuilder.Entity<Role>().ToTable("MCMDCreateRoles");
             // Set AutoIncrement-Properties

@@ -167,6 +167,7 @@
     <Compile Include="Controllers\Administration\MembershipController.cs" />
     <Compile Include="Controllers\Administration\SpecialityController.cs" />
     <Compile Include="Controllers\Administration\UserController.cs" />
+    <Compile Include="Controllers\Doctor\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -891,13 +892,13 @@
     <Content Include="Views\Membership\Create.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\User\ViewDoctor.cshtml" />
+    <Content Include="Views\Help\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Controllers\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
-    <Folder Include="Controllers\Doctor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

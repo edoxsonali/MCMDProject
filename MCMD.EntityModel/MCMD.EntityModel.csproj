@@ -91,6 +91,7 @@
     <Compile Include="Administration\UserLoginRole.cs" />
     <Compile Include="Administration\UserLoginSpeciality.cs" />
     <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Doctor\Help.cs" />
     <Compile Include="Doctor\Speciality.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

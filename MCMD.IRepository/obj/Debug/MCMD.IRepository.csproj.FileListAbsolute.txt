@@ -31,3 +31,14 @@ C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.IRepository\bin\Debug\EntityFra
 C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.IRepository\obj\Debug\MCMD.IRepository.csprojResolveAssemblyReference.cache
 C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.IRepository\obj\Debug\MCMD.IRepository.dll
 C:\Users\Shri\Desktop\sonali\MyCityMyDoctor\MCMD.IRepository\obj\Debug\MCMD.IRepository.pdb
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.IRepository\bin\Debug\MCMD.IRepository.dll
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.IRepository\bin\Debug\MCMD.IRepository.pdb
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.IRepository\bin\Debug\MCMD.EntityModel.dll
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.IRepository\bin\Debug\MCMD.ViewModel.dll
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.IRepository\bin\Debug\EntityFramework.dll
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.IRepository\bin\Debug\MCMD.EntityModel.pdb
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.IRepository\bin\Debug\MCMD.ViewModel.pdb
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.IRepository\bin\Debug\EntityFramework.xml
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.IRepository\obj\Debug\MCMD.IRepository.csprojResolveAssemblyReference.cache
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.IRepository\obj\Debug\MCMD.IRepository.dll
+C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.IRepository\obj\Debug\MCMD.IRepository.pdb
