@@ -58,7 +58,7 @@ namespace MCMD.Web.Controllers.Administration
                 }
                 foreach (var item in _NewSpeciality)
                 {
-                    _doctorVM.SpecialityID= Convert.ToInt32(item.SpecialityId);
+                    _doctorVM.SpecialityID= Convert.ToInt32(item.SpecialityID);
 
                 }
 

@@ -9,7 +9,7 @@ namespace MCMD.EntityModel.Administration
    public  class UserLoginSpeciality
     {
        public int LoginSpecialityId { get; set; }
-       public int SpecialityId { get; set; }
+       public int SpecialityID { get; set; }
         public int LoginId { get; set; }
     }
 }

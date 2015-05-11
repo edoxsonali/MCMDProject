@@ -11,13 +11,15 @@ namespace MCMD.IRepository.AdminInterfaces
 {
     public interface IUserRepository : IDisposable
     {
-    
-        IEnumerable<UserInfo> GetAllUser();
-        IEnumerable<UserInfo> getAllDoctor();
+
+        IEnumerable<GetViewUsers> GetAllUser();
+        IEnumerable<GetViewDoctor> getAllDoctor();
         IEnumerable<Speciality> GetSpecialitys();
         IEnumerable<Role> GetRoles();
 
-        IEnumerable<UserInfo> SearchUser(int EmpIdVM, int RoleIdVM, string UserFirstNameVm, string UserLastNameVM, string UserEmailIdVM, string UsePhoneVM);
+        IEnumerable<GetViewUsers> SearchUser(int RoleIdVM, int EmpIdVM, string UserFirstNameVm, string UserLastNameVM, string UserEmailIdVM, string UsePhoneVM);
+
+        IEnumerable<GetViewDoctor> SearchDoctor(int RoleIdVM, int EmpIdVM, string UserFirstNameVm, string UserLastNameVM, string UserEmailIdVM, string UsePhoneVM);
         UserLogin GetUserByID(int UserId);
 
         void InsertUserLogins(UserLogin userlogin, UserRegisterViewModel registerVM);

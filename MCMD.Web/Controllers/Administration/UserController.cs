@@ -152,25 +152,24 @@ namespace MCMD.Web.Controllers.Administration
 
         #region View User
         [HttpGet]
-        public ActionResult ViewUser(int EmpIdVM = 0, int RoleId = 0, string UserFirstName = null, string UserLastName = null, string UserEmailId = null, string UsePhone = null)
+        public ActionResult ViewUser(int EmpId = 0, int RoleId = 0, string UserFirstName = "", string UserLastName = "", string UserEmailId = "", string UsePhone = "")
         {
 
             UserDetailsViewModel userDetailsVM = new UserDetailsViewModel();
             userDetailsVM.Roles = userRepository.GetRoles().ToList();
-            if (EmpIdVM == 0 && RoleId == 0 && string.IsNullOrEmpty(UserFirstName) && string.IsNullOrEmpty(UserEmailId) && string.IsNullOrEmpty(UsePhone))
+            if (EmpId == 0 && RoleId == 0 && string.IsNullOrEmpty(UserFirstName) && string.IsNullOrEmpty(UserEmailId) && string.IsNullOrEmpty(UsePhone))
             {
-                
-              //  userDetailsVM.Roles = userRepository.GetRoles().ToList();                                 
-                userDetailsVM.UserInfos = userRepository.GetAllUser().ToList();
+                         
+                userDetailsVM.GetViewUsers = userRepository.GetAllUser().ToList();
                  
              }
 
             //get Role Id from dropdown
-            if (RoleId == 2)
+            if (RoleId != 0 || EmpId != 0 || !string.IsNullOrEmpty(UserFirstName) || !string.IsNullOrEmpty(UserLastName) || !string.IsNullOrEmpty(UserEmailId) || !string.IsNullOrEmpty(UsePhone))
             {
                 userDetailsVM.RoleId = RoleId;
 
-                userDetailsVM.UserInfos = userRepository.SearchUser(EmpIdVM, RoleId, UserFirstName, UserLastName, UserEmailId, UsePhone).ToList();
+                userDetailsVM.GetViewUsers = userRepository.SearchUser(RoleId, EmpId, UserFirstName, UserLastName, UserEmailId, UsePhone).ToList();
             }
 
             
@@ -221,14 +220,70 @@ namespace MCMD.Web.Controllers.Administration
 
         #region View Doctor
           [HttpGet]
-        public ActionResult ViewDoctor()
+        public ActionResult ViewDoctor(int EmpId = 0, int RoleId = 0, string UserFirstName = "", string UserLastName = "", string UserEmailId = "", string UsePhone = "")
         {
             UserDetailsViewModel userDetailsVM = new UserDetailsViewModel();
             userDetailsVM.Roles = userRepository.GetRoles().ToList();
-            userDetailsVM.UserInfos = userRepository.getAllDoctor().ToList();
+            if (EmpId == 0 && RoleId == 0 && string.IsNullOrEmpty(UserFirstName) && string.IsNullOrEmpty(UserEmailId) && string.IsNullOrEmpty(UsePhone))
+            {
+                userDetailsVM.GetViewDoctors = userRepository.getAllDoctor().ToList(); 
+
+            }
+
+            //get Role Id from dropdown
+            if (RoleId != 0 || EmpId != 0 || !string.IsNullOrEmpty(UserFirstName) || !string.IsNullOrEmpty(UserLastName) || !string.IsNullOrEmpty(UserEmailId) || !string.IsNullOrEmpty(UsePhone))
+            {
+                userDetailsVM.RoleId = RoleId;
+
+                userDetailsVM.GetViewDoctors = userRepository.SearchDoctor(RoleId, EmpId, UserFirstName, UserLastName, UserEmailId, UsePhone).ToList();
+            }
+
+
 
             return View(userDetailsVM);
         }
+
+        [HttpPost]
+          public ActionResult ViewDoctor(UserDetailsViewModel userDetailsVM)
+          {
+
+              int empId = 0;
+              int userRollId = 0;
+              string Userfirstname = "";
+              string useremailid = "";
+              string userphone = "";
+              string Userlastname = "";
+
+              if (userDetailsVM.EmployeeId != 0 || userDetailsVM.RoleId != 0)
+              {
+                  empId = userDetailsVM.EmployeeId;
+                  userRollId = userDetailsVM.RoleId;
+
+              }
+              if (!string.IsNullOrEmpty(userDetailsVM.FirstName))
+              {
+                  Userfirstname = userDetailsVM.FirstName;
+
+              }
+              if (!string.IsNullOrEmpty(userDetailsVM.LastName))
+              {
+                  Userlastname = userDetailsVM.LastName;
+
+              }
+              if (!string.IsNullOrEmpty(userDetailsVM.EmailID))
+              {
+                  useremailid = userDetailsVM.EmailID;
+
+              }
+              if (!string.IsNullOrEmpty(userDetailsVM.UserPhone))
+              {
+                  userphone = userDetailsVM.UserPhone;
+              }
+              return RedirectToAction("ViewDoctor", new { EmpId = empId, RoleId = userRollId, UserFirstName = Userfirstname, UserLastName = Userlastname, UserEmailId = useremailid, UsePhone = userphone });
+
+
+          }
+
         #endregion
 
         #region Edit User

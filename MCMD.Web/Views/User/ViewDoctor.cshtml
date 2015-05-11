@@ -7,7 +7,7 @@
 @{
 
     int Pages = 10;
-    WebGrid grid = new WebGrid(Model.UserInfos, canPage: true, rowsPerPage: Pages);
+    WebGrid grid = new WebGrid(Model.GetViewDoctors, canPage: true, rowsPerPage: Pages);
     grid.Pager(WebGridPagerModes.NextPrevious);
 }
 @section Scripts
@@ -73,7 +73,7 @@
                         <div class="form-group">
                             <div class="col-sm-3 control-label">User Type<span>*</span><b>:</b></div>
                             <div class="col-sm-6">
-                                @Html.DropDownListFor(m => m.RoleId, new SelectList(Model.Roles, "Id", "Name"),
+                                @Html.DropDownListFor(m => m.RoleId, new SelectList(Model.Roles, "RoleId", "Name"),
                                 "-Select-", new { @class = "form-control" })
                                 <span id="RolelabelFirstName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">First Name is required.</span>
                             </div>
@@ -81,7 +81,7 @@
                         <div class="form-group">
                             <div class="col-sm-3 control-label">Doctor Id<span>*</span><b>:</b></div>
                             <div class="col-sm-6">
-                                @Html.TextBoxFor(u => u.UserId, new { @class = "form-control", @placeholder = "Enter User Id", @maxlength = "30", @autocomplete = "off" })
+                                @Html.TextBoxFor(u => u.EmployeeId, new { @class = "form-control", @placeholder = "Enter Employee Id", @maxlength = "30", @autocomplete = "off" })
 
                             </div>
                         </div>
@@ -94,9 +94,16 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <div class="col-sm-3 control-label">Doctor Name<b>:</b></div>
+                            <div class="col-sm-3 control-label">First Name<b>:</b></div>
                             <div class="col-sm-6">
-                                @Html.TextBoxFor(u => u.UserName, new { @class = "form-control", @placeholder = "Enter User Name", @maxlength = "50", autocomplete = "off" })
+                                @Html.TextBoxFor(u => u.FirstName, new { @class = "form-control", @placeholder = "Enter First Name", @maxlength = "50", autocomplete = "off" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 control-label">Last Name<b>:</b></div>
+                            <div class="col-sm-6">
+                                @Html.TextBoxFor(u => u.LastName, new { @class = "form-control", @placeholder = "Enter Last Name", @maxlength = "50", autocomplete = "off" })
 
                             </div>
                         </div>
@@ -148,13 +155,15 @@
                      grid.Column("UserName",header: "User Name", canSort: false),
                      grid.Column("FirstName",header: "First Name", canSort: false),
                      grid.Column("LastName",header: "Last Name", canSort: false),
+                     grid.Column("SpecialityName",header: "Speciality", canSort: false),
                      grid.Column("EmailID",header: "Email ID", canSort: false),
+                      grid.Column("EmployeeId",header: "Employee Id", canSort: false),
                      grid.Column("UserPhone",header: "Phone No", canSort: false),
                       grid.Column("Name",header: "Role", canSort: false),
                       grid.Column(header: "Option", format: @<text>
 
                         @*<a id="btnEdit" style="cursor:pointer;" onclick="EditUserData( @item.UserId)">Edit</a>|*@
-                            <a id="btnDelete" style="cursor:pointer;" onclick="DeleteUserData( @item.LoginId)">Delete</a>
+                        <a id="btnDelete" style="cursor:pointer;" onclick="DeleteUserData( @item.LoginId)">Delete</a>
                     </text>)
                 })
 

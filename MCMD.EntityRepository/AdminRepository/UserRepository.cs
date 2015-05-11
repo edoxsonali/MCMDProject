@@ -9,6 +9,7 @@ using MCMD.EntityModel;
 using System.Data.Entity;
 using MCMD.ViewModel.Administration;
 using MCMD.EntityModel.Doctor;
+using System.Data.SqlClient;
 
 namespace MCMD.EntityRepository.AdminRepository
 {
@@ -20,8 +21,8 @@ namespace MCMD.EntityRepository.AdminRepository
         {
             this.DBcontext = DBcontext;
         }
-        
-        public IEnumerable<UserInfo> GetAllUser()
+
+        public IEnumerable<GetViewUsers> GetAllUser()
         {
             
             var AllUserInfo = (from n in DBcontext.UserLoginRoles
@@ -40,11 +41,11 @@ namespace MCMD.EntityRepository.AdminRepository
                                    Role = c.Name
                                }).ToList();
 
-            List<UserInfo> allUsers = new List<UserInfo>();
+            List<GetViewUsers> allUsers = new List<GetViewUsers>();
 
             foreach (var item in AllUserInfo)
             {
-                var s = new UserInfo();
+                var s = new GetViewUsers();
                 s.LoginId = item.LoginId;
                 s.UserName = item.UserName;
                 s.FirstName = item.FirstName;
@@ -61,11 +62,13 @@ namespace MCMD.EntityRepository.AdminRepository
 
         }
 
-        public IEnumerable<UserInfo> getAllDoctor()
+        public IEnumerable<GetViewDoctor> getAllDoctor()
         {
             var AllUserInfo = (from n in DBcontext.UserLoginRoles
                                join b in DBcontext.UserLogins on n.LoginId equals b.LoginId
                                join c in DBcontext.Roles on n.RoleId equals c.RoleId
+                               join ls in DBcontext.UserLoginSpecialitys on b.LoginId equals ls.LoginId
+                               join s in DBcontext.Specialitys on ls.SpecialityID equals s.SpecialityID
                                where n.RoleId == 4 && b.InactiveFlag == "N"
                                select new
                                {
@@ -73,20 +76,22 @@ namespace MCMD.EntityRepository.AdminRepository
                                    UserName = b.UserName,
                                    FirstName = b.FirstName,
                                    LastName = b.LastName,
+                                   Speciality=s.SpecialityName,
                                    EmailID = b.EmailID,
                                    MobileNo = b.UserPhone,
                                    Role = c.Name
                                }).ToList();
 
-            List<UserInfo> allUsers = new List<UserInfo>();
+            List<GetViewDoctor> allUsers = new List<GetViewDoctor>();
 
             foreach (var item in AllUserInfo)
             {
-                var s = new UserInfo();
+                var s = new GetViewDoctor();
                 s.LoginId = item.LoginId;
                 s.UserName = item.UserName;
                 s.FirstName = item.FirstName;
                 s.LastName = item.LastName;
+                s.SpecialityName = item.Speciality;
                 s.EmailID = item.EmailID;
                 s.UserPhone = item.MobileNo;
                 s.Name = item.Role;
@@ -98,43 +103,37 @@ namespace MCMD.EntityRepository.AdminRepository
         }
 
 
-        public IEnumerable<UserInfo> SearchUser(int EmpIdVM, int RoleIdVM, string UserFirstNameVm, string UserLastNameVM, string UserEmailIdVM, string UsePhoneVM)
+        public IEnumerable<GetViewUsers> SearchUser(int RoleIdVM, int EmpIdVM, string UserFirstNameVm, string UserLastNameVM, string UserEmailIdVM, string UsePhoneVM)
         {
-             
-            var AllUserInfo = (from n in DBcontext.UserLoginRoles
-                               join b in DBcontext.UserLogins on n.LoginId equals b.LoginId
-                               join c in DBcontext.Roles on n.RoleId equals c.RoleId
-                               where (b.InactiveFlag == "N" && n.RoleId == RoleIdVM) && (b.FirstName == UserFirstNameVm && b.FirstName == null) && (b.LastName == UserLastNameVM || b.LastName == null) && (b.EmailID == UserEmailIdVM || b.EmailID == null) && (b.UserPhone == UsePhoneVM || b.UserPhone == null)
-                                select new
-                               {
-                                   LoginId = b.LoginId,
-                                   UserName = b.UserName,
-                                   FirstName = b.FirstName,
-                                   LastName = b.LastName,
-                                   EmailID = b.EmailID,
-                                   EmployeeId = b.EmployeeId,
-                                   MobileNo = b.UserPhone,
-                                   Role = c.Name
-                               }).ToList();
 
-            List<UserInfo> allUsers = new List<UserInfo>();
 
-            foreach (var item in AllUserInfo)
-            {
-                var s = new UserInfo();
-                s.LoginId = item.LoginId;
-                s.UserName = item.UserName;
-                s.FirstName = item.FirstName;
-                s.LastName = item.LastName;
-                s.EmailID = item.EmailID;
-                s.EmployeeId = item.EmployeeId;
-                s.UserPhone =item.MobileNo;
-                s.Name = item.Role;
-                allUsers.Add(s);
+            var UserInfo = DBcontext.Database.SqlQuery<GetViewUsers>("GetViewUsers @RoleId,@EmployeeId, @FirstName,@LastName,@EmailID,@UserPhone",
+                                                         new SqlParameter("RoleId", RoleIdVM),
+                                                         new SqlParameter("EmployeeId", EmpIdVM),
+                                                         new SqlParameter("FirstName", UserFirstNameVm),
+                                                         new SqlParameter("LastName", UserLastNameVM),
+                                                         new SqlParameter("EmailID", UserEmailIdVM),
+                                                         new SqlParameter("UserPhone", UsePhoneVM)
+                                                      ).OrderByDescending(x => x.LoginId).ToList();
 
-            }
 
-            return allUsers.ToList();
+            return UserInfo.ToList();
+
+        }
+
+        public IEnumerable<GetViewDoctor> SearchDoctor(int RoleIdVM, int EmpIdVM, string UserFirstNameVm, string UserLastNameVM, string UserEmailIdVM, string UsePhoneVM)
+        {
+            var UserInfo = DBcontext.Database.SqlQuery<GetViewDoctor>("GetViewUsers @RoleId,@EmployeeId, @FirstName,@LastName,@EmailID,@UserPhone",
+                                                         new SqlParameter("RoleId", RoleIdVM),
+                                                         new SqlParameter("EmployeeId", EmpIdVM),
+                                                         new SqlParameter("FirstName", UserFirstNameVm),
+                                                         new SqlParameter("LastName", UserLastNameVM),
+                                                         new SqlParameter("EmailID", UserEmailIdVM),
+                                                         new SqlParameter("UserPhone", UsePhoneVM)
+                                                      ).OrderByDescending(x => x.LoginId).ToList();
+
+
+            return UserInfo.ToList();
 
         }
        
@@ -189,7 +188,7 @@ namespace MCMD.EntityRepository.AdminRepository
        {
 
            userloginspeciality.LoginId = registerVM.Userlogins.LoginId;
-           userloginspeciality.SpecialityId = registerVM.SpecialityID;
+           userloginspeciality.SpecialityID = registerVM.SpecialityID;
 
            DBcontext.UserLoginSpecialitys.Add(userloginspeciality);
        }

@@ -75,38 +75,7 @@ namespace MCMD.Web.Controllers.Administration
             return View(_memberShipVM);
         }
 
-        //public ActionResult BatchDelete(int[] deleteInputs)
-        //{
-
-        //    if (deleteInputs != null)
-        //    {
-        //        foreach (var item in deleteInputs)
-        //        {
-        //           // MCMD.EntityModel.Administration.Membership membership = membershipRepository.GetMemberById(item);
-        //            membershipRepository.DeleteMember(item);
-        //            membershipRepository.Save();
-        //        }
-
-        //    }
-        //    return Json("User", JsonRequestBehavior.AllowGet);
-        //}
-
-        //public ActionResult BatchEdit(int[] deleteInputs)
-        //{
-
-        //    if (deleteInputs != null)
-        //    {
-        //        foreach (var item in deleteInputs)
-        //        {
-        //            // MCMD.EntityModel.Administration.Membership membership = membershipRepository.GetMemberById(item);
-        //            //membershipRepository.UpdateMember(item);
-        //            membershipRepository.Save();
-        //        }
-
-        //    }
-        //    return Json("User", JsonRequestBehavior.AllowGet);
-        //}
-        // POST: /CreateUser/Create
+        
 
         [HttpPost]
         [ValidateAntiForgeryToken]

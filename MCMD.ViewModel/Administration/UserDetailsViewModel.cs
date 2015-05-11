@@ -17,6 +17,10 @@ namespace MCMD.ViewModel.Administration
        public int LoginId { get; set; }
 
        public List<UserInfo> UserInfos { get; set; }
+
+       public List<GetViewUsers> GetViewUsers { get; set; }
+
+       public List<GetViewDoctor> GetViewDoctors { get; set; }
      //  public string UserName { get; set; }
        public string FirstName { get; set; }
        public string LastName { get; set; }
