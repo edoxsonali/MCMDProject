@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MCMD.EntityModel.Administration.Media>
+@using MCMD.EntityModel.Administration;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="content">
+        <div class="data-table">
+            @*<table class="footable">*@
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LoginId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FolderFilePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UploadType)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LoginId)
+                            </td>
+                            <td>
+                                @*@Html.DisplayFor(modelItem => item.FolderFilePath)*@
+                                <img src="@Url.Content(item.FolderFilePath)" width=" 100" height="100" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UploadType)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.MediaId }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.MediaId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.MediaId })
+                            </td>
+                        </tr>
+                    }
+
+
+                </table>
+            </div>
+        </div>
+    </div>

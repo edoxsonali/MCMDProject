@@ -45,6 +45,7 @@ namespace MCMD.EntityModel
         public DbSet<Country> countrys { get; set; }
         public DbSet<State> states { get; set; }
         public DbSet<City> cities { get; set; }
+        public DbSet<Media> medias { get; set; }
 
         public static ApplicationDbContext Create()
         {
@@ -104,6 +105,8 @@ namespace MCMD.EntityModel
             modelBuilder.Entity<DoctorClinicInformation>().ToTable("DoctorClinicInformation");
             modelBuilder.Entity<DoctorClinicInformation>().HasKey<int>(r => r.ClinicInfoId);
 
+            modelBuilder.Entity<Media>().ToTable("Media");
+            modelBuilder.Entity<Media>().HasKey<int>(r => r.MediaId);
 
 
             //  modelBuilder.Entity<Role>().ToTable("MCMDCreateRoles");

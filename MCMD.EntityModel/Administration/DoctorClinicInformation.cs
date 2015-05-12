@@ -14,6 +14,8 @@ namespace MCMD.EntityModel.Doctor
 
         public int ClinicInfoId { get; set; }
 
+        public int LoginId { get; set; }
+
         [DisplayName("ClinicName")]
         //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "ClinicName is not valid.")]
         [Required(ErrorMessage = "ClinicName is required.")]

@@ -96,6 +96,7 @@ namespace MCMD.Web.Controllers.Administration
                     newDoctor.CreatedDate = DateTime.Now;
                     newDoctor.ModifiedByID = 1;
                     newDoctor.ModifiedDate = DateTime.Now;
+                    newDoctor.LoginId = 1;// for now we add 1 later we change
 
                     doctorPersonalInfoRepository.InsertDoctor(newDoctor);
                     doctorPersonalInfoRepository.Save();

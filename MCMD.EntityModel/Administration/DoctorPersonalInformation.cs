@@ -13,6 +13,8 @@ namespace MCMD.EntityModel.Doctor
         [Key]
         public int PersonalInfoId { get; set; }
 
+        public int LoginId { get; set; }
+
         [DisplayName("FirstName")]
         //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "FirstName is not valid.")]
         [Required(ErrorMessage = "FirstName is required.")]

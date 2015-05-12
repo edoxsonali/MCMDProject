@@ -166,6 +166,7 @@
     <Compile Include="Controllers\Account\AccountController.cs" />
     <Compile Include="Controllers\Administration\DoctorClinicInfoController.cs" />
     <Compile Include="Controllers\Administration\DoctorInfoController.cs" />
+    <Compile Include="Controllers\Administration\MediaController.cs" />
     <Compile Include="Controllers\Administration\MembershipController.cs" />
     <Compile Include="Controllers\Administration\SpecialityController.cs" />
     <Compile Include="Controllers\Administration\UserController.cs" />
@@ -897,12 +898,15 @@
     <Content Include="Views\Help\Create.cshtml" />
     <Content Include="Views\DoctorClinicInfo\Create.cshtml" />
     <Content Include="Views\DoctorInfo\Create.cshtml" />
+    <Content Include="Views\Media\Create.cshtml" />
+    <Content Include="Views\Media\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Controllers\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
+    <Folder Include="Media\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

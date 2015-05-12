@@ -67,6 +67,7 @@ namespace MCMD.Web.Controllers.Administration
                     newClinic.CreatedDate = DateTime.Now;
                     newClinic.ModifiedByID = 1;
                     newClinic.ModifiedDate = DateTime.Now;
+                    newClinic.LoginId = 1;// for now we add 1 later we change
 
                     doctorClinicRepository.InsertClinic(newClinic);
                     doctorClinicRepository.Save();
