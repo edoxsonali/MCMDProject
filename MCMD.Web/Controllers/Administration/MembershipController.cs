@@ -55,7 +55,7 @@ namespace MCMD.Web.Controllers.Administration
             MembershipViewModel _memberShipVM = new MembershipViewModel();
             _memberShipVM.Duration_s = membershipRepository.GetDuration().ToList();
             _memberShipVM.Months = membershipRepository.GetMonths().ToList();
-            _memberShipVM.Membership = membershipRepository.GetMembers().ToList();
+            _memberShipVM.GetMember = membershipRepository.GetMember().ToList();
 
             if (editInputs != 0)
             {
@@ -66,8 +66,8 @@ namespace MCMD.Web.Controllers.Administration
                     _memberShipVM.MembershipType = item.MembershipType;
                     _memberShipVM.Fees = item.Fees;
 
-                    _memberShipVM.Durations = Convert.ToInt32(item.Durations);
-                    _memberShipVM.Renaval = Convert.ToInt32(item.AutoRenaval);
+                    _memberShipVM.DurationId = Convert.ToInt32(item.Duration);
+                    _memberShipVM.AutoRenavalId = Convert.ToInt32(item.AutoRenaval);
                 }
 
             }
@@ -91,8 +91,8 @@ namespace MCMD.Web.Controllers.Administration
 
                     newMember.MembershipType = _memberShipVM.MembershipType;  //Pass MembershipType from MembershipViewModel to MCMDMembership Entity Model using theire objects
                     newMember.Fees = _memberShipVM.Fees;                       //Pass Fees from MembershipViewModel to MCMDMembership Entity Model using theire objects(_memberShipVM and newMember )
-                    newMember.Durations = _memberShipVM.Durations.ToString();//Convert.ToInt32(_memberShipVM.DurationId);
-                    newMember.AutoRenaval = _memberShipVM.Renaval.ToString(); //Convert.ToInt32(_memberShipVM.AutoRenavalId);
+                    newMember.Duration = Convert.ToInt32(_memberShipVM.DurationId); //_memberShipVM.DurationId.ToString();
+                    newMember.AutoRenaval = Convert.ToInt32(_memberShipVM.AutoRenavalId);//_memberShipVM.Renaval.ToString(); 
                     newMember.InactiveFlag = "N";//_memberShipVM.member.InactiveFlag;
                     newMember.ModifiedDate = DateTime.Now;//_memberShipVM.member.ModifiedDate;
 

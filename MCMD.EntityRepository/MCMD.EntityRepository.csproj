@@ -51,6 +51,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +61,7 @@
   <ItemGroup>
     <Compile Include="AdminRepository\DoctorClinicInformationRepository.cs" />
     <Compile Include="AdminRepository\DoctorPersonalInfoRepository.cs" />
+    <Compile Include="AdminRepository\MediaRepository.cs" />
     <Compile Include="AdminRepository\MembershipRepository.cs" />
     <Compile Include="AdminRepository\SpecialityRepository.cs" />
     <Compile Include="AdminRepository\UserRepository.cs" />

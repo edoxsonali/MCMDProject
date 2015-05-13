@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using MCMD.EntityModel.Administration;
 using MCMD.EntityModel;
+using MCMD.ViewModel.Administration;
+using MCMD.IRepository.AdminInterfaces;
+using MCMD.EntityRepository.AdminRepository;
 
 
 namespace MCMD.Web.Controllers.Administration
@@ -13,6 +16,12 @@ namespace MCMD.Web.Controllers.Administration
     {
 
         public ApplicationDbContext db = new ApplicationDbContext();
+
+         private IMediaRepository  MediaRepository;
+         public MediaController(IMediaRepository _MediaRepository)
+        {
+            this.MediaRepository = _MediaRepository;
+        }
         // GET: Media
         public ActionResult Index()
         {
@@ -20,6 +29,7 @@ namespace MCMD.Web.Controllers.Administration
             return View(customer); 
         }
 
+        #region Create User
         public ActionResult Create()
         {
 
@@ -33,20 +43,58 @@ namespace MCMD.Web.Controllers.Administration
             {
                 if (file != null)
                 {
-
-                    string path = string.Format("{0}/{1}{2}", System.IO.Path.Combine(
-                                   Server.MapPath("~/Media/")+file.FileName));
-                    file.SaveAs(path);
-                    media.FolderFilePath = path;
-                    media.UploadType = file.ContentType;
-                    media.LoginId = 1;// for now we add 1 later we change
-                }
-                db.medias.Add(media);
-                db.SaveChanges();
+                    MediaRepository.InsertMedia(media,file);
+                    MediaRepository.Save();
+                       
                 return RedirectToAction("Create");
+                }
             }
             return View(media);
-           
+
         }
+
+        #endregion
+        public ActionResult ViewMedia(MediaDetailsViewModel mediaDetailVM)
+        {
+            mediaDetailVM.MediaList = MediaRepository.GetMedias().Where(x => x.InactiveFlag == "N").ToList();
+            return View(mediaDetailVM);
+        }
+
+        #region Delete Speciality
+        [HttpPost]
+        public ActionResult BatchDelete(int[] deleteInputs)
+        {
+
+            if (deleteInputs != null)
+            {
+                foreach (var item in deleteInputs)
+                {
+
+                    Media medias = db.medias.Find(item);
+                    if (User == null)
+                    {
+                        // return HttpNotFound();
+                    }
+                    else
+                    {
+                        medias.InactiveFlag = "Y";
+                        medias.ModifiedDate = DateTime.Now;
+
+                        MediaRepository.UpdateMedia(medias);
+                        MediaRepository.Save();
+                        @TempData["AddNewItemMessage"] = "User having Media is deleted successfully";
+
+                    }
+
+
+
+                }
+
+            }
+            return Json("Media", JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
     }
 }

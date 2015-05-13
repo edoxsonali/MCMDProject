@@ -14,9 +14,10 @@ namespace MCMD.ViewModel.Administration
 
         public MCMDMembership member { get; set; }
         public List<MCMDMembership> Membership { get; set; }
-
-        public int Durations { get; set; }
-        public int Renaval { get; set; }
+        public List<GetViewMembership> GetMember { get; set; }
+        public int DurationId { get; set; }
+        public int AutoRenavalId { get; set; }
+        public int MembershipId { get; set; }
 
 
         public string MembershipType { get; set; }

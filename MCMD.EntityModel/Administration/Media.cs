@@ -14,7 +14,11 @@ namespace MCMD.EntityModel.Administration
 	    public int LoginId {get;set;}
 	    public string FolderFilePath {get;set;}
         public string UploadType { get; set; }
-
+        public string InactiveFlag { get; set; }
+        public int CreatedByID { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public int ModifiedByID { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
       
     }
 }

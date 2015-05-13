@@ -14,6 +14,7 @@ namespace MCMD.IRepository.AdminInterfaces
         IEnumerable<Duration> GetDuration();
         IEnumerable<AutoRenaval> GetMonths();
         IEnumerable<MCMDMembership> GetMembers();
+        IEnumerable<GetViewMembership> GetMember();
         MCMDMembership GetMemberById(int memberId);
         void InsertMember(MCMDMembership member);
         void UpdateMember(MCMDMembership member);

@@ -27,11 +27,11 @@ namespace MCMD.EntityModel.Administration
 
         [DisplayName("Duration")]
         [Required(ErrorMessage = "Duration must be required.")]
-        public string Durations { get; set; }
+        public int Duration { get; set; }
 
         [DisplayName("Auto Renaval")]
         [Required(ErrorMessage = "AutoRenaval must be required.")]
-        public string AutoRenaval { get; set; }
+        public int AutoRenaval { get; set; }
 
         public string InactiveFlag { get; set; }
         public System.DateTime ModifiedDate { get; set; }

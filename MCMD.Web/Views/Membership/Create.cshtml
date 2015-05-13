@@ -12,7 +12,7 @@
 @{
 
     int Pages = 10;
-    WebGrid grid = new WebGrid(Model.Membership, canPage: true, rowsPerPage: Pages);
+    WebGrid grid = new WebGrid(Model.GetMember, canPage: true, rowsPerPage: Pages);
     grid.Pager(WebGridPagerModes.NextPrevious);
 }
 <script type="text/javascript">
@@ -81,7 +81,7 @@
                     <div class="form-group">
                         <div class="col-sm-4 control-label">Durations<span>*</span><b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.DropDownListFor(m => m.Durations, new SelectList(Model.Duration_s, "DurationId", "Durations"),
+                            @Html.DropDownListFor(m => m.DurationId, new SelectList(Model.Duration_s, "DurationId", "Durations"),
                                 "-Select-", new { @class = "form-control" })
                             @Html.ValidationMessageFor(u => u.Duration_s)
                             <span id="Durations" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Durations is required.</span>
@@ -90,7 +90,7 @@
                     <div class="form-group">
                         <div class="col-sm-4 control-label">Auto Renaval<span>*</span><b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.DropDownListFor(m => m.Renaval, new SelectList(Model.Months, "AutoRenavalId", "Renaval"),
+                            @Html.DropDownListFor(m => m.AutoRenavalId, new SelectList(Model.Months, "AutoRenavalId", "Renaval"),
                                 "-Select-", new { @class = "form-control" })
                             @Html.ValidationMessageFor(u => u.member.AutoRenaval)
                             <span id="Renaval" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">AutoRenaval time is required.</span>
@@ -120,8 +120,8 @@
                      columns: new[] {
                      grid.Column("MembershipType",header: "Membership Type", canSort: false),
                      grid.Column("Fees",header: "Fees", canSort: false),
-                     grid.Column("Durations",header: "Durations", canSort: false),
-                     grid.Column("AutoRenaval",header: "AutoRenaval", canSort: false),
+                     grid.Column("Duration",header: "Durations", canSort: false),
+                     grid.Column("Renaval",header: "AutoRenaval", canSort: false),
                      //grid.Column("UserRole",header: "User Role", canSort: false),
                      // grid.Column("Status",header: "Status", canSort: false),
                     grid.Column(header: "Option", format: @<text>

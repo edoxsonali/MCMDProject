@@ -187,6 +187,7 @@ namespace MCMD.EntityRepository.AdminRepository
        public void UserLoginSpecialitys(UserLoginSpeciality userloginspeciality, UserRegisterViewModel registerVM)
        {
 
+
            userloginspeciality.LoginId = registerVM.Userlogins.LoginId;
            userloginspeciality.SpecialityID = registerVM.SpecialityID;
 

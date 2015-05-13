@@ -81,6 +81,7 @@
     <Compile Include="Administration\DoctorClinicInformationViewModel.cs" />
     <Compile Include="Administration\DoctorPersonalInfoViewModel.cs" />
     <Compile Include="Administration\EditMembershipVM.cs" />
+    <Compile Include="Administration\MediaDetailsViewModel.cs" />
     <Compile Include="Administration\MembershipViewModel.cs" />
     <Compile Include="Administration\SpecialityViewModel.cs" />
     <Compile Include="Administration\UserDetailsViewModel.cs" />
