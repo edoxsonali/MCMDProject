@@ -14,10 +14,14 @@ namespace MCMD.IRepository.AdminInterfaces
         IEnumerable<DoctorPersonalInformation> GetDoctors();
         IEnumerable<UserLogin> GetUsers();
         IEnumerable<UserLoginSpeciality> GetUserSpeciality();
-
+        IEnumerable<DoctorPersonalInformation> GetDocInfo();
         DoctorPersonalInformation GetDoctorById(int DoctorId);
         void InsertDoctor(DoctorPersonalInformation Doctor);
         void UpdateDoctor(DoctorPersonalInformation Doctor);
+
+        void UpdateDocUserLogin(UserLogin userlogins);
+
+        void UpdateDocSpeciality(UserLoginSpeciality userloginrole);
         void DeleteDoctor(int DoctorId);
         void Save();
     }

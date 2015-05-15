@@ -27,6 +27,10 @@ namespace MCMD.EntityRepository.AdminRepository
         {
             return DBcontext.UserLogins.ToList();
         }
+        public IEnumerable<DoctorPersonalInformation> GetDocInfo()
+        {
+            return DBcontext.DoctorsPersonals.ToList();
+        }
         public IEnumerable<UserLoginSpeciality> GetUserSpeciality()
         {
             return DBcontext.UserLoginSpecialitys.ToList();
@@ -48,6 +52,14 @@ namespace MCMD.EntityRepository.AdminRepository
         public void UpdateDoctor(DoctorPersonalInformation Doctor)
         {
             DBcontext.Entry(Doctor).State = EntityState.Modified;
+        }
+        public void UpdateDocUserLogin(UserLogin userlogins)
+        {
+            DBcontext.Entry(userlogins).State = EntityState.Modified;
+        }
+        public void UpdateDocSpeciality(UserLoginSpeciality userloginrole)
+        {
+            DBcontext.Entry(userloginrole).State = EntityState.Modified;
         }
         public void DeleteDoctor(int DoctorId)
         {

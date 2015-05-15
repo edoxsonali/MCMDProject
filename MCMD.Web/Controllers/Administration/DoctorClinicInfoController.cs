@@ -49,29 +49,29 @@ namespace MCMD.Web.Controllers.Administration
                 {
                     var newClinic = new DoctorClinicInformation();
 
-                    newClinic.ClinicName = _doctorClinicVM.ClinicName;
-                    newClinic.ClinicAddress = _doctorClinicVM.ClinicAddress;
-                    newClinic.ClinicPhoneNo = _doctorClinicVM.ClinicPhoneNo;
-                    newClinic.ClinicFees = _doctorClinicVM.ClinicFees;
-                    newClinic.ClinicTimeFrom = _doctorClinicVM.ClinicTimeFrom;
-                    newClinic.ClinicTimeTo = _doctorClinicVM.ClinicTimeTo;
-                    newClinic.Country = _doctorClinicVM.Country;
-                    newClinic.State = _doctorClinicVM.State;
-                    newClinic.City = _doctorClinicVM.City;
-                    newClinic.ZipCode = _doctorClinicVM.ZipCode;
-                    newClinic.ClinicServices = _doctorClinicVM.ClinicServices;
-                    newClinic.AwardsAndRecognization = _doctorClinicVM.AwardsAndRecognization;
-                    newClinic.AboutClinic = _doctorClinicVM.AboutClinic;
-                    newClinic.InactiveFlag = "N";
-                    newClinic.CreatedByID = 1;
-                    newClinic.CreatedDate = DateTime.Now;
-                    newClinic.ModifiedByID = 1;
-                    newClinic.ModifiedDate = DateTime.Now;
-                    newClinic.LoginId = 1;// for now we add 1 later we change
+                    //newClinic.ClinicName = _doctorClinicVM.DoctorClinicInformations.ClinicName;
+                    //newClinic.ClinicAddress = _doctorClinicVM.DoctorClinicInformations.ClinicAddress;
+                    //newClinic.ClinicPhoneNo = _doctorClinicVM.DoctorClinicInformations.ClinicPhoneNo;
+                    //newClinic.ClinicFees = _doctorClinicVM.DoctorClinicInformations.ClinicFees;
+                    //newClinic.ClinicTimeFrom = _doctorClinicVM.time;
+                    //newClinic.ClinicTimeTo = _doctorClinicVM.Sec;
+                    //newClinic.Country = _doctorClinicVM.DoctorClinicInformations.Country;
+                    //newClinic.State = _doctorClinicVM.DoctorClinicInformations.State;
+                    //newClinic.City = _doctorClinicVM.DoctorClinicInformations.City;
+                    //newClinic.ZipCode = _doctorClinicVM.DoctorClinicInformations.ZipCode;
+                    //newClinic.ClinicServices = _doctorClinicVM.DoctorClinicInformations.ClinicServices;
+                    //newClinic.AwardsAndRecognization = _doctorClinicVM.DoctorClinicInformations.AwardsAndRecognization;
+                    //newClinic.AboutClinic = _doctorClinicVM.DoctorClinicInformations.AboutClinic;
+                    //newClinic.InactiveFlag = "N";
+                    //newClinic.CreatedByID = 1;
+                    //newClinic.CreatedDate = DateTime.Now;
+                    //newClinic.ModifiedByID = 1;
+                    //newClinic.ModifiedDate = DateTime.Now;
+                    //newClinic.LoginId = 1;// for now we add 1 later we change
 
-                    doctorClinicRepository.InsertClinic(newClinic);
-                    doctorClinicRepository.Save();
-                    ViewBag.Message = "Succsessfully added..";
+                    //doctorClinicRepository.InsertClinic(newClinic);
+                    //doctorClinicRepository.Save();
+                    //ViewBag.Message = "Succsessfully added..";
                 }
 
 

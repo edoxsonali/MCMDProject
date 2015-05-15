@@ -11,8 +11,11 @@ namespace MCMD.ViewModel.Administration
 {
     public class DoctorPersonalInfoViewModel
     {
+        public DoctorPersonalInformation _doctorPerInfo { get; set; }
+        public UserLogin userlogin { get; set; }
+        public Speciality _speciality { get; set; }
         public List<Speciality> SpecialityList { get; set; }
-        public List<DoctorPersonalInformation> doctorPersonalInfo { get; set; }
+
         public List<UserLogin> UserLogins { get; set; }
         public List<UserLoginSpeciality> UserLoginSpeciality { get; set; }
         public int SpecialityID { get; set; }
@@ -22,10 +25,13 @@ namespace MCMD.ViewModel.Administration
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
+        public string SpecialitiID { get; set; }
+        public string EmailID { get; set; }
+        public string UserPhone { get; set; }
         public string Qualification { get; set; }
-        public string Speciality { get; set; }
-        public string PersonalPhoneNo { get; set; }
-        public string EmailId { get; set; }
+
+
+
         public int RegistrationNo { get; set; }
         public string Affiliation { get; set; }
         public string AboutMe { get; set; }

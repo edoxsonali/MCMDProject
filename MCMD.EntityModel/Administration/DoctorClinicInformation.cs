@@ -23,30 +23,33 @@ namespace MCMD.EntityModel.Doctor
         public string ClinicName { get; set; }
 
         [DisplayName("ClinicAddress")]
-        //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "ClinicName is not valid.")]
         [Required(ErrorMessage = "ClinicAddress is required.")]
         [StringLength(50, ErrorMessage = "ClinicAddress cannot be longer than 100 characters.")]
         public string ClinicAddress { get; set; }
 
-        [DisplayName("ClinicPhoneNo")]
-        //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "ClinicName is not valid.")]
+        [DisplayName("ClinicPhoneNo")]      
         [Required(ErrorMessage = "ClinicPhoneNo is required.")]
         public string ClinicPhoneNo { get; set; }
 
-        [DisplayName("ClinicFees")]
-        //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "ClinicName is not valid.")]
+        [DisplayName("ClinicFees")]       
         [Required(ErrorMessage = "ClinicFees is required.")]
         public int ClinicFees { get; set; }
 
         [DisplayName("ClinicTime From")]
-        //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "ClinicName is not valid.")]
         [Required(ErrorMessage = "ClinicTime From is required.")]
         public DateTime ClinicTimeFrom { get; set; }
 
-        [DisplayName("ClinicTime To ")]
-        //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "ClinicName is not valid.")]
+        [DisplayName("ClinicTime To ")]       
         [Required(ErrorMessage = "ClinicTime To is required.")]
         public DateTime ClinicTimeTo { get; set; }
+
+        [DisplayName("ClinicLunchbreak From ")]
+        [Required(ErrorMessage = "ClinicLunchbreak To is required.")]
+        public DateTime ClinicLunchbreakFrom { get; set; }
+
+        [DisplayName("ClinicLunchbreak To ")]
+        [Required(ErrorMessage = "ClinicLunchbreak To is required.")]
+        public DateTime ClinicLunchbreakTo { get; set; }
 
         [DisplayName("Country")]
         //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "ClinicName is not valid.")]
@@ -63,8 +66,7 @@ namespace MCMD.EntityModel.Doctor
         [Required(ErrorMessage = "City is required.")]
         public string City { get; set; }
 
-        [DisplayName("ZipCode")]
-        //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "ClinicName is not valid.")]
+        [DisplayName("ZipCode")]      
         [Required(ErrorMessage = "ZipCode is required.")]
         public int ZipCode { get; set; }
 
@@ -78,8 +80,7 @@ namespace MCMD.EntityModel.Doctor
         [Required(ErrorMessage = "Award sAnd Recognization is required.")]
         public string AwardsAndRecognization { get; set; }
 
-        [DisplayName("About Clinic")]
-        //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "ClinicName is not valid.")]
+        [DisplayName("About Clinic")]    
         [Required(ErrorMessage = "About Clinic is required.")]
         public string AboutClinic { get; set; }
 
@@ -92,6 +93,8 @@ namespace MCMD.EntityModel.Doctor
         public int ModifiedByID { get; set; }
 
         public System.DateTime ModifiedDate { get; set; }
+
+      
 
     }
 }

@@ -68,7 +68,7 @@ namespace MCMD.EntityRepository.AdminRepository
                                join b in DBcontext.UserLogins on n.LoginId equals b.LoginId
                                join c in DBcontext.Roles on n.RoleId equals c.RoleId
                                join ls in DBcontext.UserLoginSpecialitys on b.LoginId equals ls.LoginId
-                               join s in DBcontext.Specialitys on ls.SpecialityID equals s.SpecialityID
+                               join s in DBcontext.Specialitys on ls.SpecialityID equals s.SpecialityID                           
                                where n.RoleId == 4 && b.InactiveFlag == "N"
                                select new
                                {
