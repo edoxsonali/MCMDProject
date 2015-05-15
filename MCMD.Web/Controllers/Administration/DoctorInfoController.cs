@@ -29,22 +29,21 @@ namespace MCMD.Web.Controllers.Administration
         public ActionResult UserEditDoctor(int Id)
         {
             Session["EditDoctor"] = Id;
-            var varid = Id;
-         //   return Json(new { varid }, JsonRequestBehavior.AllowGet);
-            return Json(new {redirectUrl = Url.Action("Create", "DoctorInfo", new { varid }), isRedirect = true});
-          
-           
+            var varid = Id;        
+            return Json(new { redirectUrl = Url.Action("Create", "DoctorInfo", new { varid }), isRedirect = true, JsonRequestBehavior.AllowGet });
+                    
         }
         public ActionResult Create()
         {
 
             ViewData["PageRole"] = 1;
             //This session for autopopulat the field in login
-            int editInputs = (Session["EditMembership"] != null) ? (Convert.ToInt32(Session["EditMembership"])) : 1;
+           int editInputs = (Session["EditMembership"] != null) ? (Convert.ToInt32(Session["EditMembership"])) : 30;
+          //  int editInputs = 0;
            
             //This session for Edit doctor
-         //   int editDocInputs = (Session["EditDoctor"] != null) ? (Convert.ToInt32(Session["EditDoctor"])) : 1;
-            int editDocInputs = 0;
+            int editDocInputs = (Session["EditDoctor"] != null) ? (Convert.ToInt32(Session["EditDoctor"])) : 1;
+          //  int editDocInputs = 0;
 
             //Session["EditMembership"] = null;
             DoctorPersonalInfoViewModel _doctorVM = new DoctorPersonalInfoViewModel();
@@ -66,18 +65,18 @@ namespace MCMD.Web.Controllers.Administration
                     }
                     foreach (var item in _NewSpeciality)
                     {
-                        _doctorVM.SpecialityID = Convert.ToInt32(item.SpecialityID);
+                        _doctorVM.SpecialityID = item.SpecialityID;
 
                     }
 
                 }
                 
                 //This is for edit doctorpersonalinformation populated
-                if(editDocInputs!=0)
+                if(editDocInputs!=0 )
                 {
                     List<UserLogin> _NewDoctorloginInfo = doctorPersonalInfoRepository.GetUsers().Where(x => x.LoginId == editDocInputs).ToList();
-                    List<DoctorPersonalInformation> _NewDoctorinfo = doctorPersonalInfoRepository.GetDocInfo().Where(x => x.LoginId == editDocInputs).ToList();            
-                    List<UserLoginSpeciality> _NewDocSpeciality = doctorPersonalInfoRepository.GetUserSpeciality().Where(x => x.LoginSpecialityId == editInputs).ToList();
+                    List<DoctorPersonalInformation> _NewDoctorinfo = doctorPersonalInfoRepository.GetDocInfo().Where(x => x.LoginId == editDocInputs).ToList();
+                    List<UserLoginSpeciality> _NewDocSpeciality = doctorPersonalInfoRepository.GetUserSpeciality().Where(x => x.LoginSpecialityId == editDocInputs).ToList();
                     foreach(var item in _NewDoctorloginInfo)
                     {
                         _doctorVM.FirstName = item.FirstName;
@@ -96,7 +95,7 @@ namespace MCMD.Web.Controllers.Administration
                     }
                     foreach (var item in _NewDocSpeciality)
                     {
-                        _doctorVM.SpecialityID = Convert.ToInt32(item.SpecialityID);
+                        _doctorVM.SpecialityID = item.SpecialityID;
 
                     }
 
@@ -159,6 +158,8 @@ namespace MCMD.Web.Controllers.Administration
                     doctorPersonalInfoRepository.Save();
 
                     ViewBag.Message2 = " Update Login Speciality Succsessfully ..";
+
+                    @TempData["Message"] = "Succsessfully save data";
                 }
             }
             catch (Exception)

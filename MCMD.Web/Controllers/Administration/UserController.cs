@@ -52,6 +52,14 @@ namespace MCMD.Web.Controllers.Administration
         //    return View(user);
         //}
 
+        public ActionResult EditUserData(int Id)
+        {
+            Session["EditUser"] = Id;
+            var varid = Id;
+            return Json(new { redirectUrl = Url.Action("RegisterUser", "User", new { varid }), isRedirect = true, JsonRequestBehavior.AllowGet });
+
+        }
+
         #region Create User
         [HttpGet]
         public ActionResult RegisterUser()
@@ -61,6 +69,8 @@ namespace MCMD.Web.Controllers.Administration
             _userRegisterViewModel.Specialitys = userRepository.GetSpecialitys().ToList();
             _userRegisterViewModel.Userlogins = new UserLogin();
 
+
+           
             return View(_userRegisterViewModel);
 
         }
@@ -104,6 +114,7 @@ namespace MCMD.Web.Controllers.Administration
                                 dbContextTransaction.Commit();
                                 ViewBag.StatusMessage = " User Name with " + registerVM.Userlogins.UserName + " having Email Id " + registerVM.Userlogins.EmailID + " is created successfully";
                                 ViewBag.Status = 1;
+                                @TempData["Message"] = "Succsessfully save data";
 
                                 //var callbackUrl = Url.Action("ConfirmEmail", "Account",new { userId = user.Id, code = code },protocol: Request.Url.Scheme);
 

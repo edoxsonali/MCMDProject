@@ -74,9 +74,9 @@
                     traditional: true,
                     data: { Id: Inputs },
                     success: function (data) {
-                        alert(data)
-                        if (json.isredirect == true) {
-                            window.location.href = data.url;
+                       // alert(data)
+                        if (data.isRedirect == true) {
+                            window.location = data.redirectUrl;
                         }
                         //  window.location.reload();
                     }

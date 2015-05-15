@@ -47,31 +47,36 @@ namespace MCMD.Web.Controllers.Administration
                 ModelState.Clear();  // Cleare Model state
                 if (ModelState.IsValid)
                 {
+
+                  
                     var newClinic = new DoctorClinicInformation();
 
-                    //newClinic.ClinicName = _doctorClinicVM.DoctorClinicInformations.ClinicName;
-                    //newClinic.ClinicAddress = _doctorClinicVM.DoctorClinicInformations.ClinicAddress;
-                    //newClinic.ClinicPhoneNo = _doctorClinicVM.DoctorClinicInformations.ClinicPhoneNo;
-                    //newClinic.ClinicFees = _doctorClinicVM.DoctorClinicInformations.ClinicFees;
-                    //newClinic.ClinicTimeFrom = _doctorClinicVM.time;
-                    //newClinic.ClinicTimeTo = _doctorClinicVM.Sec;
-                    //newClinic.Country = _doctorClinicVM.DoctorClinicInformations.Country;
-                    //newClinic.State = _doctorClinicVM.DoctorClinicInformations.State;
-                    //newClinic.City = _doctorClinicVM.DoctorClinicInformations.City;
-                    //newClinic.ZipCode = _doctorClinicVM.DoctorClinicInformations.ZipCode;
-                    //newClinic.ClinicServices = _doctorClinicVM.DoctorClinicInformations.ClinicServices;
-                    //newClinic.AwardsAndRecognization = _doctorClinicVM.DoctorClinicInformations.AwardsAndRecognization;
-                    //newClinic.AboutClinic = _doctorClinicVM.DoctorClinicInformations.AboutClinic;
-                    //newClinic.InactiveFlag = "N";
-                    //newClinic.CreatedByID = 1;
-                    //newClinic.CreatedDate = DateTime.Now;
-                    //newClinic.ModifiedByID = 1;
-                    //newClinic.ModifiedDate = DateTime.Now;
-                    //newClinic.LoginId = 1;// for now we add 1 later we change
+                    newClinic.ClinicName = _doctorClinicVM.DoctorClinicInformations.ClinicName;
+                    newClinic.ClinicAddress = _doctorClinicVM.DoctorClinicInformations.ClinicAddress;
+                    newClinic.ClinicPhoneNo = _doctorClinicVM.DoctorClinicInformations.ClinicPhoneNo;
+                    newClinic.ClinicFees = _doctorClinicVM.DoctorClinicInformations.ClinicFees;
+                    newClinic.ClinicTimeFrom = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicTimeFrom).Substring(0, 8));// TimeSpan.Parse(Convert.ToString(DateTime.Now.TimeOfDay).Substring(0, 8));
+                    newClinic.ClinicTimeTo = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicTimeTo).Substring(0, 8));
+                    newClinic.ClinicLunchbreakFrom = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicLunchbreakFrom).Substring(0, 8));
+                    newClinic.ClinicLunchbreakTo = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicLunchbreakTo).Substring(0, 8));
+                    newClinic.Country = _doctorClinicVM.DoctorClinicInformations.Country;
+                    newClinic.State = _doctorClinicVM.DoctorClinicInformations.State;
+                    newClinic.City = _doctorClinicVM.DoctorClinicInformations.City;
+                    newClinic.ZipCode = _doctorClinicVM.DoctorClinicInformations.ZipCode;
+                    newClinic.ClinicServices = _doctorClinicVM.DoctorClinicInformations.ClinicServices;
+                    newClinic.AwardsAndRecognization = _doctorClinicVM.DoctorClinicInformations.AwardsAndRecognization;
+                    newClinic.AboutClinic = _doctorClinicVM.DoctorClinicInformations.AboutClinic;
+                    newClinic.InactiveFlag = "N";
+                    newClinic.CreatedByID = 1;
+                    newClinic.CreatedDate = DateTime.Now;
+                    newClinic.ModifiedByID = 1;
+                    newClinic.ModifiedDate = DateTime.Now;
+                    newClinic.LoginId = 1;// for now we add 1 later we change
 
-                    //doctorClinicRepository.InsertClinic(newClinic);
-                    //doctorClinicRepository.Save();
-                    //ViewBag.Message = "Succsessfully added..";
+                    doctorClinicRepository.InsertClinic(newClinic);
+                    doctorClinicRepository.Save();
+                    ViewBag.Message = "Succsessfully added..";
+                    @TempData["Message"] = "Succsessfully save data";
                 }
 
 

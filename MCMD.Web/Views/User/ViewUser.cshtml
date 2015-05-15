@@ -56,9 +56,39 @@
             }
         });
     </script>
+<script type="text/javascript">
+
+    function EditUserData(varid) {
+        if (varid != null) {
+            if (confirm('Are you sure want to edit the details selected user')) {
+                var Inputs = [];
+                //$('.chkview:checked').each(function (i, chk) {
+                Inputs.push(varid);
+                //});
+                var url = '@Url.Action("RegisterUser", "User")';
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    cache: false,
+                    url: url,
+                    traditional: true,
+                    data: { Id: Inputs },
+                    success: function (data) {
+                        // alert(data)
+                        if (data.isRedirect == true) {
+                            window.location = data.redirectUrl;
+                        }
+                        //  window.location.reload();
+                    }
+                });
+            }
+        }
+    }
+</script>
 
 @Scripts.Render("~/bundles/jqueryval")
 }
+
 
 
 <div class="container">
@@ -167,7 +197,7 @@
                       grid.Column("Name",header: "Role", canSort: false),                  
                       grid.Column(header: "Option", format: @<text>
 
-                        @*<a id="btnEdit" style="cursor:pointer;" onclick="EditUserData( @item.UserId)">Edit</a>|*@
+                        <a id="btnEdit" style="cursor:pointer;" onclick="EditUserData( @item.LoginId)">Edit</a>|
                         <a id="btnDelete" style="cursor:pointer;" onclick="DeleteUserData( @item.LoginId)">Delete</a>
                     </text>)
                 })

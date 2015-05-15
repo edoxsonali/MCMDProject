@@ -37,19 +37,19 @@ namespace MCMD.EntityModel.Doctor
 
         [DisplayName("ClinicTime From")]
         [Required(ErrorMessage = "ClinicTime From is required.")]
-        public DateTime ClinicTimeFrom { get; set; }
+        public TimeSpan ClinicTimeFrom { get; set; }
 
         [DisplayName("ClinicTime To ")]       
         [Required(ErrorMessage = "ClinicTime To is required.")]
-        public DateTime ClinicTimeTo { get; set; }
+        public TimeSpan ClinicTimeTo { get; set; }
 
         [DisplayName("ClinicLunchbreak From ")]
         [Required(ErrorMessage = "ClinicLunchbreak To is required.")]
-        public DateTime ClinicLunchbreakFrom { get; set; }
+        public TimeSpan ClinicLunchbreakFrom { get; set; }
 
         [DisplayName("ClinicLunchbreak To ")]
         [Required(ErrorMessage = "ClinicLunchbreak To is required.")]
-        public DateTime ClinicLunchbreakTo { get; set; }
+        public TimeSpan ClinicLunchbreakTo { get; set; }
 
         [DisplayName("Country")]
         //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "ClinicName is not valid.")]
