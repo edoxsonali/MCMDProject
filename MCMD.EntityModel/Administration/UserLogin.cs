@@ -41,6 +41,8 @@ namespace MCMD.EntityModel.Administration
         [StringLength(100, ErrorMessage = "Email cannot be longer than 100 characters.")]
         public string EmailID { get; set; }
 
+         [DisplayName("Employee Id")]
+         [Required(ErrorMessage = "Employee Id is required.")]
         public int EmployeeId { get; set; }
 
         [DataType(DataType.Password)]
@@ -57,7 +59,7 @@ namespace MCMD.EntityModel.Administration
 
         public string PasswordSalt { get; set; }
 
-        [RegularExpression(@"[0-9]*\.?[0-9]+", ErrorMessage = "{0} must be a Number.")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "{0} must be a Number.")]
         [Required(ErrorMessage = "Mobile No is required.")]
         public string UserPhone { get; set; }
 

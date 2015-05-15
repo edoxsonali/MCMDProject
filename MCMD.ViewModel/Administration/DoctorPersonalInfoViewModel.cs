@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using MCMD.EntityModel.Administration;
 using MCMD.EntityModel.Doctor;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 
 namespace MCMD.ViewModel.Administration
@@ -23,16 +26,31 @@ namespace MCMD.ViewModel.Administration
         public int LoginId { get; set; }
         public int LoginSpecialityId { get; set; }
         public string FirstName { get; set; }
+
+        [DisplayName("Middle Name")]
+        [RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "First Name is not valid.")]
+        [Required(ErrorMessage = "Middle Name is required.")]
+        [StringLength(50, ErrorMessage = "Middle Name cannot be longer than 50 characters.")]
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public string SpecialitiID { get; set; }
         public string EmailID { get; set; }
         public string UserPhone { get; set; }
+
+        [DisplayName("Qualification")]
+        [RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "First Name is not valid.")]
+        [Required(ErrorMessage = "Qualification is required.")]
+        [StringLength(50, ErrorMessage = "Qualification cannot be longer than 50 characters.")]
         public string Qualification { get; set; }
 
 
-
+        [DisplayName("Registration No")]
+        [Required(ErrorMessage = "RegistrationNo is required.")]       
         public int RegistrationNo { get; set; }
+
+        [DisplayName("Affiliation")]
+        [Required(ErrorMessage = "Affiliation is required.")]
+        [StringLength(50, ErrorMessage = "Affiliation cannot be longer than 50 characters.")]
         public string Affiliation { get; set; }
         public string AboutMe { get; set; }
 

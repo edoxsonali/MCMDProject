@@ -254,9 +254,9 @@ namespace MCMD.Web.Controllers.Administration
               string userphone = "";
               string Userlastname = "";
 
-              if (userDetailsVM.EmployeeId != 0 || userDetailsVM.RoleId != 0)
+              if (userDetailsVM.LoginId != 0 || userDetailsVM.RoleId != 0)
               {
-                  empId = userDetailsVM.EmployeeId;
+                  empId = userDetailsVM.LoginId;
                   userRollId = userDetailsVM.RoleId;
 
               }

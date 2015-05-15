@@ -30,7 +30,9 @@ namespace MCMD.Web.Controllers.Administration
         {
             Session["EditDoctor"] = Id;
             var varid = Id;
-            return Json(new { varid }, JsonRequestBehavior.AllowGet);
+         //   return Json(new { varid }, JsonRequestBehavior.AllowGet);
+            return Json(new {redirectUrl = Url.Action("Create", "DoctorInfo", new { varid }), isRedirect = true});
+          
            
         }
         public ActionResult Create()
@@ -52,7 +54,6 @@ namespace MCMD.Web.Controllers.Administration
             //This is for short login data populated
                 if (editInputs != 0)
                 {
-
                     List<UserLogin> _NewDoctor = doctorPersonalInfoRepository.GetUsers().Where(x => x.LoginId == editInputs).ToList();
                     List<UserLoginSpeciality> _NewSpeciality = doctorPersonalInfoRepository.GetUserSpeciality().Where(x => x.LoginSpecialityId == editInputs).ToList();
                     foreach (var item in _NewDoctor)

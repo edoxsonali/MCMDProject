@@ -16,7 +16,6 @@ namespace MCMD.EntityModel.Administration
         public int MembershipId { get; set; }
 
         [DisplayName("Membership Type")]
-
         [Required(ErrorMessage = "Membership Type is required.")]
         [StringLength(30, ErrorMessage = "Membership Type cannot be longer than 30 characters.")]
         public string MembershipType { get; set; }

@@ -55,7 +55,7 @@
             }
         });
     </script>
-}
+
 <script type="text/javascript">
 
     function EditDoctorData(varid) {
@@ -75,16 +75,21 @@
                     data: { Id: Inputs },
                     success: function (data) {
                         alert(data)
-                        if (json.isRedirect) {
-                            window.location.href = json.redirectUrl;
+                        if (json.isredirect == true) {
+                            window.location.href = data.url;
                         }
-                      //  window.location.reload();
+                        //  window.location.reload();
                     }
                 });
             }
         }
     }
 </script>
+
+@Scripts.Render("~/bundles/jqueryval")
+}
+}
+
 
 <div class="container">
     <div class="content">
@@ -103,20 +108,22 @@
                             <div class="col-sm-6">
                                 @Html.DropDownListFor(m => m.RoleId, new SelectList(Model.Roles, "RoleId", "Name"),
                                 "-Select-", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.RoleId, string.Empty)
                                 <span id="RolelabelFirstName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">First Name is required.</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-3 control-label">Doctor Id<span>*</span><b>:</b></div>
                             <div class="col-sm-6">
-                                @Html.TextBoxFor(u => u.EmployeeId, new { @class = "form-control", @placeholder = "Enter Employee Id", @maxlength = "30", @autocomplete = "off" })
-
+                                @Html.TextBoxFor(u => u.LoginId, new { @class = "form-control", @placeholder = "Enter Employee Id", @maxlength = "30", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(u => u.LoginId, string.Empty)
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-3 control-label">Phone No<b>:</b></div>
                             <div class="col-sm-6">
                                 @Html.TextBoxFor(u => u.UserPhone, new { @class = "form-control", @placeholder = "Enter Phone No", @maxlength = "40", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(u => u.UserPhone, string.Empty)
                             </div>
                         </div>
                     </div>
@@ -125,26 +132,27 @@
                             <div class="col-sm-3 control-label">First Name<b>:</b></div>
                             <div class="col-sm-6">
                                 @Html.TextBoxFor(u => u.FirstName, new { @class = "form-control", @placeholder = "Enter First Name", @maxlength = "50", autocomplete = "off" })
-
+                                @Html.ValidationMessageFor(u => u.FirstName, string.Empty)
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-3 control-label">Last Name<b>:</b></div>
                             <div class="col-sm-6">
                                 @Html.TextBoxFor(u => u.LastName, new { @class = "form-control", @placeholder = "Enter Last Name", @maxlength = "50", autocomplete = "off" })
-
+                                @Html.ValidationMessageFor(u => u.LastName, string.Empty)
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-3 control-label">Email Id<b>:</b></div>
                             <div class="col-sm-6">
                                 @Html.TextBoxFor(u => u.EmailID, new { @class = "form-control", @type = "email", @placeholder = "Enter email Id", @maxlength = "50", autocomplete = "off" })
-
+                                @Html.ValidationMessageFor(u => u.EmailID, string.Empty)
                             </div>
                         </div>
 
-                        <div class="buttons col-sm-3 ">
+                        <div class="buttons col-sm-6 ">
                             <button type="Submit" id="btnCreate" name="btnCreate">Search</button>
+                            <button type="button" id="btnscd" name="btnscd" onclick="location.href='@Url.Action("ViewDoctor", "User")'">Reset</button>
 
                         </div>
                     </div>

@@ -19,7 +19,7 @@
                     @Html.HiddenFor(model => model.CreatedByID, new { @Value = Convert.ToInt32(ViewData["PageRole"]) })
 
                     <div class="form-group">
-                        <div class="col-sm-4 control-label">First Name<span>*</span><b>:</b></div>
+                        <div class="col-sm-4 control-label">First Name<b>:</b></div>
                         <div class="col-sm-8">
                             @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @placeholder = "Enter First Name", @maxlength = "30", @autocomplete = "off" })
                             @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-4 control-label">Last Name<span>*</span><b>:</b></div>
+                        <div class="col-sm-4 control-label">Last Name<b>:</b></div>
                         <div class="col-sm-8">
                             @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @placeholder = "Enter Last Name", @maxlength = "30", @autocomplete = "off" })
                             @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
@@ -51,23 +51,23 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-4 control-label">Speciality<span>*</span><b>:</b></div>
+                        <div class="col-sm-4 control-label">Speciality<b>:</b></div>
                         <div class="col-sm-8">
                             @Html.DropDownListFor(m => m.SpecialityID, new SelectList(Model.SpecialityList, "SpecialityID", "SpecialityName"), "-Select-", new { @class = "form-control" })
                             <span id="RolelabelTitleId" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Speciality is required.</span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-4 control-label">Personal Phone No<span>*</span><b>:</b></div>
+                        <div class="col-sm-4 control-label">Personal Phone No<b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(model => model.UserPhone, new { @class = "form-control", @placeholder = "Enter Personal Phone", @maxlength = "30", @autocomplete = "off" })
+                            @Html.TextBoxFor(model => model.UserPhone, new { @class = "form-control", @placeholder = "Enter Personal Phone", @maxlength = "15", @autocomplete = "off" })
                             @Html.ValidationMessageFor(model => model.UserPhone, "", new { @class = "text-danger" })
                             <span id="RolelabelLastName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">PersonalPhoneNo is required.</span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="col-sm-4 control-label">Email Id<span>*</span><b>:</b></div>
+                        <div class="col-sm-4 control-label">Email Id<b>:</b></div>
                         <div class="col-sm-8">
                             @Html.TextBoxFor(model => model.EmailID, new { @class = "form-control", @placeholder = "Enter Email Id", @maxlength = "30", @autocomplete = "off" })
                             @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
@@ -77,7 +77,7 @@
                     <div class="form-group">
                         <div class="col-sm-4 control-label">Registration Number<span>*</span><b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(model => model.RegistrationNo, new { @class = "form-control", @placeholder = "Enter RegistrationNo", @maxlength = "50", autocomplete = "off" })
+                            @Html.TextBoxFor(model => model.RegistrationNo, new { @class = "form-control", @placeholder = "Enter RegistrationNo", @maxlength = "30", autocomplete = "off" })
                             @Html.ValidationMessageFor(model => model.RegistrationNo)
                             <span id="RolelabelPassword" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">RegistrationNo is required.</span>
                         </div>
@@ -91,17 +91,17 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-4 control-label">About ME<span>*</span><b>:</b></div>
+                        <div class="col-sm-4 control-label">About ME<b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(model => model.AboutMe, new { @class = "form-control", @placeholder = "Enter About ME", @maxlength = "30", @autocomplete = "off" })
+                            @Html.TextAreaFor(model => model.AboutMe, new { @class = "form-control", @placeholder = "Enter About ME", @maxlength = "100", @autocomplete = "off" })
                             @Html.ValidationMessageFor(model => model.AboutMe, "", new { @class = "text-danger" })
                             <span id="RolelabelPhone" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">AboutMe is required.</span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-4 control-label">About Experience<span>*</span><b>:</b></div>
+                        <div class="col-sm-4 control-label">About Experience<b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(model => model.AboutExperience, new { @class = "form-control", @placeholder = "Enter About Experience", @maxlength = "30", @autocomplete = "off" })
+                            @Html.TextAreaFor(model => model.AboutExperience, new { @class = "form-control", @placeholder = "Enter About Experience", @maxlength = "100", @autocomplete = "off" })
                             @Html.ValidationMessageFor(model => model.AboutExperience, "", new { @class = "text-danger" })
                             <span id="RolelabelPhone" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">AboutExperience is required.</span>
                         </div>
@@ -110,8 +110,8 @@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <div class="buttons">
-                                <button type="Submit" id="btnSave" name="btnRegister">Save</button>
-                                <button type="Submit" id="btnCancel" name="btnCancel">Cancel</button>
+                                <button type="Submit" id="btnSave" name="btnRegister">Submit</button>
+                                <button type="button" id="btnscd" name="btnscd" onclick="location.href='@Url.Action("Create", "DoctorInfo")'">Reset</button>
                             </div>
                         </div>
                     </div>

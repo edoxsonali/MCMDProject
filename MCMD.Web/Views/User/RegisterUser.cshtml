@@ -76,7 +76,7 @@
                     <div class="form-group">
                         <div class="col-sm-4 control-label">Employee Id<span>*</span><b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(u => u.Userlogins.EmployeeId, new { @class = "form-control", @placeholder = "Enter Employee Id", @maxlength = "40", @autocomplete = "off" })
+                            @Html.TextBoxFor(u => u.Userlogins.EmployeeId, new { @class = "form-control", @placeholder = "Enter Employee Id", @maxlength = "30", @autocomplete = "off" })
                             @Html.ValidationMessageFor(u => u.Userlogins.EmployeeId, string.Empty)
                             <span id="RolelabelEmailID" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Email is required.</span>
                         </div>
@@ -84,7 +84,7 @@
                     <div class="form-group">
                         <div class="col-sm-4 control-label">Mobile No<span>*</span><b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(u => u.Userlogins.UserPhone, new { @class = "form-control", @type = "phone", @placeholder = "Enter Mobile No", @maxlength = "40", @autocomplete = "off" })
+                            @Html.TextBoxFor(u => u.Userlogins.UserPhone, new { @class = "form-control", @type = "phone", @placeholder = "Mobile No format is{ 0123456789, 012-345-6789, (012)-345-6789 }", @maxlength = "15", @autocomplete = "off" })
                             @Html.ValidationMessageFor(u => u.Userlogins.UserPhone, string.Empty)
                         </div>
                     </div> 
@@ -93,6 +93,7 @@
                         <div class="col-sm-8">
                             @Html.DropDownListFor(m => m.RoleID, new SelectList(Model.Roles, "RoleId", "Name"),
                              "-Select-", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.RoleID, string.Empty)
                             <span id="RolelabelRoleID" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Email is required.</span>
 
                         </div>
@@ -102,6 +103,7 @@
                         <div class="col-sm-8">
                             @Html.DropDownListFor(m => m.SpecialityID, new SelectList(Model.Specialitys, "SpecialityID", "SpecialityName"),
                                 "- Select-", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SpecialityID, string.Empty)
                             <span id="RoleCElabel" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Covered Entity is required.</span>
                         </div>
                     </div>
@@ -110,7 +112,7 @@
 
                         <div class="buttons">
                             <button type="Submit" id="btnCreate" name="btnCreate">Create</button>
-                            <button type="button" id="btnscd" name="btnscd">Cancel</button>
+                            <button type="button" id="btnscd" name="btnscd" onclick="location.href='@Url.Action("RegisterUser", "User")'">Reset</button>
                         </div>
                     </div>
                 </div>

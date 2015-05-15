@@ -15,7 +15,10 @@
         <div class="login-container">
             <div class="form-container">
               
-                <p>Image and Video uploading</p>
+                <h2>Image and Video uploading</h2>
+                <hr />
+
+                <h5 class="text-success">[ Note - Video Uploading Size is 2GB ]</h5> 
                 <div class="form-horizontal">
                     <div class="validation-summary">@Html.ValidationSummary(true)</div>
                     <div class="form-group">
@@ -29,15 +32,13 @@
                         <div class="form-group">
 
                             <div class="col-sm-6 input-group">
-                               
-                                <input type="submit" value="Submit" />
+                                <button type="Submit" id="btnSave" name="btnRegister">Submit</button>
+                                <button type="button" id="btnscd" name="btnscd" onclick="location.href='@Url.Action("Create", "Media")'">Reset</button>
+                                @*<input type="submit" value="Submit" />*@
                             </div>
-                        </div>
-                    
+                        </div>                   
 
-                </div>
-               
-
+                </div>             
             </div>
         </div>
     </div>
