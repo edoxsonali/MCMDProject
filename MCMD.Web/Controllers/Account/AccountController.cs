@@ -19,6 +19,7 @@ namespace MCMD.Web.Controllers.Account
         // SIDDU 
         // SOMANTH
         // SONALI
+        //
         public ApplicationDbContext db = new ApplicationDbContext();
         public string ServiceUrl = ConfigurationManager.AppSettings["ServiceUrl"];
         public string strApiUserName = ConfigurationManager.AppSettings["ApiUserName"];
