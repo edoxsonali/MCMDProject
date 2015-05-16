@@ -12,8 +12,7 @@ using MCMD.EntityModel.Administration;
 namespace MCMD.Web.Controllers.Administration
 {
     public class DoctorClinicInfoController : Controller
-    {
-        //sonali
+    {      
         // GET: DoctorClinicInfo 
         public ApplicationDbContext db = new ApplicationDbContext();
         private IDoctorClinicInformation doctorClinicRepository;
