@@ -11,7 +11,6 @@ namespace MCMD.EntityModel.Doctor
     public class DoctorClinicInformation
     {
         [Key]
-
         public int ClinicInfoId { get; set; }
 
         public int LoginId { get; set; }
@@ -54,17 +53,17 @@ namespace MCMD.EntityModel.Doctor
         [DisplayName("Country")]
         //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "ClinicName is not valid.")]
         [Required(ErrorMessage = "Country is required.")]
-        public string Country { get; set; }
+        public int Country { get; set; }
 
         [DisplayName("State")]
         //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "ClinicName is not valid.")]
         [Required(ErrorMessage = "State is required.")]
-        public string State { get; set; }
+        public int State { get; set; }
 
         [DisplayName("City")]
         //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "ClinicName is not valid.")]
         [Required(ErrorMessage = "City is required.")]
-        public string City { get; set; }
+        public int City { get; set; }
 
         [DisplayName("ZipCode")]      
         [Required(ErrorMessage = "ZipCode is required.")]

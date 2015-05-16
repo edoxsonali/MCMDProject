@@ -1,0 +1,65 @@
+﻿@model MCMD.ViewModel.Administration.ClinicDetailsViewModel
+@{
+    ViewBag.Title = "ViewClinicInfo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{
+
+    int Pages = 10;
+    WebGrid grid = new WebGrid(Model.clinicinfo, canPage: true, rowsPerPage: Pages);
+    grid.Pager(WebGridPagerModes.NextPrevious);
+}
+<div class="container">
+    <div class="content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form">
+                <div class="col-sm-12">
+                    <div class="form-horizontal">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="data-table">
+
+                            @grid.GetHtml(
+                                           tableStyle: "footable",
+                                         footerStyle: "gridFooter",
+                                                alternatingRowStyle: "alt",
+                                                 htmlAttributes: new { id = "grdUsers" },
+                                                 mode: WebGridPagerModes.All,
+                                               firstText: "<< First",
+                            previousText: "< Previous", nextText: "Next >",
+                            lastText: "Last >>",
+                                             columns: new[] {
+                                            // grid.Column("ClinicInfoId",header: "ClinicInfoId", canSort: false),
+                                             grid.Column("LoginId",header: "Doctor Id", canSort: false),
+                                             grid.Column("ClinicName",header: "Clinic Name", canSort: false),
+                                             grid.Column("ClinicAddress",header: "Clinic Address", canSort: false),
+                                             grid.Column("ClinicPhoneNo",header: "Clinic PhoneNo", canSort: false),
+                                             grid.Column("ClinicFees",header: "Clinic Fees", canSort: false),
+                                             grid.Column("ClinicTimeFrom",header: "Clinic start Time", canSort: false),
+                                             grid.Column("ClinicTimeTo",header: "Clinic end Time", canSort: false),
+                                             grid.Column("StateName",header: "State", canSort: false),
+                                             grid.Column("CityName",header: "City", canSort: false),
+                                             grid.Column("ClinicServices",header: "Services", canSort: false),
+                                             grid.Column(header: "Option", format: @<text>
+
+                                                @*<a id="btnEdit" style="cursor:pointer;" onclick="EditUserData( @item.ID)">Edit</a>|*@
+                                                <a id="btnDelete" style="cursor:pointer;" onclick="DeleteUserData( @item.ClinicInfoId)">Delete</a>
+                                            </text>)
+                                        })
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+        <div class="clear"></div>
+    </div>
+</div>

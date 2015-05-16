@@ -14,7 +14,7 @@ namespace MCMD.IRepository.AdminInterfaces
         IEnumerable<Country> GetCountrys();
         IEnumerable<State> GetStates();
         IEnumerable<City> GetCities();
-        IEnumerable<DoctorClinicInformation> GetClinics();
+        IEnumerable<GetViewCliniInfo> GetClinics();
         DoctorClinicInformation GetClinicById(int clinicInfoId);
         void InsertClinic(DoctorClinicInformation doctorClinic);
         void UpdateClinic(DoctorClinicInformation doctorClinic);

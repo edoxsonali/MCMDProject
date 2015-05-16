@@ -25,6 +25,7 @@ namespace MCMD.Web.Controllers.Administration
         {
             return View();
         }
+
         public ActionResult Create()
         {
             //Create object of View Model Class
@@ -50,6 +51,10 @@ namespace MCMD.Web.Controllers.Administration
 
                   
                     var newClinic = new DoctorClinicInformation();
+
+
+                     Enumeration.GetAll<MCMD.ViewModel.Administration.DoctorClinicInformationViewModel.ClinicHours>();
+                   
 
                     newClinic.ClinicName = _doctorClinicVM.DoctorClinicInformations.ClinicName;
                     newClinic.ClinicAddress = _doctorClinicVM.DoctorClinicInformations.ClinicAddress;
@@ -87,5 +92,36 @@ namespace MCMD.Web.Controllers.Administration
             }
             return RedirectToAction("Create");
         }
+
+
+        public ActionResult ViewClinicInfo()
+        {
+            ClinicDetailsViewModel clinicdetail = new ClinicDetailsViewModel();
+            clinicdetail.clinicinfo = doctorClinicRepository.GetClinics().ToList();
+
+            return View(clinicdetail);
+        }
+        public static class Enumeration
+        {
+
+            public static IDictionary<int, string> GetAll<TEnum>() where TEnum : struct
+            {
+                var enumerationType = typeof(TEnum);
+
+                if (!enumerationType.IsEnum)
+                    throw new ArgumentException("Enumeration type is expected.");
+
+                var dictionary = new Dictionary<int, string>();
+
+                foreach (int value in Enum.GetValues(enumerationType))
+                {
+                    var name = Enum.GetName(enumerationType, value);
+                    dictionary.Add(value, name);
+                }
+
+                return dictionary;
+            }
+        }
+
     }
 }

@@ -88,6 +88,8 @@
     <Compile Include="Administration\DoctorClinicInformation.cs" />
     <Compile Include="Administration\DoctorPersonalInformation.cs" />
     <Compile Include="Administration\Duration.cs" />
+    <Compile Include="Administration\EnumClinicHours.cs" />
+    <Compile Include="Administration\GetViewCliniInfo.cs" />
     <Compile Include="Administration\GetViewDoctor.cs" />
     <Compile Include="Administration\GetViewMembership.cs" />
     <Compile Include="Administration\GetViewUsers.cs" />

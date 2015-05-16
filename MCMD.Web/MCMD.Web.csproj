@@ -901,6 +901,7 @@
     <Content Include="Views\Media\Create.cshtml" />
     <Content Include="Views\Media\Index.cshtml" />
     <Content Include="Views\Media\ViewMedia.cshtml" />
+    <Content Include="Views\DoctorClinicInfo\ViewClinicInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -33,6 +33,7 @@ namespace MCMD.Web.Controllers.Administration
             return Json(new { redirectUrl = Url.Action("Create", "DoctorInfo", new { varid }), isRedirect = true, JsonRequestBehavior.AllowGet });
                     
         }
+        #region Create DoctorPersonal Info
         public ActionResult Create()
         {
 
@@ -172,7 +173,7 @@ namespace MCMD.Web.Controllers.Administration
 
         }
 
+        #endregion
 
-        
     }
 }

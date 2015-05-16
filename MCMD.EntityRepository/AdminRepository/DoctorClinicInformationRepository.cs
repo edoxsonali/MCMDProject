@@ -20,9 +20,51 @@ namespace MCMD.EntityRepository.AdminRepository
         {
             this.DBcontext = DBcontext;
         }
-        public IEnumerable<DoctorClinicInformation> GetClinics()
+        public IEnumerable<GetViewCliniInfo> GetClinics()
         {
-            return DBcontext.DoctorsClinicInfos.ToList();
+            var AllClinicInfo = (from n in DBcontext.DoctorsClinicInfos
+                                 join b in DBcontext.cities on n.City equals b.CityId
+                                 join c in DBcontext.states on n.State equals c.StateId
+                                 where n.InactiveFlag == "N"
+                                 select new
+                                 {
+                                     ClinicInfoId=n.ClinicInfoId,
+                                     LoginId = n.LoginId,
+                                     ClinicName = n.ClinicName,
+                                     ClinicAddress = n.ClinicAddress,
+                                     ClinicPhoneNo = n.ClinicPhoneNo,
+                                     ClinicFees = n.ClinicFees,
+                                     ClinicTimeFrom = n.ClinicTimeFrom,
+                                     ClinicTimeTo = n.ClinicTimeTo,
+                                     StateName = c.StateName,
+                                     CityName = b.CityName,
+                                     ClinicServices = n.ClinicServices
+                                 }).ToList();
+            List<GetViewCliniInfo> allClinicInfo = new List<GetViewCliniInfo>();
+
+
+            foreach (var item in AllClinicInfo)
+            {
+                var s = new GetViewCliniInfo();
+
+                s.ClinicInfoId = item.ClinicInfoId;
+                s.LoginId = item.LoginId;
+                s.ClinicName = item.ClinicName;
+                s.ClinicAddress = item.ClinicAddress;
+                s.ClinicPhoneNo = item.ClinicPhoneNo;
+                s.ClinicFees = item.ClinicFees;
+                s.ClinicTimeFrom = item.ClinicTimeFrom;
+                s.ClinicTimeTo = item.ClinicTimeTo;
+                s.StateName = item.StateName;
+                s.CityName = item.CityName;
+                s.ClinicServices = item.ClinicServices;
+               
+                allClinicInfo.Add(s);
+
+            }
+
+            return allClinicInfo.ToList();
+           // return DBcontext.DoctorsClinicInfos.ToList();
         }
         public IEnumerable<Country> GetCountrys()
         {
