@@ -2,3 +2,7 @@ C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ErrorLogging\bin\Release\MCMD.Erro
 C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ErrorLogging\bin\Release\MCMD.ErrorLogging.pdb
 C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ErrorLogging\obj\Release\MCMD.ErrorLogging.dll
 C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ErrorLogging\obj\Release\MCMD.ErrorLogging.pdb
+D:\Project\MCMDProject\MCMD.ErrorLogging\bin\Release\MCMD.ErrorLogging.dll
+D:\Project\MCMDProject\MCMD.ErrorLogging\bin\Release\MCMD.ErrorLogging.pdb
+D:\Project\MCMDProject\MCMD.ErrorLogging\obj\Release\MCMD.ErrorLogging.dll
+D:\Project\MCMDProject\MCMD.ErrorLogging\obj\Release\MCMD.ErrorLogging.pdb
