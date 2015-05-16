@@ -15,7 +15,8 @@ namespace MCMD.Web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            //sonali 
+            ViewBag.Message = "Sonali page  ";
 
             return View();
         }
