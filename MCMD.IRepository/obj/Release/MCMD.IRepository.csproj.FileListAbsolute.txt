@@ -1,0 +1,11 @@
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.IRepository\bin\Release\MCMD.IRepository.dll
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.IRepository\bin\Release\MCMD.IRepository.pdb
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.IRepository\bin\Release\MCMD.EntityModel.dll
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.IRepository\bin\Release\MCMD.ViewModel.dll
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.IRepository\bin\Release\EntityFramework.dll
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.IRepository\bin\Release\MCMD.EntityModel.pdb
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.IRepository\bin\Release\MCMD.ViewModel.pdb
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.IRepository\bin\Release\EntityFramework.xml
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.IRepository\obj\Release\MCMD.IRepository.csprojResolveAssemblyReference.cache
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.IRepository\obj\Release\MCMD.IRepository.dll
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.IRepository\obj\Release\MCMD.IRepository.pdb

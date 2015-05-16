@@ -1,0 +1,4 @@
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ErrorLogging\bin\Release\MCMD.ErrorLogging.dll
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ErrorLogging\bin\Release\MCMD.ErrorLogging.pdb
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ErrorLogging\obj\Release\MCMD.ErrorLogging.dll
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ErrorLogging\obj\Release\MCMD.ErrorLogging.pdb

@@ -1,0 +1,4 @@
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ApiModel\bin\Release\MCMD.ApiModel.dll
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ApiModel\bin\Release\MCMD.ApiModel.pdb
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ApiModel\obj\Release\MCMD.ApiModel.dll
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ApiModel\obj\Release\MCMD.ApiModel.pdb

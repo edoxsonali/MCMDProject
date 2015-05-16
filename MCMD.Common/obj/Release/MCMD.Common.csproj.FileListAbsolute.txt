@@ -1,0 +1,5 @@
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.Common\bin\Release\MCMD.Common.dll
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.Common\bin\Release\MCMD.Common.pdb
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.Common\obj\Release\MCMD.Common.csprojResolveAssemblyReference.cache
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.Common\obj\Release\MCMD.Common.dll
+C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.Common\obj\Release\MCMD.Common.pdb

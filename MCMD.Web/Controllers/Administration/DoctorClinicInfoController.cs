@@ -13,7 +13,8 @@ namespace MCMD.Web.Controllers.Administration
 {
     public class DoctorClinicInfoController : Controller
     {
-        // GET: DoctorClinicInfo
+        //sonali
+        // GET: DoctorClinicInfo 
         public ApplicationDbContext db = new ApplicationDbContext();
         private IDoctorClinicInformation doctorClinicRepository;
 
