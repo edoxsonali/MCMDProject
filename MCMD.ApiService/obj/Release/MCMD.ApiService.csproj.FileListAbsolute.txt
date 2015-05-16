@@ -2,3 +2,7 @@ C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ApiService\bin\Release\MCMD.ApiSer
 C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ApiService\bin\Release\MCMD.ApiService.pdb
 C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ApiService\obj\Release\MCMD.ApiService.dll
 C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ApiService\obj\Release\MCMD.ApiService.pdb
+D:\Project\MCMDProject\MCMD.ApiService\bin\Release\MCMD.ApiService.dll
+D:\Project\MCMDProject\MCMD.ApiService\bin\Release\MCMD.ApiService.pdb
+D:\Project\MCMDProject\MCMD.ApiService\obj\Release\MCMD.ApiService.dll
+D:\Project\MCMDProject\MCMD.ApiService\obj\Release\MCMD.ApiService.pdb

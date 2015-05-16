@@ -2,3 +2,7 @@ C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ApiModel\bin\Release\MCMD.ApiModel
 C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ApiModel\bin\Release\MCMD.ApiModel.pdb
 C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ApiModel\obj\Release\MCMD.ApiModel.dll
 C:\Users\Shri\Desktop\sonali\MCMDProject\MCMD.ApiModel\obj\Release\MCMD.ApiModel.pdb
+D:\Project\MCMDProject\MCMD.ApiModel\bin\Release\MCMD.ApiModel.dll
+D:\Project\MCMDProject\MCMD.ApiModel\bin\Release\MCMD.ApiModel.pdb
+D:\Project\MCMDProject\MCMD.ApiModel\obj\Release\MCMD.ApiModel.dll
+D:\Project\MCMDProject\MCMD.ApiModel\obj\Release\MCMD.ApiModel.pdb

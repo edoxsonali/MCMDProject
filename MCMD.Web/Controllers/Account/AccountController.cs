@@ -15,7 +15,10 @@ using MCMD.Common.CommonClass;
 namespace MCMD.Web.Controllers.Account
 {
     public class AccountController : Controller
-    { 
+    {
+       
+        
+        
         
         public ApplicationDbContext db = new ApplicationDbContext();
         public string ServiceUrl = ConfigurationManager.AppSettings["ServiceUrl"];
