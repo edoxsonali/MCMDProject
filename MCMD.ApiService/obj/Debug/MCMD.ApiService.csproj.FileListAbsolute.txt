@@ -14,3 +14,7 @@ C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiService\bin\Debug\MCMD
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiService\bin\Debug\MCMD.ApiService.pdb
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiService\obj\Debug\MCMD.ApiService.dll
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiService\obj\Debug\MCMD.ApiService.pdb
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.ApiService\bin\Debug\MCMD.ApiService.dll
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.ApiService\bin\Debug\MCMD.ApiService.pdb
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.ApiService\obj\Debug\MCMD.ApiService.dll
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.ApiService\obj\Debug\MCMD.ApiService.pdb

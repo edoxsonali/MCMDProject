@@ -8,3 +8,7 @@ C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.Common\bin\Debug\MCMD.Com
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.Common\obj\Debug\MCMD.Common.csprojResolveAssemblyReference.cache
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.Common\obj\Debug\MCMD.Common.dll
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.Common\obj\Debug\MCMD.Common.pdb
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.Common\bin\Debug\MCMD.Common.dll
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.Common\bin\Debug\MCMD.Common.pdb
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.Common\obj\Debug\MCMD.Common.dll
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.Common\obj\Debug\MCMD.Common.pdb

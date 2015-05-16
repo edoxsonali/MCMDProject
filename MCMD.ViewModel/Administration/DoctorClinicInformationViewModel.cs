@@ -19,21 +19,11 @@ namespace MCMD.ViewModel.Administration
         //public List<clinicHours> timelist { get; set; }
         public ClinicHours clinichours { get; set; }
         //public timeindicator indicator { get; set; }
-    public enum ClinicHours : int
+    public enum ClinicHours 
     {
        
-        01:00AM=1,
-        02:00AM=2,
-        03:00AM=3,
-        04:00AM=4,
-        05:00AM=5,
-        06:00AM=6,
-        07:00AM=7,
-        08:00AM=8,
-        09:00AM=9, 
-        10:00AM=10,
-        11:00AM=11,
-        12:00AM=12
+        Siddu =1
+       
     }
 
     }   

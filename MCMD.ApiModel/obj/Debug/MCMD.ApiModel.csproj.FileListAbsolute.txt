@@ -14,3 +14,7 @@ C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiModel\bin\Debug\MCMD.A
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiModel\bin\Debug\MCMD.ApiModel.pdb
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiModel\obj\Debug\MCMD.ApiModel.dll
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ApiModel\obj\Debug\MCMD.ApiModel.pdb
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.ApiModel\bin\Debug\MCMD.ApiModel.dll
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.ApiModel\bin\Debug\MCMD.ApiModel.pdb
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.ApiModel\obj\Debug\MCMD.ApiModel.dll
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.ApiModel\obj\Debug\MCMD.ApiModel.pdb

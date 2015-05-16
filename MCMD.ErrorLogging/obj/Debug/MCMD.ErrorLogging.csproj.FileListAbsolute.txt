@@ -10,3 +10,7 @@ C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ErrorLogging\bin\Debug\MC
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ErrorLogging\bin\Debug\MCMD.ErrorLogging.pdb
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ErrorLogging\obj\Debug\MCMD.ErrorLogging.dll
 C:\Users\Shri\Documents\GitHub\sonali\MCMDProject\MCMD.ErrorLogging\obj\Debug\MCMD.ErrorLogging.pdb
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.ErrorLogging\bin\Debug\MCMD.ErrorLogging.dll
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.ErrorLogging\bin\Debug\MCMD.ErrorLogging.pdb
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.ErrorLogging\obj\Debug\MCMD.ErrorLogging.dll
+E:\Personal\MCMDHealthCare\MCMDProject\MCMD.ErrorLogging\obj\Debug\MCMD.ErrorLogging.pdb
