@@ -139,6 +139,5 @@ E:\Personal\MCMDHealthCare\MCMDProject\MCMD.EntityModel\bin\Debug\Microsoft.Owin
 E:\Personal\MCMDHealthCare\MCMDProject\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 E:\Personal\MCMDHealthCare\MCMDProject\MCMD.EntityModel\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 E:\Personal\MCMDHealthCare\MCMDProject\MCMD.EntityModel\bin\Debug\Newtonsoft.Json.xml
-E:\Personal\MCMDHealthCare\MCMDProject\MCMD.EntityModel\obj\Debug\MCMD.EntityModel.csprojResolveAssemblyReference.cache
 E:\Personal\MCMDHealthCare\MCMDProject\MCMD.EntityModel\obj\Debug\MCMD.EntityModel.dll
 E:\Personal\MCMDHealthCare\MCMDProject\MCMD.EntityModel\obj\Debug\MCMD.EntityModel.pdb

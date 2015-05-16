@@ -16,6 +16,7 @@ namespace MCMD.Web.Controllers.Account
 {
     public class AccountController : Controller
     {
+        // siddu 
         public ApplicationDbContext db = new ApplicationDbContext();
         public string ServiceUrl = ConfigurationManager.AppSettings["ServiceUrl"];
         public string strApiUserName = ConfigurationManager.AppSettings["ApiUserName"];
