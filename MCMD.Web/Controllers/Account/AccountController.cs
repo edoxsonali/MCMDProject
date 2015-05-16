@@ -16,10 +16,10 @@ namespace MCMD.Web.Controllers.Account
 {
     public class AccountController : Controller
     {
-        // SIDDU 
-        // SOMANTH
-        // SONALI
-        //
+       
+        
+        
+        
         public ApplicationDbContext db = new ApplicationDbContext();
         public string ServiceUrl = ConfigurationManager.AppSettings["ServiceUrl"];
         public string strApiUserName = ConfigurationManager.AppSettings["ApiUserName"];
