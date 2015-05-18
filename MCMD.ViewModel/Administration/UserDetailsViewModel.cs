@@ -50,8 +50,8 @@ namespace MCMD.ViewModel.Administration
 
        public string Name { get; set; }
 
-       [DisplayName("Employee Id")]
-       [Required(ErrorMessage = "Employee Id is required.")]
+       //[DisplayName("Employee Id")]
+       //[Required(ErrorMessage = "Employee Id is required.")]
        public int EmployeeId { get; set; }
     
 

@@ -11,7 +11,7 @@ using System.ComponentModel;
 
 namespace MCMD.ViewModel.Administration
 {
-    public class UserRegisterViewModel
+    public class  UserRegisterViewModel
     {
 
         public List<Role> Roles { get; set; }

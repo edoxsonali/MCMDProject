@@ -16,6 +16,8 @@ namespace MCMD.IRepository.AdminInterfaces
         IEnumerable<GetViewDoctor> getAllDoctor();
         IEnumerable<Speciality> GetSpecialitys();
         IEnumerable<Role> GetRoles();
+        IEnumerable<UserLogin> GetAllUserData();
+        IEnumerable<UserLoginRole> GetUserLoginRole();
 
         IEnumerable<GetViewUsers> SearchUser(int RoleIdVM, int EmpIdVM, string UserFirstNameVm, string UserLastNameVM, string UserEmailIdVM, string UsePhoneVM);
 
@@ -29,6 +31,7 @@ namespace MCMD.IRepository.AdminInterfaces
         void UserLoginSpecialitys(UserLoginSpeciality userloginspeciality, UserRegisterViewModel registerVM);   
    
         void UpdateUser(UserLogin userlogin);
+        void UpdateUserRole(UserLoginRole userloginRole);
         void DeleteUser(int UserID);
         void Save();
    

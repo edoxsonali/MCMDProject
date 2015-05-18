@@ -65,7 +65,7 @@
                 //$('.chkview:checked').each(function (i, chk) {
                 Inputs.push(varid);
                 //});
-                var url = '@Url.Action("RegisterUser", "User")';
+                var url = '@Url.Action("EditUserData", "User")';
                 $.ajax({
                     type: "POST",
                     async: false,
@@ -93,7 +93,7 @@
 
 <div class="container">
     <div class="content">
-        <h2>Quick Search</h2>
+        <h2>View Admin/COE</h2>
        
         @using (Html.BeginForm())
         {
@@ -194,7 +194,7 @@
                      grid.Column("EmailID",header: "Email ID", canSort: false),
                       grid.Column("EmployeeId",header: "Employee Id", canSort: false),     
                      grid.Column("UserPhone",header: "Phone No", canSort: false),
-                      grid.Column("Name",header: "Role", canSort: false),                  
+                      grid.Column("Name",header: "UserType", canSort: false),                  
                       grid.Column(header: "Option", format: @<text>
 
                         <a id="btnEdit" style="cursor:pointer;" onclick="EditUserData( @item.LoginId)">Edit</a>|

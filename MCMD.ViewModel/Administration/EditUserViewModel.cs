@@ -1,22 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Mvc;
+using MCMD.EntityModel.Administration;
+using System.ComponentModel.DataAnnotations;
+using MCMD.EntityModel.Doctor;
+using System.ComponentModel;
+
 
 namespace MCMD.ViewModel.Administration
 {
     public class EditUserViewModel
     {
-        public int Id { get; set; }
+        public List<Role> Roles { get; set; }
 
-        [Required(AllowEmptyStrings = false)]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        public UserLogin Userlogins { get; set; }
 
-        public IEnumerable<SelectListItem> RolesList { get; set; }
+        public int LoginId { get; set; }
+
+        [DisplayName("User Role")]
+        [Required(ErrorMessage = "User Role is required.")]
+        public int RoleID { get; set; }
+        public string UserName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string EmailID { get; set; }
+        public string UserPhone { get; set; }
+        public int EmployeeId { get; set; }
+
+ 
     }
 }

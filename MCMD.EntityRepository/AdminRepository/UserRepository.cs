@@ -137,10 +137,20 @@ namespace MCMD.EntityRepository.AdminRepository
 
         }
        
+
+        public IEnumerable<UserLogin> GetAllUserData()
+        {
+            return DBcontext.UserLogins.ToList();
+        }
+        public IEnumerable<UserLoginRole> GetUserLoginRole()
+        {
+            return DBcontext.UserLoginRoles.ToList();
+        }
         public IEnumerable<Speciality> GetSpecialitys()
         {
             return DBcontext.Specialitys.ToList();
         }
+
         public IEnumerable<Role> GetRoles()
         {
             return DBcontext.Roles.ToList();
@@ -200,6 +210,11 @@ namespace MCMD.EntityRepository.AdminRepository
         {
             
             DBcontext.Entry(userlogin).State = EntityState.Modified;
+        }
+        public void UpdateUserRole(UserLoginRole userloginRole)
+        {
+
+            DBcontext.Entry(userloginRole).State = EntityState.Modified;
         }
 
         public void DeleteUser(int userId)

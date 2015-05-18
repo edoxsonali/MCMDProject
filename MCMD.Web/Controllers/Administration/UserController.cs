@@ -30,35 +30,7 @@ namespace MCMD.Web.Controllers.Administration
         {
             this.userRepository = _userRepositorys;
         }
-
-        // GET: /CreateUser/
-        //public ActionResult Index()
-        //{
-        //    var Model = new UserVM();
-
-        //    var Users = from s in userRepository.GetUsers()
-        //                select s;
-
-        //    return View(Users);
-        //}
-
-
-
-        // GET: /CreateUser/Details/
-        //public ViewResult Details(int id)
-        //{
-
-        //    User user = userRepository.GetUserByID(id);
-        //    return View(user);
-        //}
-
-        public ActionResult EditUserData(int Id)
-        {
-            Session["EditUser"] = Id;
-            var varid = Id;
-            return Json(new { redirectUrl = Url.Action("RegisterUser", "User", new { varid }), isRedirect = true, JsonRequestBehavior.AllowGet });
-
-        }
+        
 
         #region Create User
         [HttpGet]
@@ -78,6 +50,8 @@ namespace MCMD.Web.Controllers.Administration
         [HttpPost]
         public ActionResult RegisterUser(UserRegisterViewModel registerVM)
         {
+
+            ModelState.Clear();  // Cleare Model state
             if (ModelState.IsValid)
             {
 
@@ -92,7 +66,7 @@ namespace MCMD.Web.Controllers.Administration
                             try
                             {
 
-                                //password for email
+                                //Take the password for email
                                 string password = registerVM.Userlogins.Password;
 
                                 //Insert data in Userlogins  Table                             
@@ -100,16 +74,19 @@ namespace MCMD.Web.Controllers.Administration
                                 userRepository.Save();
 
                                 //Insert data in Login_Role Table
-
                                 var newUserRole = db.UserLoginRoles.Create();
-
                                 userRepository.InsertUserLoginRoles(newUserRole, registerVM);
                                 userRepository.Save();
+                               
 
-                                //Insert data in Login_Dispensary Table
-                                var newUserspeciality = db.UserLoginSpecialitys.Create();
-                                userRepository.UserLoginSpecialitys(newUserspeciality, registerVM);
-                                userRepository.Save();
+                                //if (registerVM.SpecialityID!=0)
+                                //{
+                                    //Insert data in Login_Speciality Table
+                                    var newUserspeciality = db.UserLoginSpecialitys.Create();
+                                    userRepository.UserLoginSpecialitys(newUserspeciality, registerVM);
+                                    userRepository.Save();
+
+                               // }
 
                                 dbContextTransaction.Commit();
                                 ViewBag.StatusMessage = " User Name with " + registerVM.Userlogins.UserName + " having Email Id " + registerVM.Userlogins.EmailID + " is created successfully";
@@ -161,13 +138,13 @@ namespace MCMD.Web.Controllers.Administration
 
         #endregion
 
-        #region View User
+        #region View User Admin/COE
         [HttpGet]
         public ActionResult ViewUser(int EmpId = 0, int RoleId = 0, string UserFirstName = "", string UserLastName = "", string UserEmailId = "", string UsePhone = "")
         {
 
             UserDetailsViewModel userDetailsVM = new UserDetailsViewModel();
-            userDetailsVM.Roles = userRepository.GetRoles().ToList();
+            userDetailsVM.Roles = userRepository.GetRoles().Where(x => x.RoleId!=4).ToList();
             if (EmpId == 0 && RoleId == 0 && string.IsNullOrEmpty(UserFirstName) && string.IsNullOrEmpty(UserEmailId) && string.IsNullOrEmpty(UsePhone))
             {
                          
@@ -297,44 +274,108 @@ namespace MCMD.Web.Controllers.Administration
 
         #endregion
 
-        #region Edit User
-        //
-        // GET: /CreateUser/Edit/
-
-        //public ActionResult Edit(int id)
-        //{
-        //    User user = userRepository.GetUserByID(id);
-        //    return View(user);
-        //}
-
-
-        // POST: /CreateUser/Edit/
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(UserLogin user)
+        #region Edit User Admin/COE
+      
+        public ActionResult EditUserData(int Id)
         {
-            try
-            {
-                //if (ModelState.IsValid)
-                {
-                    userRepository.UpdateUser(user);
-                    userRepository.Save();
-                    return RedirectToAction("Index");
-                }
-            }
-            catch (Exception)
-            {
+            Session["EditUser"] = Id;
+            var varid = Id;
+            return Json(new { redirectUrl = Url.Action("EditUser", "User", new { varid }), isRedirect = true, JsonRequestBehavior.AllowGet });
 
-                ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists contact your system administrator.");
-            }
-            return View(user);
         }
 
-        
+          [HttpGet]
+        public ActionResult EditUser()
+        {
+            EditUserViewModel _edituserVM = new EditUserViewModel();
+            _edituserVM.Roles = userRepository.GetRoles().Where(x => x.RoleId != 4).ToList();
+
+            //This session for Edit Admin/COE
+            //int editUserInputs = (Session["EditUser"] != null) ? (Convert.ToInt32(Session["EditUser"])) : 1;
+            int editUserInputs = Convert.ToInt32(Session["EditUser"]);
+
+
+            //This is for populated for edit Admin/COE 
+            if (editUserInputs != 0)
+            {
+                List<UserLogin> _NewUserloginInfo = userRepository.GetAllUserData().Where(x => x.LoginId == editUserInputs).ToList();
+                List<UserLoginRole> _NewUserRole = userRepository.GetUserLoginRole().Where(x => x.LoginRoleId == editUserInputs).ToList();
+                foreach (var item in _NewUserloginInfo)
+                {
+                    _edituserVM.UserName = item.UserName;
+                    _edituserVM.FirstName = item.FirstName;
+                    _edituserVM.LastName = item.LastName;
+                    _edituserVM.EmailID = item.EmailID;
+                    _edituserVM.UserPhone = item.UserPhone;
+                    _edituserVM.EmployeeId = item.EmployeeId;
+                }
+
+                foreach (var item in _NewUserRole)
+                {
+                    _edituserVM.RoleID = item.RoleId;
+
+                }
+
+            }
+
+            return View(_edituserVM);
+        }
+
+        [HttpPost]
+        public ActionResult EditUser(EditUserViewModel editUserVM)
+        {
+            if (ModelState.IsValid)
+            {
+                if (Session["EditUser"] != null)
+                {
+
+                    editUserVM.LoginId = Convert.ToInt32(Session["EditUser"]);
+
+                    //find the data in table using loginId
+                    UserLogin updateUser = db.UserLogins.Find(editUserVM.LoginId);
+
+                    updateUser.UserName = editUserVM.UserName;
+                    updateUser.FirstName = editUserVM.FirstName;
+                    updateUser.LastName = editUserVM.LastName;
+                    updateUser.EmailID = editUserVM.EmailID;
+                    updateUser.UserPhone = editUserVM.UserPhone;
+                    updateUser.EmployeeId = editUserVM.EmployeeId;
+
+                    userRepository.UpdateUser(updateUser);
+                    userRepository.Save();
+                    TempData["SuccessMessage"] = "User is Updated successfully";
+
+                    //find the data in table using loginId
+                    UserLoginRole updateUserRole = db.UserLoginRoles.Find(editUserVM.LoginId);
+
+                    updateUserRole.RoleId = editUserVM.RoleID;
+                    userRepository.UpdateUserRole(updateUserRole);
+                    userRepository.Save();
+                    
+              
+                    Session["EditUser"] = null;
+                }
+               
+
+            }
+
+
+            return RedirectToAction("EditUser");
+        }
+
 
         #endregion
 
-        #region Delete User
+        #region Cancel Button for edit 
+        [HttpGet]
+        public ActionResult CancelEdit()
+        {
+           // return RedirectToAction("ViewUser", "User", new { id = Session["DetailsId"] });
+            return RedirectToAction("ViewUser", "User");
+        }
+        #endregion
+
+        #region Delete User Admin/COE
         [HttpPost]
         public ActionResult BatchDelete(int[] deleteInputs)
         {
