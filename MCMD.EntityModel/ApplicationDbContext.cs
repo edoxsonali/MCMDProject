@@ -47,6 +47,9 @@ namespace MCMD.EntityModel
         public DbSet<City> cities { get; set; }
         public DbSet<Media> medias { get; set; }
 
+        public DbSet<UpgradeService> upgradeServices { get; set; }
+        public DbSet<UpgradeServiceLog> upgradeServiceLog { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
@@ -107,6 +110,14 @@ namespace MCMD.EntityModel
 
             modelBuilder.Entity<Media>().ToTable("Media");
             modelBuilder.Entity<Media>().HasKey<int>(r => r.MediaId);
+
+            modelBuilder.Entity<UpgradeService>().ToTable("UpgradeService");
+            modelBuilder.Entity<UpgradeService>().HasKey<int>(r => r.UpgradeServiceId);
+
+            modelBuilder.Entity<UpgradeServiceLog>().ToTable("UpgradeServiceLog");
+            modelBuilder.Entity<UpgradeServiceLog>().HasKey<int>(r => r.UpgradeServLogId);
+
+
 
 
             //  modelBuilder.Entity<Role>().ToTable("MCMDCreateRoles");
