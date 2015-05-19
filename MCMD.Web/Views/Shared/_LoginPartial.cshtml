@@ -12,7 +12,7 @@
             ViewData["PageRole"] = RoleID;
             var RoleName = (from i in manager.Roles
                             where i.RoleId == RoleID
-                            select i.Name).FirstOrDefault();
+                            select i.RoleName).FirstOrDefault();
             var currentRole = manager.Roles.FirstOrDefault(u => u.RoleId == currentUser.LoginId);
 
             <p>
