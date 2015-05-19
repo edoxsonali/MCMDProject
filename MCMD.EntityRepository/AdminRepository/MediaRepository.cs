@@ -37,7 +37,8 @@ namespace MCMD.EntityRepository.AdminRepository
         {
             if (file != null)
             {
-
+                var Getcount = DBcontext.medias.FirstOrDefault(x => x.LoginId == media.LoginId );
+                 
                 string path = System.IO.Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") + file.FileName);
                 file.SaveAs(path);
                 media.FolderFilePath = path;
