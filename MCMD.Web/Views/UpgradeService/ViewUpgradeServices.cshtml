@@ -1,0 +1,130 @@
+﻿@model MCMD.ViewModel.Administration.UpgradeServiceViewModel
+@using MCMD.EntityModel.Administration
+@{
+    ViewBag.Title = "ViewUpgradeServices";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{
+
+    int Pages = 10;
+    WebGrid grid = new WebGrid(Model.GetUpgrdService, canPage: true, rowsPerPage: Pages);
+    grid.Pager(WebGridPagerModes.NextPrevious);
+}
+<script type="text/javascript">
+
+    //Delete User on click
+    function DeleteUpgradeService(varid) {
+        if (varid != null) {
+            if (confirm('Are you sure want to delete the selected user')) {
+                var deleteInputs = [];
+                //$('.chkview:checked').each(function (i, chk) {
+                deleteInputs.push(varid);
+                //});
+                var url = '@Url.Action("BatchDelete", "UpgradeService")';
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    cache: false,
+                    url: url,
+                    traditional: true,
+                    data: { deleteInputs: deleteInputs },
+                    success: function (data) {
+                        var url = '@Url.Action("ViewUpgradeServices", "UpgradeService")';
+                        window.location.href = url;
+
+                    }
+                });
+            }
+        }
+    }
+
+</script>
+<div class="container">
+    <div class="content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form">
+                <div class="col-sm-12">
+                    <div class="form-horizontal">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="data-table">
+
+                            @grid.GetHtml(
+                                           tableStyle: "footable",
+                                         footerStyle: "gridFooter",
+                                                alternatingRowStyle: "alt",
+                                                 htmlAttributes: new { id = "grdUsers" },
+                                                 mode: WebGridPagerModes.All,
+                                               firstText: "<< First",
+                            previousText: "< Previous", nextText: "Next >",
+                            lastText: "Last >>",
+                                             columns: new[] {
+
+                                      //       grid.Column("UpgradeServiceId",header: "Upgrade ServiceId ", canSort: false),
+                                         grid.Column("LoginId",header: "LoginId", canSort: false),
+                                             grid.Column("MembershipType",header: "Membership Type", canSort: false),
+
+                                             grid.Column("Durations",header: "Duration", canSort: false),
+                                             grid.Column("Renaval",header: "Auto Renaval", canSort: false),
+
+
+                                              grid.Column(header: "Option", format: @<text>
+
+                                                <a id="btnEdit" style="cursor:pointer;" onclick="EditServiceData( @item.UpgradeServiceId)">Edit</a>|
+                                                <a id="btnDelete" style="cursor:pointer;" onclick="DeleteUpgradeService( @item.UpgradeServiceId)">Delete</a>
+                                            </text>)
+                                        })
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+        <div class="clear"></div>
+    </div>
+</div>
+@section Scripts
+{
+
+
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript">
+
+    function EditServiceData(varid) {
+        if (varid != null) {
+            if (confirm('Are you sure want to edit the details selected user')) {
+                var Inputs = [];
+                //$('.chkview:checked').each(function (i, chk) {
+                Inputs.push(varid);
+                //});
+                var url = '@Url.Action("UserEditService", "UpgradeService")';
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    cache: false,
+                    url: url,
+                    traditional: true,
+                    data: { Id: Inputs },
+                    success: function (data) {
+
+                        if (data.isRedirect) {
+                            window.location = data.redirectUrl;
+                        }
+                        //window.location.reload();
+                    }
+                });
+            }
+        }
+    }
+</script>

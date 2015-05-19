@@ -6,3 +6,7 @@ D:\Project\MCMDProject\MCMD.ApiModel\bin\Release\MCMD.ApiModel.dll
 D:\Project\MCMDProject\MCMD.ApiModel\bin\Release\MCMD.ApiModel.pdb
 D:\Project\MCMDProject\MCMD.ApiModel\obj\Release\MCMD.ApiModel.dll
 D:\Project\MCMDProject\MCMD.ApiModel\obj\Release\MCMD.ApiModel.pdb
+D:\Sominath\MCMDProject\MCMD.ApiModel\bin\Release\MCMD.ApiModel.dll
+D:\Sominath\MCMDProject\MCMD.ApiModel\bin\Release\MCMD.ApiModel.pdb
+D:\Sominath\MCMDProject\MCMD.ApiModel\obj\Release\MCMD.ApiModel.dll
+D:\Sominath\MCMDProject\MCMD.ApiModel\obj\Release\MCMD.ApiModel.pdb

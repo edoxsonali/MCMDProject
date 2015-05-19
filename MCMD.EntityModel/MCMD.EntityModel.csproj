@@ -92,11 +92,15 @@
     <Compile Include="Administration\GetViewCliniInfo.cs" />
     <Compile Include="Administration\GetViewDoctor.cs" />
     <Compile Include="Administration\GetViewMembership.cs" />
+    <Compile Include="Administration\GetViewUpgradeService.cs" />
     <Compile Include="Administration\GetViewUsers.cs" />
     <Compile Include="Administration\Media.cs" />
     <Compile Include="Administration\Membership.cs" />
+    <Compile Include="Administration\MembershipTwo.cs" />
     <Compile Include="Administration\Role.cs" />
     <Compile Include="Administration\State.cs" />
+    <Compile Include="Administration\UpgradeService.cs" />
+    <Compile Include="Administration\UpgradeServiceLog.cs" />
     <Compile Include="Administration\UserInfo.cs" />
     <Compile Include="Administration\UserLogin.cs" />
     <Compile Include="Administration\UserLoginRole.cs" />

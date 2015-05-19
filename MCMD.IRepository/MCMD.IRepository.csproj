@@ -44,6 +44,7 @@
     <Compile Include="AdminInterfaces\IDoctorPersonalInfoRepository.cs" />
     <Compile Include="AdminInterfaces\IMembershipRepository.cs" />
     <Compile Include="AdminInterfaces\ISpecialityRepository.cs" />
+    <Compile Include="AdminInterfaces\IUpgradeService.cs" />
     <Compile Include="AdminInterfaces\IUserRepository.cs" />
     <Compile Include="AdminInterfaces\IMediaRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

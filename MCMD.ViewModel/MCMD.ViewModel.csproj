@@ -86,6 +86,7 @@
     <Compile Include="Administration\MediaDetailsViewModel.cs" />
     <Compile Include="Administration\MembershipViewModel.cs" />
     <Compile Include="Administration\SpecialityViewModel.cs" />
+    <Compile Include="Administration\UpgradeServiceViewModel.cs" />
     <Compile Include="Administration\UserDetailsViewModel.cs" />
     <Compile Include="Administration\UserRegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,0 +1,86 @@
+﻿@model MCMD.ViewModel.Administration.UpgradeServiceViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@Html.HiddenFor(x => x.MembershipId)
+<div class="container">
+    <div class="content">
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            @Html.AntiForgeryToken()
+
+            <div class="form">
+                <div class="col-sm-5">
+                    <h2> Upgrade Service or Select the following service </h2>
+                    <hr />
+                    @ViewBag.Message
+
+
+
+                    <table width="100%">
+                        @for (int i = 0; i < Model.membershipListTwo.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.CheckBoxFor(m => Model.membershipListTwo[i].CheckedStatus)
+                                    @Model.membershipListTwo[i].MembershipType
+                                    @Html.HiddenFor(m => Model.membershipListTwo[i].MembershipId)
+                                    @Html.HiddenFor(m => Model.membershipListTwo[i].MembershipType)
+                                </td>
+                            </tr>
+                        }
+
+                        <tr>
+                            <td>
+                                @ViewBag.MembershipTwo
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="form-group">
+                        <div class="col-sm-4 control-label">Duration<span>*</span><b>:</b></div>
+                        <div class="col-sm-8">
+                            @Html.DropDownListFor(m => m.DurationId, new SelectList(Model.DurationList, "DurationId", "Durations"),
+                                "-Select-", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DurationId)
+                            <span id="Renaval" style="display: none; color: #F00; font-weight: bold; font-size: 12px;"> Duration is required.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-4 control-label">Auto Renaval<span>*</span><b>:</b></div>
+                        <div class="col-sm-8">
+                            @Html.DropDownListFor(m => m.AutoRenavalId, new SelectList(Model.MonthsList, "AutoRenavalId", "Renaval"),
+                                "-Select-", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.AutoRenavalId)
+                            <span id="Renaval" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Auto Renaval time is required.</span>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="buttons">
+                        <button type="Submit" id="btnCreate" name="btnCreate">Submit</button>
+                        <button type="button" id="btnReset" name="btnscd" onclick="location.href='@Url.Action("Create", "UpgradeServic")'">Reset</button>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+        <div class="clear"></div>
+    </div>
+</div>
+@section Scripts
+{
+
+
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

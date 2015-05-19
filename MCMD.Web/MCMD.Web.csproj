@@ -169,6 +169,7 @@
     <Compile Include="Controllers\Administration\MediaController.cs" />
     <Compile Include="Controllers\Administration\MembershipController.cs" />
     <Compile Include="Controllers\Administration\SpecialityController.cs" />
+    <Compile Include="Controllers\Administration\UpgradeServiceController.cs" />
     <Compile Include="Controllers\Administration\UserController.cs" />
     <Compile Include="Controllers\Doctor\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -900,6 +901,8 @@
     <Content Include="Views\Media\ViewMedia.cshtml" />
     <Content Include="Views\DoctorClinicInfo\ViewClinicInfo.cshtml" />
     <Content Include="Views\User\EditUser.cshtml" />
+    <Content Include="Views\UpgradeService\Create.cshtml" />
+    <Content Include="Views\UpgradeService\ViewUpgradeServices.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

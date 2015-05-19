@@ -56,7 +56,7 @@
                         <div class="col-sm-8">
                             <div class="col-sm-4">
                            
-                               @Html.DropDownListFor(model => model.clinichours )
+                              
                             @*@Html.EnumDropDownListFor(model => model.clinichours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })*@
                              
                                 </div>
@@ -188,6 +188,7 @@
                     <div class="buttons">
                         <button type="Submit" id="btnCreate" name="btnCreate">Submit</button>
                         <button type="button" id="btnReset" name="btnscd" onclick="location.href='@Url.Action("Create", "DoctorClinicInfo")'">Reset</button>
+                        <button type="button" id="btnReset" name="btnscd" onclick="location.href='@Url.Action("Create", "Media")'">Next</button>
                     </div>
                 </div>
             </div>

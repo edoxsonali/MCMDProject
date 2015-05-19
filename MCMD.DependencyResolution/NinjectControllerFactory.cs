@@ -38,6 +38,7 @@ namespace MCMD.DependencyInjection
             ninjectKernel.Bind<IDoctorPersonalInfoRepository>().To<DoctorPersonalInfoRepository>();
             ninjectKernel.Bind<IDoctorClinicInformation>().To<DoctorClinicInformationRepository>();
             ninjectKernel.Bind<IMediaRepository>().To<MediaRepository>();
+            ninjectKernel.Bind<IUpgradeService>().To<UpgradeServiceRepository>();
         }
      
     }

@@ -18,6 +18,7 @@ namespace MCMD.IRepository.AdminInterfaces
         IEnumerable<Role> GetRoles();
         IEnumerable<UserLogin> GetAllUserData();
         IEnumerable<UserLoginRole> GetUserLoginRole();
+        IEnumerable<DoctorClinicInformation> GetClinicInformation();
 
         IEnumerable<GetViewUsers> SearchUser(int RoleIdVM, int EmpIdVM, string UserFirstNameVm, string UserLastNameVM, string UserEmailIdVM, string UsePhoneVM);
 

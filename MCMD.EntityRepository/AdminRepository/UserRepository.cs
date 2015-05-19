@@ -68,7 +68,10 @@ namespace MCMD.EntityRepository.AdminRepository
                                join b in DBcontext.UserLogins on n.LoginId equals b.LoginId
                                join c in DBcontext.Roles on n.RoleId equals c.RoleId
                                join ls in DBcontext.UserLoginSpecialitys on b.LoginId equals ls.LoginId
-                               join s in DBcontext.Specialitys on ls.SpecialityID equals s.SpecialityID                           
+                               join s in DBcontext.Specialitys on ls.SpecialityID equals s.SpecialityID
+                               //join d in DBcontext.DoctorsClinicInfos on b.LoginId equals d.LoginId
+                               //join u in DBcontext.upgradeServices on b.LoginId equals u.LoginId
+                               //join m in DBcontext.Memberships on u.MembershipId equals m.MembershipId
                                where n.RoleId == 4 && b.InactiveFlag == "N"
                                select new
                                {
@@ -77,6 +80,8 @@ namespace MCMD.EntityRepository.AdminRepository
                                    FirstName = b.FirstName,
                                    LastName = b.LastName,
                                    Speciality=s.SpecialityName,
+                                   //ClinicName = d.ClinicName,
+                                   //MembershipType=m.MembershipType,
                                    EmailID = b.EmailID,
                                    MobileNo = b.UserPhone,
                                    Role = c.RoleName
@@ -92,9 +97,11 @@ namespace MCMD.EntityRepository.AdminRepository
                 s.FirstName = item.FirstName;
                 s.LastName = item.LastName;
                 s.SpecialityName = item.Speciality;
+                //s.ClinicName = item.ClinicName;
+                //s.MembershipType = item.MembershipType;
                 s.EmailID = item.EmailID;
                 s.UserPhone = item.MobileNo;
-                s.Name = item.Role;
+                s.RoleName = item.Role;
                 allUsers.Add(s);
 
             }
@@ -154,6 +161,10 @@ namespace MCMD.EntityRepository.AdminRepository
         public IEnumerable<Role> GetRoles()
         {
             return DBcontext.Roles.ToList();
+        }
+        public IEnumerable<DoctorClinicInformation> GetClinicInformation()
+        {
+            return DBcontext.DoctorsClinicInfos.ToList();
         }
         public UserLogin GetUserByID(int id)
         {

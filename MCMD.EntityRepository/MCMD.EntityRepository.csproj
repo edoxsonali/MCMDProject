@@ -64,6 +64,7 @@
     <Compile Include="AdminRepository\MediaRepository.cs" />
     <Compile Include="AdminRepository\MembershipRepository.cs" />
     <Compile Include="AdminRepository\SpecialityRepository.cs" />
+    <Compile Include="AdminRepository\UpgradeServiceRepository.cs" />
     <Compile Include="AdminRepository\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

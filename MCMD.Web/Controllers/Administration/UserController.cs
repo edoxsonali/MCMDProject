@@ -213,6 +213,9 @@ namespace MCMD.Web.Controllers.Administration
         {
             UserDetailsViewModel userDetailsVM = new UserDetailsViewModel();
             userDetailsVM.Roles = userRepository.GetRoles().ToList();
+            userDetailsVM.DoctorClinicInformation = userRepository.GetClinicInformation().ToList();//Get Clinic Info
+            userDetailsVM.speciality = userRepository.GetSpecialitys().ToList();
+
             if (EmpId == 0 && RoleId == 0 && string.IsNullOrEmpty(UserFirstName) && string.IsNullOrEmpty(UserEmailId) && string.IsNullOrEmpty(UsePhone))
             {
                 userDetailsVM.GetViewDoctors = userRepository.getAllDoctor().ToList(); 

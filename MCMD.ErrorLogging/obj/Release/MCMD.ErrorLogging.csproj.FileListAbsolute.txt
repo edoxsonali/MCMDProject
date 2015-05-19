@@ -6,3 +6,7 @@ D:\Project\MCMDProject\MCMD.ErrorLogging\bin\Release\MCMD.ErrorLogging.dll
 D:\Project\MCMDProject\MCMD.ErrorLogging\bin\Release\MCMD.ErrorLogging.pdb
 D:\Project\MCMDProject\MCMD.ErrorLogging\obj\Release\MCMD.ErrorLogging.dll
 D:\Project\MCMDProject\MCMD.ErrorLogging\obj\Release\MCMD.ErrorLogging.pdb
+D:\Sominath\MCMDProject\MCMD.ErrorLogging\bin\Release\MCMD.ErrorLogging.dll
+D:\Sominath\MCMDProject\MCMD.ErrorLogging\bin\Release\MCMD.ErrorLogging.pdb
+D:\Sominath\MCMDProject\MCMD.ErrorLogging\obj\Release\MCMD.ErrorLogging.dll
+D:\Sominath\MCMDProject\MCMD.ErrorLogging\obj\Release\MCMD.ErrorLogging.pdb

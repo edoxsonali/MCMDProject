@@ -103,13 +103,32 @@
 
                     <hr />
                     <div class="col-sm-6">
-                        <div class="form-group">
+                        @*<div class="form-group">
                             <div class="col-sm-3 control-label">User Type<span>*</span><b>:</b></div>
                             <div class="col-sm-6">
-                                @Html.DropDownListFor(m => m.RoleId, new SelectList(Model.Roles, "RoleId", "Name"),
+                                @Html.DropDownListFor(m => m.RoleId, new SelectList(Model.Roles, "RoleId", "RoleName"),
                                 "-Select-", new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.RoleId, string.Empty)
                                 <span id="RolelabelFirstName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">First Name is required.</span>
+                            </div>
+                        </div>*@
+
+                        <div class="form-group">
+                            <div class="col-sm-3 control-label">Clinic Name<span>*</span><b>:</b></div>
+                            <div class="col-sm-6">
+                                @Html.DropDownListFor(m => m.ClinicName, new SelectList(Model.DoctorClinicInformation, "ClinicInfoId", "ClinicName"),
+                                "-Select-", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.ClinicName, string.Empty)
+                                <span id="ClinicName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Name is required.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 control-label">Speciality<span>*</span><b>:</b></div>
+                            <div class="col-sm-6">
+                                @Html.DropDownListFor(m => m.SpecialityID, new SelectList(Model.speciality, "SpecialityID", "SpecialityName"),
+                                "-Select-", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.SpecialityID, string.Empty)
+                                <span id="ClinicName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Name is required.</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -193,10 +212,12 @@
                      grid.Column("LastName",header: "Last Name", canSort: false),
                       
                      grid.Column("SpecialityName",header: "Speciality", canSort: false),
-                     grid.Column("EmailID",header: "Email ID", canSort: false),
+                    // grid.Column("EmailID",header: "Email ID", canSort: false),
                       grid.Column("EmployeeId",header: "Employee Id", canSort: false),
                      grid.Column("UserPhone",header: "Phone No", canSort: false),
-                      grid.Column("Name",header: "Role", canSort: false),
+                      grid.Column("RoleName",header: "User Type", canSort: false),
+                       grid.Column("ClinicName",header: "Clinic Name", canSort: false),
+                       grid.Column("MembershipType",header: "Upgrad Service", canSort: false), 
                       grid.Column(header: "Option", format: @<text>
 
                         <a id="btnEdit" style="cursor:pointer;" onclick="EditDoctorData( @item.LoginId)">Edit</a>|

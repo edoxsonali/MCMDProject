@@ -20,3 +20,14 @@ D:\Project\MCMDProject\MCMD.IRepository\bin\Release\EntityFramework.xml
 D:\Project\MCMDProject\MCMD.IRepository\obj\Release\MCMD.IRepository.csprojResolveAssemblyReference.cache
 D:\Project\MCMDProject\MCMD.IRepository\obj\Release\MCMD.IRepository.dll
 D:\Project\MCMDProject\MCMD.IRepository\obj\Release\MCMD.IRepository.pdb
+D:\Sominath\MCMDProject\MCMD.IRepository\bin\Release\MCMD.IRepository.dll
+D:\Sominath\MCMDProject\MCMD.IRepository\bin\Release\MCMD.IRepository.pdb
+D:\Sominath\MCMDProject\MCMD.IRepository\bin\Release\MCMD.EntityModel.dll
+D:\Sominath\MCMDProject\MCMD.IRepository\bin\Release\MCMD.ViewModel.dll
+D:\Sominath\MCMDProject\MCMD.IRepository\bin\Release\EntityFramework.dll
+D:\Sominath\MCMDProject\MCMD.IRepository\bin\Release\MCMD.EntityModel.pdb
+D:\Sominath\MCMDProject\MCMD.IRepository\bin\Release\MCMD.ViewModel.pdb
+D:\Sominath\MCMDProject\MCMD.IRepository\bin\Release\EntityFramework.xml
+D:\Sominath\MCMDProject\MCMD.IRepository\obj\Release\MCMD.IRepository.csprojResolveAssemblyReference.cache
+D:\Sominath\MCMDProject\MCMD.IRepository\obj\Release\MCMD.IRepository.dll
+D:\Sominath\MCMDProject\MCMD.IRepository\obj\Release\MCMD.IRepository.pdb

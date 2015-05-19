@@ -24,7 +24,12 @@ namespace MCMD.EntityModel.Administration
         //for Speciality Name
         public string SpecialityName { get; set; }
 
+     
         //for getting Role Name 
-        public string Name { get; set; }
+        public string RoleName { get; set; }
+        //for getting Clinic Name
+        public string ClinicName { get; set; }
+
+        public string MembershipType { get; set; }
     }
 }
