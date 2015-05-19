@@ -24,6 +24,7 @@ namespace MCMD.Web.Controllers.Administration
 
     public class UserController : Controller
     {
+        //somnath changes
         public ApplicationDbContext db = new ApplicationDbContext();
         private IUserRepository userRepository;
         public UserController(IUserRepository _userRepositorys)
