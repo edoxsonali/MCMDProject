@@ -101,7 +101,7 @@
                     </div>
                     <div style='display: none;' id='Docadmincontrol'>
                         <div class="form-group">
-                            <div class="col-sm-4 control-label">Speciality : <span>*</span><b>:</b></div>
+                            <div class="col-sm-4 control-label">Speciality<span>*</span><b>:</b></div>
                             <div class="col-sm-8">
                                 @Html.DropDownListFor(m => m.SpecialityID, new SelectList(Model.Specialitys, "SpecialityID", "SpecialityName"),
                                 "- Select-", new { @class = "form-control" })
