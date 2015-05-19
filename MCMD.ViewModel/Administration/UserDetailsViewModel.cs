@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MCMD.EntityModel.Administration;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using MCMD.EntityModel.Doctor;
 
 
 namespace MCMD.ViewModel.Administration
@@ -18,6 +19,8 @@ namespace MCMD.ViewModel.Administration
        [Required(ErrorMessage = "User Type is required.")]
        public int RoleId { get; set; }
        public List<UserLogin> UserLogins { get; set; }
+       public List<Speciality> speciality { get; set; }
+       public int SpecialityID { get; set; }
 
        [DisplayName("Doctor Id")]
        [Required(ErrorMessage = "Doctor Id is required.")]
@@ -53,7 +56,9 @@ namespace MCMD.ViewModel.Administration
        //[DisplayName("Employee Id")]
        //[Required(ErrorMessage = "Employee Id is required.")]
        public int EmployeeId { get; set; }
-    
+       public List<DoctorClinicInformation> DoctorClinicInformation { get; set; }
+       public int ClinicInfoId { get; set; }
+       public string ClinicName { get; set; }
 
 
     }
