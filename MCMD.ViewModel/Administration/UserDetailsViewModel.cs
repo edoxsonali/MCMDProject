@@ -48,7 +48,7 @@ namespace MCMD.ViewModel.Administration
        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "{0} must be a Number.")]
        public string UserPhone { get; set; }
 
-       public string Name { get; set; }
+       public string RoleName { get; set; }
 
        //[DisplayName("Employee Id")]
        //[Required(ErrorMessage = "Employee Id is required.")]

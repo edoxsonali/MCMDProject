@@ -106,7 +106,7 @@
                         <div class="form-group">
                             <div class="col-sm-3 control-label">User Type<span>*</span><b>:</b></div>
                             <div class="col-sm-6">
-                                @Html.DropDownListFor(m => m.RoleId, new SelectList(Model.Roles, "RoleId", "Name"),
+                                @Html.DropDownListFor(m => m.RoleId, new SelectList(Model.Roles, "RoleId", "RoleName"),
                                 "-Select-", new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.RoleId, string.Empty)
                                 <span id="RolelabelFirstName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">First Name is required.</span>

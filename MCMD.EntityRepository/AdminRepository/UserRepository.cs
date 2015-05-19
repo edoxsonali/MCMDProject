@@ -38,7 +38,7 @@ namespace MCMD.EntityRepository.AdminRepository
                                    EmailID = b.EmailID,
                                    EmployeeId=b.EmployeeId,
                                    MobileNo = b.UserPhone,
-                                   Role = c.Name
+                                   Role = c.RoleName
                                }).ToList();
 
             List<GetViewUsers> allUsers = new List<GetViewUsers>();
@@ -79,7 +79,7 @@ namespace MCMD.EntityRepository.AdminRepository
                                    Speciality=s.SpecialityName,
                                    EmailID = b.EmailID,
                                    MobileNo = b.UserPhone,
-                                   Role = c.Name
+                                   Role = c.RoleName
                                }).ToList();
 
             List<GetViewDoctor> allUsers = new List<GetViewDoctor>();
