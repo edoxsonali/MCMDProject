@@ -17,8 +17,8 @@ namespace MCMD.Web.Controllers.Administration
 
         public ApplicationDbContext db = new ApplicationDbContext();
 
-         private IMediaRepository  MediaRepository;
-         public MediaController(IMediaRepository _MediaRepository)
+        private IMediaRepository MediaRepository;
+        public MediaController(IMediaRepository _MediaRepository)
         {
             this.MediaRepository = _MediaRepository;
         }
@@ -26,30 +26,40 @@ namespace MCMD.Web.Controllers.Administration
         public ActionResult Index()
         {
             var customer = db.medias.ToList();
-            return View(customer); 
+            return View(customer);
         }
 
         #region Create User
         public ActionResult Create()
         {
+            MediaViewModel _MediaVM = new MediaViewModel();
+            _MediaVM.GetMedialist = MediaRepository.GetMedias().Where(x => x.InactiveFlag == "N").ToList();
 
-            return View(); 
+
+            return View(_MediaVM);
 
         }
         [HttpPost]
-        public ActionResult Create(Media media,HttpPostedFileBase file)
+        public ActionResult Create(Media media, MediaViewModel mediaVM, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
                 if (file != null)
                 {
-                    MediaRepository.InsertMedia(media,file);
+                    int id = 1;
+                    Session["Media"] = id;
+                    int MediaSession = Convert.ToInt32(Session["Media"]);
+                    mediaVM.LoginId = MediaSession;
+                    MediaRepository.InsertMedia(media, mediaVM, file);
                     MediaRepository.Save();
-                       
-                return RedirectToAction("Create");
+
+                    @TempData["Message"] = mediaVM.Message;
+
+                    Session["Media"] = null;
+                    return RedirectToAction("Create");
                 }
             }
-            return View(media);
+            return View(mediaVM);
 
         }
 
