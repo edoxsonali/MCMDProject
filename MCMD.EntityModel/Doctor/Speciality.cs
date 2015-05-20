@@ -14,10 +14,10 @@ namespace MCMD.EntityModel.Doctor
         public int SpecialityID { get; set; }
 
 
-       [DisplayName("Speciality")]
-       [RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "Speciality is not valid.")]
-       [Required(ErrorMessage = "Speciality is required.")]
-       [StringLength(50, ErrorMessage = "Speciality cannot be longer than 50 characters.")]
+       //[DisplayName("Speciality")]
+       //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "Speciality is not valid.")]
+       //[Required(ErrorMessage = "Speciality is required.")]
+       //[StringLength(50, ErrorMessage = "Speciality cannot be longer than 50 characters.")]
        public string SpecialityName { get; set; }
 
        public string InactiveFlag { get; set; }

@@ -209,25 +209,25 @@ namespace MCMD.Web.Controllers.Administration
 
         #region View Doctor
           [HttpGet]
-        public ActionResult ViewDoctor(int EmpId = 0, int RoleId = 0, string UserFirstName = "", string UserLastName = "", string UserEmailId = "", string UsePhone = "")
+        public ActionResult ViewDoctor(int EmpId = 0, int SpeID = 0, int RoleId = 0, string UserFirstName = "", string UserLastName = "", string UserEmailId = "", string UsePhone = "", int Clinicid = 0)
         {
             UserDetailsViewModel userDetailsVM = new UserDetailsViewModel();
             userDetailsVM.Roles = userRepository.GetRoles().ToList();
             userDetailsVM.DoctorClinicInformation = userRepository.GetClinicInformation().ToList();//Get Clinic Info
             userDetailsVM.speciality = userRepository.GetSpecialitys().ToList();
 
-            if (EmpId == 0 && RoleId == 0 && string.IsNullOrEmpty(UserFirstName) && string.IsNullOrEmpty(UserEmailId) && string.IsNullOrEmpty(UsePhone))
+            if (EmpId == 0 && RoleId == 0 && SpeID == 0 && string.IsNullOrEmpty(UserFirstName) && string.IsNullOrEmpty(UserEmailId) && string.IsNullOrEmpty(UsePhone) && Clinicid==0)
             {
                 userDetailsVM.GetViewDoctors = userRepository.getAllDoctor().ToList(); 
 
             }
 
             //get Role Id from dropdown
-            if (RoleId != 0 || EmpId != 0 || !string.IsNullOrEmpty(UserFirstName) || !string.IsNullOrEmpty(UserLastName) || !string.IsNullOrEmpty(UserEmailId) || !string.IsNullOrEmpty(UsePhone))
+            if (RoleId != 0 || EmpId != 0 || SpeID != 0 || !string.IsNullOrEmpty(UserFirstName) || !string.IsNullOrEmpty(UserLastName) || !string.IsNullOrEmpty(UserEmailId) || !string.IsNullOrEmpty(UsePhone) || Clinicid!= 0)
             {
                 userDetailsVM.RoleId = RoleId;
 
-                userDetailsVM.GetViewDoctors = userRepository.SearchDoctor(RoleId, EmpId, UserFirstName, UserLastName, UserEmailId, UsePhone).ToList();
+                userDetailsVM.GetViewDoctors = userRepository.SearchDoctor(RoleId, SpeID, EmpId, UserFirstName, UserLastName, UserEmailId, UsePhone, Clinicid).ToList();
             }
 
 
@@ -245,6 +245,8 @@ namespace MCMD.Web.Controllers.Administration
               string useremailid = "";
               string userphone = "";
               string Userlastname = "";
+              int speID = 0;
+              int ClinicID = 0;
 
               if (userDetailsVM.LoginId != 0 || userDetailsVM.RoleId != 0)
               {
@@ -252,6 +254,14 @@ namespace MCMD.Web.Controllers.Administration
                   userRollId = userDetailsVM.RoleId;
 
               }
+            if(!string.IsNullOrEmpty(userDetailsVM.ClinicName))
+            {
+                ClinicID = Convert.ToInt32(userDetailsVM.ClinicName);
+            }
+            if(userDetailsVM.SpecialityID!=0)
+            {
+                speID = userDetailsVM.SpecialityID;
+            }
               if (!string.IsNullOrEmpty(userDetailsVM.FirstName))
               {
                   Userfirstname = userDetailsVM.FirstName;
@@ -271,12 +281,12 @@ namespace MCMD.Web.Controllers.Administration
               {
                   userphone = userDetailsVM.UserPhone;
               }
-              return RedirectToAction("ViewDoctor", new { EmpId = empId, RoleId = userRollId, UserFirstName = Userfirstname, UserLastName = Userlastname, UserEmailId = useremailid, UsePhone = userphone });
+              return RedirectToAction("ViewDoctor", new { EmpId = empId, SpeID = speID, RoleId = userRollId, UserFirstName = Userfirstname, UserLastName = Userlastname, UserEmailId = useremailid, UsePhone = userphone, Clinicid = ClinicID });
 
 
           }
 
-        #endregion
+        #endregion 
 
         #region Edit User Admin/COE
       

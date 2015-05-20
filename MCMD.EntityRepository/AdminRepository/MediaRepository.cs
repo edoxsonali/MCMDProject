@@ -9,6 +9,7 @@ using MCMD.EntityModel.Administration;
 using System.Data.Entity;
 using System.Web;
 using MCMD.ViewModel.Administration;
+using System.IO;
 
 
 namespace MCMD.EntityRepository.AdminRepository
@@ -50,11 +51,11 @@ namespace MCMD.EntityRepository.AdminRepository
                     mediaVM.GetMediacount = DBcontext.medias.Where(x => x.LoginId == mediaVM.LoginId && x.InactiveFlag == "N").ToList();
                     if (mediaVM.GetMediacount.Count() < 2)
                     {
-
-                        string path = System.IO.Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") + file.FileName);
+                        string Imgpath = "~/Media/" + file.FileName;
+                        string path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") + file.FileName);
                         file.SaveAs(path);
                         media.LoginId = mediaVM.LoginId;
-                        media.FolderFilePath = path;
+                        media.FolderFilePath = Imgpath;
                         media.UploadType = file.ContentType;
                         media.InactiveFlag = "N";
                         media.CreatedByID = 1; // for now we add 1 later we change

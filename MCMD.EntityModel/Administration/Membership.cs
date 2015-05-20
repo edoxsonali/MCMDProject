@@ -10,6 +10,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MCMD.EntityModel.Administration
 {
+     // [Table("Membership")]
     public class MCMDMembership
     {
         [Key]

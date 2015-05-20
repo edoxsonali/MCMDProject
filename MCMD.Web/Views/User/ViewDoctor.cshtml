@@ -127,8 +127,8 @@
                             <div class="col-sm-6">
                                 @Html.DropDownListFor(m => m.SpecialityID, new SelectList(Model.speciality, "SpecialityID", "SpecialityName"),
                                 "-Select-", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.SpecialityID, string.Empty)
-                                <span id="ClinicName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Name is required.</span>
+                                @*@Html.ValidationMessageFor(m => m.SpecialityID, string.Empty)*@
+                                @*<span id="ClinicName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Name is required.</span>*@
                             </div>
                         </div>
                         <div class="form-group">
@@ -213,7 +213,7 @@
                       
                      grid.Column("SpecialityName",header: "Speciality", canSort: false),
                     // grid.Column("EmailID",header: "Email ID", canSort: false),
-                      grid.Column("EmployeeId",header: "Employee Id", canSort: false),
+                    //  grid.Column("EmployeeId",header: "Employee Id", canSort: false),
                      grid.Column("UserPhone",header: "Phone No", canSort: false),
                       grid.Column("RoleName",header: "User Type", canSort: false),
                        grid.Column("ClinicName",header: "Clinic Name", canSort: false),
