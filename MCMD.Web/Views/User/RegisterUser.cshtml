@@ -15,7 +15,7 @@
 
 <div class="container">
     <div class="content">
-        <h2>Registration</h2>
+        <h2>All Users Registration</h2>
         <hr />
         @using (Html.BeginForm())
         {
@@ -74,9 +74,9 @@
                     </div>
                     
                     <div class="form-group">
-                        <div class="col-sm-4 control-label">Mobile No<span>*</span><b>:</b></div>
+                        <div class="col-sm-4 control-label">Phone No<span>*</span><b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(u => u.Userlogins.UserPhone, new { @class = "form-control", @type = "phone", @placeholder = "Mobile No format is{ 0123456789, 012-345-6789, (012)-345-6789 }", @maxlength = "15", @autocomplete = "off" })
+                            @Html.TextBoxFor(u => u.Userlogins.UserPhone, new { @class = "form-control", @type = "phone", @placeholder = "Enter Mobile No format is{ 0123456789, 012-345-6789, (012)-345-6789 }", @maxlength = "15", @autocomplete = "off" })
                             @Html.ValidationMessageFor(u => u.Userlogins.UserPhone, string.Empty)
                         </div>
                     </div> 
