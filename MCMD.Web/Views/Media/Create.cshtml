@@ -1,9 +1,46 @@
-﻿@model MCMD.EntityModel.Administration.Media
+﻿@model MCMD.ViewModel.Administration.MediaViewModel
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
+@{
+
+    int Pages = 10;
+    WebGrid grid = new WebGrid(Model.GetMedialist, canPage: true, rowsPerPage: Pages);
+    grid.Pager(WebGridPagerModes.NextPrevious);
+}
+
+<script type="text/javascript">
+
+    //Delete User on click
+    function DeleteUserData(varid) {
+        if (varid != null) {
+            if (confirm('Are you sure want to delete the selected user')) {
+                var deleteInputs = [];
+                //$('.chkview:checked').each(function (i, chk) {
+                deleteInputs.push(varid);
+                //});
+                var url = '@Url.Action("BatchDelete", "Media")';
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    cache: false,
+                    url: url,
+                    traditional: true,
+                    data: { deleteInputs: deleteInputs },
+                    success: function (data) {
+                        var url = '@Url.Action("Create", "Media")';
+                        window.location.href = url;
+
+                    }
+                });
+            }
+        }
+    }
+
+</script>
 
 @using (Html.BeginForm("Create", "Media", null, FormMethod.Post,
                               new { enctype = "multipart/form-data" }))
@@ -14,38 +51,76 @@
     <div class="container">
         <div class="login-container">
             <div class="form-container">
-              
+
                 <h2>Image and Video uploading</h2>
                 <hr />
 
-                <h5 class="text-success">[ Note - Video Uploading Size is 2GB ]</h5> 
+                <h5 class="text-success">[ Note - Video Uploading Size is 1GB ]</h5>
                 <div class="form-horizontal">
                     <div class="validation-summary">@Html.ValidationSummary(true)</div>
                     <div class="form-group">
-                      
-                            <div class="col-sm-6 input-group">
 
-                                <input id="ImagePath" title="Upload a product image"
-                                       type="file" name="file" />
-                            </div>
+                        <div class="col-sm-6 input-group">
+
+                            <input id="ImagePath" title="Upload a product image"
+                                   type="file" name="file" />
                         </div>
-                        <div class="form-group">
+                    </div>
+                    <span class="fancybox-error" style="color:red;">
 
-                            <div class="col-sm-6 input-group">
-                                <button type="Submit" id="btnSave" name="btnRegister">Submit</button>
-                                <button type="button" id="btnscd" name="btnscd" onclick="location.href='@Url.Action("Create", "Media")'">Reset</button>
-                                @*<input type="submit" value="Submit" />*@
-                            </div>
-                        </div>                   
+                        @TempData["Message"]
 
-                </div>             
+                    </span>
+                    <div class="form-group">
+
+                        <div class="col-sm-6 input-group">
+                            <button type="Submit" id="btnSave" name="btnRegister">Submit</button>
+                            <button type="button" id="btnscd" name="btnscd" onclick="location.href='@Url.Action("Create", "Media")'">Reset</button>
+                            @*<input type="submit" value="Submit" />*@
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="form">
+            <div class="col-sm-12">
+                <div class="data-table">
+
+                    @grid.GetHtml(
+                                           tableStyle: "footable",
+                                         footerStyle: "gridFooter",
+                                                alternatingRowStyle: "alt",
+                                                 htmlAttributes: new { id = "grdUsers" },
+                                                 mode: WebGridPagerModes.All,
+                                               firstText: "<< First",
+                            previousText: "< Previous", nextText: "Next >",
+                            lastText: "Last >>",
+                                             columns: new[] {
+                                            // grid.Column("MediaId",header: "Media Id", canSort: false),
+                                             grid.Column("LoginId",header: "Login Id", canSort: false),
+                                             grid.Column("FolderFilePath",header: "Folder File Path", canSort: false),
+                                             grid.Column("UploadType",header: "Upload Type", canSort: false),
+
+                                              grid.Column(header: "Option", format: @<text>
+
+                                                @*<a id="btnEdit" style="cursor:pointer;" onclick="EditUserData( @item.ID)">Edit</a>|*@
+                                                <a id="btnDelete" style="cursor:pointer;" onclick="DeleteUserData( @item.MediaId)">Delete</a>
+                                            </text>)
+                                        })
+
+
+
+                </div>
             </div>
         </div>
     </div>
 
 
 
-   
+
 }
 
 @section Scripts {
