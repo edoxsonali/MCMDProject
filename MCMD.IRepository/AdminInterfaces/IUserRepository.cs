@@ -22,7 +22,7 @@ namespace MCMD.IRepository.AdminInterfaces
 
         IEnumerable<GetViewUsers> SearchUser(int RoleIdVM, int EmpIdVM, string UserFirstNameVm, string UserLastNameVM, string UserEmailIdVM, string UsePhoneVM);
 
-        IEnumerable<GetViewDoctor> SearchDoctor(int RoleIdVM, int EmpIdVM, string UserFirstNameVm, string UserLastNameVM, string UserEmailIdVM, string UsePhoneVM);
+        IEnumerable<GetViewDoctor> SearchDoctor(int RoleIdVM, int SpeIDVM, int EmpIdVM, string UserFirstNameVm, string UserLastNameVM, string UserEmailIdVM, string UsePhoneVM, int ClinicidVM);
         UserLogin GetUserByID(int UserId);
 
         void InsertUserLogins(UserLogin userlogin, UserRegisterViewModel registerVM);
