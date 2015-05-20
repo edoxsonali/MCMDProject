@@ -9,6 +9,7 @@ namespace MCMD.ViewModel.Administration
 {
     public class MediaViewModel
     {
+        //sonali
         public Media Medias { get; set; }
 
         public List<Media> GetMediacount { get; set; }
