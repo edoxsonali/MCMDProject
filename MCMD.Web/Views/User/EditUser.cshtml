@@ -82,7 +82,7 @@
                     <div class="form-group">
                         <div class="col-sm-4 control-label">User Role<span>*</span><b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.DropDownListFor(m => m.RoleID, new SelectList(Model.Roles, "RoleId", "Name"),
+                            @Html.DropDownListFor(m => m.RoleID, new SelectList(Model.Roles, "RoleId", "RoleName"),
                              "-Select-", new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.RoleID, string.Empty)
                             <span id="RolelabelRoleID" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Email is required.</span>
