@@ -22,7 +22,7 @@ namespace MCMD.EntityModel.Administration
 
         [DisplayName("Fees")]
         [Required(ErrorMessage = "Fees must be required.")]
-        public int? Fees { get; set; }
+        public int Fees { get; set; }
 
         [DisplayName("Duration")]
         [Required(ErrorMessage = "Duration must be required.")]

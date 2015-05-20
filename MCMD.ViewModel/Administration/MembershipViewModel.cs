@@ -19,6 +19,7 @@ namespace MCMD.ViewModel.Administration
         public List<MCMDMembership> Membership { get; set; }
         public List<GetViewMembership> GetMember { get; set; }
 
+        public List<MCMDMembership> GetMembers { get; set; }
         [DisplayName("Duration Id")]
         [Required(ErrorMessage = "Duration is required.")]
         public int DurationId { get; set; }
@@ -34,9 +35,9 @@ namespace MCMD.ViewModel.Administration
         public string MembershipType { get; set; }
 
         [DisplayName("Fees")]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "{0} must be a Number.")]
-        [Required(ErrorMessage = "Fees must be required.")]
-        public int? Fees { get; set; }
+      //  [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "{0} must be a Number.")]
+     //   [Required(ErrorMessage = "Fees must be required.")]
+        public int Fees { get; set; }
 
     }
 }

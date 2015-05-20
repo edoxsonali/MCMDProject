@@ -12,7 +12,7 @@
 @{
 
     int Pages = 10;
-    WebGrid grid = new WebGrid(Model.GetMember, canPage: true, rowsPerPage: Pages);
+    WebGrid grid = new WebGrid(Model.GetMembers, canPage: true, rowsPerPage: Pages);
     grid.Pager(WebGridPagerModes.NextPrevious);
 }
 
@@ -47,7 +47,7 @@
                             <span id="Fees" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Fee is required.</span>
                         </div>
                     </div>
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <div class="col-sm-4 control-label">Durations<span>*</span><b>:</b></div>
                         <div class="col-sm-8">
                             @Html.DropDownListFor(m => m.DurationId, new SelectList(Model.Duration_s, "DurationId", "Durations"),
@@ -55,8 +55,8 @@
                             @Html.ValidationMessageFor(u => u.Duration_s, string.Empty)
                             <span id="Durations" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Durations is required.</span>
                         </div>
-                    </div>
-                    <div class="form-group">
+                    </div>*@
+                    @*<div class="form-group">
                         <div class="col-sm-4 control-label">Auto Renaval<span>*</span><b>:</b></div>
                         <div class="col-sm-8">
                             @Html.DropDownListFor(m => m.AutoRenavalId, new SelectList(Model.Months, "AutoRenavalId", "Renaval"),
@@ -64,7 +64,7 @@
                             @Html.ValidationMessageFor(u => u.member.AutoRenaval, string.Empty)
                             <span id="Renaval" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">AutoRenaval time is required.</span>
                         </div>
-                    </div>
+                    </div>*@
 
                     <div class="buttons">
                         <button type="Submit" id="btnCreate" name="btnCreate">Submit</button>
@@ -89,8 +89,8 @@
                      columns: new[] {
                      grid.Column("MembershipType",header: "Membership Type", canSort: false),
                      grid.Column("Fees",header: "Fees", canSort: false),
-                     grid.Column("Duration",header: "Durations", canSort: false),
-                     grid.Column("Renaval",header: "AutoRenaval", canSort: false),
+                   //  grid.Column("Duration",header: "Durations", canSort: false),
+                    // grid.Column("Renaval",header: "AutoRenaval", canSort: false),
                     grid.Column(header: "Option", format: @<text>
 
                         <a id="btnEdit" style="cursor:pointer;" onclick="EditMemberData( @item.MembershipId)">Edit</a>
