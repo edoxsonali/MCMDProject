@@ -19,11 +19,11 @@ namespace MCMD.EntityModel.Administration
         public string LastName { get; set; }
         public string EmailID { get; set; }
 
-        public int EmployeeId { get; set; }
+        public int? EmployeeId { get; set; }
         public string UserPhone { get; set; }
 
 
         //for getting Role Name 
-        public string Name { get; set; }
+        public string RoleName { get; set; }
     }
 }

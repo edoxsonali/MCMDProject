@@ -43,7 +43,7 @@ namespace MCMD.EntityModel.Administration
 
          [DisplayName("Employee Id")]
          [Required(ErrorMessage = "Employee Id is required.")]
-        public int EmployeeId { get; set; }
+        public int? EmployeeId { get; set; }
 
         [DataType(DataType.Password)]
         [DisplayName("Password")]
@@ -59,8 +59,9 @@ namespace MCMD.EntityModel.Administration
 
         public string PasswordSalt { get; set; }
 
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "{0} must be a Number.")]
-        [Required(ErrorMessage = "Mobile No is required.")]
+        [DisplayName("Phone No")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "{0} must be a Number and only 10 digit.")]
+        [Required(ErrorMessage = "Phone No is required.")]
         public string UserPhone { get; set; }
 
         public Nullable<bool> IslockedOut { get; set; }

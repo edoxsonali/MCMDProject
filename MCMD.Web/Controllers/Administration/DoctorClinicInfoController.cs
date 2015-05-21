@@ -101,6 +101,11 @@ namespace MCMD.Web.Controllers.Administration
 
             return View(clinicdetail);
         }
+
+        public ActionResult ClinicTiming()
+        {
+            return View();
+        }
         public static class Enumeration
         {
 

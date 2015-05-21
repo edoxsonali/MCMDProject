@@ -53,7 +53,7 @@ namespace MCMD.EntityRepository.AdminRepository
                 s.EmailID = item.EmailID;
                 s.EmployeeId = item.EmployeeId;
                 s.UserPhone =item.MobileNo;
-                s.Name = item.Role;
+                s.RoleName = item.Role;
                 allUsers.Add(s);
 
             }
@@ -121,25 +121,27 @@ namespace MCMD.EntityRepository.AdminRepository
                                                          new SqlParameter("LastName", UserLastNameVM),
                                                          new SqlParameter("EmailID", UserEmailIdVM),
                                                          new SqlParameter("UserPhone", UsePhoneVM)
-                                                      ).OrderByDescending(x => x.LoginId).ToList();
+                                                      ).ToList();
+                                                      //.OrderByDescending(x => x.LoginId).ToList();
 
 
             return UserInfo.ToList();
 
         }
 
-        public IEnumerable<GetViewDoctor> SearchDoctor(int RoleIdVM, int SpeIdVM, int EmpIdVM, string UserFirstNameVm, string UserLastNameVM, string UserEmailIdVM, string UsePhoneVM, int ClinicidVM)
+        public IEnumerable<GetViewDoctor> SearchDoctor(int LogIdVM, int SpeIdVM, int RoleIdVM, string UserFirstNameVm, string UserLastNameVM, string UserEmailIdVM, string UsePhoneVM, int ClinicidVM)
         {
-            var UserInfo = DBcontext.Database.SqlQuery<GetViewDoctor>("GetViewDoctor @RoleId,@SpecialityID, @EmployeeId, @FirstName,@LastName,@EmailID,@UserPhone,@ClinicInfoId",
-                                                         new SqlParameter("RoleId", RoleIdVM),
-                                                          new SqlParameter("SpecialityID", SpeIdVM),
-                                                         new SqlParameter("EmployeeId", EmpIdVM),
-                                                         new SqlParameter("FirstName", UserFirstNameVm),
-                                                         new SqlParameter("LastName", UserLastNameVM),
-                                                         new SqlParameter("EmailID", UserEmailIdVM),
-                                                         new SqlParameter("UserPhone", UsePhoneVM),
-                                                           new SqlParameter("ClinicInfoId", ClinicidVM)
-                                                      ).OrderByDescending(x => x.LoginId).ToList();
+            var UserInfo = DBcontext.Database.SqlQuery<GetViewDoctor>("GetViewDoctor  @LoginId,@SpecialityID, @RoleId, @FirstName,@LastName,@EmailID,@UserPhone,@ClinicInfoId",
+                                                             new SqlParameter("LoginId", LogIdVM),
+                                                             new SqlParameter("SpecialityID", SpeIdVM),
+                                                             new SqlParameter("RoleId", RoleIdVM),
+                                                             new SqlParameter("FirstName", UserFirstNameVm),
+                                                             new SqlParameter("LastName", UserLastNameVM),
+                                                             new SqlParameter("EmailID", UserEmailIdVM),
+                                                             new SqlParameter("UserPhone", UsePhoneVM),
+                                                             new SqlParameter("ClinicInfoId", ClinicidVM)
+                                                      ).ToList();
+                                                      //OrderByDescending(x => x.LoginId).ToList();
 
 
             return UserInfo.ToList();

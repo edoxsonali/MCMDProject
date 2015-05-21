@@ -6,6 +6,8 @@
       Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+
+
 <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
 <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.reveal.js")"></script>
 <link rel="stylesheet" href="@Url.Content("~/Content/reveal.css")" />
@@ -76,7 +78,7 @@
                     <div class="form-group">
                         <div class="col-sm-4 control-label">Phone No<span>*</span><b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(u => u.Userlogins.UserPhone, new { @class = "form-control", @type = "phone", @placeholder = "Enter Phone No format is{ 0123456789, 012-345-6789, (012)-345-6789 }", @maxlength = "15", @autocomplete = "off" })
+                            @Html.TextBoxFor(u => u.Userlogins.UserPhone, new { @class = "form-control", @type = "phone", @placeholder = "Enter Phone No format is{ 0123456789, 012-345-6789, (012)-345-6789 }", @maxlength = "10", @autocomplete = "off" })
                             @Html.ValidationMessageFor(u => u.Userlogins.UserPhone, string.Empty)
                         </div>
                     </div> 
@@ -106,7 +108,7 @@
                                 @Html.DropDownListFor(m => m.SpecialityID, new SelectList(Model.Specialitys, "SpecialityID", "SpecialityName"),
                                 "- Select-", new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.SpecialityID, string.Empty)
-                                <span id="RoleCElabel" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Covered Entity is required.</span>
+                                <span id="RoleCElabel" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Speciality is required.</span>
                             </div>
                         </div>
                      </div>

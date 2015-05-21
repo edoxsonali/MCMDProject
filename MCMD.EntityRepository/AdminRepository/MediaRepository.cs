@@ -45,72 +45,75 @@ namespace MCMD.EntityRepository.AdminRepository
                 int CheckImgType = Convert.ToInt32(formats.Contains(file.ContentType));
                 int CheckVideoType = Convert.ToInt32(videoFormat.Contains(file.ContentType));
 
-
-                if (CheckImgType != 0)
+                if (CheckImgType != 0 || CheckVideoType != 0)
                 {
-                    mediaVM.GetMediacount = DBcontext.medias.Where(x => x.LoginId == mediaVM.LoginId && x.InactiveFlag == "N").ToList();
-                    if (mediaVM.GetMediacount.Count() < 2)
+                    if (CheckImgType != 0)
                     {
-                        string Imgpath = "~/Media/" + file.FileName;
-                        string path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") + file.FileName);
-                        file.SaveAs(path);
-                        media.LoginId = mediaVM.LoginId;
-                        media.FolderFilePath = Imgpath;
-                        media.UploadType = file.ContentType;
-                        media.InactiveFlag = "N";
-                        media.CreatedByID = 1; // for now we add 1 later we change
-                        media.CreatedDate = DateTime.Now;
-                        media.ModifiedByID = 1;  // for now we add 1 later we change
-                        media.ModifiedDate = DateTime.Now;
-                        DBcontext.medias.Add(media);
+                        mediaVM.GetMediacount = DBcontext.medias.Where(x => x.LoginId == mediaVM.LoginId && x.InactiveFlag == "N").ToList();
+                        if (mediaVM.GetMediacount.Count() < 2)
+                        {
+                            string Imgpath = "~/Media/" + file.FileName;
+                            string path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") + file.FileName);
+                            file.SaveAs(path);
+                            media.LoginId = mediaVM.LoginId;
+                            media.FolderFilePath = Imgpath;
+                            media.UploadType = file.ContentType;
+                            media.InactiveFlag = "N";
+                            media.CreatedByID = 1; // for now we add 1 later we change
+                            media.CreatedDate = DateTime.Now;
+                            media.ModifiedByID = 1;  // for now we add 1 later we change
+                            media.ModifiedDate = DateTime.Now;
+                            DBcontext.medias.Add(media);
 
-                        mediaVM.Message = "Succsessfully save data";
+                            mediaVM.Message = "Succsessfully save data";
 
+                        }
+                        else
+                        {
+                            mediaVM.Message = "Not Allowed to uploade more than 2 image";
+                        }
                     }
-                    else
+
+                    if (CheckVideoType != 0)
                     {
-                        mediaVM.Message = "Not Allowed to uploade more than 2 image";
+                        string filetype = file.ContentType;
+                        mediaVM.GetMediacount = DBcontext.medias.Where(x => x.LoginId == mediaVM.LoginId && x.UploadType == filetype && x.InactiveFlag == "N").ToList();
+                        if (mediaVM.GetMediacount.Count() < 1)
+                        {
+                            //if(file.ContentLength < 1024 * 1024 * 1)
+                            //{
+
+                            string path = System.IO.Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") + file.FileName);
+                            file.SaveAs(path);
+                            media.FolderFilePath = path;
+                            media.LoginId = mediaVM.LoginId;
+                            media.UploadType = file.ContentType;
+                            media.InactiveFlag = "N";
+                            media.CreatedByID = 1; // for now we add 1 later we change
+                            media.CreatedDate = DateTime.Now;
+                            media.ModifiedByID = 1;  // for now we add 1 later we change
+                            media.ModifiedDate = DateTime.Now;
+                            DBcontext.medias.Add(media);
+                            mediaVM.Message = "Succsessfully save data";
+                            //   }
+
+                        }
+                        else
+                        {
+                            mediaVM.Message = "Not Allowed to uploade more than 1 Video";
+                        }
                     }
                 }
-                if (CheckVideoType != 0)
+                else
                 {
-                    string filetype = file.ContentType;
-                    mediaVM.GetMediacount = DBcontext.medias.Where(x => x.LoginId == mediaVM.LoginId && x.UploadType == filetype && x.InactiveFlag == "N").ToList();
-                    if (mediaVM.GetMediacount.Count() < 1)
-                    {
-                        //if(file.ContentLength < 1024 * 1024 * 1)
-                        //{
-
-                        string path = System.IO.Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") + file.FileName);
-                        file.SaveAs(path);
-                        media.FolderFilePath = path;
-                        media.LoginId = mediaVM.LoginId;
-                        media.UploadType = file.ContentType;
-                        media.InactiveFlag = "N";
-                        media.CreatedByID = 1; // for now we add 1 later we change
-                        media.CreatedDate = DateTime.Now;
-                        media.ModifiedByID = 1;  // for now we add 1 later we change
-                        media.ModifiedDate = DateTime.Now;
-                        DBcontext.medias.Add(media);
-                        mediaVM.Message = "Succsessfully save data";
-                        //   }
-
-                    }
-                    else
-                    {
-                        mediaVM.Message = "Not Allowed to uploade more than 1 Video";
-                    }
+                    mediaVM.Message = "This not Image/Video file type";
                 }
+               
 
             }
 
 
-
-
         }
-
-
-
 
 
         public void UpdateMedia(Media media)

@@ -146,6 +146,7 @@ namespace MCMD.Web.Controllers.Administration
 
             UserDetailsViewModel userDetailsVM = new UserDetailsViewModel();
             userDetailsVM.Roles = userRepository.GetRoles().Where(x => x.RoleId!=4).ToList();
+            //get All info od users
             if (EmpId == 0 && RoleId == 0 && string.IsNullOrEmpty(UserFirstName) && string.IsNullOrEmpty(UserEmailId) && string.IsNullOrEmpty(UsePhone))
             {
                          
@@ -153,7 +154,7 @@ namespace MCMD.Web.Controllers.Administration
                  
              }
 
-            //get Role Id from dropdown
+            //get All info for particular search
             if (RoleId != 0 || EmpId != 0 || !string.IsNullOrEmpty(UserFirstName) || !string.IsNullOrEmpty(UserLastName) || !string.IsNullOrEmpty(UserEmailId) || !string.IsNullOrEmpty(UsePhone))
             {
                 userDetailsVM.RoleId = RoleId;
@@ -168,7 +169,7 @@ namespace MCMD.Web.Controllers.Administration
         [HttpPost]
         public ActionResult ViewUser(UserDetailsViewModel userDetailsVM)
         {
-            int empId = 0;
+            int? empId = 0;
             int userRollId = 0;
             string Userfirstname = "";
             string useremailid = "";
@@ -209,25 +210,25 @@ namespace MCMD.Web.Controllers.Administration
 
         #region View Doctor
           [HttpGet]
-        public ActionResult ViewDoctor(int EmpId = 0, int SpeID = 0, int RoleId = 0, string UserFirstName = "", string UserLastName = "", string UserEmailId = "", string UsePhone = "", int Clinicid = 0)
+        public ActionResult ViewDoctor(int LogId = 0, int SpeID = 0, int RoleId = 0, string UserFirstName = "", string UserLastName = "", string UserEmailId = "", string UsePhone = "", int Clinicid = 0)
         {
             UserDetailsViewModel userDetailsVM = new UserDetailsViewModel();
             userDetailsVM.Roles = userRepository.GetRoles().ToList();
             userDetailsVM.DoctorClinicInformation = userRepository.GetClinicInformation().ToList();//Get Clinic Info
             userDetailsVM.speciality = userRepository.GetSpecialitys().ToList();
 
-            if (EmpId == 0 && RoleId == 0 && SpeID == 0 && string.IsNullOrEmpty(UserFirstName) && string.IsNullOrEmpty(UserEmailId) && string.IsNullOrEmpty(UsePhone) && Clinicid==0)
+            if (LogId == 0 && RoleId == 0 && SpeID == 0 && string.IsNullOrEmpty(UserFirstName) && string.IsNullOrEmpty(UserEmailId) && string.IsNullOrEmpty(UsePhone) && Clinicid == 0)
             {
                 userDetailsVM.GetViewDoctors = userRepository.getAllDoctor().ToList(); 
 
             }
 
             //get Role Id from dropdown
-            if (RoleId != 0 || EmpId != 0 || SpeID != 0 || !string.IsNullOrEmpty(UserFirstName) || !string.IsNullOrEmpty(UserLastName) || !string.IsNullOrEmpty(UserEmailId) || !string.IsNullOrEmpty(UsePhone) || Clinicid!= 0)
+            if (RoleId != 0 || LogId != 0 || SpeID != 0 || !string.IsNullOrEmpty(UserFirstName) || !string.IsNullOrEmpty(UserLastName) || !string.IsNullOrEmpty(UserEmailId) || !string.IsNullOrEmpty(UsePhone) || Clinicid != 0)
             {
                 userDetailsVM.RoleId = RoleId;
 
-                userDetailsVM.GetViewDoctors = userRepository.SearchDoctor(RoleId, SpeID, EmpId, UserFirstName, UserLastName, UserEmailId, UsePhone, Clinicid).ToList();
+                userDetailsVM.GetViewDoctors = userRepository.SearchDoctor(LogId,SpeID,RoleId,UserFirstName, UserLastName, UserEmailId, UsePhone, Clinicid).ToList();
             }
 
 
@@ -239,7 +240,7 @@ namespace MCMD.Web.Controllers.Administration
           public ActionResult ViewDoctor(UserDetailsViewModel userDetailsVM)
           {
 
-              int empId = 0;
+              int loginId = 0;
               int userRollId = 0;
               string Userfirstname = "";
               string useremailid = "";
@@ -250,7 +251,7 @@ namespace MCMD.Web.Controllers.Administration
 
               if (userDetailsVM.LoginId != 0 || userDetailsVM.RoleId != 0)
               {
-                  empId = userDetailsVM.LoginId;
+                  loginId = userDetailsVM.LoginId;
                   userRollId = userDetailsVM.RoleId;
 
               }
@@ -281,7 +282,7 @@ namespace MCMD.Web.Controllers.Administration
               {
                   userphone = userDetailsVM.UserPhone;
               }
-              return RedirectToAction("ViewDoctor", new { EmpId = empId, SpeID = speID, RoleId = userRollId, UserFirstName = Userfirstname, UserLastName = Userlastname, UserEmailId = useremailid, UsePhone = userphone, Clinicid = ClinicID });
+              return RedirectToAction("ViewDoctor", new { LogId = loginId, SpeID = speID, RoleId = userRollId, UserFirstName = Userfirstname, UserLastName = Userlastname, UserEmailId = useremailid, UsePhone = userphone, Clinicid = ClinicID });
 
 
           }

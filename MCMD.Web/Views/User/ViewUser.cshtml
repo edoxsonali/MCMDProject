@@ -108,8 +108,8 @@
                             <div class="col-sm-6">
                                 @Html.DropDownListFor(m => m.RoleId, new SelectList(Model.Roles, "RoleId", "RoleName"),
                                 "-Select-", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.RoleId, string.Empty)
-                                <span id="RolelabelFirstName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">First Name is required.</span>
+                                @*@Html.ValidationMessageFor(m => m.RoleId, string.Empty)*@
+                              
                             </div>
                         </div>
                         <div class="form-group">
@@ -194,7 +194,7 @@
                      grid.Column("EmailID",header: "Email ID", canSort: false),
                       grid.Column("EmployeeId",header: "Employee Id", canSort: false),     
                      grid.Column("UserPhone",header: "Phone No", canSort: false),
-                      grid.Column("Name",header: "UserType", canSort: false),                  
+                      grid.Column("RoleName",header: "User Type", canSort: false),                  
                       grid.Column(header: "Option", format: @<text>
 
                         <a id="btnEdit" style="cursor:pointer;" onclick="EditUserData( @item.LoginId)">Edit</a>|
