@@ -28,15 +28,47 @@ namespace MCMD.Web.Controllers.Administration
 
         public ActionResult Create()
         {
+
+            int Id = (Convert.ToInt32(Session["EditDoctor"]));
+
+            Session["EditDoctor"] = Id;
             //Create object of View Model Class
             DoctorClinicInformationViewModel doctorClinicVM = new DoctorClinicInformationViewModel();
 
             //Convert the into  the List
+            //Convert the into  the List
             doctorClinicVM.countyList = doctorClinicRepository.GetCountrys().ToList();
             doctorClinicVM.stateList = doctorClinicRepository.GetStates().ToList();
             doctorClinicVM.cityList = doctorClinicRepository.GetCities().ToList();
-            //doctorClinicVM.doctorClinicList = doctorClinicRepository.GetClinics().ToList();
+            doctorClinicVM.UserLogins = doctorClinicRepository.GetUsers().ToList();
 
+            if (Id != 0)
+            {
+
+
+                List<DoctorClinicInformation> NewClinic = doctorClinicRepository.GetClinic().Where(x => x.LoginId == Id).ToList();
+                //List<GetViewCliniInfo> _NewDoctor = doctorClinicRepository.GetClinics().Where(x => x.ClinicInfoId == Id).ToList();
+
+
+                foreach (var item in NewClinic)
+                {
+
+                    doctorClinicVM.ClinicName = item.ClinicName;
+                    doctorClinicVM.ClinicAddress = item.ClinicAddress;
+                    doctorClinicVM.ClinicPhoneNo = item.ClinicPhoneNo;
+                    doctorClinicVM.ClinicFees = item.ClinicFees;
+                    doctorClinicVM.Country = item.Country;
+                    doctorClinicVM.State = item.State;
+                    doctorClinicVM.City = item.City;
+                    doctorClinicVM.ClinicServices = item.ClinicServices;
+                    doctorClinicVM.AwardsAndRecognization = item.AwardsAndRecognization;
+                    doctorClinicVM.AboutClinic = item.AboutClinic;
+                    doctorClinicVM.ZipCode = item.ZipCode;
+                }
+
+
+
+            }
             return View(doctorClinicVM);
         }
         [HttpPost]
@@ -48,35 +80,35 @@ namespace MCMD.Web.Controllers.Administration
                 ModelState.Clear();  // Cleare Model state
                 if (ModelState.IsValid)
                 {
+                    int Id = (Convert.ToInt32(Session["EditDoctor"]));
 
-                  
                     var newClinic = new DoctorClinicInformation();
 
 
-                     Enumeration.GetAll<MCMD.ViewModel.Administration.DoctorClinicInformationViewModel.ClinicHours>();
-                   
+                    //Enumeration.GetAll<MCMD.ViewModel.Administration.DoctorClinicInformationViewModel.ClinicHours>();
 
-                    newClinic.ClinicName = _doctorClinicVM.DoctorClinicInformations.ClinicName;
-                    newClinic.ClinicAddress = _doctorClinicVM.DoctorClinicInformations.ClinicAddress;
-                    newClinic.ClinicPhoneNo = _doctorClinicVM.DoctorClinicInformations.ClinicPhoneNo;
-                    newClinic.ClinicFees = _doctorClinicVM.DoctorClinicInformations.ClinicFees;
-                    newClinic.ClinicTimeFrom = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicTimeFrom).Substring(0, 8));// TimeSpan.Parse(Convert.ToString(DateTime.Now.TimeOfDay).Substring(0, 8));
-                    newClinic.ClinicTimeTo = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicTimeTo).Substring(0, 8));
-                    newClinic.ClinicLunchbreakFrom = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicLunchbreakFrom).Substring(0, 8));
-                    newClinic.ClinicLunchbreakTo = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicLunchbreakTo).Substring(0, 8));
-                    newClinic.Country = _doctorClinicVM.DoctorClinicInformations.Country;
-                    newClinic.State = _doctorClinicVM.DoctorClinicInformations.State;
-                    newClinic.City = _doctorClinicVM.DoctorClinicInformations.City;
-                    newClinic.ZipCode = _doctorClinicVM.DoctorClinicInformations.ZipCode;
-                    newClinic.ClinicServices = _doctorClinicVM.DoctorClinicInformations.ClinicServices;
-                    newClinic.AwardsAndRecognization = _doctorClinicVM.DoctorClinicInformations.AwardsAndRecognization;
-                    newClinic.AboutClinic = _doctorClinicVM.DoctorClinicInformations.AboutClinic;
+
+                    newClinic.ClinicName = _doctorClinicVM.ClinicName;
+                    newClinic.ClinicAddress = _doctorClinicVM.ClinicAddress;
+                    newClinic.ClinicPhoneNo = _doctorClinicVM.ClinicPhoneNo;
+                    newClinic.ClinicFees = _doctorClinicVM.ClinicFees;
+                    //newClinic.ClinicTimeFrom = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicTimeFrom).Substring(0, 8));// TimeSpan.Parse(Convert.ToString(DateTime.Now.TimeOfDay).Substring(0, 8));
+                    //newClinic.ClinicTimeTo = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicTimeTo).Substring(0, 8));
+                    //newClinic.ClinicLunchbreakFrom = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicLunchbreakFrom).Substring(0, 8));
+                    //newClinic.ClinicLunchbreakTo = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicLunchbreakTo).Substring(0, 8));
+                    newClinic.Country = _doctorClinicVM.Country;
+                    newClinic.State = _doctorClinicVM.State;
+                    newClinic.City = _doctorClinicVM.City;
+                    newClinic.ZipCode = _doctorClinicVM.ZipCode;
+                    newClinic.ClinicServices = _doctorClinicVM.ClinicServices;
+                    newClinic.AwardsAndRecognization = _doctorClinicVM.AwardsAndRecognization;
+                    newClinic.AboutClinic = _doctorClinicVM.AboutClinic;
                     newClinic.InactiveFlag = "N";
                     newClinic.CreatedByID = 1;
                     newClinic.CreatedDate = DateTime.Now;
                     newClinic.ModifiedByID = 1;
                     newClinic.ModifiedDate = DateTime.Now;
-                    newClinic.LoginId = 1;// for now we add 1 later we change
+                    newClinic.LoginId = Id;// for now we add 1 later we change
 
                     doctorClinicRepository.InsertClinic(newClinic);
                     doctorClinicRepository.Save();

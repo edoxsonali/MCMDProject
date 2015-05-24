@@ -33,6 +33,10 @@ namespace MCMD.EntityRepository.AdminRepository
         {
             return DBcontext.medias.Find(ID);
         }
+        public IEnumerable<UserLogin> GetUsers()
+        {
+            return DBcontext.UserLogins.ToList();
+        }
 
         public void InsertMedia(Media media, MediaViewModel mediaVM, HttpPostedFileBase file)
         {

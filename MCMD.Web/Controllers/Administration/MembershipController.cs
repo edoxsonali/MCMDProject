@@ -68,6 +68,8 @@ namespace MCMD.Web.Controllers.Administration
 
                 //    _memberShipVM.DurationId = Convert.ToInt32(item.Duration);
                   //  _memberShipVM.AutoRenavalId = Convert.ToInt32(item.AutoRenaval);
+
+                    Session["EditMembership"] = null;
                 }
 
             }

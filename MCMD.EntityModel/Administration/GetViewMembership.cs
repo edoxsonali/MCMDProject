@@ -16,8 +16,8 @@ namespace MCMD.EntityModel.Administration
      //   public int AutoRenaval { get; set; }
         public string InactiveFlag { get; set; }
         //for geting Duration
-        public string Duration { get; set; }
+      //  public string Duration { get; set; }
         //for geting Autorenaval
-        public string Renaval { get; set; }
+      //  public string Renaval { get; set; }
     }
 }

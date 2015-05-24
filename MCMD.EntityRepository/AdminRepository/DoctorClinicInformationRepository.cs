@@ -9,7 +9,7 @@ using MCMD.EntityModel;
 using MCMD.EntityRepository.AdminRepository;
 using System.Data.Entity;
 using MCMD.EntityModel.Administration;
-using MCMD.EntityModel.Doctor;
+
 
 namespace MCMD.EntityRepository.AdminRepository
 {
@@ -19,6 +19,11 @@ namespace MCMD.EntityRepository.AdminRepository
         public DoctorClinicInformationRepository(ApplicationDbContext DBcontext)
         {
             this.DBcontext = DBcontext;
+        }
+        public IEnumerable<DoctorClinicInformation> GetClinic()
+        {
+
+            return DBcontext.DoctorsClinicInfos.ToList();
         }
         public IEnumerable<GetViewCliniInfo> GetClinics()
         {
@@ -34,8 +39,8 @@ namespace MCMD.EntityRepository.AdminRepository
                                      ClinicAddress = n.ClinicAddress,
                                      ClinicPhoneNo = n.ClinicPhoneNo,
                                      ClinicFees = n.ClinicFees,
-                                     ClinicTimeFrom = n.ClinicTimeFrom,
-                                     ClinicTimeTo = n.ClinicTimeTo,
+                                  //   ClinicTimeFrom = n.ClinicTimeFrom,
+                                  //   ClinicTimeTo = n.ClinicTimeTo,
                                      StateName = c.StateName,
                                      CityName = b.CityName,
                                      ClinicServices = n.ClinicServices
@@ -53,8 +58,8 @@ namespace MCMD.EntityRepository.AdminRepository
                 s.ClinicAddress = item.ClinicAddress;
                 s.ClinicPhoneNo = item.ClinicPhoneNo;
                 s.ClinicFees = item.ClinicFees;
-                s.ClinicTimeFrom = item.ClinicTimeFrom;
-                s.ClinicTimeTo = item.ClinicTimeTo;
+              //  s.ClinicTimeFrom = item.ClinicTimeFrom;
+              //  s.ClinicTimeTo = item.ClinicTimeTo;
                 s.StateName = item.StateName;
                 s.CityName = item.CityName;
                 s.ClinicServices = item.ClinicServices;
@@ -77,6 +82,10 @@ namespace MCMD.EntityRepository.AdminRepository
         public IEnumerable<City> GetCities()
         {
             return DBcontext.cities.ToList();
+        }
+        public IEnumerable<UserLogin> GetUsers()
+        {
+            return DBcontext.UserLogins.ToList();
         }
         public DoctorClinicInformation GetClinicById(int clinicInfoId)
         {

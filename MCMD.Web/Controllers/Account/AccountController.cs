@@ -76,6 +76,10 @@ namespace MCMD.Web.Controllers.Account
                    
                 }
             }
+
+            // For DOCTOR redirect
+           // return RedirectToAction("viewpageName", "Controller", new { area = "Doctor" });
+
             return View(loginVM);
         }
 

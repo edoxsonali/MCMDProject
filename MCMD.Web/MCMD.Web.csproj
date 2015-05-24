@@ -163,6 +163,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\AreaConfig.cs" />
+    <Compile Include="Areas\DoctorController.cs" />
+    <Compile Include="Areas\Doctor\DoctorAreaRegistration.cs" />
     <Compile Include="Controllers\Account\AccountController.cs" />
     <Compile Include="Controllers\Administration\DoctorClinicInfoController.cs" />
     <Compile Include="Controllers\Administration\DoctorInfoController.cs" />
@@ -172,6 +175,7 @@
     <Compile Include="Controllers\Administration\UpgradeServiceController.cs" />
     <Compile Include="Controllers\Administration\UserController.cs" />
     <Compile Include="Controllers\Doctor\HelpController.cs" />
+    <Compile Include="Controllers\Doctor\RegistorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -817,13 +821,20 @@
     <Content Include="Content\theme\rs-plugin\font\revicons.woff" />
     <Content Include="Content\theme\rs-plugin\js\.DS_Store" />
     <Content Include="Areas\Administration\Views\web.config" />
+    <Content Include="Areas\Doctor\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\ie-emulation-modes-warning.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\jquery.reveal.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -892,7 +903,6 @@
     <Content Include="Views\Speciality\Create.cshtml" />
     <Content Include="Views\User\RegisterUser.cshtml" />
     <Content Include="Views\Membership\Create.cshtml" />
-    <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\User\ViewDoctor.cshtml" />
     <Content Include="Views\Help\Create.cshtml" />
     <Content Include="Views\DoctorClinicInfo\Create.cshtml" />
@@ -905,12 +915,18 @@
     <Content Include="Views\UpgradeService\Create.cshtml" />
     <Content Include="Views\UpgradeService\ViewUpgradeServices.cshtml" />
     <Content Include="Views\DoctorClinicInfo\ClinicTiming.cshtml" />
+    <Content Include="Views\Shared\_ThemeLayout.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Register\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Controllers\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
+    <Folder Include="Areas\Doctor\Controllers\" />
+    <Folder Include="Areas\Doctor\Models\" />
+    <Folder Include="Areas\Doctor\Views\Shared\" />
     <Folder Include="Media\" />
   </ItemGroup>
   <ItemGroup>

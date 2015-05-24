@@ -34,21 +34,21 @@ namespace MCMD.EntityModel.Doctor
         [Required(ErrorMessage = "ClinicFees is required.")]
         public int ClinicFees { get; set; }
 
-        [DisplayName("ClinicTime From")]
-        [Required(ErrorMessage = "ClinicTime From is required.")]
-        public TimeSpan ClinicTimeFrom { get; set; }
+        //[DisplayName("ClinicTime From")]
+        //[Required(ErrorMessage = "ClinicTime From is required.")]
+        //public TimeSpan ClinicTimeFrom { get; set; }
 
-        [DisplayName("ClinicTime To ")]       
-        [Required(ErrorMessage = "ClinicTime To is required.")]
-        public TimeSpan ClinicTimeTo { get; set; }
+        //[DisplayName("ClinicTime To ")]
+        //[Required(ErrorMessage = "ClinicTime To is required.")]
+        //public TimeSpan ClinicTimeTo { get; set; }
 
-        [DisplayName("ClinicLunchbreak From ")]
-        [Required(ErrorMessage = "ClinicLunchbreak To is required.")]
-        public TimeSpan ClinicLunchbreakFrom { get; set; }
+        //[DisplayName("ClinicLunchbreak From ")]
+        //[Required(ErrorMessage = "ClinicLunchbreak To is required.")]
+        //public TimeSpan ClinicLunchbreakFrom { get; set; }
 
-        [DisplayName("ClinicLunchbreak To ")]
-        [Required(ErrorMessage = "ClinicLunchbreak To is required.")]
-        public TimeSpan ClinicLunchbreakTo { get; set; }
+        //[DisplayName("ClinicLunchbreak To ")]
+        //[Required(ErrorMessage = "ClinicLunchbreak To is required.")]
+        //public TimeSpan ClinicLunchbreakTo { get; set; }
 
         [DisplayName("Country")]
         //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "ClinicName is not valid.")]

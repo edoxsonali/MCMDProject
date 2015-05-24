@@ -54,6 +54,9 @@
 
                 <h2>Image and Video uploading</h2>
                 <hr />
+                <div style="font-size:large;color:#1f317f">
+                    @TempData["UserName"]
+                </div>
 
                 <h5 class="text-success">[ Note - Video Uploading Size is 1GB ]</h5>
                 <div class="form-horizontal">
@@ -77,9 +80,10 @@
                     </span>
                     <div class="form-group">
 
-                        <div class="col-sm-6 input-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="button" id="btnscd" name="btnscd" onclick="location.href='@Url.Action("ViewDoctor", "User")'">Back</button>
                             <button type="Submit" id="btnSave" name="btnRegister">Submit</button>
-                            <button type="button" id="btnscd" name="btnscd" onclick="location.href='@Url.Action("Create", "Media")'">Reset</button>
+                            <button type="button" id="btnscd" name="btnscd" onclick="location.href='@Url.Action("Create", "UpgradeService")'">Next</button>
                             @*<input type="submit" value="Submit" />*@
                         </div>
                     </div>
@@ -104,7 +108,7 @@
                             lastText: "Last >>",
                                              columns: new[] {
                                             // grid.Column("MediaId",header: "Media Id", canSort: false),
-                                             grid.Column("LoginId",header: "Login Id", canSort: false),
+                                          //   grid.Column("LoginId",header: "Login Id", canSort: false),
                                            //  grid.Column("FolderFilePath",header: "Folder File Path", canSort: false),
 
                                               grid.Column("FolderFilePath", header: "Image",
@@ -117,7 +121,7 @@
                 @*grid.Column("FolderFilePath", header: "Image", format: @<text><img src=Url.Content(@item.FolderFilePath) alt="@item.FolderFilePath" width="200px" height="100px"/></text>),*@
 
 
-                                             grid.Column("UploadType",header: "Upload Type", canSort: false),
+                                            // grid.Column("UploadType",header: "Upload Type", canSort: false),
 
                                               grid.Column(header: "Option", format: @<text>
 

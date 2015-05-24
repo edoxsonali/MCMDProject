@@ -4,16 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MCMD.Web.Controllers.Doctor
+namespace MCMD.Web.Areas
 {
-    public class ShortDoctorRegController : Controller
+    public class DoctorController : Controller
     {
-        // GET: ShortDoctorReg
+        // GET: Doctor
         public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult Create()
         {
             return View();
         }

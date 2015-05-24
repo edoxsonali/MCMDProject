@@ -33,16 +33,16 @@ namespace MCMD.EntityRepository.AdminRepository
         public IEnumerable<GetViewMembership> GetMember()
         {
             var AllMemberInfo = (from n in DBcontext.Memberships
-                                 join b in DBcontext.DurationList on n.Duration equals b.DurationId
-                                 join c in DBcontext.AutoRenavals on n.AutoRenaval equals c.AutoRenavalId
+                              //   join b in DBcontext.DurationList on n.Duration equals b.DurationId
+                              //   join c in DBcontext.AutoRenavals on n.AutoRenaval equals c.AutoRenavalId
                                  where n.InactiveFlag == "N"
                                  select new
                                  {
                                      MembershipId=n.MembershipId,
                                      MembershipType = n.MembershipType,
                                      Fees = n.Fees,
-                                     Duration = b.Durations,
-                                     AutoRenaval = c.Renaval
+                                 //    Duration = b.Durations,
+                                 //    AutoRenaval = c.Renaval
 
                                  }).ToList();
             List<GetViewMembership> allMember = new List<GetViewMembership>();
@@ -53,8 +53,8 @@ namespace MCMD.EntityRepository.AdminRepository
                 s.MembershipId = item.MembershipId;
                 s.MembershipType = item.MembershipType;
                 s.Fees = item.Fees;
-                s.Duration = item.Duration;
-                s.Renaval = item.AutoRenaval;
+           //     s.Duration = item.Duration;
+            //    s.Renaval = item.AutoRenaval;
 
                 allMember.Add(s);
 

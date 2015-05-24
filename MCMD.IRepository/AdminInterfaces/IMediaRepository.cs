@@ -13,6 +13,9 @@ namespace MCMD.IRepository.AdminInterfaces
     {
          IEnumerable<Media> GetMedias();
         Media GetMediaByID(int ID);
+        IEnumerable<UserLogin> GetUsers();
+       
+
         void InsertMedia(Media Media,MediaViewModel mediaVM, HttpPostedFileBase file);
         void UpdateMedia(Media Media);
         void DeleteMedia(int MediaID);

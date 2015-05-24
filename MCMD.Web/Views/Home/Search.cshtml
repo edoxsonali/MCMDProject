@@ -1,150 +1,150 @@
 ﻿
 @{
     ViewBag.Title = "Search";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_ThemeLayout.cshtml";
 }
-<div class="complete-content">
 
 
-    <div class="parallax-out wpb_row vc_row-fluid ihome-parallax">
+<div class="parallax-out wpb_row vc_row-fluid ihome-parallax">
 
 
-        <div id="second" class="upb_row_bg vcpb-hz-jquery" data-upb_br_animation="" data-parallax_sense="30" data-bg-override="ex-full">
+    <div id="second" class="upb_row_bg vcpb-hz-jquery" data-upb_br_animation="" data-parallax_sense="30" data-bg-override="ex-full">
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 no-pad col-xs-12 col-sm-12">
+        <div class="container">
+            <div class="row">
+                @*<div class="col-md-12 no-pad col-xs-12 col-sm-12">
                         <h3 style="text-align: center"> <div class="fa fa-search"></div> &nbsp;Find a doctor| Book an appointment  | Meet the doctor </h3>
 
+                    </div>*@
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 column-element" style="border-bottom: none; padding-bottom: 5px; padding-top: 0px;">
+                    <div class="col-md-1 col-sm-1 col-lg-1 col-xs-1 column-element" style="border-bottom: none">
                     </div>
-                    <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 column-element" style="border-bottom: none; padding-bottom: 5px; padding-top: 0px;">
-                        <div class="col-md-1 col-sm-1 col-lg-1 col-xs-1 column-element" style="border-bottom: none">
-                        </div>
-                        <div class="col-md-8 col-sm-8 col-lg-8 col-xs-8 column-element" style="border-bottom: none; padding-right: 0px; padding-top: 0px;" data-wow-delay="1.5s" data-wow-offset="200">
+                    <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 column-element" style="border-bottom: none; padding-right: 0px; padding-top: 0px;" data-wow-delay="1.5s" data-wow-offset="200">
 
 
-                            <!--Sidebar-item-->
-                            <div class="post-tabs wow fadeInLeft" data-wow-delay="0.5s" data-wow-offset="50">
+                        <!--Sidebar-item-->
+                        <div class="post-tabs wow fadeInLeft" data-wow-delay="0.5s" data-wow-offset="50">
 
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#popular" data-toggle="tab" style="font-size: medium">Speciality</a></li>
-                                    <li><a href="#recent" data-toggle="tab" style="font-size: medium">Doctor</a></li>
-                                    <li><a href="#comment" data-toggle="tab" style="font-size: medium">Clinic</a></li>
-
-                                </ul>
-
-                                <!-- Tab panes -->
-                                <div class="tab-content" style="box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);">
-
-                                    <!--popular posts-->
-                                    <div class="fade in tab-pane active" id="popular">
-
-                                        <div class="popular-post-box" style="padding-top: 10px; padding-bottom: 0px">
-
-                                            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                                                <%--<input type="text" class="contact2-textbox" placeholder="Select Speciality*" name="name" id="name" style="margin-bottom: 10px;" />--%>
-                                                <select class="contact2-textbox" style="margin-bottom: 10px;">
-                                                    <option value="volvo">Dentist</option>
-                                                    <option value="saab">Ayurveda</option>
-                                                    <option value="mercedes">Psychiatrist</option>
-                                                    <option value="audi">Spa</option>
-                                                </select>
-
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                                                <%--<input type="text" class="contact2-textbox" placeholder="Location*" name="name" id="Text1" style="margin-bottom: 10px;" />--%>
-                                                <select class="contact2-textbox" style="margin-bottom: 10px;">
-                                                    <option value="volvo">Pune</option>
-                                                    <option value="saab">Mumbai</option>
-                                                    <option value="mercedes">Nagpur</option>
-                                                    <option value="audi">Goa</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                    <!--popular posts end-->
-                                    <!--Recent posts-->
-                                    <div class="tab-pane fade" id="recent">
-
-                                        <div class="popular-post-box" style="padding-top: 10px; padding-bottom: 0px">
-                                            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                                                <%--<input type="text" class="contact2-textbox" placeholder="Select Doctor*" name="name" id="Text2" style="margin-bottom: 10px;" />--%>
-                                                <select class="contact2-textbox" style="margin-bottom: 10px;">
-                                                    <option value="volvo">Select Doctor*</option>
-                                                    <option value="saab">Ayurveda</option>
-                                                    <option value="mercedes">Psychiatrist</option>
-                                                    <option value="audi">Spa</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                                                <%--<input type="text" class="contact2-textbox" placeholder="Location*" name="name" id="Text3" style="margin-bottom: 10px;" />--%>
-                                                <select class="contact2-textbox" style="margin-bottom: 10px;">
-                                                    <option value="volvo">Pune</option>
-                                                    <option value="saab">Mumbai</option>
-                                                    <option value="mercedes">Nagpur</option>
-                                                    <option value="audi">Goa</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                    <!--Recent posts End-->
-                                    <!--Comments-->
-                                    <div class="tab-pane fade" id="comment">
-
-                                        <div class="popular-post-box" style="padding-top: 10px; padding-bottom: 0px">
-
-                                            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                                                <%--<input type="text" class="contact2-textbox" placeholder="Clinic*" name="name" id="Text4" style="margin-bottom: 10px;" />--%>
-                                                <select class="contact2-textbox" style="margin-bottom: 10px;">
-                                                    <option value="volvo">Select Clinic*</option>
-                                                    <option value="saab">Ayurveda</option>
-                                                    <option value="mercedes">Psychiatrist</option>
-                                                    <option value="audi">Spa</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                                                <%--<input type="text" class="contact2-textbox" placeholder="Location*" name="name" id="Text5" style="margin-bottom: 10px;" />--%>
-                                                <select class="contact2-textbox" style="margin-bottom: 10px;">
-                                                    <option value="volvo">Pune</option>
-                                                    <option value="saab">Mumbai</option>
-                                                    <option value="mercedes">Nagpur</option>
-                                                    <option value="audi">Goa</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <!--Comments end-->
-
-
-                                </div>
-                                <!-- Tab panes end-->
-
-                            </div>
-                            <!-- side item-end -->
-
-
-
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3 column-element  " style="border-bottom: none; padding-left: 0px;">
-                            <br /><br /><br />
-                            <ul class="primary-buttons ">
-                                <li><a href="#" class="inner-page-butt-blue large-but fa fa-search" style="font-size: x-large">&nbsp;&nbsp;Search &nbsp;</a></li>
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#popular" data-toggle="tab" style="font-size: medium">Speciality</a></li>
+                                <li><a href="#recent" data-toggle="tab" style="font-size: medium">Doctor</a></li>
+                                <li><a href="#comment" data-toggle="tab" style="font-size: medium">Clinic</a></li>
 
                             </ul>
 
+                            <!-- Tab panes -->
+                            <div class="tab-content" style="box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);">
+
+                                <!--popular posts-->
+                                <div class="fade in tab-pane active" id="popular">
+
+                                    <div class="popular-post-box" style="padding-top: 10px; padding-bottom: 0px">
+
+                                        <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
+
+                                            <select class="contact2-textbox" style="margin-bottom: 10px;">
+                                                <option value="volvo">Dentist</option>
+                                                <option value="saab">Ayurveda</option>
+                                                <option value="mercedes">Psychiatrist</option>
+                                                <option value="audi">Spa</option>
+                                            </select>
+
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+                                            <select class="contact2-textbox" style="margin-bottom: 10px;">
+                                                <option value="volvo">Pune</option>
+                                                <option value="saab">Mumbai</option>
+                                                <option value="mercedes">Nagpur</option>
+                                                <option value="audi">Goa</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3 column-element  " style="padding-top: 0px; padding-bottom: 0px;">
+
+                                            <ul class="primary-buttons ">
+                                                <li><a href="#" class="inner-page-butt-blue large-but fa fa-search" style="font-size: x-large">&nbsp;&nbsp;Search &nbsp;</a></li>
+
+                                            </ul>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <!--popular posts end-->
+                                <!--Recent posts-->
+                                <div class="tab-pane fade" id="recent">
+
+                                    <div class="popular-post-box" style="padding-top: 10px; padding-bottom: 0px">
+                                        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+
+                                            <select class="contact2-textbox" style="margin-bottom: 10px;">
+                                                <option value="volvo">Select Doctor*</option>
+                                                <option value="saab">Ayurveda</option>
+                                                <option value="mercedes">Psychiatrist</option>
+                                                <option value="audi">Spa</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+
+                                            <select class="contact2-textbox" style="margin-bottom: 10px;">
+                                                <option value="volvo">Pune</option>
+                                                <option value="saab">Mumbai</option>
+                                                <option value="mercedes">Nagpur</option>
+                                                <option value="audi">Goa</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <!--Recent posts End-->
+                                <!--Comments-->
+                                <div class="tab-pane fade" id="comment">
+
+                                    <div class="popular-post-box" style="padding-top: 10px; padding-bottom: 0px">
+
+                                        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+
+                                            <select class="contact2-textbox" style="margin-bottom: 10px;">
+                                                <option value="volvo">Select Clinic*</option>
+                                                <option value="saab">Ayurveda</option>
+                                                <option value="mercedes">Psychiatrist</option>
+                                                <option value="audi">Spa</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+
+                                            <select class="contact2-textbox" style="margin-bottom: 10px;">
+                                                <option value="volvo">Pune</option>
+                                                <option value="saab">Mumbai</option>
+                                                <option value="mercedes">Nagpur</option>
+                                                <option value="audi">Goa</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--Comments end-->
+
+
+                            </div>
+                            <!-- Tab panes end-->
+
+
                         </div>
+                        <!-- side item-end -->
+
+
                     </div>
 
                 </div>
-                <div class="row">
 
-                    <div class=" col-lg-4 col-sm-4 col-md-5 col-xs-12" data-wow-delay="1.5s" data-wow-offset="200">
+            </div>
+            <div class="row">
+
+                @*<div class=" col-lg-4 col-sm-4 col-md-5 col-xs-12" data-wow-delay="1.5s" data-wow-offset="200">
                         <!-- tabs left -->
                         <div class="tabbable tabs-left">
                             <ul class="nav nav-tab nav nav-tabs col-md-12 col-sm-12 col-xs-12">
@@ -158,113 +158,71 @@
                                 <li><a href="#" data-toggle="tab"><i class="icon-stethoscope dept-tabs-icon"></i><span class="tabs-heads">Cardiac Clinic</span><i class="right-arr"></i></a></li>
                                 <li><a href="#" data-toggle="tab"><i class="icon-hospital dept-tabs-icon"></i><span class="tabs-heads">Outpatient Surgery</span><i class="right-arr"></i></a></li>
                                 <li><a href="#" data-toggle="tab"><i class="icon-ambulance dept-tabs-icon"></i><span class="tabs-heads">Ophthalmology Clinic</span><i class="right-arr"></i></a></li>
-                                <%--
-                                <li><a href="#" data-toggle="tab"><i class="icon-hospital dept-tabs-icon"></i><span class="tabs-heads">Cardiac Clinic</span><i class="right-arr"></i></a></li>--%>
-                                <%--
-                                <li><a href="#" data-toggle="tab"><i class="icon-eye-open dept-tabs-icon"></i><span class="tabs-heads">Outpatient Surgery</span><i class="right-arr"></i></a></li>--%>
+
 
                             </ul>
 
                         </div>
-                    </div>
+                    </div>*@
 
-                    <div class="float-right col-lg-8 col-sm-8 col-md-8 col-xs-12" style="padding-top: 5px">
+                <div class="float-right col-lg-8 col-sm-8 col-md-8 col-xs-12" style="padding-top: 5px">
 
-                        <div class="iconlist-wrap">
-                            <div class="subtitle notViewed wow fadeInRight" data-wow-delay="0.5s" data-wow-offset="20">Why <span class="iconlist-mid-title">Choose</span> Us</div>
-                            <ul>
-                                <li class="notViewed wow fadeInDown" data-wow-delay="0.5s" data-wow-offset="50">
-                                    <i class="icon-hospital2 icon-list-icons"></i>
-                                    <div class="iconlist-content">
+                    <div class="iconlist-wrap">
+                        <div class="subtitle notViewed wow fadeInRight" data-wow-delay="0.5s" data-wow-offset="20">Why <span class="iconlist-mid-title">Choose</span> Us</div>
+                        <ul>
+                            <li class="notViewed wow fadeInDown" data-wow-delay="0.5s" data-wow-offset="50">
+                                <i class="icon-hospital2 icon-list-icons"></i>
+                                <div class="iconlist-content">
 
-                                        <div class="iconlist-title">Find a doctor</div>
-                                        <p class="iconlist-text">
-                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                            doloremque laudantium, totam rem aperiam.
-                                        </p>
-                                    </div>
-
-                                </li>
-
-                                <li class="notViewed wow fadeInDown" data-wow-delay="0.5s" data-wow-offset="60">
-                                    <i class="fa fa-user-md icon-list-icons"></i>
-                                    <div class="iconlist-content">
-
-                                        <div class="iconlist-title">Book an appointment</div>
-                                        <p class="iconlist-text">
-                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                            doloremque laudantium, totam rem aperiam.
-                                        </p>
-                                    </div>
-
-                                </li>
-
-                                <li class="notViewed wow fadeInDown" data-wow-delay="0.5s" data-wow-offset="70">
-                                    <i class="fa fa-ambulance icon-list-icons"></i>
-                                    <div class="iconlist-content">
-
-                                        <div class="iconlist-title">Meet the doctor</div>
-                                        <p class="iconlist-text">
-                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                            doloremque laudantium, totam rem aperiam.
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <%--<div class="col-xs-12 col-sm-8 col-md-7 content-tabs-wrap wow fadeInUp animated" data-wow-delay="1.7s" data-wow-offset="200">
-                            <div class="content-tabs">
-
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#tab-home" data-toggle="tab">Technology</a></li>
-                                    <li><a href="#tab-profile" data-toggle="tab">Solutions</a></li>
-                                    <li><a href="#tab-messages" data-toggle="tab">FAQs</a></li>
-                                    <li><a href="#tab-settings" data-toggle="tab">Availability</a></li>
-                                </ul>
-
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="tab-home">
-                                        <input id="Text1" type="text" />
-                                        <input id="Text2" type="text" />
-                                        <img src="images/tab-dummy.jpg" alt="" class="img-responsive tab-img" />
-                                        <p>Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt.</p>
-                                        <p>Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Duis vulputate nisl sit amet feugiat tincidunt. Duis vulputate nisl sit amet feugiat tincidunt. Duis vulputate nisl sit amet feugiat tincidunt.  </p>
-
-                                    </div>
-                                    <div class="tab-pane fade" id="tab-profile">
-                                        <img src="images/about-tab-01.jpg" alt="" class="img-responsive tab-img" />
-                                        <p>Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt.</p>
-                                        <p>Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Duis vulputate nisl sit amet feugiat tincidunt. Duis vulputate nisl sit amet feugiat tincidunt. Duis vulputate nisl sit amet feugiat tincidunt.  </p>
-
-                                    </div>
-                                    <div class="tab-pane fade" id="tab-messages">
-                                        <img src="images/about-tab-02.jpg" alt="" class="img-responsive tab-img" />
-                                        <p>Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt.</p>
-                                        <p>Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Duis vulputate nisl sit amet feugiat tincidunt. Duis vulputate nisl sit amet feugiat tincidunt. Duis vulputate nisl sit amet feugiat tincidunt.  </p>
-
-                                    </div>
-                                    <div class="tab-pane fade" id="tab-settings">
-                                        <img src="images/about-tab-03.jpg" alt="" class="img-responsive tab-img" />
-                                        <p>Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt.</p>
-                                        <p>Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Lorem ipsum dolor sit amet, consecte tur adipiscing elitut eu nisl quis augue suscipit dignissim. Duis vulputate nisl sit amet feugiat tincidunt. Duis vulputate nisl sit amet feugiat tincidunt. Duis vulputate nisl sit amet feugiat tincidunt. Duis vulputate nisl sit amet feugiat tincidunt.  </p>
-
-                                    </div>
+                                    <div class="iconlist-title">Find a doctor</div>
+                                    <p class="iconlist-text">
+                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                        doloremque laudantium, totam rem aperiam.
+                                    </p>
                                 </div>
-                            </div>
-                        </div>--%>
+
+                            </li>
+
+                            <li class="notViewed wow fadeInDown" data-wow-delay="0.5s" data-wow-offset="60">
+                                @*<i class="fa fa-ambulance icon-list-icons"></i>*@
+                                <i class="fa icon-file icon-list-icons"></i>
+                                <div class="iconlist-content">
+
+                                    <div class="iconlist-title">Book an appointment</div>
+                                    <p class="iconlist-text">
+                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                        doloremque laudantium, totam rem aperiam.
+                                    </p>
+                                </div>
+
+                            </li>
+
+                            <li class="notViewed wow fadeInDown" data-wow-delay="0.5s" data-wow-offset="70">
+
+                                <i class="fa fa-user-md icon-list-icons"></i>
+                                <div class="iconlist-content">
+
+                                    <div class="iconlist-title">Meet the doctor</div>
+                                    <p class="iconlist-text">
+                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                        doloremque laudantium, totam rem aperiam.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <!-- side item-end -->
-                    <!--Sidebar-item-->
+
+
                 </div>
-
+                <!-- side item-end -->
+                <!--Sidebar-item-->
             </div>
-            <!--.story-->
+
         </div>
+        <!--.story-->
     </div>
-
-
 </div>
+
+
+
 

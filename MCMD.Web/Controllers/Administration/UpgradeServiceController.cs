@@ -49,11 +49,10 @@ namespace MCMD.Web.Controllers.Administration
             UpgradeServiceVM.GetUpgrdService = upgradeSerciceRepo.GetUpgrdService().ToList();
 
             UpgradeServiceVM.membershipListTwo = new List<MembershipTwo>() {
-                new MembershipTwo {MembershipId=1,MembershipType="Online Appointment Scheduling"},//{ID=1,Name="Group 1" },
-                new MembershipTwo {MembershipId=2,MembershipType="Practice Management" },
-                new MembershipTwo {MembershipId=3,MembershipType="Patient Portal" },
-                new MembershipTwo {MembershipId=4,MembershipType="EMR" },
-                new MembershipTwo {MembershipId=5,MembershipType="Integrated PM And EMR"}
+                new MembershipTwo {MembershipId=1,MembershipType="Directory Listing"},//{ID=1,Name="Group 1" },
+                new MembershipTwo {MembershipId=2,MembershipType="Online Appointment Scheduling" },
+                new MembershipTwo {MembershipId=3,MembershipType="Medical Answering Service " },
+               
             };
             UpgradeServiceVM.SelectedMember = UpgradeServiceVM.membershipListTwo.Select(x => x.MembershipId).ToArray();
 

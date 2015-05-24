@@ -32,22 +32,40 @@ namespace MCMD.Web.Controllers.Administration
         #region Create User
         public ActionResult Create()
         {
+            int Id = (Convert.ToInt32(Session["EditDoctor"]));
+            string FirstName = "";
+            string LastName = "";
             MediaViewModel _MediaVM = new MediaViewModel();
-            _MediaVM.GetMedialist = MediaRepository.GetMedias().Where(x => x.InactiveFlag == "N").ToList();
+            _MediaVM.GetMedialist = MediaRepository.GetMedias().Where(x => x.InactiveFlag == "N" && x.LoginId == Id ).ToList();
+            _MediaVM.UserLogins = MediaRepository.GetUsers().ToList();
 
+            if (Id != 0)
+            {
+                List<UserLogin> _NemUser = MediaRepository.GetUsers().Where(x => x.LoginId == Id).ToList();
 
+                foreach (var item in _NemUser)
+                {
+                    _MediaVM.UserName = item.UserName;
+                    _MediaVM.LastName = item.LastName;
+                    FirstName = item.UserName;
+                    LastName = item.LastName;
+                    @TempData["UserName"] = "Doctor Name = " + FirstName + " " + LastName;
+                }
+            }
             return View(_MediaVM);
 
         }
         [HttpPost]
         public ActionResult Create(Media media, MediaViewModel mediaVM, HttpPostedFileBase file)
         {
+
             if (ModelState.IsValid)
             {
+                int Id = (Convert.ToInt32(Session["EditDoctor"]));
                 if (file != null)
                 {
-                    int id = 1;
-                    Session["Media"] = id;
+
+                    Session["Media"] = Id;
                     int MediaSession = Convert.ToInt32(Session["Media"]);
                     mediaVM.LoginId = MediaSession;
                     MediaRepository.InsertMedia(media, mediaVM, file);

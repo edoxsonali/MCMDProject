@@ -14,8 +14,12 @@ namespace MCMD.ViewModel.Administration
 
         public List<Media> GetMediacount { get; set; }
         public List<Media> GetMedialist { get; set; }
+        public List<UserLogin> UserLogins { get; set; }
         public int MediaId { get; set; }
         public int LoginId { get; set; }
+        public string UserName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Message { get; set; }
 
 

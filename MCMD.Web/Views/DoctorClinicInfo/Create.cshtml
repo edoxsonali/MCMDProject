@@ -22,117 +22,103 @@
                     <div class="form-group">
                         <div class="col-sm-4 control-label">Clinic Name<b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(u => u.DoctorClinicInformations.ClinicName, new { @class = "form-control", @placeholder = " Clinic Name", @maxlength = "30", @autocomplete = "off" })
-                            @Html.ValidationMessageFor(u => u.DoctorClinicInformations.ClinicName, string.Empty)
+                            @Html.TextBoxFor(u => u.ClinicName, new { @class = "form-control", @placeholder = " Clinic Name", @maxlength = "30", @autocomplete = "off" })
+                            @Html.ValidationMessageFor(u => u.ClinicName, string.Empty)
                             <span id="ClinicName" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Name is required.</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4 control-label">Clinic Address<b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(u => u.DoctorClinicInformations.ClinicAddress, new { @class = "form-control", @placeholder = "Clinic Address", @maxlength = "30", @autocomplete = "off" })
-                            @Html.ValidationMessageFor(u => u.DoctorClinicInformations.ClinicAddress, string.Empty)
-                            <span id="ClinicAddress" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Address is required.</span>
+                            @Html.TextBoxFor(u => u.ClinicAddress, new { @class = "form-control", @placeholder = "Clinic Address", @maxlength = "30", @autocomplete = "off" })
+                            @Html.ValidationMessageFor(u => u.ClinicAddress, string.Empty)
+                            <span id="ClinicAddress" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">
+                                Clinic Address is
+
+                                required.
+                            </span>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4 control-label">Clinic Phone No<b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(u => u.DoctorClinicInformations.ClinicPhoneNo, new { @class = "form-control", @placeholder = "Clinic Phone No", @maxlength = "30", @autocomplete = "off" })
-                            @Html.ValidationMessageFor(u => u.DoctorClinicInformations.ClinicPhoneNo, string.Empty)
-                            <span id="ClinicAddress" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Phone No is required.</span>
+                            @Html.TextBoxFor(u => u.ClinicPhoneNo, new { @class = "form-control", @placeholder = "Clinic Phone No", @maxlength = "30", @autocomplete = "off" })
+                            @Html.ValidationMessageFor(u => u.ClinicPhoneNo, string.Empty)
+                            <span id="ClinicAddress" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">
+                                Clinic Phone No is
+
+                                required.
+                            </span>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4 control-label">Clinic Fees<b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(u => u.DoctorClinicInformations.ClinicFees, new { @class = "form-control", @placeholder = "Clinic Fees", @maxlength = "30", @autocomplete = "off" })
-                            @Html.ValidationMessageFor(u => u.DoctorClinicInformations.ClinicFees, string.Empty)
+                            @Html.TextBoxFor(u => u.ClinicFees, new { @class = "form-control", @placeholder = "Clinic Fees", @maxlength = "30", @autocomplete = "off" })
+                            @Html.ValidationMessageFor(u => u.ClinicFees, string.Empty)
                             <span id="ClinicAddress" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Fees is required.</span>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-4 control-label">Clinic Time From<b>:</b></div>
-                        <div class="col-sm-8">
-                            <div class="col-sm-4">
-                           
-                              
-                            @*@Html.EnumDropDownListFor(model => model.clinichours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })*@
-                             
+                    @*<div class="form-group">
+                            <div class="col-sm-4 control-label">Clinic Time From<b>:</b></div>
+                            <div class="col-sm-8">
+                                <div class="col-sm-4">
                                 </div>
-                          
-                            @*<div class="col-sm-4">
-                                @Html.EnumDropDownListFor(model => model.indicator, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })
-                            </div>*@
-                           
-                            @Html.TextBoxFor(u => u.DoctorClinicInformations.ClinicTimeFrom, new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })
-                            @Html.ValidationMessageFor(u => u.DoctorClinicInformations.ClinicTimeFrom, string.Empty)
-                            <span id="ClinicTimeFrom" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Time Fromis required.</span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-4 control-label">Clinic Time To<b>:</b></div>
-                        <div class="col-sm-8">
-                            @*<div class="col-sm-4">
-                                @Html.EnumDropDownListFor(model => model.time, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })
+
+                                @Html.TextBoxFor(u => u.DoctorClinicInformations.ClinicTimeFrom, new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(u => u.DoctorClinicInformations.ClinicTimeFrom, string.Empty)
+                                <span id="ClinicTimeFrom" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Time Fromisrequired.</span>
                             </div>
-                           
-                            <div class="col-sm-4">
-                                @Html.EnumDropDownListFor(model => model.indicator, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })
-                            </div>*@
-                            @Html.TextBoxFor(u => u.DoctorClinicInformations.ClinicTimeTo, new { @class = "form-control", @placeholder = "Clinic Time to", @maxlength = "30", @autocomplete = "off" })
-                            @Html.ValidationMessageFor(u => u.DoctorClinicInformations.ClinicTimeTo, string.Empty)
-                            <span id="ClinicTimeFrom" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Time to is required.</span>
-                        </div>
-                    </div>
-                        <div class="form-group">
-                        <div class="col-sm-4 control-label">Clinic break From<b>:</b></div>
-                        <div class="col-sm-8">
-                            @*<div class="col-sm-4">
-                                @Html.EnumDropDownListFor(model => model.time, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })
+                        </div>*@
+                    @*<div class="form-group">
+                            <div class="col-sm-4 control-label">Clinic Time To<b>:</b></div>
+                            <div class="col-sm-8">
+
+                                @Html.TextBoxFor(u => u.DoctorClinicInformations.ClinicTimeTo, new { @class = "form-control", @placeholder = "Clinic Time to", @maxlength = "30", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(u => u.DoctorClinicInformations.ClinicTimeTo, string.Empty)
+                                <span id="ClinicTimeFrom" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Time to is required.</span>
                             </div>
-                           
-                            <div class="col-sm-4">
-                                @Html.EnumDropDownListFor(model => model.indicator, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })
-                            </div>*@
-                            @Html.TextBoxFor(u => u.DoctorClinicInformations.ClinicLunchbreakFrom, new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })
-                            @Html.ValidationMessageFor(u => u.DoctorClinicInformations.ClinicLunchbreakFrom, string.Empty)
-                            <span id="ClinicTimeFrom" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Time Fromis required.</span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-4 control-label">Clinic break To<b>:</b></div>
-                        <div class="col-sm-8">
-                            @*<div class="col-sm-4">
-                                @Html.EnumDropDownListFor(model => model.time, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })
+                        </div>*@
+                    @*<div class="form-group">
+                            <div class="col-sm-4 control-label">Clinic break From<b>:</b></div>
+                            <div class="col-sm-8">
+
+                                @Html.TextBoxFor(u => u.DoctorClinicInformations.ClinicLunchbreakFrom, new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(u => u.DoctorClinicInformations.ClinicLunchbreakFrom, string.Empty)
+                                <span id="ClinicTimeFrom" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Time From is required.</span>
                             </div>
-                          
-                            <div class="col-sm-4">
-                                @Html.EnumDropDownListFor(model => model.indicator, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })
-                            </div>*@
-                            @Html.TextBoxFor(u => u.DoctorClinicInformations.ClinicLunchbreakTo, new { @class = "form-control", @placeholder = "Clinic Time to", @maxlength = "30", @autocomplete = "off" })
-                            @Html.ValidationMessageFor(u => u.DoctorClinicInformations.ClinicLunchbreakTo, string.Empty)
-                            <span id="ClinicTimeFrom" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Time to is required.</span>
-                        </div>
-                    </div>
+                        </div>*@
+                    @*<div class="form-group">
+                            <div class="col-sm-4 control-label">Clinic break To<b>:</b></div>
+                            <div class="col-sm-8">
+
+                                @Html.TextBoxFor(u => u.DoctorClinicInformations.ClinicLunchbreakTo, new { @class = "form-control", @placeholder = "Clinic Time to", @maxlength = "30", @autocomplete = "off" })
+                                @Html.ValidationMessageFor(u => u.DoctorClinicInformations.ClinicLunchbreakTo, string.Empty)
+                                <span id="ClinicTimeFrom" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">
+                                    Clinic Time to is
+
+                                    required.
+                                </span>
+                            </div>
+                        </div>*@
 
 
                     <div class="form-group">
                         <div class="col-sm-4 control-label">Country<b>:</b></div>
                         <div class="col-sm-8">
-                          
-                            @Html.DropDownListFor(m => m.DoctorClinicInformations.Country, new SelectList(Model.countyList, "CountryId", "CountryName"),
+
+                            @Html.DropDownListFor(m => m.Country, new SelectList(Model.countyList, "CountryId", "CountryName"),
                                 "-Select-", new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.DoctorClinicInformations.Country)
+                            @Html.ValidationMessageFor(m => m.Country)
                             <span id="Country" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Country is required.</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4 control-label">State<b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.DropDownListFor(m => m.DoctorClinicInformations.State, new SelectList(Model.stateList, "StateId", "StateName"),
+                            @Html.DropDownListFor(m => m.State, new SelectList(Model.stateList, "StateId", "StateName"),
                                 "-Select-", new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.DoctorClinicInformations.State)
+                            @Html.ValidationMessageFor(m => m.State)
                             <span id="State" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">State is required.</span>
                         </div>
                     </div>
@@ -140,54 +126,63 @@
                     <div class="form-group">
                         <div class="col-sm-4 control-label">City<b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.DropDownListFor(m => m.DoctorClinicInformations.City, new SelectList(Model.cityList, "CityId", "CityName"),
+                            @Html.DropDownListFor(m => m.City, new SelectList(Model.cityList, "CityId", "CityName"),
                                 "-Select-", new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.DoctorClinicInformations.City)
+                            @Html.ValidationMessageFor(m => m.City)
                             <span id="City" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">City is required.</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4 control-label">Zip Code<b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(u => u.DoctorClinicInformations.ZipCode, new { @class = "form-control", @placeholder = "Zip Code", @maxlength = "30", @autocomplete = "off" })
-                            @Html.ValidationMessageFor(u => u.DoctorClinicInformations.ZipCode, string.Empty)
+                            @Html.TextBoxFor(u => u.ZipCode, new { @class = "form-control", @placeholder = "Zip Code", @maxlength = "30", @autocomplete = "off" })
+                            @Html.ValidationMessageFor(u => u.ZipCode, string.Empty)
                             <span id="ZipCode" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">ZipCode is required.</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4 control-label">Clinic Services<b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(u => u.DoctorClinicInformations.ClinicServices, new { @class = "form-control", @placeholder = "Clinic Services", @maxlength = "30", @autocomplete = "off" })
-                            @Html.ValidationMessageFor(u => u.DoctorClinicInformations.ClinicServices, string.Empty)
-                            <span id="ClinicServices" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Clinic Servicesis required.</span>
+                            @Html.TextBoxFor(u => u.ClinicServices, new { @class = "form-control", @placeholder = "Clinic Services", @maxlength = "30", @autocomplete = "off" })
+                            @Html.ValidationMessageFor(u => u.ClinicServices, string.Empty)
+                            <span id="ClinicServices" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">
+                                Clinic Servicesis
+
+                                required.
+                            </span>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4 control-label">Awards And Recognization <b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(u => u.DoctorClinicInformations.AwardsAndRecognization, new { @class = "form-control", @placeholder = "Awards And Recognization", @maxlength = "30", @autocomplete = "off" })
-                            @Html.ValidationMessageFor(u => u.DoctorClinicInformations.AwardsAndRecognization, string.Empty)
-                            <span id="AwardsAndRecognization" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">Awards And Recognization is required.</span>
+                            @Html.TextBoxFor(u => u.AwardsAndRecognization, new { @class = "form-control", @placeholder = "AwardsAnd Recognization", @maxlength = "30", @autocomplete = "off" })
+                            @Html.ValidationMessageFor(u => u.AwardsAndRecognization, string.Empty)
+                            <span id="AwardsAndRecognization" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">
+                                Awards And
+
+                                Recognization is required.
+                            </span>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4 control-label">About Clinic <b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(u => u.DoctorClinicInformations.AboutClinic, new { @class = "form-control", @placeholder = "AboutClinic", @maxlength = "30", @autocomplete = "off" })
-                            @Html.ValidationMessageFor(u => u.DoctorClinicInformations.AboutClinic, string.Empty)
+                            @Html.TextBoxFor(u => u.AboutClinic, new { @class = "form-control", @placeholder = "AboutClinic", @maxlength = "30", @autocomplete = "off" })
+                            @Html.ValidationMessageFor(u => u.AboutClinic, string.Empty)
                             <span id="AboutClinic" style="display: none; color: #F00; font-weight: bold; font-size: 12px;">AboutClinic is required.</span>
                         </div>
                     </div>
-                 
+
                     <span class="fancybox-error" style="color:red;">
 
                         @TempData["Message"]
                     </span>
-                   
+
 
                     <div class="buttons">
+                        <button type="button" id="btnscd" name="btnscd" onclick="location.href='@Url.Action("ViewDoctor", "User")'">Back</button>
                         <button type="Submit" id="btnCreate" name="btnCreate">Submit</button>
-                        <button type="button" id="btnReset" name="btnscd" onclick="location.href='@Url.Action("Create", "DoctorClinicInfo")'">Reset</button>
+                        @*<button type="button" id="btnReset" name="btnscd" onclick="location.href='@Url.Action("Create", "DoctorClinicInfo")'">Reset</button>*@
                         <button type="button" id="btnReset" name="btnscd" onclick="location.href='@Url.Action("Create", "Media")'">Next</button>
                     </div>
                 </div>
@@ -198,7 +193,7 @@
         <div class="clear"></div>
     </div>
 
-</div>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

@@ -24,7 +24,7 @@ namespace MCMD.Web.Controllers.Administration
 
     public class UserController : Controller
     {
-        //somnath changes
+        
         public ApplicationDbContext db = new ApplicationDbContext();
         private IUserRepository userRepository;
         public UserController(IUserRepository _userRepositorys)
@@ -58,83 +58,97 @@ namespace MCMD.Web.Controllers.Administration
 
                 var cUser = db.UserLogins.FirstOrDefault(x => x.UserName == registerVM.Userlogins.UserName);
                 var cUserEmail = db.UserLogins.FirstOrDefault(x => x.EmailID == registerVM.Userlogins.EmailID);
+                var cEmpId = db.UserLogins.FirstOrDefault(X => X.EmployeeId == registerVM.Userlogins.EmployeeId);
+
                 if (ReferenceEquals(cUser, null))
                 {
                     if (ReferenceEquals(cUserEmail, null))
                     {
-                        using (var dbContextTransaction = db.Database.BeginTransaction())
+                        if (ReferenceEquals(cEmpId, null))
                         {
-                            try
+                            using (var dbContextTransaction = db.Database.BeginTransaction())
                             {
+                                try
+                                {
 
-                                //Take the password for email
-                                string password = registerVM.Userlogins.Password;
+                                    //Take the password for email
+                                    string password = registerVM.Userlogins.Password;
 
-                                //Insert data in Userlogins  Table                             
-                                userRepository.InsertUserLogins(registerVM.Userlogins, registerVM);
-                                userRepository.Save();
+                                    //Insert data in Userlogins  Table                             
+                                    userRepository.InsertUserLogins(registerVM.Userlogins, registerVM);
+                                    userRepository.Save();
 
-                                //Insert data in Login_Role Table
-                                var newUserRole = db.UserLoginRoles.Create();
-                                userRepository.InsertUserLoginRoles(newUserRole, registerVM);
-                                userRepository.Save();
-                               
+                                    //Insert data in Login_Role Table
+                                    var newUserRole = db.UserLoginRoles.Create();
+                                    userRepository.InsertUserLoginRoles(newUserRole, registerVM);
+                                    userRepository.Save();
 
-                                //if (registerVM.SpecialityID!=0)
-                                //{
+
+                                    //if (registerVM.SpecialityID!=0)
+                                    //{
                                     //Insert data in Login_Speciality Table
                                     var newUserspeciality = db.UserLoginSpecialitys.Create();
                                     userRepository.UserLoginSpecialitys(newUserspeciality, registerVM);
                                     userRepository.Save();
 
-                               // }
+                                    // }
 
-                                dbContextTransaction.Commit();
-                                ViewBag.StatusMessage = " User Name with " + registerVM.Userlogins.UserName + " having Email Id " + registerVM.Userlogins.EmailID + " is created successfully";
-                                ViewBag.Status = 1;
-                                @TempData["Message"] = "Succsessfully save data";
+                                    dbContextTransaction.Commit();
+                                    ViewBag.StatusMessage = " User Name with " + registerVM.Userlogins.UserName + " having Email Id " + registerVM.Userlogins.EmailID + " is created successfully";
+                                    ViewBag.Status = 1;
+                                    @TempData["Message"] = "Succsessfully save data";
 
-                                //var callbackUrl = Url.Action("ConfirmEmail", "Account",new { userId = user.Id, code = code },protocol: Request.Url.Scheme);
+                                    //var callbackUrl = Url.Action("ConfirmEmail", "Account",new { userId = user.Id, code = code },protocol: Request.Url.Scheme);
 
-                                //get user emailid
-                                var emailid = registerVM.Userlogins.EmailID;
-                                //send mail
-                                string subject = "MyCityMyDoctor  Registration";
-                                string body = "Dear " + registerVM.Userlogins.FirstName + " " + registerVM.Userlogins.LastName + "<br/> <br/>" + System.Environment.NewLine + System.Environment.NewLine + "You have been successfully registered at MyCityMyDoctor , Your login credentials are given below<br/><br/>" +
-                                "Username" + " : " + registerVM.Userlogins.UserName + "<br/><br/>Password" + " : " +
-                                 password + "<br/><br/><br/>Thank You" + "<br/>Admin" + "<br/>Edox";  //edit it
-                                try
-                                {
-                                    SendEMail sendemail = new SendEMail();
-                                    sendemail.Send_EMail(emailid, subject, body);
+                                    //get user emailid
+                                    var emailid = registerVM.Userlogins.EmailID;
+                                    //send mail
+                                    string subject = "MyCityMyDoctor  Registration";
+                                    string body = "Dear " + registerVM.Userlogins.FirstName + " " + registerVM.Userlogins.LastName + "<br/> <br/>" + System.Environment.NewLine + System.Environment.NewLine + "You have been successfully registered at MyCityMyDoctor , Your login credentials are given below<br/><br/>" +
+                                    "Username" + " : " + registerVM.Userlogins.UserName + "<br/><br/>Password" + " : " +
+                                     password + "<br/><br/><br/>Thank You" + "<br/>Admin" + "<br/>Edox";  //edit it
+                                    try
+                                    {
+                                        SendEMail sendemail = new SendEMail();
+                                        sendemail.Send_EMail(emailid, subject, body);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        ViewBag.StatusMessage = "User has been created successfully but Error occurred while sending email. Error:" + ex.Message;
+                                    }
                                 }
-                                catch (Exception ex)
+                                catch (DbEntityValidationException)
                                 {
-                                    ViewBag.StatusMessage = "User has been created successfully but Error occurred while sending email. Error:" + ex.Message;
+
+                                    dbContextTransaction.Rollback();
+
                                 }
                             }
-                            catch (DbEntityValidationException)
-                            {
-
-                                dbContextTransaction.Rollback();
-
-                            }
+                        }
+                        else
+                        {
+                           
+                            @TempData["Message"] = "Employee ID Already Exist";
+                            
                         }
 
                     }
                     else
                     {
-                        ModelState.AddModelError("Userlogins.EmailID", "Email ID Already Exist");
+                       
+                        @TempData["Message"] = "Email ID Already Exist";
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("Userlogins.UserName", "User Name Already Exist");
+                   
+                    @TempData["Message"] = "User Name Already Exist";
 
                 }
             }
             ViewBag.ExistStatus = 1;
             return RedirectToAction("RegisterUser");
+            
         }
 
         #endregion
