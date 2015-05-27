@@ -26,6 +26,13 @@
 
             <div class="form">
                 <div class="col-sm-8">
+                    <span class="fancybox-error" style="color:red;">
+                        @TempData["Message"]            
+                    </span>
+                    <span class="fancybox-error" style="color:green;">
+                        @TempData["SuccessMessage"]                        
+                    </span>
+                    <br />
                     <div class="form-group">
                         <div class="col-sm-4 control-label">User Name<span>*</span><b>:</b></div>
                         <div class="col-sm-8">
@@ -78,7 +85,7 @@
                     <div class="form-group">
                         <div class="col-sm-4 control-label">Phone #<span>*</span><b>:</b></div>
                         <div class="col-sm-8">
-                            @Html.TextBoxFor(u => u.Userlogins.UserPhone, new { @class = "form-control", @type = "phone", @placeholder = "Enter Phone No format is{ 0123456789, 012-345-6789, (012)-345-6789 }", @maxlength = "10", @autocomplete = "off" })
+                            @Html.TextBoxFor(u => u.Userlogins.UserPhone, new { @class = "form-control", @type = "phone", @placeholder = "Enter Phone No format is{ 0123456789, 012-345-6789, (012)-345-6789 }", @maxlength = "15", @autocomplete = "off" })
                             @Html.ValidationMessageFor(u => u.Userlogins.UserPhone, string.Empty)
                         </div>
                     </div> 
@@ -112,10 +119,7 @@
                             </div>
                         </div>
                      </div>
-                        <span class="fancybox-error" style="color:red;">
-
-                            @TempData["Message"]
-                        </span>
+                        
 
                         <div class="form-group">
 
