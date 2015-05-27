@@ -96,7 +96,7 @@ namespace MCMD.Web.Controllers.Administration
                                     dbContextTransaction.Commit();
                                     ViewBag.StatusMessage = " User Name with " + registerVM.Userlogins.UserName + " having Email Id " + registerVM.Userlogins.EmailID + " is created successfully";
                                     ViewBag.Status = 1;
-                                    @TempData["Message"] = "Succsessfully save data";
+                                    @TempData["SuccessMessage"] = "Username with " + registerVM.Userlogins.UserName + " having Email Id " + registerVM.Userlogins.EmailID + " is created successfully";
 
                                     //var callbackUrl = Url.Action("ConfirmEmail", "Account",new { userId = user.Id, code = code },protocol: Request.Url.Scheme);
 
