@@ -25,7 +25,12 @@ namespace MCMD.Web.Controllers.Administration
         {
             return View();
         }
-
+        public ActionResult UserEditSpeciality(int Id)
+        {
+            Session["EditSpeciality"] = Id;
+            var varid = Id;
+            return Json(new { varid }, JsonRequestBehavior.AllowGet);
+        }
 
         #region Create/View Speciality
         public ActionResult Create()
@@ -33,6 +38,21 @@ namespace MCMD.Web.Controllers.Administration
 
             SpecialityViewModel _specialityVM = new SpecialityViewModel();
             _specialityVM.SpecialityList = specialityRepository.GetSpecialitys().Where(x => x.InactiveFlag == "N").ToList();
+
+            int editInputs = (Session["EditSpeciality"] != null) ? (Convert.ToInt32(Session["EditSpeciality"])) : 0;
+
+            if (editInputs != 0)
+            {
+                List<Speciality> _NewSpeciality = specialityRepository.GetSpecialitys().Where(x => x.SpecialityID == editInputs).ToList();
+
+                foreach (var item in _NewSpeciality)
+                {
+                    _specialityVM.SpecialityName = item.SpecialityName;
+
+                    Session["EditSpeciality"] = null;
+                }
+
+            }
 
             return View(_specialityVM);
 
@@ -43,18 +63,27 @@ namespace MCMD.Web.Controllers.Administration
         {
      //     var cSpeciality = specialityRepository.CheckSpeciality(specialityVM.specialitys.SpecialityName);
 
-            var cSpeciality = db.Specialitys.FirstOrDefault(x => x.SpecialityName == specialityVM.specialitys.SpecialityName);
+            var cSpeciality = db.Specialitys.FirstOrDefault(x => x.SpecialityName == specialityVM.SpecialityName);
             try
             {
                 if (ReferenceEquals(cSpeciality, null))
                 {
                     if (ModelState.IsValid)
                     {
-                        
-                        specialityRepository.InsertSpeciality(specialityVM.specialitys);
-                        specialityRepository.Save();
+
+                        if (Session["EditSpeciality"] != null)
+                        {
+
+
+                        }else
+                        {
+                            specialityRepository.InsertSpeciality(specialityVM, specialityVM.specialitys);
+                            specialityRepository.Save();
+
+                            @TempData["AddNewItemMessage"] = "Added successfully....";
+                        }
+
                        
-                        @TempData["AddNewItemMessage"] = "Added successfully....";
                     }
                 }
                 else

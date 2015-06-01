@@ -7,6 +7,7 @@ using MCMD.IRepository.AdminInterfaces;
 using MCMD.EntityModel;
 using MCMD.EntityModel.Doctor;
 using System.Data.Entity;
+using MCMD.ViewModel.Administration;
 
 namespace MCMD.EntityRepository.AdminRepository
 {
@@ -27,8 +28,10 @@ namespace MCMD.EntityRepository.AdminRepository
         {
             return DBcontext.Specialitys.Find(ID);
         }
-        public void InsertSpeciality(Speciality speciality)
+        public void InsertSpeciality(SpecialityViewModel specialityVM,Speciality speciality)
         {
+
+            speciality.SpecialityName = specialityVM.SpecialityName;
             speciality.InactiveFlag = "N";
             speciality.ModifiedDate = DateTime.Now;
 

@@ -29,79 +29,58 @@ namespace MCMD.Web.Controllers.Administration
         public ActionResult UserEditDoctor(int Id)
         {
             Session["EditDoctor"] = Id;
-            var varid = Id;        
+            var varid = Id;
             return Json(new { redirectUrl = Url.Action("Create", "DoctorInfo", new { varid }), isRedirect = true, JsonRequestBehavior.AllowGet });
-                    
+
         }
         #region Create DoctorPersonal Info
         public ActionResult Create()
         {
 
             ViewData["PageRole"] = 1;
-            //This session for autopopulat the field in login
-           int editInputs = (Session["EditMembership"] != null) ? (Convert.ToInt32(Session["EditMembership"])) : 30;
-          //  int editInputs = 0;
-           
+
+
             //This session for Edit doctor
-            int editDocInputs = (Session["EditDoctor"] != null) ? (Convert.ToInt32(Session["EditDoctor"])) : 1;
-          //  int editDocInputs = 0;
+            int editDocInputs = (Session["EditDoctor"] != null) ? (Convert.ToInt32(Session["EditDoctor"])) : 0;
+
 
             //Session["EditMembership"] = null;
             DoctorPersonalInfoViewModel _doctorVM = new DoctorPersonalInfoViewModel();
-            _doctorVM.SpecialityList = doctorPersonalInfoRepository.GetSpecialitys().ToList();          
+            _doctorVM.SpecialityList = doctorPersonalInfoRepository.GetSpecialitys().ToList();
             _doctorVM.UserLogins = doctorPersonalInfoRepository.GetUsers().ToList();
-               
-            //This is for short login data populated
-                if (editInputs != 0)
+
+
+
+            //This is for edit doctorpersonalinformation populated
+            if (editDocInputs != 0)
+            {
+                List<UserLogin> _NewDoctorloginInfo = doctorPersonalInfoRepository.GetUsers().Where(x => x.LoginId == editDocInputs).ToList();
+                List<DoctorPersonalInformation> _NewDoctorinfo = doctorPersonalInfoRepository.GetDocInfo().Where(x => x.LoginId == editDocInputs).ToList();
+                List<UserLoginSpeciality> _NewDocSpeciality = doctorPersonalInfoRepository.GetUserSpeciality().Where(x => x.LoginId == editDocInputs).ToList();
+                foreach (var item in _NewDoctorloginInfo)
                 {
-                    List<UserLogin> _NewDoctor = doctorPersonalInfoRepository.GetUsers().Where(x => x.LoginId == editInputs).ToList();
-                    List<UserLoginSpeciality> _NewSpeciality = doctorPersonalInfoRepository.GetUserSpeciality().Where(x => x.LoginSpecialityId == editInputs).ToList();
-                    foreach (var item in _NewDoctor)
-                    {
-                        _doctorVM.FirstName = item.FirstName;
-                        _doctorVM.LastName = item.LastName;
-                        _doctorVM.EmailID = item.EmailID;
-                        _doctorVM.UserPhone = item.UserPhone;
-
-                    }
-                    foreach (var item in _NewSpeciality)
-                    {
-                        _doctorVM.SpecialityID = item.SpecialityID;
-
-                    }
+                    _doctorVM.FirstName = item.FirstName;
+                    _doctorVM.LastName = item.LastName;
+                    _doctorVM.EmailID = item.EmailID;
+                    _doctorVM.UserPhone = item.UserPhone;
+                }
+                foreach (var item in _NewDoctorinfo)
+                {
+                    _doctorVM.MiddleName = item.MiddleName;
+                    _doctorVM.Qualification = item.Qualification;
+                    _doctorVM.RegistrationNo = item.RegistrationNo;
+                    _doctorVM.Affiliation = item.Affiliation;
+                    _doctorVM.AboutMe = item.AboutMe;
+                    _doctorVM.AboutExperience = item.AboutExperience;
+                }
+                foreach (var item in _NewDocSpeciality)
+                {
+                    _doctorVM.SpecialityID = item.SpecialityID;
 
                 }
-                
-                //This is for edit doctorpersonalinformation populated
-                if(editDocInputs!=0 )
-                {
-                    List<UserLogin> _NewDoctorloginInfo = doctorPersonalInfoRepository.GetUsers().Where(x => x.LoginId == editDocInputs).ToList();
-                    List<DoctorPersonalInformation> _NewDoctorinfo = doctorPersonalInfoRepository.GetDocInfo().Where(x => x.LoginId == editDocInputs).ToList();
-                    List<UserLoginSpeciality> _NewDocSpeciality = doctorPersonalInfoRepository.GetUserSpeciality().Where(x => x.LoginSpecialityId == editDocInputs).ToList();
-                    foreach(var item in _NewDoctorloginInfo)
-                    {
-                        _doctorVM.FirstName = item.FirstName;
-                        _doctorVM.LastName = item.LastName;
-                        _doctorVM.EmailID = item.EmailID;
-                        _doctorVM.UserPhone = item.UserPhone;
-                    }
-                    foreach (var item in _NewDoctorinfo)
-                    {
-                        _doctorVM.MiddleName = item.MiddleName;
-                        _doctorVM.Qualification = item.Qualification;
-                        _doctorVM.RegistrationNo = item.RegistrationNo;
-                        _doctorVM.Affiliation = item.Affiliation;
-                        _doctorVM.AboutMe = item.AboutMe;
-                        _doctorVM.AboutExperience = item.AboutExperience;
-                    }
-                    foreach (var item in _NewDocSpeciality)
-                    {
-                        _doctorVM.SpecialityID = item.SpecialityID;
 
-                    }
+            }
 
-                }
-               
 
 
             return View(_doctorVM);
@@ -112,7 +91,7 @@ namespace MCMD.Web.Controllers.Administration
         {
             try
             {
-              
+
                 if (ModelState.IsValid)
                 {
 
@@ -129,7 +108,7 @@ namespace MCMD.Web.Controllers.Administration
                     newDoctor.CreatedDate = DateTime.Now;
                     newDoctor.ModifiedByID = 1;
                     newDoctor.ModifiedDate = DateTime.Now;
-                    newDoctor.LoginId = 1;// for now we add 1 later we change
+                    newDoctor.LoginId = Convert.ToInt32(Session["EditDoctor"]);
 
                     doctorPersonalInfoRepository.InsertDoctor(newDoctor);
                     doctorPersonalInfoRepository.Save();
@@ -161,6 +140,8 @@ namespace MCMD.Web.Controllers.Administration
                     ViewBag.Message2 = " Update Login Speciality Succsessfully ..";
 
                     @TempData["Message"] = "Succsessfully save data";
+
+                  
                 }
             }
             catch (Exception)
@@ -169,7 +150,7 @@ namespace MCMD.Web.Controllers.Administration
             }
 
 
-            return RedirectToAction("Create");
+            return RedirectToAction("Create", "DoctorClinicInfo");
 
         }
 

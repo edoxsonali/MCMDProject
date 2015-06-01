@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MCMD.EntityModel.Doctor;
+using MCMD.ViewModel.Administration;
 
 
 namespace MCMD.IRepository.AdminInterfaces
@@ -12,7 +13,7 @@ namespace MCMD.IRepository.AdminInterfaces
     {
         IEnumerable<Speciality> GetSpecialitys();
         Speciality GetSpecialityByID(int ID);
-        void InsertSpeciality(Speciality Speciality);
+        void InsertSpeciality(SpecialityViewModel specialityVM,Speciality Speciality);
         void UpdateSpeciality(Speciality Speciality);
         void DeleteSpeciality(int SpecialityID);
     //    void CheckSpeciality(string SpecialityName);

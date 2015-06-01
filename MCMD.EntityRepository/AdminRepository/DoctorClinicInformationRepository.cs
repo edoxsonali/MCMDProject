@@ -96,6 +96,10 @@ namespace MCMD.EntityRepository.AdminRepository
         {
             DBcontext.DoctorsClinicInfos.Add(doctorClinic);
         }
+        public void InsertClinicTime(ClinicTimeInformation dctrClncTime)
+        {
+            DBcontext.clinicTimeInformation.Add(dctrClncTime);
+        }
         public void UpdateClinic(DoctorClinicInformation doctorClinic)
         {
             DBcontext.Entry(doctorClinic).State = EntityState.Modified;

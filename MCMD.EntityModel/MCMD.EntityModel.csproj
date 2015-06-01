@@ -84,7 +84,11 @@
   <ItemGroup>
     <Compile Include="Administration\AutoRenaval.cs" />
     <Compile Include="Administration\City.cs" />
+    <Compile Include="Administration\ClinicTimeInformation.cs" />
     <Compile Include="Administration\Country.cs" />
+    <Compile Include="Administration\DaysCheckList.cs" />
+    <Compile Include="Administration\daysec.cs" />
+    <Compile Include="Administration\daysHours.cs" />
     <Compile Include="Administration\DoctorClinicInformation.cs" />
     <Compile Include="Administration\DoctorPersonalInformation.cs" />
     <Compile Include="Administration\Duration.cs" />

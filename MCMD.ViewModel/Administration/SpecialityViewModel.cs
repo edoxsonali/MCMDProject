@@ -12,5 +12,7 @@ namespace MCMD.ViewModel.Administration
          public List<Speciality> SpecialityList { get; set; }
          public int SpecialityID { get; set; }
          public Speciality specialitys { get; set; }
+
+         public string SpecialityName { get; set; }
     }
 }

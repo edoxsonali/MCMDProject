@@ -24,14 +24,14 @@ namespace MCMD.Web.Controllers.Administration
 
     public class UserController : Controller
     {
-        
+
         public ApplicationDbContext db = new ApplicationDbContext();
         private IUserRepository userRepository;
         public UserController(IUserRepository _userRepositorys)
         {
             this.userRepository = _userRepositorys;
         }
-        
+
 
         #region Create User
         [HttpGet]
@@ -43,7 +43,7 @@ namespace MCMD.Web.Controllers.Administration
             _userRegisterViewModel.Userlogins = new UserLogin();
 
 
-           
+
             return View(_userRegisterViewModel);
 
         }
@@ -52,7 +52,7 @@ namespace MCMD.Web.Controllers.Administration
         public ActionResult RegisterUser(UserRegisterViewModel registerVM)
         {
 
-            ModelState.Clear();  // Cleare Model state
+            //ModelState.Clear();  // Cleare Model state
             if (ModelState.IsValid)
             {
 
@@ -84,19 +84,19 @@ namespace MCMD.Web.Controllers.Administration
                                     userRepository.Save();
 
 
-                                    //if (registerVM.SpecialityID!=0)
-                                    //{
-                                    //Insert data in Login_Speciality Table
-                                    var newUserspeciality = db.UserLoginSpecialitys.Create();
-                                    userRepository.UserLoginSpecialitys(newUserspeciality, registerVM);
-                                    userRepository.Save();
+                                    if (registerVM.SpecialityID != 0)
+                                    {
+                                        //  Insert data in Login_Speciality Table
+                                        var newUserspeciality = db.UserLoginSpecialitys.Create();
+                                        userRepository.UserLoginSpecialitys(newUserspeciality, registerVM);
+                                        userRepository.Save();
 
-                                    // }
+                                    }
 
                                     dbContextTransaction.Commit();
                                     ViewBag.StatusMessage = " User Name with " + registerVM.Userlogins.UserName + " having Email Id " + registerVM.Userlogins.EmailID + " is created successfully";
                                     ViewBag.Status = 1;
-                                    @TempData["SuccessMessage"] = "Username with " + registerVM.Userlogins.UserName + " having Email Id " + registerVM.Userlogins.EmailID + " is created successfully";
+
 
                                     //var callbackUrl = Url.Action("ConfirmEmail", "Account",new { userId = user.Id, code = code },protocol: Request.Url.Scheme);
 
@@ -111,10 +111,12 @@ namespace MCMD.Web.Controllers.Administration
                                     {
                                         SendEMail sendemail = new SendEMail();
                                         sendemail.Send_EMail(emailid, subject, body);
+                                        @TempData["SuccessMessage"] = "User has been created successfully. Email sent to " + registerVM.Userlogins.EmailID + "";
                                     }
                                     catch (Exception ex)
                                     {
-                                        ViewBag.StatusMessage = "User has been created successfully but Error occurred while sending email. Error:" + ex.Message;
+                                        // ViewBag.StatusMessage = "User has been created successfully but Error occurred while sending email. Error:" + ex.Message;
+                                        @TempData["Message"] = "User has been created successfully but Error occurred while sending email. Error:" + ex.Message;
                                     }
                                 }
                                 catch (DbEntityValidationException)
@@ -127,28 +129,28 @@ namespace MCMD.Web.Controllers.Administration
                         }
                         else
                         {
-                           
+
                             @TempData["Message"] = "Employee ID Already Exist";
-                            
+
                         }
 
                     }
                     else
                     {
-                       
+
                         @TempData["Message"] = "Email ID Already Exist";
                     }
                 }
                 else
                 {
-                   
+
                     @TempData["Message"] = "User Name Already Exist";
 
                 }
             }
             ViewBag.ExistStatus = 1;
             return RedirectToAction("RegisterUser");
-            
+
         }
 
         #endregion
@@ -159,14 +161,14 @@ namespace MCMD.Web.Controllers.Administration
         {
 
             UserDetailsViewModel userDetailsVM = new UserDetailsViewModel();
-            userDetailsVM.Roles = userRepository.GetRoles().Where(x => x.RoleId!=4).ToList();
+            userDetailsVM.Roles = userRepository.GetRoles().Where(x => x.RoleId != 4).ToList();
             //get All info od users
             if (EmpId == 0 && RoleId == 0 && string.IsNullOrEmpty(UserFirstName) && string.IsNullOrEmpty(UserEmailId) && string.IsNullOrEmpty(UsePhone))
             {
-                         
+
                 userDetailsVM.GetViewUsers = userRepository.GetAllUser().ToList();
-                 
-             }
+
+            }
 
             //get All info for particular search
             if (RoleId != 0 || EmpId != 0 || !string.IsNullOrEmpty(UserFirstName) || !string.IsNullOrEmpty(UserLastName) || !string.IsNullOrEmpty(UserEmailId) || !string.IsNullOrEmpty(UsePhone))
@@ -176,7 +178,7 @@ namespace MCMD.Web.Controllers.Administration
                 userDetailsVM.GetViewUsers = userRepository.SearchUser(RoleId, EmpId, UserFirstName, UserLastName, UserEmailId, UsePhone).ToList();
             }
 
-            
+
 
             return View(userDetailsVM);
         }
@@ -188,7 +190,7 @@ namespace MCMD.Web.Controllers.Administration
             string Userfirstname = "";
             string useremailid = "";
             string userphone = "";
-            string Userlastname="";
+            string Userlastname = "";
 
             if (userDetailsVM.EmployeeId != 0 || userDetailsVM.RoleId != 0)
             {
@@ -196,7 +198,7 @@ namespace MCMD.Web.Controllers.Administration
                 userRollId = userDetailsVM.RoleId;
 
             }
-            if(!string.IsNullOrEmpty(userDetailsVM.FirstName))
+            if (!string.IsNullOrEmpty(userDetailsVM.FirstName))
             {
                 Userfirstname = userDetailsVM.FirstName;
 
@@ -206,12 +208,12 @@ namespace MCMD.Web.Controllers.Administration
                 Userlastname = userDetailsVM.LastName;
 
             }
-            if(!string.IsNullOrEmpty(userDetailsVM.EmailID))
+            if (!string.IsNullOrEmpty(userDetailsVM.EmailID))
             {
                 useremailid = userDetailsVM.EmailID;
 
             }
-            if(!string.IsNullOrEmpty(userDetailsVM.UserPhone))
+            if (!string.IsNullOrEmpty(userDetailsVM.UserPhone))
             {
                 userphone = userDetailsVM.UserPhone;
             }
@@ -223,7 +225,7 @@ namespace MCMD.Web.Controllers.Administration
         #endregion
 
         #region View Doctor
-          [HttpGet]
+        [HttpGet]
         public ActionResult ViewDoctor(int LogId = 0, int SpeID = 0, int RoleId = 0, string UserFirstName = "", string UserLastName = "", string UserEmailId = "", string UsePhone = "", int Clinicid = 0)
         {
             UserDetailsViewModel userDetailsVM = new UserDetailsViewModel();
@@ -233,7 +235,7 @@ namespace MCMD.Web.Controllers.Administration
 
             if (LogId == 0 && RoleId == 0 && SpeID == 0 && string.IsNullOrEmpty(UserFirstName) && string.IsNullOrEmpty(UserEmailId) && string.IsNullOrEmpty(UsePhone) && Clinicid == 0)
             {
-                userDetailsVM.GetViewDoctors = userRepository.getAllDoctor().ToList(); 
+                userDetailsVM.GetViewDoctors = userRepository.getAllDoctor().ToList();
 
             }
 
@@ -242,7 +244,7 @@ namespace MCMD.Web.Controllers.Administration
             {
                 userDetailsVM.RoleId = RoleId;
 
-                userDetailsVM.GetViewDoctors = userRepository.SearchDoctor(LogId,SpeID,RoleId,UserFirstName, UserLastName, UserEmailId, UsePhone, Clinicid).ToList();
+                userDetailsVM.GetViewDoctors = userRepository.SearchDoctor(LogId, SpeID, RoleId, UserFirstName, UserLastName, UserEmailId, UsePhone, Clinicid).ToList();
             }
 
 
@@ -251,60 +253,60 @@ namespace MCMD.Web.Controllers.Administration
         }
 
         [HttpPost]
-          public ActionResult ViewDoctor(UserDetailsViewModel userDetailsVM)
-          {
+        public ActionResult ViewDoctor(UserDetailsViewModel userDetailsVM)
+        {
 
-              int loginId = 0;
-              int userRollId = 0;
-              string Userfirstname = "";
-              string useremailid = "";
-              string userphone = "";
-              string Userlastname = "";
-              int speID = 0;
-              int ClinicID = 0;
+            int loginId = 0;
+            int userRollId = 0;
+            string Userfirstname = "";
+            string useremailid = "";
+            string userphone = "";
+            string Userlastname = "";
+            int speID = 0;
+            int ClinicID = 0;
 
-              if (userDetailsVM.LoginId != 0 || userDetailsVM.RoleId != 0)
-              {
-                  loginId = userDetailsVM.LoginId;
-                  userRollId = userDetailsVM.RoleId;
+            if (userDetailsVM.LoginId != 0 || userDetailsVM.RoleId != 0)
+            {
+                loginId = userDetailsVM.LoginId;
+                userRollId = userDetailsVM.RoleId;
 
-              }
-            if(!string.IsNullOrEmpty(userDetailsVM.ClinicName))
+            }
+            if (!string.IsNullOrEmpty(userDetailsVM.ClinicName))
             {
                 ClinicID = Convert.ToInt32(userDetailsVM.ClinicName);
             }
-            if(userDetailsVM.SpecialityID!=0)
+            if (userDetailsVM.SpecialityID != 0)
             {
                 speID = userDetailsVM.SpecialityID;
             }
-              if (!string.IsNullOrEmpty(userDetailsVM.FirstName))
-              {
-                  Userfirstname = userDetailsVM.FirstName;
+            if (!string.IsNullOrEmpty(userDetailsVM.FirstName))
+            {
+                Userfirstname = userDetailsVM.FirstName;
 
-              }
-              if (!string.IsNullOrEmpty(userDetailsVM.LastName))
-              {
-                  Userlastname = userDetailsVM.LastName;
+            }
+            if (!string.IsNullOrEmpty(userDetailsVM.LastName))
+            {
+                Userlastname = userDetailsVM.LastName;
 
-              }
-              if (!string.IsNullOrEmpty(userDetailsVM.EmailID))
-              {
-                  useremailid = userDetailsVM.EmailID;
+            }
+            if (!string.IsNullOrEmpty(userDetailsVM.EmailID))
+            {
+                useremailid = userDetailsVM.EmailID;
 
-              }
-              if (!string.IsNullOrEmpty(userDetailsVM.UserPhone))
-              {
-                  userphone = userDetailsVM.UserPhone;
-              }
-              return RedirectToAction("ViewDoctor", new { LogId = loginId, SpeID = speID, RoleId = userRollId, UserFirstName = Userfirstname, UserLastName = Userlastname, UserEmailId = useremailid, UsePhone = userphone, Clinicid = ClinicID });
+            }
+            if (!string.IsNullOrEmpty(userDetailsVM.UserPhone))
+            {
+                userphone = userDetailsVM.UserPhone;
+            }
+            return RedirectToAction("ViewDoctor", new { LogId = loginId, SpeID = speID, RoleId = userRollId, UserFirstName = Userfirstname, UserLastName = Userlastname, UserEmailId = useremailid, UsePhone = userphone, Clinicid = ClinicID });
 
 
-          }
+        }
 
-        #endregion 
+        #endregion
 
         #region Edit User Admin/COE
-      
+
         public ActionResult EditUserData(int Id)
         {
             Session["EditUser"] = Id;
@@ -313,7 +315,7 @@ namespace MCMD.Web.Controllers.Administration
 
         }
 
-          [HttpGet]
+        [HttpGet]
         public ActionResult EditUser()
         {
             EditUserViewModel _edituserVM = new EditUserViewModel();
@@ -380,11 +382,11 @@ namespace MCMD.Web.Controllers.Administration
                     updateUserRole.RoleId = editUserVM.RoleID;
                     userRepository.UpdateUserRole(updateUserRole);
                     userRepository.Save();
-                    
-              
+
+
                     Session["EditUser"] = null;
                 }
-               
+
 
             }
 
@@ -395,11 +397,11 @@ namespace MCMD.Web.Controllers.Administration
 
         #endregion
 
-        #region Cancel Button for edit 
+        #region Cancel Button for edit
         [HttpGet]
         public ActionResult CancelEdit()
         {
-           // return RedirectToAction("ViewUser", "User", new { id = Session["DetailsId"] });
+            // return RedirectToAction("ViewUser", "User", new { id = Session["DetailsId"] });
             return RedirectToAction("ViewUser", "User");
         }
         #endregion

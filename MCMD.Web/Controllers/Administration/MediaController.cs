@@ -45,9 +45,9 @@ namespace MCMD.Web.Controllers.Administration
 
                 foreach (var item in _NemUser)
                 {
-                    _MediaVM.UserName = item.UserName;
+                    _MediaVM.FirstName = item.FirstName;
                     _MediaVM.LastName = item.LastName;
-                    FirstName = item.UserName;
+                    FirstName = item.FirstName;
                     LastName = item.LastName;
                     @TempData["UserName"] = "Doctor Name = " + FirstName + " " + LastName;
                 }
@@ -71,7 +71,7 @@ namespace MCMD.Web.Controllers.Administration
                     MediaRepository.InsertMedia(media, mediaVM, file);
                     MediaRepository.Save();
 
-                    @TempData["Message"] = mediaVM.Message;
+                    @TempData["SuccessMessage"] = mediaVM.Message;
 
                     Session["Media"] = null;
                     return RedirectToAction("Create");
@@ -88,7 +88,7 @@ namespace MCMD.Web.Controllers.Administration
             return View(mediaDetailVM);
         }
 
-        #region Delete Speciality
+        #region Delete Media
         [HttpPost]
         public ActionResult BatchDelete(int[] deleteInputs)
         {

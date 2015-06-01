@@ -13,7 +13,7 @@ namespace MCMD.ViewModel.Account
     {
         [DisplayName("Email")]
         [RegularExpression(@"^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$", ErrorMessage = "Email is not valid.")]
-        [Required(ErrorMessage = "Please Enter Your Registered Email")]
+        [Required(ErrorMessage = "*Please Enter Your Email Id")]
         [StringLength(100, ErrorMessage = "Email cannot be longer than 100 characters.")]
         public string EmailId { get; set; }
     }

@@ -10,3 +10,7 @@ D:\Sominath\MCMDProject\MCMD.ApiService\bin\Release\MCMD.ApiService.dll
 D:\Sominath\MCMDProject\MCMD.ApiService\bin\Release\MCMD.ApiService.pdb
 D:\Sominath\MCMDProject\MCMD.ApiService\obj\Release\MCMD.ApiService.dll
 D:\Sominath\MCMDProject\MCMD.ApiService\obj\Release\MCMD.ApiService.pdb
+D:\DoxeDox_Project\MCMDProject\MCMD.ApiService\bin\Release\MCMD.ApiService.dll
+D:\DoxeDox_Project\MCMDProject\MCMD.ApiService\bin\Release\MCMD.ApiService.pdb
+D:\DoxeDox_Project\MCMDProject\MCMD.ApiService\obj\Release\MCMD.ApiService.dll
+D:\DoxeDox_Project\MCMDProject\MCMD.ApiService\obj\Release\MCMD.ApiService.pdb

@@ -50,6 +50,8 @@ namespace MCMD.EntityModel
         public DbSet<UpgradeService> upgradeServices { get; set; }
         public DbSet<UpgradeServiceLog> upgradeServiceLog { get; set; }
 
+        public DbSet<ClinicTimeInformation> clinicTimeInformation { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
@@ -116,6 +118,9 @@ namespace MCMD.EntityModel
 
             modelBuilder.Entity<UpgradeServiceLog>().ToTable("UpgradeServiceLog");
             modelBuilder.Entity<UpgradeServiceLog>().HasKey<int>(r => r.UpgradeServLogId);
+
+            modelBuilder.Entity<ClinicTimeInformation>().ToTable("ClinicTime");
+            modelBuilder.Entity<ClinicTimeInformation>().HasKey<int>(r => r.ClinicTimeId);
 
 
 

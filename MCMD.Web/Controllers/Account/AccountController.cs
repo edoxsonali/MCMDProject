@@ -16,10 +16,7 @@ namespace MCMD.Web.Controllers.Account
 {
     public class AccountController : Controller
     {
-       
-        
-        
-        
+            
         public ApplicationDbContext db = new ApplicationDbContext();
         public string ServiceUrl = ConfigurationManager.AppSettings["ServiceUrl"];
         public string strApiUserName = ConfigurationManager.AppSettings["ApiUserName"];
@@ -42,43 +39,59 @@ namespace MCMD.Web.Controllers.Account
             {
                 var crypto = new SimpleCrypto.PBKDF2();
                 var existingUser = db.UserLogins.FirstOrDefault(u => u.EmailID == loginVM.EmailId);
+         
 
                 if (ReferenceEquals(existingUser, null))
                 {
                     //Unable to authenticate as user
-                    ModelState.AddModelError("", "User Name does not exist");
+                    // ModelState.AddModelError("", "User Name does not exist");
+                    @TempData["ErrorMessage"] = "Email Id does not exist";
                 }
                 else
                 {
-                   //User is active or not
-                    if (existingUser.InactiveFlag == "N" )
+                    //User is active or not
+                    if (existingUser.InactiveFlag == "N")
                     {
 
                         //valid user user.Password
                         if (existingUser.Password == crypto.Compute(loginVM.Password, existingUser.PasswordSalt))
                         {
+
+                            var exitRole = db.UserLoginRoles.FirstOrDefault(u => u.LoginId == existingUser.LoginId);
                             //Valid user
                             FormsAuthentication.SetAuthCookie(loginVM.EmailId, loginVM.RememberMe);
                             Session["UserName"] = loginVM.EmailId;
-                            return RedirectToAction("RegisterUser", "User");
+
+                            if (exitRole.RoleId != 4)
+                            {
+                                Session["Admin"] = existingUser.LoginId;
+                                return RedirectToAction("RegisterUser", "User");
+                            }
+                            else
+                            {
+                                Session["Doctor"] = existingUser.LoginId;
+                                return RedirectToAction("Create", "DocPersonalInfo");
+                            }
                         }
                         else
                         {
                             //Invalid Password
-                            ModelState.AddModelError("", "Invalid Password");
+                            //  ModelState.AddModelError("", "Invalid Password");
+                            @TempData["ErrorMessage"] = "Invalid Password";
                         }
                     }
                     else
                     {
                         //Inactive user
-                        ModelState.AddModelError("", "InActive User, Please Contact Administrator.");
+                        // ModelState.AddModelError("", "InActive User, Please Contact Administrator.");
+                        @TempData["ErrorMessage"] = "InActive User, Please Contact Administrator.";
                     }
-                   
+
                 }
             }
 
             // For DOCTOR redirect
-           // return RedirectToAction("viewpageName", "Controller", new { area = "Doctor" });
+            // return RedirectToAction("viewpageName", "Controller", new { area = "Doctor" });
 
             return View(loginVM);
         }
@@ -123,7 +136,8 @@ namespace MCMD.Web.Controllers.Account
 
                     if (count == 0)
                     {
-                        ModelState.AddModelError("", "Entered Email does not exist.");
+                        //ModelState.AddModelError("", "Entered Email does not exist.");
+                        @TempData["ErrorMessage"] = "Entered Email does not exist.";
                     }
                     else
                     {
@@ -159,11 +173,13 @@ namespace MCMD.Web.Controllers.Account
                         {
                             SendEMail sendemail = new SendEMail();
                             sendemail.Send_EMail(emailid, subject, body);
-                            ViewBag.StatusMessage = "An email has been sent to the email address you registered with. Follow the instruction in this email to complete your password reset.";
+                          //  ViewBag.StatusMessage = "An email has been sent to the email address you registered with. Follow the instruction in this email to complete your password reset.";
+                            @TempData["Message"] = "An email has been sent to the email address you registered with. Follow the instruction in this email to complete your password reset.";
                         }
                         catch (Exception ex)
                         {
-                            ViewBag.StatusMessage = "Error occured while sending email." + ex.Message;
+                          //  ViewBag.StatusMessage = "Error occured while sending email." + ex.Message;
+                            @TempData["ErrorMessage"] = "Error occured while sending email." + ex.Message;
                         }
                         ViewBag.Status = 1;
                         return View();

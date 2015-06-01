@@ -49,6 +49,10 @@ namespace MCMD.EntityRepository.AdminRepository
         {
             DBcontext.DoctorsPersonals.Add(Doctor);
         }
+        public void UpdateDoctorPersonalInfo(DoctorPersonalInformation DoctorPerInfo)
+        {
+            DBcontext.Entry(DoctorPerInfo).State = EntityState.Modified;
+        }
         public void UpdateDoctor(DoctorPersonalInformation Doctor)
         {
             DBcontext.Entry(Doctor).State = EntityState.Modified;

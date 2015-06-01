@@ -19,6 +19,7 @@ namespace MCMD.IRepository.AdminInterfaces
         IEnumerable<GetViewCliniInfo> GetClinics();
         DoctorClinicInformation GetClinicById(int clinicInfoId);
         void InsertClinic(DoctorClinicInformation doctorClinic);
+        void InsertClinicTime(ClinicTimeInformation dctrClncTime);
         void UpdateClinic(DoctorClinicInformation doctorClinic);
         void DeleteClinic(int ClinicInfoId);
         void Save();

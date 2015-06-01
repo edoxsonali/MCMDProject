@@ -17,6 +17,7 @@ namespace MCMD.IRepository.AdminInterfaces
         IEnumerable<DoctorPersonalInformation> GetDocInfo();
         DoctorPersonalInformation GetDoctorById(int DoctorId);
         void InsertDoctor(DoctorPersonalInformation Doctor);
+        void UpdateDoctorPersonalInfo(DoctorPersonalInformation DoctorPerInfo);
         void UpdateDoctor(DoctorPersonalInformation Doctor);
 
         void UpdateDocUserLogin(UserLogin userlogins);

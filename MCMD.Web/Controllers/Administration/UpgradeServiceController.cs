@@ -2,9 +2,7 @@
 using MCMD.EntityModel.Administration;
 using MCMD.EntityModel.Doctor;
 using MCMD.IRepository.AdminInterfaces;
-
 using MCMD.ViewModel.Administration;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,11 +37,13 @@ namespace MCMD.Web.Controllers.Administration
         {
             ViewData["PageRole"] = 1;
 
+            int Id = (Convert.ToInt32(Session["EditDoctor"]));
+
             int editInputs = (Session["EditService"] != null) ? (Convert.ToInt32(Session["EditService"])) : 0;
 
 
             UpgradeServiceViewModel UpgradeServiceVM = new UpgradeServiceViewModel();
-            // UpgradeServiceVM.upgradeServiceList = upgradeSerciceRepo.GetServices().ToList();
+
             UpgradeServiceVM.DurationList = upgradeSerciceRepo.GetDuration().ToList();
             UpgradeServiceVM.MonthsList = upgradeSerciceRepo.GetMonths().ToList();
             UpgradeServiceVM.GetUpgrdService = upgradeSerciceRepo.GetUpgrdService().ToList();
@@ -80,11 +80,11 @@ namespace MCMD.Web.Controllers.Administration
             {
                 if (ModelState.IsValid)
                 {
-
+                    int Id = (Convert.ToInt32(Session["EditDoctor"]));
 
 
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("SELECTED COUNTRY :- ").AppendLine();
+                    sb.Append("SELECTED SERVICES :- ").AppendLine();
                     foreach (var item in UpgradeServiceVM.membershipListTwo)
                     {
                         if (item.CheckedStatus == true)
@@ -93,7 +93,7 @@ namespace MCMD.Web.Controllers.Administration
                             var NewService = new UpgradeService();
                             sb.Append(item.MembershipType + ", ").AppendLine();
                             NewService.MembershipId = item.MembershipId;
-                            NewService.LoginId = 1;
+                            NewService.LoginId = Id;
                             NewService.Durations = UpgradeServiceVM.DurationId;
                             NewService.AutoRenaval = UpgradeServiceVM.AutoRenavalId;
                             NewService.CreatedById = 1;
@@ -107,17 +107,20 @@ namespace MCMD.Web.Controllers.Administration
                             //Inserting Values Also in upgradeServiceLog History Tabale 
                             //var NewSerLog = new UpgradeServiceLog();
 
-                            //NewSerLog.MembershipId = item.MembershipId;
-                            //NewSerLog.LoginId = 1;
-                            //NewSerLog.Durations = UpgradeServiceVM.DurationId;
-                            //NewSerLog.AutoRenaval = UpgradeServiceVM.AutoRenavalId;
-                            //NewSerLog.CreatedById = 1;
-                            //NewSerLog.InactiveFlag = "N";
-                            //NewSerLog.CreatedOnDate = DateTime.Now;
-                            //NewSerLog.ModifiedById = 1;
-                            //NewSerLog.ModifiedOnDate = DateTime.Now;
-                            //upgradeSerciceRepo.InsertServiceLog(NewSerLog);
-                            //upgradeSerciceRepo.Save();
+                            UpgradeServiceLog NewSerLog = new UpgradeServiceLog();
+
+
+                            NewSerLog.MembershipId = item.MembershipId;
+                            NewSerLog.LoginId = Id;
+                            NewSerLog.Durations = UpgradeServiceVM.DurationId;
+                            NewSerLog.AutoRenaval = UpgradeServiceVM.AutoRenavalId;
+                            NewSerLog.CreatedById = 1;
+                            NewSerLog.InactiveFlag = "N";
+                            NewSerLog.CreatedOnDate = DateTime.Now;
+                            NewSerLog.ModifiedById = 1;
+                            NewSerLog.ModifiedOnDate = DateTime.Now;
+                            upgradeSerciceRepo.InsertServiceLog(NewSerLog);
+                            upgradeSerciceRepo.Save();
 
 
                             //if (Session["EditService"] != null)
@@ -125,7 +128,7 @@ namespace MCMD.Web.Controllers.Administration
 
                             //    NewService.UpgradeServiceId = Convert.ToInt32(Session["EditService"]);// assign the View Model Id to Entities Id
                             //    upgradeSerciceRepo.UpdateService(NewService);
-                            //    Session["EditService"] = null;
+                            //    //Session["EditService"] = null;
                             //}
                             //else
                             //{
@@ -135,7 +138,7 @@ namespace MCMD.Web.Controllers.Administration
 
                             //};
                             //upgradeSerciceRepo.Save();
-                            ViewBag.Message = "Succsessfully added..";
+                            ViewBag.Message = "Successfully added..";
 
 
 
@@ -147,7 +150,7 @@ namespace MCMD.Web.Controllers.Administration
 
                     ViewBag.MembershipTwo = sb.ToString();
 
-                    ViewBag.Message = "Succsessfully added..";
+                    ViewBag.Message = "Successfully added..";
                 }
             }
             catch (Exception)

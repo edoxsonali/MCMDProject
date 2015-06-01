@@ -44,6 +44,7 @@
             //});
 
 
+
         });
 
 
@@ -60,284 +61,275 @@
     <div class="content">
         <h2>Set Clinic Timing</h2>
         <hr />
+        @using System.Web.UI.WebControls
         @using (Html.BeginForm())
         {
 
             @Html.ValidationSummary(true)
+            @Html.AntiForgeryToken()
+
 
             <div class="form">
 
-                @*<div class="col-md-offset-2 col-md-5">
-                    <div class="buttons" style="font-size:medium;">
-                     
-                        <input id="btnPopup" type="button" value="Set Clinic Timing" />
-                    </div>
 
-                </div>*@
-                
-                
-                <div id="uploadModal"> @*class="reveal-modal"*@
+
+                <div id="uploadModal">
+                    @*class="reveal-modal"*@
 
                     <div class="col-sm-12">
+
+
+
                         <table class="table">
-                                <tr>
-                                    <th colspan="2"></th>
-
-                                    <th colspan="7" style="text-align:center"> 1st Sitting</th>
-                                    <th></th>
-                                    <th colspan="7" style="text-align:center"> 2st Sitting</th>
-                                </tr>
                             <tr>
-                                <th colspan="2">days</th>
-                              
+                                <th></th>
+
+                                <th colspan="7" style="text-align:center"> 1st Sitting</th>
+                                <th></th>
+                                @*<th colspan="7" style="text-align:center"> 2st Sitting</th>*@
+                            </tr>
+                            <tr>
+                                <th>Days</th>
+
                                 <th colspan="3" style="text-align:center">Start Time </th>
                                 <th></th>
                                 <th colspan="3" style="text-align:center">End Time </th>
                                 <th> </th>
-                                <th colspan="3" style="text-align:center">Start Time </th>
-                                <th></th>
-                                <th colspan="3" style="text-align:center">End Time </th>
-                                <th> </th>
-                         
-                            </tr>
-                            <tr>
-                                <td class="text-danger"> Mon</td>
-                                <td> <input id="Checkbox1" type="checkbox" value="Is Working day" /></td>
 
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", id = "autoUpdate",   @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots,"-select-", new { @class = "form-control",  @autocomplete = "off" }) </td>
-                                <td></td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control",   @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td> </td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td> </td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control",@autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td> </td>
-                              
-                            
 
                             </tr>
                             <tr>
-                                <td class="text-danger"> Tues</td>
-                                <td> <input id="Checkbox2" type="checkbox" value="Is Working day" /> </td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control", @autocomplete = "off" })</td>
+
+
+                                <td>
+                                    @Html.CheckBoxFor(m => m.GetCheckList[0].DayChecked, new SelectList(Model.GetCheckList, "DayscheckId", "Days", "DayChecked"))
+
+                                    @Model.GetCheckList[0].Days
+                                    @Html.HiddenFor(m => Model.GetCheckList[0].DayscheckId)
+                                    @Html.HiddenFor(m => Model.GetCheckList[0].Days)
+                                </td>
+
+
+
+
+                                @{
+            var listItems1 = new List<SelectListItem>();
+            listItems1.Add(new SelectListItem { Text = "01", Value = "01" });
+            listItems1.Add(new SelectListItem { Text = "02", Value = "02" });
+            listItems1.Add(new SelectListItem { Text = "03", Value = "03" });
+            listItems1.Add(new SelectListItem { Text = "04", Value = "04" });
+            listItems1.Add(new SelectListItem { Text = "05", Value = "05" });
+            listItems1.Add(new SelectListItem { Text = "06", Value = "06" });
+            listItems1.Add(new SelectListItem { Text = "07", Value = "07" });
+            listItems1.Add(new SelectListItem { Text = "08", Value = "08" });
+            listItems1.Add(new SelectListItem { Text = "09", Value = "09" });
+            listItems1.Add(new SelectListItem { Text = "10", Value = "10" });
+            listItems1.Add(new SelectListItem { Text = "11", Value = "11" });
+            listItems1.Add(new SelectListItem { Text = "12", Value = "12" });
+                                }
+
+                                @{
+            var listItems2 = new List<SelectListItem>();
+            listItems2.Add(new SelectListItem { Text = "00", Value = "00" });
+            listItems2.Add(new SelectListItem { Text = "15", Value = "15" });
+            listItems2.Add(new SelectListItem { Text = "30", Value = "30" });
+            listItems2.Add(new SelectListItem { Text = "45", Value = "45" });
+
+                                }
+                                @{
+            var listItems3 = new List<SelectListItem>();
+            listItems3.Add(new SelectListItem { Text = "AM", Value = "AM" });
+            listItems3.Add(new SelectListItem { Text = "PM", Value = "PM" });
+                                }
+
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.HoursMonStart, new SelectList(Model.GetHoursList, "daysHoursId", "Hours"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SecMonStart, new SelectList(Model.GetSecList, "daySecId", "Sec"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SlotMonStart, new SelectList(Model.GetSlotList, "daySlotId", "Slot"), "-select-")</td>
+
                                 <td></td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <th></th>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td> </td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <th> </th>
-                            
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.HoursMonEnd, new SelectList(Model.GetHoursList, "daysHoursId", "Hours"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SecMonEnd, new SelectList(Model.GetSecList, "daySecId", "Sec"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SlotMonEnd, new SelectList(Model.GetSlotList, "daySlotId", "Slot"), "-select-")</td>
+
+
+
                             </tr>
                             <tr>
-                                <td class="text-danger"> Wed</td>
-                                <td> <input id="Checkbox3" type="checkbox" value="Is Working day" /> </td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "-00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control", @autocomplete = "off" })</td>
+
+                                <td>
+                                    @Html.CheckBoxFor(m => m.GetCheckList[1].DayChecked, new SelectList(Model.GetCheckList, "DayscheckId", "Days", "DayChecked"))
+                                    @Model.GetCheckList[1].Days
+                                    @Html.HiddenFor(m => Model.GetCheckList[1].DayscheckId)
+                                    @Html.HiddenFor(m => Model.GetCheckList[1].Days)
+                                </td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.HoursTueStart, new SelectList(Model.GetHoursList, "daysHoursId", "Hours"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SecTueStart, new SelectList(Model.GetSecList, "daySecId", "Sec"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SlotTueStart, new SelectList(Model.GetSlotList, "daySlotId", "Slot"), "-select-")</td>
+
                                 <td></td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <th> </th>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td> </td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <th> </th>
-                              
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.HoursTueEnd, new SelectList(Model.GetHoursList, "daysHoursId", "Hours"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SecTueEnd, new SelectList(Model.GetSecList, "daySecId", "Sec"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SlotTueEnd, new SelectList(Model.GetSlotList, "daySlotId", "Slot"), "-select-")</td>
+
+
+
                             </tr>
                             <tr>
-                                <td class="text-danger"> Thu</td>
-                                <td> <input id="Checkbox4" type="checkbox" value="Is Working day" /> </td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
+
+                                <td>
+                                    @Html.CheckBoxFor(m => m.GetCheckList[2].DayChecked, new SelectList(Model.GetCheckList, "DayscheckId", "Days", "DayChecked"))
+                                    @Model.GetCheckList[2].Days
+                                    @Html.HiddenFor(m => Model.GetCheckList[2].DayscheckId)
+                                    @Html.HiddenFor(m => Model.GetCheckList[2].Days)
+
+                                </td>
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.HoursWedStart, new SelectList(Model.GetHoursList, "daysHoursId", "Hours"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SecWedStart, new SelectList(Model.GetSecList, "daySecId", "Sec"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SlotWedStart, new SelectList(Model.GetSlotList, "daySlotId", "Slot"), "-select-")</td>
+
                                 <td></td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <th> </th>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td> </td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <th> </th>
-                              
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.HoursWedEnd, new SelectList(Model.GetHoursList, "daysHoursId", "Hours"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SecWedEnd, new SelectList(Model.GetSecList, "daySecId", "Sec"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SlotWedEnd, new SelectList(Model.GetSlotList, "daySlotId", "Slot"), "-select-")</td>
+
                             </tr>
                             <tr>
-                                <td class="text-danger">Fri</td>
-                                <td> <input id="Checkbox5" type="checkbox" value="Is Working day" /> </td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
+
+
+                                <td>
+                                    @Html.CheckBoxFor(m => m.GetCheckList[3].DayChecked, new SelectList(Model.GetCheckList, "DayscheckId", "Days", "DayChecked"))
+                                    @Model.GetCheckList[3].Days
+                                    @Html.HiddenFor(m => Model.GetCheckList[3].DayscheckId)
+                                    @Html.HiddenFor(m => Model.GetCheckList[3].Days)
+
+
+
+                                </td>
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.HoursThuStart, new SelectList(Model.GetHoursList, "daysHoursId", "Hours"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SecThuStart, new SelectList(Model.GetSecList, "daySecId", "Sec"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SlotThuStart, new SelectList(Model.GetSlotList, "daySlotId", "Slot"), "-select-")</td>
+
                                 <td></td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <th> </th>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td> </td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <th></th>
-                              
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.HoursThuEnd, new SelectList(Model.GetHoursList, "daysHoursId", "Hours"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SecThuEnd, new SelectList(Model.GetSecList, "daySecId", "Sec"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SlotThuEnd, new SelectList(Model.GetSlotList, "daySlotId", "Slot"), "-select-")</td>
+
                             </tr>
                             <tr>
-                                <td class="text-danger"> Sat</td>
-                                <td> <input id="Checkbox6" type="checkbox" value="Is Working day" /> </td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "-00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
+
+                                <td>
+                                    @Html.CheckBoxFor(m => m.GetCheckList[4].DayChecked, new SelectList(Model.GetCheckList, "DayscheckId", "Days", "DayChecked"))
+                                    @Model.GetCheckList[4].Days
+                                    @Html.HiddenFor(m => Model.GetCheckList[4].DayscheckId)
+                                    @Html.HiddenFor(m => Model.GetCheckList[4].Days)
+
+                                </td>
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.HoursFriStart, new SelectList(Model.GetHoursList, "daysHoursId", "Hours"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SecFriStart, new SelectList(Model.GetSecList, "daySecId", "Sec"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SlotFriStart, new SelectList(Model.GetSlotList, "daySlotId", "Slot"), "-select-")</td>
+
                                 <td></td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <th> </th>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td> </td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <th> </th>
-                              
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.HoursFriEnd, new SelectList(Model.GetHoursList, "daysHoursId", "Hours"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SecFriEnd, new SelectList(Model.GetSecList, "daySecId", "Sec"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SlotFriEnd, new SelectList(Model.GetSlotList, "daySlotId", "Slot"), "-select-")</td>
+
+
+
                             </tr>
                             <tr>
-                                <td class="text-danger">Sun</td>
-                                <td> <input id="Checkbox7" type="checkbox" value="Is Working day" /></td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
+
+
+
+                                <td>
+                                    @Html.CheckBoxFor(m => m.GetCheckList[5].DayChecked, new SelectList(Model.GetCheckList, "DayscheckId", "Days", "DayChecked"))
+                                    @Model.GetCheckList[5].Days
+                                    @Html.HiddenFor(m => Model.GetCheckList[5].DayscheckId)
+                                    @Html.HiddenFor(m => Model.GetCheckList[5].Days)
+
+                                </td>
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.HoursSatStart, new SelectList(Model.GetHoursList, "daysHoursId", "Hours"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SecSatStart, new SelectList(Model.GetSecList, "daySecId", "Sec"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SlotSatStart, new SelectList(Model.GetSlotList, "daySlotId", "Slot"), "-select-")</td>
+
                                 <td></td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <th> </th>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td> </td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.clinicHours, "00", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.timeslots, "00", new { @class = "form-control", @autocomplete = "off" })</td>
-                                <td style="background-color:bisque;">@Html.EnumDropDownListFor(model => model.slots, "-select-", new { @class = "form-control",  @autocomplete = "off" })</td>
-                                <th> </th>
-                            
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.HoursSatEnd, new SelectList(Model.GetHoursList, "daysHoursId", "Hours"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SecSatEnd, new SelectList(Model.GetSecList, "daySecId", "Sec"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SlotSatEnd, new SelectList(Model.GetSlotList, "daySlotId", "Slot"), "-select-")</td>
+
+
+
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    @Html.CheckBoxFor(m => m.GetCheckList[6].DayChecked, new SelectList(Model.GetCheckList, "DayscheckId", "Days", "DayChecked"))
+                                    @Model.GetCheckList[6].Days
+                                    @Html.HiddenFor(m => Model.GetCheckList[6].DayscheckId)
+                                    @Html.HiddenFor(m => Model.GetCheckList[6].Days)
+
+                                </td>
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.HoursSunStart, new SelectList(Model.GetHoursList, "daysHoursId", "Hours"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SecSunStart, new SelectList(Model.GetSecList, "daySecId", "Sec"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SlotSunStart, new SelectList(Model.GetSlotList, "daySlotId", "Slot"), "-select-")</td>
+
+                                <td></td>
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.HoursSunEnd, new SelectList(Model.GetHoursList, "daysHoursId", "Hours"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SecSunEnd, new SelectList(Model.GetSecList, "daySecId", "Sec"), "-select-")</td>
+
+                                <td style="background-color:bisque;"> @Html.DropDownListFor(m => m.SlotSunEnd, new SelectList(Model.GetSlotList, "daySlotId", "Slot"), "-select-")</td>
+
+
                             </tr>
                         </table>
-                        @*<a class="close-reveal-modal">&#215;</a>*@
+
+                    </div>
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="buttons">
+                            <button type="button" id="btnscd" class="btn" name="btnscd" onclick="location.href='@Url.Action("ViewDoctor", "User")'">Back</button>
+                            <button type="Submit" id="btnSave" name="btnSave">Save</button>
+                            <button type="button" id="btnReset" class="btn" name="btnscd" onclick="location.href='@Url.Action("Create", "Media")'">Next</button>
+
                         </div>
-                        <div class="col-md-offset-2 col-md-10">
-                            <div class="buttons">
-                                <button type="Submit" id="btnCreate" name="btnCreate">Save</button>
-
-                            </div>
-
-                        </div>
-
 
                     </div>
 
-                @*<table class="table">
-                    <tr>
-                        <th> Weekdays</th>
-                        <th>Start Time </th>
-                        <th>End Time </th>
-                        <th>BREAK </th>
-                        <th>Start Time </th>
-                        <th>End Time </th>
-                    </tr>
-                    <tr>
-                        <td> Monday</td>
 
-                       
-                        
-
-                    </tr>
-                    <tr>
-                        <td> Tuesday</td>
-                        <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td> &nbsp;</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                    </tr>
-                    <tr>
-                        <td> Wednesday</td>
-                        <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td> &nbsp;</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                    </tr>
-                    <tr>
-                        <td> Thursday</td>
-                        <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td> &nbsp;</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                    </tr>
-                    <tr>
-                        <td>Friday </td>
-                        <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td> &nbsp;</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                    </tr>
-                    <tr>
-                        <td> Saturday </td>
-                        <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td> &nbsp;</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                    </tr>
-                    <tr>
-                        <td>Sunday </td>
-                        <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td> &nbsp;</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                            <td>@Html.EnumDropDownListFor(model => model.clinicHours, "-select-", new { @class = "form-control", @placeholder = "Clinic Time From", @maxlength = "30", @autocomplete = "off" })</td>
-                    </tr>
-                </table>*@
+                </div>
 
 
-                @*<div class="col-md-offset-2 col-md-10">
-                        <div class="buttons">
-                            <button type="Submit" id="btnCreate" name="btnCreate">Save</button>
 
-                        </div>
 
-                    </div>*@
+
+
 
             </div>
 
@@ -351,3 +343,232 @@
 
 
 
+
+@*<script>
+    jQuery(document).ready(function () {
+        App.init();
+        TableManaged.init();
+    });
+</script>
+<!-- BEGIN PAGE CONTAINER-->
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->
+    <div class="row-fluid">
+        <div class="span12">
+
+
+            <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+            <h3 class="page-title">
+                Managed User
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="">Home</a>
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">Manage Doctor</a>
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">Doctor Personal Information</a>
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">Doctor Clinic Information</a>
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">Clinic Timing</a>
+                    <span class="icon-angle-right"></span>
+                </li>
+            </ul>
+            <!-- END PAGE TITLE & BREADCRUMB-->
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+    <!-- BEGIN PAGE CONTENT-->
+
+    <div class="row-fluid">
+
+        <div class="span6 responsive" data-tablet="span12 fix-offset" data-desktop="span6">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet box blue">
+                <div class="portlet-title">
+                    <div class="caption"><i class="icon-cogs"></i>Clinic Timing</div>
+                    <div class="actions">
+                        <a href="#" class="btn green"><i class="icon-plus"></i> Add</a>
+
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-striped table-bordered table-hover" id="sample_3">
+                        <thead>
+                            <tr>
+                                <th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_3 .checkboxes" /></th>
+                                <th style="width:50px;">Days</th>
+                                <th class="hidden-480" style="width:550px;">First Setting</th>
+
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd gradeX">
+                                <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                <td>Monday</td>
+                                <td class="hidden-480">
+
+                                    <div class="controls">
+                                        From
+                                        <div class="input-append bootstrap-timepicker-component">
+                                            <input class="m-wrap m-ctrl-small timepicker-default" type="text">
+                                            <span class="add-on"><i class="icon-time"></i></span>
+                                        </div>To
+                                        <div class="input-append bootstrap-timepicker-component">
+                                            <input class="m-wrap m-ctrl-small timepicker-default" type="text">
+                                            <span class="add-on"><i class="icon-time"></i></span>
+                                        </div>
+                                    </div>
+
+
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr class="odd gradeX">
+                                <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                <td>Tuesday </td>
+                                <td class="hidden-480">
+                                    <div class="controls">
+                                        From
+                                        <div class="input-append bootstrap-timepicker-component">
+                                            <input class="m-wrap m-ctrl-small timepicker-default" type="text">
+                                            <span class="add-on"><i class="icon-time"></i></span>
+                                        </div>To
+                                        <div class="input-append bootstrap-timepicker-component">
+                                            <input class="m-wrap m-ctrl-small timepicker-default" type="text">
+                                            <span class="add-on"><i class="icon-time"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr class="odd gradeX">
+                                <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                <td>Wednesday</td>
+                                <td class="hidden-480">
+
+                                    <div class="controls">
+                                        From
+                                        <div class="input-append bootstrap-timepicker-component">
+                                            <input class="m-wrap m-ctrl-small timepicker-default" type="text">
+                                            <span class="add-on"><i class="icon-time"></i></span>
+                                        </div>To
+                                        <div class="input-append bootstrap-timepicker-component">
+                                            <input class="m-wrap m-ctrl-small timepicker-default" type="text">
+                                            <span class="add-on"><i class="icon-time"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr class="odd gradeX">
+                                <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                <td>Thursday</td>
+                                <td class="hidden-480">
+
+                                    <div class="controls">
+                                        From
+                                        <div class="input-append bootstrap-timepicker-component">
+                                            <input class="m-wrap m-ctrl-small timepicker-default" type="text">
+                                            <span class="add-on"><i class="icon-time"></i></span>
+                                        </div>To
+                                        <div class="input-append bootstrap-timepicker-component">
+                                            <input class="m-wrap m-ctrl-small timepicker-default" type="text">
+                                            <span class="add-on"><i class="icon-time"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr class="odd gradeX">
+                                <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                <td>Friday</td>
+                                <td class="hidden-480">
+                                    <div class="controls">
+                                        From
+                                        <div class="input-append bootstrap-timepicker-component">
+                                            <input class="m-wrap m-ctrl-small timepicker-default" type="text">
+                                            <span class="add-on"><i class="icon-time"></i></span>
+                                        </div>To
+                                        <div class="input-append bootstrap-timepicker-component">
+                                            <input class="m-wrap m-ctrl-small timepicker-default" type="text">
+                                            <span class="add-on"><i class="icon-time"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr class="odd gradeX">
+                                <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                <td>saturday</td>
+                                <td class="hidden-480">
+                                    <div class="controls">
+                                        From
+                                        <div class="input-append bootstrap-timepicker-component">
+                                            <input class="m-wrap m-ctrl-small timepicker-default" type="text">
+                                            <span class="add-on"><i class="icon-time"></i></span>
+                                        </div>To
+                                        <div class="input-append bootstrap-timepicker-component">
+                                            <input class="m-wrap m-ctrl-small timepicker-default" type="text">
+                                            <span class="add-on"><i class="icon-time"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr class="odd gradeX">
+                                <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                <td>Sunday</td>
+                                <td class="hidden-480">
+                                    <div class="controls">
+                                        From
+                                        <div class="input-append bootstrap-timepicker-component">
+                                            <input class="m-wrap m-ctrl-small timepicker-default" type="text">
+                                            <span class="add-on"><i class="icon-time"></i></span>
+                                        </div>To
+                                        <div class="input-append bootstrap-timepicker-component">
+                                            <input class="m-wrap m-ctrl-small timepicker-default" type="text">
+                                            <span class="add-on"><i class="icon-time"></i></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- END EXAMPLE TABLE PORTLET-->
+        </div>
+    </div>
+    <!-- END PAGE CONTENT-->
+
+
+
+</div>
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+@Scripts.Render("~/Content/template_content/assets/scripts/app.js")
+@Scripts.Render("~/Content/template_content/assets/scripts/form-components.js")
+@Scripts.Render("~/Content/template_content/assets/scripts/table-managed.js")
+
+
+
+<!-- END PAGE LEVEL SCRIPTS -->*@

@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_ThemeLayout.cshtml";
 }
 
 @{
@@ -17,7 +17,7 @@
     //Delete User on click
     function DeleteUserData(varid) {
         if (varid != null) {
-            if (confirm('Are you sure want to delete the selected user')) {
+            if (confirm('Are you sure you want to delete the selected user')) {
                 var deleteInputs = [];
                 //$('.chkview:checked').each(function (i, chk) {
                 deleteInputs.push(varid);
@@ -40,65 +40,102 @@
         }
     }
 
+
+
 </script>
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->
+    <div class="row-fluid">
+        <div class="span12">
 
-@using (Html.BeginForm("Create", "Media", null, FormMethod.Post,
-                              new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
+            <h3 class="page-title"></h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="">Home</a>
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">Manage Doctor</a>
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">Doctor Personal Information</a>
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">Doctor Clinic Information</a>
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">Clinic Timing</a>
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">Media</a>
+                    <span class="icon-angle-right"></span>
+                </li>
+
+            </ul>
+        </div>
 
 
-    <div class="container">
-        <div class="login-container">
-            <div class="form-container">
+    </div>
 
-                <h2>Image and Video uploading</h2>
-                <hr />
-                <div style="font-size:large;color:#1f317f">
-                    @TempData["UserName"]
-                </div>
+    <div class="well">
+        <span class="label label-important">NOTE!</span>
+        <span>
+            <span class="bold"> Upload Video Upto Size Only 1GB </span>
 
-                <h5 class="text-success">[ Note - Video Uploading Size is 1GB ]</h5>
-                <div class="form-horizontal">
-                    <div class="validation-summary">@Html.ValidationSummary(true)</div>
-                    <div class="form-group">
-
-                        <div class="col-sm-6 input-group">
-
-                            <input id="ImagePath" title="Upload a product image"
-                                   type="file" name="file" />
-                        </div>
-                    </div>
+        </span>
 
 
-                    
-
-                    <span class="fancybox-error" style="color:red;">
-
-                        @TempData["Message"]
-
-                    </span>
-                    <div class="form-group">
-
-                        <div class="col-md-offset-2 col-md-10">
-                            <button type="button" id="btnscd" name="btnscd" onclick="location.href='@Url.Action("ViewDoctor", "User")'">Back</button>
-                            <button type="Submit" id="btnSave" name="btnRegister">Submit</button>
-                            <button type="button" id="btnscd" name="btnscd" onclick="location.href='@Url.Action("Create", "UpgradeService")'">Next</button>
-                            @*<input type="submit" value="Submit" />*@
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
+    </div>
+    <div class="alert alert-success">
+        <div style="font-size:x-large; color:CaptionText">
+            @TempData["UserName"]
+        </div>
+    </div>
+    <div>
+        <span class="text-success">@TempData["SuccessMessage"]</span>
+        <span class="text-success">@TempData["AddNewItemMessage"]</span>
+        <span class="text-error">@TempData["Message"]</span>
+    </div>
+    <!-- END PAGE HEADER-->
+    <!-- BEGIN PAGE CONTENT-->
+    <div class="portlet box blue ">
+        <div class="portlet-title">
+            <div class="caption"><i class="icon-reorder"></i>Media</div>
 
         </div>
-        <div class="form">
-            <div class="col-sm-12">
-                <div class="data-table">
 
-                    @grid.GetHtml(
-                                           tableStyle: "footable",
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            @using (Html.BeginForm(Html.BeginForm("Create", "Media",
+            new { ReturnUrl = ViewBag.ReturnUrl },
+            FormMethod.Post, new { @class = "form-horizontal form-bordered", enctype = "multipart/form-data" })))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="control-group">
+                    <label class="control-label">Upload Photo/Image<span class="required">*</span></label>
+                    <div class="controls">
+
+                        <input id="ImagePath" title="Upload a clinic image"
+                               type="file" name="file" />
+                        <div>
+                            <label>
+                                <span style="color:red">*</span> Indicates mandatory fields.
+                            </label>
+                            <button type="Submit" id="btnSave" class="btn blue" name="btnRegister">Upload File</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet">
+                    <div class="portlet-body">
+
+                        @grid.GetHtml(
+                                                    tableStyle: "table table-striped table-bordered table-advance table-hover",
                                          footerStyle: "gridFooter",
                                                 alternatingRowStyle: "alt",
                                                  htmlAttributes: new { id = "grdUsers" },
@@ -118,31 +155,37 @@
                      return Html.Raw(string.Format("<text><img src=\"{0}\" alt=\"Image\" width='100px' height='100px'/></text>", Url.Content(@item.FolderFilePath)));
                  }
                 ),
-                @*grid.Column("FolderFilePath", header: "Image", format: @<text><img src=Url.Content(@item.FolderFilePath) alt="@item.FolderFilePath" width="200px" height="100px"/></text>),*@
 
-
-                                            // grid.Column("UploadType",header: "Upload Type", canSort: false),
 
                                               grid.Column(header: "Option", format: @<text>
 
-                                                @*<a id="btnEdit" style="cursor:pointer;" onclick="EditUserData( @item.ID)">Edit</a>|*@
-                                                <a id="btnDelete" style="cursor:pointer;" onclick="DeleteUserData( @item.MediaId)">Delete</a>
+
+                    <a id="btnDelete" style="cursor:pointer;" onclick="DeleteUserData( @item.MediaId)">Delete</a>
                                             </text>)
                                         })
 
-
-
+                    </div>
                 </div>
-            </div>
+
+
+                <div class="form-actions">
+
+
+
+                    <button type="button" id="btnscd" class="btn" name="btnscd" onclick="location.href='@Url.Action("ViewDoctor", "User")'" style="float: left;">Back</button>
+
+                    <button type="button" id="btnscd" class="btn" name="btnscd" onclick="location.href='@Url.Action("Create", "UpgradeService")'" style="float: right;"> Next</button>
+                </div>
+            }
+
+            <!-- END FORM-->
         </div>
+
+
     </div>
 
 
+</div>
+@Scripts.Render("~/bundles/jqueryval")
 
-
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
-
+<!-- END PAGE CONTENT-->
