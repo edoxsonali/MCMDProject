@@ -49,7 +49,7 @@ namespace MCMD.Web.Controllers.Administration
                 {
                     _specialityVM.SpecialityName = item.SpecialityName;
 
-                    Session["EditSpeciality"] = null;
+                   // Session["EditSpeciality"] = null;
                 }
 
             }
@@ -71,24 +71,32 @@ namespace MCMD.Web.Controllers.Administration
                     if (ModelState.IsValid)
                     {
 
+                        var newSpeciality = new Speciality();
                         if (Session["EditSpeciality"] != null)
                         {
-
+                            newSpeciality.SpecialityID = Convert.ToInt32(Session["EditSpeciality"]);
+                            newSpeciality.SpecialityName = specialityVM.SpecialityName;
+                            newSpeciality.InactiveFlag = "N";
+                            newSpeciality.ModifiedDate = DateTime.Now;
+                            specialityRepository.UpdateSpeciality(newSpeciality);
+                            Session["EditSpeciality"] = null;
+                           
 
                         }else
                         {
                             specialityRepository.InsertSpeciality(specialityVM, specialityVM.specialitys);
-                            specialityRepository.Save();
-
-                            @TempData["AddNewItemMessage"] = "Added successfully....";
+                            
                         }
-
+                        specialityRepository.Save();
+                        @TempData["SuccessMessage"] = "Added successfully....";
                        
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("Speciality.SpecialityName", "Speciality Name Already Exist");
+                 //   ModelState.AddModelError("Speciality.SpecialityName", "Speciality Name Already Exist");
+                    @TempData["Message"] =""+ specialityVM.SpecialityName+ "Speciality Name Already Exist";
+
                 }
            }
             catch (Exception)
@@ -123,7 +131,7 @@ namespace MCMD.Web.Controllers.Administration
 
                         specialityRepository.UpdateSpeciality(specialitys);
                         specialityRepository.Save();
-                        @TempData["AddNewItemMessage"] = "User having speciality " + specialitys.SpecialityName + " is deleted successfully";
+                        @TempData["SuccessMessage"] = "User having speciality " + specialitys.SpecialityName + " is deleted successfully";
 
                     }
                     
