@@ -100,5 +100,8 @@ namespace MCMD.ViewModel.Administration
         //public int[] SelectedMember3 { get; set; }
 
 
+        public TimeSpan StartTimeMon { get; set; }
+        public TimeSpan EndtTimeMon { get; set; }
+
     }
 }
