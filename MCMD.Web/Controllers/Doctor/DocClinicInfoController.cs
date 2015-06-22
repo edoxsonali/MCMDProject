@@ -27,7 +27,7 @@ namespace MCMD.Web.Controllers.Doctor
         }
         public ActionResult Create()
         {
-
+            @TempData["Name"] = Session["Name"];
             int Id = (Convert.ToInt32(Session["Doctor"]));
 
             Session["EditDoctor"] = Id;

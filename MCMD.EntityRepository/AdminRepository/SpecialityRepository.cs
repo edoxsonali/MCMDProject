@@ -28,14 +28,19 @@ namespace MCMD.EntityRepository.AdminRepository
         {
             return DBcontext.Specialitys.Find(ID);
         }
-        public void InsertSpeciality(SpecialityViewModel specialityVM,Speciality speciality)
+        public void InsertSpeciality(SpecialityViewModel specialityVM, Speciality specialityss)
         {
 
-            speciality.SpecialityName = specialityVM.SpecialityName;
-            speciality.InactiveFlag = "N";
-            speciality.ModifiedDate = DateTime.Now;
+            Speciality spe = new Speciality();
+            spe.SpecialityName = specialityVM.SpecialityName;
+            spe.InactiveFlag = "N";
+            spe.ModifiedDate = DateTime.Now;
 
-            DBcontext.Specialitys.Add(speciality);
+            //specialityss.InactiveFlag = "N";
+            //specialityss.ModifiedDate = DateTime.Now;
+            //specialityss.SpecialityName = specialityVM.SpecialityName;
+
+            DBcontext.Specialitys.Add(spe);
         }
         public void UpdateSpeciality(Speciality speciality)
         {

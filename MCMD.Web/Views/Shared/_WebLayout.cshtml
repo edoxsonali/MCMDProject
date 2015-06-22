@@ -1,6 +1,10 @@
 ﻿<!DOCTYPE html>
-
-<html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Edox Healthcare Pvt Ltd. | Home</title>
@@ -19,21 +23,46 @@
     @Styles.Render("~/Content/Web_Theme/assets/css/style-responsive.css")
     <!-- END GLOBAL MANDATORY STYLES -->
     @Styles.Render("~/Content/Web_Theme/assets/css/themes/orange.css")
+    @Styles.Render("~/Content/Web_Theme/assets/css/pages/prices.css")
+
+
+    @Styles.Render("~/Content/Web_Theme/assets/css/themes/bluefb.css")
+
+
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <!-- BEGIN BODY -->
-<body>
- 
+
+<body style="background-image: url('../../Content/Web_Theme/assets/img/Background.png'); background-repeat: repeat;">
+
+
+
     <!-- BEGIN HEADER -->
-    <div class="front-header">
+    <div class="front-header" style="background-color :white; box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75)">
+        <!-- BEGIN TOP BAR -->
+        <div class="front-topbar" style="background-color:#E9811A;">
+            <div class="container">
+                <div class="row-fluid">
+                    <div class="span6 ">
+                        <ul class="unstyled inline">
+                            <li style="color:white;"><i class="icon-phone topbar-info-icon top-2" style="color:white;"></i>Call us: <span>+91-20-60503369</span></li>
+                            <li class="sep " style="color:white;"><span>|</span></li>
+                            <li style="color:white;"><i class="icon-envelope-alt topbar-info-icon top-2" style="color:white;"></i>Email: <span>info@edoxhealthcare.com</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END TOP BAR -->
         <div class="container">
+
             <div class="navbar">
                 <div class="navbar-inner">
 
                     <!-- BEGIN LOGO (you can use logo image instead of text)-->
-                    <a class="brand logo-v1" href="index.html">
-              
-                        <img src="~/Content/Web_Theme/assets/img/logo_orange.png" id="logoimg" alt="">
+                    <a class="brand logo-v1" href="#">
+
+                        <img src="~/Content/Web_Theme/assets/img/logo.png" id="logoimg" alt="" style="margin-top:10px;">
                     </a>
                     <!-- END LOGO -->
                     <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -46,67 +75,18 @@
                     <!-- BEGIN TOP NAVIGATION MENU -->
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="dropdown active">
-                                <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">
+                            <li class="active">
+                                <a href="@Url.Action("Search", "Home")" style="padding-bottom:20px; padding-top:20px;">
                                     Home
-                                    @*<i class="icon-angle-down"></i>*@
                                 </a>
-                                @*<ul class="dropdown-menu">
-                                    <li class="active"><a href="index.html">Home Default</a></li>
-                                    <li><a href="page_home2.html">Home with Top Bar</a></li>
-                                </ul>*@
                             </li>
-                            <li><a href="page_about.html">Register</a></li>
-                            <li><a href="page_services.html">Login</a></li>
-                            @*<li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">
-                                    Features
-                                    <i class="icon-angle-down"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="feature_typography.html">Typography</a></li>
-                                    <li><a href="feature_buttons.html">Buttons</a></li>
-                                    <li><a href="feature_forms.html">Forms</a></li>
-                                    <li><a href="feature_icons.html">Icons</a></li>
-                                </ul>
-                            </li>*@
-                            @*<li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">
-                                    Portfolio
-                                    <i class="icon-angle-down"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="portfolio_4.html">Portfolio 4</a></li>
-                                    <li><a href="portfolio_3.html">Portfolio 3</a></li>
-                                    <li><a href="portfolio_2.html">Portfolio 2</a></li>
-                                    <li><a href="portfolio_item.html">Portfolio Item</a></li>
-                                </ul>
-                            </li>*@
-                            @*<li><a href="page_prices.html">Prices</a></li>*@
-                            @*<li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">
-                                    Blog
-                                    <i class="icon-angle-down"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="blog.html">Blog Page</a></li>
-                                    <li><a href="blog_item.html">Blog Item</a></li>
-                                </ul>
-                            </li>*@
-                            @*<li><a href="page_contacts.html">Contact</a></li>*@
-                            @*<li class="menu-search">
-                                <span class="sep"></span>
-                                <i class="icon-search search-btn"></i>
-                            </li>*@
+                            <li><a href="@Url.Action("Create", "Register")" style="padding-bottom:20px; padding-top:20px;">Register</a></li>
+                           
+                            <li><a href="@Url.Action("Pricing", "Home")" style="padding-bottom:20px; padding-top:20px;">Pricing</a></li>
+                            <li><a href="@Url.Action("FAQ", "Home")" style="padding-bottom:20px; padding-top:20px;">FAQ</a></li>
+                            <li><a href="" style="padding-bottom:20px; padding-top:20px;">Services</a></li>
+                            <li><a href="@Url.Action("DocLogin", "Account")" style="padding-bottom:20px; padding-top:20px;">Login</a></li>
                         </ul>
-                        @*<div class="search-box">
-                            <div class="input-append">
-                                <form>
-                                    <input style="background:#fff;" class="m-wrap" type="text" placeholder="Search" />
-                                    <button type="submit" class="btn theme-btn">Go</button>
-                                </form>
-                            </div>
-                        </div>*@
                     </div>
                     <!-- BEGIN TOP NAVIGATION MENU -->
                 </div>
@@ -114,7 +94,6 @@
         </div>
     </div>
     <!-- END HEADER -->
-
     <!-- BEGIN CONTAINER -->
     @RenderBody()
     <!-- END CONTAINER -->
@@ -122,115 +101,91 @@
     <div class="front-footer">
         <div class="container">
             <div class="row-fluid">
-                <div class="span4 space-mobile">
-                    <!-- BEGIN ABOUT -->
-                    <h2>About</h2>
-                    <p class="margin-bottom-30">Vivamus imperdiet felis consectetur onec eget orci adipiscing nunc. Pellentesque fermentum, ante ac interdum ullamcorper.</p>
-                    <div class="clearfix"></div>
-                    <!-- END ABOUT -->
+                <div class="row-fluid front-team">
+                    <ul class="thumbnails">
+                        <li class="span3 space-mobile">
 
-                    <h2>Photos Stream</h2>
-                    <!-- BEGIN BLOG PHOTOS STREAM -->
-                    <div class="blog-photo-stream margin-bottom-30">
-                        <ul class="unstyled">
-                            <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img5-small.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="~/Content/Web_Theme/assets/img/works/img1.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img4-large.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="~/Content/Web_Theme/assets/img/works/img6.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="~/Content/Web_Theme/assets/img/pics/img1-large.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="~/Content/Web_Theme/assets/img/pics/img2-large.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="~/Content/Web_Theme/assets/img/works/img3.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img2-large.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="~/Content/Web_Theme/assets/img/works/img2.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="~/Content/Web_Theme/assets/img/works/img5.jpg" alt=""></a></li>
-                        </ul>
-                    </div>
-                    <!-- END BLOG PHOTOS STREAM -->
-                </div>
-                <div class="span4 space-mobile">
-                    <!-- BEGIN CONTACTS -->
-                    <h2>Contact Us</h2>
-                    <address class="margin-bottom-40">
-                        Loop, Inc. <br />
-                        795 Park Ave, Suite 120 <br />
-                        San Francisco, CA 94107 <br />
-                        P: (234) 145-1810 <br />
-                        Email: <a href="mailto:info@keenthemes.com">info@keenthemes.com</a>
-                    </address>
-                    <!-- END CONTACTS -->
-                    <!-- BEGIN SUBSCRIBE -->
-                    <h2>Monthly Newsletter</h2>
-                    <p>Subscribe to our newsletter and stay up to date with the latest news and deals!</p>
-                    <form action="#" class="form-search">
-                        <div class="input-append">
-                            <input style="background:#fff;" class="m-wrap" type="text"><button class="btn theme-btn" type="button">SUBSCRIBE</button>
-                        </div>
-                    </form>
-                    <!-- END SUBSCRIBE -->
-                </div>
-                <div class="span4">
-                    <!-- BEGIN TWITTER BLOCK -->
-                    <h2>Latest Tweets</h2>
-                    <dl class="dl-horizontal f-twitter">
-                        <dt><i class="icon-twitter"></i></dt>
-                        <dd>
-                            <a href="#">keenthemes</a>
-                            Imperdiet condimentum diam dolor lorem sit consectetur adipiscing
-                            <span>3 min ago</span>
-                        </dd>
-                    </dl>
-                    <dl class="dl-horizontal f-twitter">
-                        <dt><i class="icon-twitter"></i></dt>
-                        <dd>
-                            <a href="#">keenthemes</a>
-                            Sequat ipsum dolor onec eget orci fermentum condimentum lorem sit consectetur adipiscing
-                            <span>8 min ago</span>
-                        </dd>
-                    </dl>
-                    <dl class="dl-horizontal f-twitter">
-                        <dt><i class="icon-twitter"></i></dt>
-                        <dd>
-                            <a href="#">keenthemes</a>
-                            Remonde sequat ipsum dolor lorem sit consectetur adipiscing
-                            <span>12 min ago</span>
-                        </dd>
-                    </dl>
-                    <dl class="dl-horizontal f-twitter">
-                        <dt><i class="icon-twitter"></i></dt>
-                        <dd>
-                            <a href="#">keenthemes</a>
-                            Pilsum dolor lorem sit consectetur adipiscing orem sequat
-                            <span>16 min ago</span>
-                        </dd>
-                    </dl>
-                    <!-- END TWITTER BLOCK -->
+                            <h3>
+                                <a style="color:#fff; font-family:'Open Sans'; font-size:22px;">Location</a>
+
+                            </h3>
+                            <ul class="unstyled" style="color:white;">
+                                <li>Dr.Consecte</li>
+                                <li>Dr.Fusce</li>
+                                <li>Dr.Lorem</li>
+                                <li>Dr.Lorem</li>
+                                <li>Dr.Lorem</li>
+                                <li>Dr.Lorem</li>
+                                <li>Dermatologists</li>
+                                <li>Obstetricians & Gynaecologists</li>
+                            </ul>
+                        </li>
+                        <li class="span3 space-mobile">
+
+                            <h3>
+                                <a style="color:#fff; font-family:'Open Sans'; font-size:22px;">Location</a>
+
+                            </h3>
+                            <ul class="unstyled" style="color:white;">
+                                <li>Dr.Consecte</li>
+                                <li>Dr.Fusce</li>
+                                <li>Dr.Lorem</li>
+                                <li>Dr.Lorem</li>
+                                <li>Dr.Lorem</li>
+                                <li>Dr.Lorem</li>
+                                <li>Dermatologists</li>
+                                <li>Obstetricians & Gynaecologists</li>
+                            </ul>
+                        </li>
+                        <li class="span3 space-mobile">
+
+                            <h3>
+                                <a style="color:#fff; font-family:'Open Sans'; font-size:22px;">Location</a>
+
+                            </h3>
+                            <ul class="unstyled" style="color:white;">
+                                <li>Dr.Consecte</li>
+                                <li>Dr.Fusce</li>
+                                <li>Dr.Lorem</li>
+                                <li>Dr.Lorem</li>
+                                <li>Dr.Lorem</li>
+                                <li>Dr.Lorem</li>
+                                <li>Dermatologists</li>
+                                <li>Obstetricians & Gynaecologists</li>
+                            </ul>
+                        </li>
+                        <li class="span3">
+
+                            <h3>
+                                <a style="color:#fff; font-family:'Open Sans'; font-size:22px;">Contact Us</a>
+
+                            </h3>
+                            <address class="margin-bottom-40">
+                                Edox Healthcare Private Limited
+                                1202/32, Bhagya Building,<br>
+                                2nd Floor, Opp. Coronet Hotel,<br>
+                                Apte Road, Shivaji Nagar,<br>
+                                Pune, Maharashtra - 411004 <br>
+                                Office Phone: +91-20-60503369 <br>
+                                Email: <a href="mailto:info@edoxhealthcare.com" style="color:#e9811a;">info@edoxhealthcare.com</a>
+
+                            </address>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
     <!-- END FOOTER -->
     <!-- BEGIN COPYRIGHT -->
-    <div class="front-copyright">
+    <div class="front-copyright" style="text-align:center;">
         <div class="container">
             <div class="row-fluid">
-                <div class="span8">
+                <div class="span12">
                     <p>
-                        <span class="margin-right-10">2013 © Metronic. ALL Rights Reserved.</span>
-                        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                        <span class="margin-right-10">© 2015 Edox Healthcare Private Limited</span>
+                        <a href="@Url.Action("PrivacyPolicy", "Home")" style="color: #1f317f;"><b>Privacy Policy</b></a> | <a href="@Url.Action("TermServices", "Home")" style="color: #1f317f;"><b>Terms of Service</b></a>
                     </p>
-                </div>
-                <div class="span4">
-                    <ul class="social-footer">
-                        <li><a href="#"><i class="icon-facebook"></i></a></li>
-                        <li><a href="#"><i class="icon-google-plus"></i></a></li>
-                        <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                        <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                        <li><a href="#"><i class="icon-twitter"></i></a></li>
-                        <li><a href="#"><i class="icon-skype"></i></a></li>
-                        <li><a href="#"><i class="icon-github"></i></a></li>
-                        <li><a href="#"><i class="icon-youtube"></i></a></li>
-                        <li><a href="#"><i class="icon-dropbox"></i></a></li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -247,22 +202,26 @@
     @Scripts.Render("~/Content/Web_Theme/assets/plugins/hover-dropdown.js")
     @Scripts.Render("~/Content/Web_Theme/assets/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.plugins.min.js")
     @Scripts.Render("~/Content/Web_Theme/assets/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.revolution.min.js")
+    @Scripts.Render("~/Content/Web_Theme/assets/plugins/fancybox/source/jquery.fancybox.js")
 
-    <!--[if lt IE 9]>
-    <script src="assets/plugins/respond.min.js"></script>
-    <![endif]-->
+
+    @Scripts.Render("~/Content/Web_Theme/assets/plugins/js/jquery.imedica.min.js")
+    @Scripts.Render("~/Content/Web_Theme/assets/plugins/js/custom-imedicajs.min.js")
+    <!--JS Inclution-->
     <!-- END CORE PLUGINS -->
     @Scripts.Render("~/Content/Web_Theme/assets/scripts/app.js")
     @Scripts.Render("~/Content/Web_Theme/assets/scripts/index.js")
- 
+
     <script type="text/javascript">
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             App.init();
             App.initBxSlider();
             Index.initRevolutionSlider();
+            App.gridOption1();
         });
     </script>
     <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
 </html>
+

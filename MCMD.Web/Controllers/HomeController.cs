@@ -9,32 +9,41 @@ namespace MCMD.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            //sonali 
-            ViewBag.Message = "Sonali page  ";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-
+      
         public ActionResult Search()
         {
             return View();
         }
+        public ActionResult FAQ()
+        {
+            return View();
+        }
 
-      
+        public ActionResult Pricing()
+        {
+            return View();
+        }
+        public ActionResult PrivacyPolicy()
+        {
+            return View();
+        }
+        public ActionResult TermServices()
+        {
+            return View();
+        }
+        public ActionResult DocProfile()
+        {
+            return View();
+        }
+        public ActionResult Doctors()
+        {
+            return View();
+        }
+     
+        public ActionResult ClinicProfile()
+        {
+            return View();
+        }
+       
     }
 }

@@ -49,7 +49,7 @@ namespace MCMD.ViewModel.Administration
 
         [DisplayName("Phone No")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "{0} must be a Number and only 10 digit.")]
-        [Required(ErrorMessage = "Phone No is required.")]
+        [Required(ErrorMessage = "Phone Number is required.")]
         public string UserPhone { get; set; }
 
         [DisplayName("Employee Id")]

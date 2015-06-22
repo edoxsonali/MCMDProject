@@ -21,14 +21,11 @@ namespace MCMD.Web.Controllers.Administration
         {
             this.doctorClinicRepository = _doctorClinicRepository;
         }
-        public ActionResult Index()
-        {
-            return View();
-        }
-
+       
+        #region Create/Update Doctor Clinic Info
         public ActionResult Create()
         {
-
+            @TempData["Name"] = Session["Name"];
             int Id = (Convert.ToInt32(Session["EditDoctor"]));
 
             Session["EditDoctor"] = Id;
@@ -44,11 +41,8 @@ namespace MCMD.Web.Controllers.Administration
 
             if (Id != 0)
             {
-
-
                 List<DoctorClinicInformation> NewClinic = doctorClinicRepository.GetClinic().Where(x => x.LoginId == Id).ToList();
                 //List<GetViewCliniInfo> _NewDoctor = doctorClinicRepository.GetClinics().Where(x => x.ClinicInfoId == Id).ToList();
-
 
                 foreach (var item in NewClinic)
                 {
@@ -57,15 +51,14 @@ namespace MCMD.Web.Controllers.Administration
                     doctorClinicVM.ClinicAddress = item.ClinicAddress;
                     doctorClinicVM.ClinicPhoneNo = item.ClinicPhoneNo;
                     doctorClinicVM.ClinicFees = item.ClinicFees;
-                    doctorClinicVM.Country = item.Country;
-                    doctorClinicVM.State = item.State;
-                    doctorClinicVM.City = item.City;
+                    doctorClinicVM.CountryId = item.Country;
+                    doctorClinicVM.StateId = item.State;
+                    doctorClinicVM.CityId = item.City;
                     doctorClinicVM.ClinicServices = item.ClinicServices;
                     doctorClinicVM.AwardsAndRecognization = item.AwardsAndRecognization;
                     doctorClinicVM.AboutClinic = item.AboutClinic;
                     doctorClinicVM.ZipCode = item.ZipCode;
                 }
-
 
 
             }
@@ -81,39 +74,63 @@ namespace MCMD.Web.Controllers.Administration
                 if (ModelState.IsValid)
                 {
                     int Id = (Convert.ToInt32(Session["EditDoctor"]));
-
-                    var newClinic = new DoctorClinicInformation();
-
-
-                    //Enumeration.GetAll<MCMD.ViewModel.Administration.DoctorClinicInformationViewModel.ClinicHours>();
+                    _doctorClinicVM.LoginId = Convert.ToInt32(Session["EditDoctor"]);
+                    var existingUser = db.DoctorsClinicInfos.FirstOrDefault(u => u.LoginId == _doctorClinicVM.LoginId);
 
 
-                    newClinic.ClinicName = _doctorClinicVM.ClinicName;
-                    newClinic.ClinicAddress = _doctorClinicVM.ClinicAddress;
-                    newClinic.ClinicPhoneNo = _doctorClinicVM.ClinicPhoneNo;
-                    newClinic.ClinicFees = _doctorClinicVM.ClinicFees;
-                    //newClinic.ClinicTimeFrom = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicTimeFrom).Substring(0, 8));// TimeSpan.Parse(Convert.ToString(DateTime.Now.TimeOfDay).Substring(0, 8));
-                    //newClinic.ClinicTimeTo = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicTimeTo).Substring(0, 8));
-                    //newClinic.ClinicLunchbreakFrom = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicLunchbreakFrom).Substring(0, 8));
-                    //newClinic.ClinicLunchbreakTo = TimeSpan.Parse(Convert.ToString(_doctorClinicVM.DoctorClinicInformations.ClinicLunchbreakTo).Substring(0, 8));
-                    newClinic.Country = _doctorClinicVM.Country;
-                    newClinic.State = _doctorClinicVM.State;
-                    newClinic.City = _doctorClinicVM.City;
-                    newClinic.ZipCode = _doctorClinicVM.ZipCode;
-                    newClinic.ClinicServices = _doctorClinicVM.ClinicServices;
-                    newClinic.AwardsAndRecognization = _doctorClinicVM.AwardsAndRecognization;
-                    newClinic.AboutClinic = _doctorClinicVM.AboutClinic;
-                    newClinic.InactiveFlag = "N";
-                    newClinic.CreatedByID = 1;
-                    newClinic.CreatedDate = DateTime.Now;
-                    newClinic.ModifiedByID = 1;
-                    newClinic.ModifiedDate = DateTime.Now;
-                    newClinic.LoginId = Id;// for now we add 1 later we change
 
-                    doctorClinicRepository.InsertClinic(newClinic);
-                    doctorClinicRepository.Save();
-                    ViewBag.Message = "Succsessfully added..";
-                    @TempData["Message"] = "Succsessfully save data";
+                    if (ReferenceEquals(existingUser, null))
+                    {
+                        var newClinic = new DoctorClinicInformation();
+                        newClinic.ClinicName = _doctorClinicVM.ClinicName;
+                        newClinic.ClinicAddress = _doctorClinicVM.ClinicAddress;
+                        newClinic.ClinicPhoneNo = _doctorClinicVM.ClinicPhoneNo;
+                        newClinic.ClinicFees = _doctorClinicVM.ClinicFees;
+                        newClinic.Country = _doctorClinicVM.Country;
+                        newClinic.State = _doctorClinicVM.State;
+                        newClinic.City = _doctorClinicVM.City;
+                        newClinic.ZipCode = _doctorClinicVM.ZipCode;
+                        newClinic.ClinicServices = _doctorClinicVM.ClinicServices;
+                        newClinic.AwardsAndRecognization = _doctorClinicVM.AwardsAndRecognization;
+                        newClinic.AboutClinic = _doctorClinicVM.AboutClinic;
+                        newClinic.InactiveFlag = "N";
+                        newClinic.CreatedByID = 1;// for now we add 1 later we change
+                        newClinic.CreatedDate = DateTime.Now;
+                        newClinic.ModifiedByID = 1;// for now we add 1 later we change
+                        newClinic.ModifiedDate = DateTime.Now;
+                        newClinic.LoginId = Id;
+
+                        doctorClinicRepository.InsertClinic(newClinic);
+                        doctorClinicRepository.Save();
+                        @TempData["SuccessMessage"] = "Succsessfully save data";
+                    }
+                    else
+                    {
+
+                        existingUser.ClinicName = _doctorClinicVM.ClinicName;
+                        existingUser.ClinicAddress = _doctorClinicVM.ClinicAddress;
+                        existingUser.ClinicPhoneNo = _doctorClinicVM.ClinicPhoneNo;
+                        existingUser.ClinicFees = _doctorClinicVM.ClinicFees;
+                        existingUser.Country = _doctorClinicVM.Country;
+                        existingUser.State = _doctorClinicVM.State;
+                        existingUser.City = _doctorClinicVM.City;
+                        existingUser.ZipCode = _doctorClinicVM.ZipCode;
+                        existingUser.ClinicServices = _doctorClinicVM.ClinicServices;
+                        existingUser.AwardsAndRecognization = _doctorClinicVM.AwardsAndRecognization;
+                        existingUser.AboutClinic = _doctorClinicVM.AboutClinic;
+                        existingUser.InactiveFlag = "N";
+                        existingUser.CreatedByID = 1;// for now we add 1 later we change
+                        existingUser.CreatedDate = DateTime.Now;
+                        existingUser.ModifiedByID = 1;// for now we add 1 later we change
+                        existingUser.ModifiedDate = DateTime.Now;
+                        existingUser.LoginId = Id;
+
+                        //Update if already exit 
+                        doctorClinicRepository.UpdateClinic(existingUser);
+                        doctorClinicRepository.Save();
+                        @TempData["SuccessMessage"] = "Succsessfully Update data";
+
+                    }
                 }
 
 
@@ -122,10 +139,38 @@ namespace MCMD.Web.Controllers.Administration
             {
                 //ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists contact your system administrator.");
             }
-            return RedirectToAction("Create");
+            return RedirectToAction("ClinicTiming", "DoctorClinicInfo");
         }
+        #endregion
 
+          #region Get City list by state id
+        [AcceptVerbs(HttpVerbs.Get)]
+        public JsonResult GetCityByStateId(string StateIDID)
+        {
+            var varCityResult = (IEnumerable<City>)null;
+            if (!String.IsNullOrEmpty(StateIDID))
+            {
 
+                int id = Convert.ToInt32(StateIDID);
+                varCityResult = (from c in db.cities
+                              join s in db.states on c.StateId equals s.StateId
+                              where s.StateId == id
+                              select (c));
+            }
+            else
+            {
+                //varCityResult = db.cities.Where(x => x.InactiveFlag == "N")
+                //  .OrderBy(x => x.DispensaryName).ToList();
+                varCityResult = db.cities.ToList();
+
+            }
+
+            return Json(new SelectList(varCityResult.ToArray(), "CityId", "CityName"), JsonRequestBehavior.AllowGet);
+            //return Json(new { redirectUrl = Url.Action("Create", "DoctorClinicInfo", new { StateIDID }), isRedirect = true, JsonRequestBehavior.AllowGet });
+        }
+          #endregion
+
+        #region View Clinic Info
         public ActionResult ViewClinicInfo()
         {
             ClinicDetailsViewModel clinicdetail = new ClinicDetailsViewModel();
@@ -133,9 +178,13 @@ namespace MCMD.Web.Controllers.Administration
 
             return View(clinicdetail);
         }
+        #endregion
+
+        #region set Clinic Timing
 
         public ActionResult ClinicTiming()
         {
+            @TempData["Name"] = Session["Name"];
             ClinicTimingViewModel docClinicTimeVM = new ClinicTimingViewModel();
 
 
@@ -150,38 +199,6 @@ namespace MCMD.Web.Controllers.Administration
             };
             docClinicTimeVM.SelectedMember1 = docClinicTimeVM.GetCheckList.Select(x => x.DayscheckId).ToArray();
 
-            docClinicTimeVM.GetHoursList = new List<daysHours>() {
-                new daysHours {daysHoursId="00",Hours="00"},
-                new daysHours {daysHoursId="01",Hours="01"},
-                new daysHours {daysHoursId="02",Hours="02"},
-                new daysHours {daysHoursId="03",Hours="03"},
-                new daysHours {daysHoursId="04",Hours="04"},
-                new daysHours {daysHoursId="05",Hours="05"},
-                new daysHours {daysHoursId="06",Hours="06"},
-                new daysHours {daysHoursId="07",Hours="07"},
-                new daysHours {daysHoursId="08",Hours="08"},
-                new daysHours {daysHoursId="09",Hours="09"},
-                new daysHours {daysHoursId="10",Hours="10"},
-                new daysHours {daysHoursId="11",Hours="11"},
-                new daysHours {daysHoursId="12",Hours="12"},
-
-            };
-
-
-            docClinicTimeVM.GetSecList = new List<daysec>() {
-                new daysec {daySecId="00",Sec="00"},
-                new daysec {daySecId="15",Sec="15"},
-                new daysec {daySecId="30",Sec="30"},
-                new daysec {daySecId="45",Sec="45"},
-
-            };
-
-            docClinicTimeVM.GetSlotList = new List<daySlot>() {
-                new daySlot {daySlotId="AM",slot="AM"},
-                new daySlot {daySlotId="PM",slot="PM"},
-             
-
-            };
 
             return View(docClinicTimeVM);
 
@@ -198,7 +215,7 @@ namespace MCMD.Web.Controllers.Administration
             {
                 if (ModelState.IsValid)
                 {
-
+                    int Id = (Convert.ToInt32(Session["EditDoctor"]));
                     foreach (var item in docClinicTime.GetCheckList)
                     {
                         if (item.DayChecked == true)
@@ -209,58 +226,140 @@ namespace MCMD.Web.Controllers.Administration
 
                             if (CheckDay.Equals("Monday"))
                             {
-                                NewClinicTime.StartTime = TimeSpan.Parse(docClinicTime.HoursMonStart + ":" + docClinicTime.SecMonStart);
-                                NewClinicTime.StartSlot = docClinicTime.SlotMonStart;
-                                NewClinicTime.EndTime = TimeSpan.Parse(docClinicTime.HoursMonEnd + ":" + docClinicTime.SecMonEnd);
-                                NewClinicTime.EndSlot = docClinicTime.SlotMonEnd;
+                                //strat timing
+                                DateTime timestartMon = DateTime.Parse(docClinicTime.StartTimeMon);
+                                string newstartMon = timestartMon.ToString("hh:mm");
+                                string newslotstartMon = timestartMon.ToString("tt");             
+               
+                                //End timing
+                                DateTime timeendMon = DateTime.Parse(docClinicTime.EndtTimeMon);
+                                string newsendMon = timeendMon.ToString("hh:mm");
+                                string newsslotendMon = timeendMon.ToString("tt");
+
+                                NewClinicTime.StartTime = TimeSpan.Parse(newstartMon);
+                                NewClinicTime.EndTime = TimeSpan.Parse(newsendMon);
+                                NewClinicTime.StartSlot = newslotstartMon;
+                                NewClinicTime.EndSlot = newsslotendMon;
+                               
+
 
                             }
 
                             if (CheckDay.Equals("Tuesday"))
                             {
-                                NewClinicTime.StartTime = TimeSpan.Parse(docClinicTime.HoursTueStart + ":" + docClinicTime.SecTueStart);
-                                NewClinicTime.StartSlot = docClinicTime.SlotTueStart;
-                                NewClinicTime.EndTime = TimeSpan.Parse(docClinicTime.HoursTueEnd + ":" + docClinicTime.SecTueEnd);
-                                NewClinicTime.EndSlot = docClinicTime.SlotTueEnd;
+                                //strat timing
+                                DateTime timestartTue = DateTime.Parse(docClinicTime.StartTimeTue);
+                                string newstartTue = timestartTue.ToString("hh:mm");
+                                string newslotstartTue = timestartTue.ToString("tt");
+
+                                //End timing
+                                DateTime timeendTue = DateTime.Parse(docClinicTime.EndtTimeTue);
+                                string newsendTue = timeendTue.ToString("hh:mm");
+                                string newsslotendTue = timeendTue.ToString("tt");
+
+                                NewClinicTime.StartTime = TimeSpan.Parse(newstartTue);
+                                NewClinicTime.EndTime = TimeSpan.Parse(newsendTue);
+                                NewClinicTime.StartSlot = newslotstartTue;
+                                NewClinicTime.EndSlot = newsslotendTue;
+
+                             
                             }
                             if (CheckDay.Equals("Wednesday"))
                             {
-                                NewClinicTime.StartTime = TimeSpan.Parse(docClinicTime.HoursWedStart + ":" + docClinicTime.SecWedStart);
-                                NewClinicTime.StartSlot = docClinicTime.SlotWedStart;
-                                NewClinicTime.EndTime = TimeSpan.Parse(docClinicTime.HoursWedEnd + ":" + docClinicTime.SecWedEnd);
-                                NewClinicTime.EndSlot = docClinicTime.SlotWedEnd;
+                                //strat timing
+                                DateTime timestartWed = DateTime.Parse(docClinicTime.StartTimeWed);
+                                string newstartWed = timestartWed.ToString("hh:mm");
+                                string newslotstartWed = timestartWed.ToString("tt");
+
+                                //End timing
+                                DateTime timeendWed = DateTime.Parse(docClinicTime.EndtTimeWed);
+                                string newsendWed = timeendWed.ToString("hh:mm");
+                                string newsslotendWed = timeendWed.ToString("tt");
+
+                                NewClinicTime.StartTime = TimeSpan.Parse(newstartWed);
+                                NewClinicTime.EndTime = TimeSpan.Parse(newsendWed);
+                                NewClinicTime.StartSlot = newslotstartWed;
+                                NewClinicTime.EndSlot = newsslotendWed;
+
                             }
                             if (CheckDay.Equals("Thursday"))
                             {
-                                NewClinicTime.StartTime = TimeSpan.Parse(docClinicTime.HoursThuStart + ":" + docClinicTime.SecThuStart);
-                                NewClinicTime.StartSlot = docClinicTime.SlotThuStart;
-                                NewClinicTime.EndTime = TimeSpan.Parse(docClinicTime.HoursThuEnd + ":" + docClinicTime.SecThuEnd);
-                                NewClinicTime.EndSlot = docClinicTime.SlotThuEnd;
+                                //strat timing
+                                DateTime timestartThu = DateTime.Parse(docClinicTime.StartTimeThu);
+                                string newstartThu = timestartThu.ToString("hh:mm");
+                                string newslotstartThu = timestartThu.ToString("tt");
+
+                                //End timing
+                                DateTime timeendThu = DateTime.Parse(docClinicTime.EndtTimeThu);
+                                string newsendThu = timeendThu.ToString("hh:mm");
+                                string newsslotendThu = timeendThu.ToString("tt");
+
+                                NewClinicTime.StartTime = TimeSpan.Parse(newstartThu);
+                                NewClinicTime.EndTime = TimeSpan.Parse(newsendThu);
+                                NewClinicTime.StartSlot = newslotstartThu;
+                                NewClinicTime.EndSlot = newsslotendThu;
+
                             }
                             if (CheckDay.Equals("Friday"))
                             {
-                                NewClinicTime.StartTime = TimeSpan.Parse(docClinicTime.HoursFriStart + ":" + docClinicTime.SecFriStart);
-                                NewClinicTime.StartSlot = docClinicTime.SlotFriStart;
-                                NewClinicTime.EndTime = TimeSpan.Parse(docClinicTime.HoursFriEnd + ":" + docClinicTime.SecFriEnd);
-                                NewClinicTime.EndSlot = docClinicTime.SlotFriEnd;
+                                //strat timing
+                                DateTime timestartFri = DateTime.Parse(docClinicTime.StartTimeFri);
+                                string newstartFri = timestartFri.ToString("hh:mm");
+                                string newslotstartFri = timestartFri.ToString("tt");
+
+                                //End timing
+                                DateTime timeendFri = DateTime.Parse(docClinicTime.EndtTimeFri);
+                                string newsendFri = timeendFri.ToString("hh:mm");
+                                string newsslotendFri = timeendFri.ToString("tt");
+
+                                NewClinicTime.StartTime = TimeSpan.Parse(newstartFri);
+                                NewClinicTime.EndTime = TimeSpan.Parse(newsendFri);
+                                NewClinicTime.StartSlot = newslotstartFri;
+                                NewClinicTime.EndSlot = newsslotendFri;
+
+                            
                             }
                             if (CheckDay.Equals("Saturday"))
                             {
-                                NewClinicTime.StartTime = TimeSpan.Parse(docClinicTime.HoursSatStart + ":" + docClinicTime.SecSatStart);
-                                NewClinicTime.StartSlot = docClinicTime.SlotSatStart;
-                                NewClinicTime.EndTime = TimeSpan.Parse(docClinicTime.HoursSatEnd + ":" + docClinicTime.SecSatEnd);
-                                NewClinicTime.EndSlot = docClinicTime.SlotSatEnd;
+                                //strat timing
+                                DateTime timestartSat = DateTime.Parse(docClinicTime.StartTimeSat);
+                                string newstartSat = timestartSat.ToString("hh:mm");
+                                string newslotstartSat = timestartSat.ToString("tt");
+
+                                //End timing
+                                DateTime timeendSat = DateTime.Parse(docClinicTime.EndtTimeSat);
+                                string newsendSat = timeendSat.ToString("hh:mm");
+                                string newsslotendSat = timeendSat.ToString("tt");
+
+                                NewClinicTime.StartTime = TimeSpan.Parse(newstartSat);
+                                NewClinicTime.EndTime = TimeSpan.Parse(newsendSat);
+                                NewClinicTime.StartSlot = newslotstartSat;
+                                NewClinicTime.EndSlot = newsslotendSat;
+
+                              
                             }
                             if (CheckDay.Equals("Sunday"))
                             {
-                                NewClinicTime.StartTime = TimeSpan.Parse(docClinicTime.HoursSunStart + ":" + docClinicTime.SecSunStart);
-                                NewClinicTime.StartSlot = docClinicTime.SlotSunStart;
-                                NewClinicTime.EndTime = TimeSpan.Parse(docClinicTime.HoursSunEnd + ":" + docClinicTime.SecSunEnd);
-                                NewClinicTime.EndSlot = docClinicTime.SlotSunEnd;
+                                //strat timing
+                                DateTime timestartSun = DateTime.Parse(docClinicTime.StartTimeSun);
+                                string newstartSun = timestartSun.ToString("hh:mm");
+                                string newslotstartSun = timestartSun.ToString("tt");
+
+                                //End timing
+                                DateTime timeendSun = DateTime.Parse(docClinicTime.EndtTimeSun);
+                                string newsendSun = timeendSun.ToString("hh:mm");
+                                string newsslotendSun = timeendSun.ToString("tt");
+
+                                NewClinicTime.StartTime = TimeSpan.Parse(newstartSun);
+                                NewClinicTime.EndTime = TimeSpan.Parse(newsendSun);
+                                NewClinicTime.StartSlot = newslotstartSun;
+                                NewClinicTime.EndSlot = newsslotendSun;
+
+                             
                             }
 
 
-                            NewClinicTime.LoginId = 1;//add session here
+                            NewClinicTime.LoginId = Id;//add session here
                             NewClinicTime.Day = item.Days;
                             NewClinicTime.FirstSetting = true;
                             NewClinicTime.IsWorkingDay = item.DayChecked;
@@ -273,45 +372,23 @@ namespace MCMD.Web.Controllers.Administration
                             doctorClinicRepository.InsertClinicTime(NewClinicTime);
                             doctorClinicRepository.Save();
 
-
+                            @TempData["SuccessMessage"] = "Clinic Timing Save Successfully";
 
                         }
                     }
 
-
-
-
-
                 }
 
             }
-            catch (Exception)
+             catch (Exception)
             {
                 //ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists contact your system administrator.");
+                @TempData["Message"] = "Unable to save";
             }
             return RedirectToAction("ClinicTiming");
         }
-        public static class Enumeration
-        {
-
-            public static IDictionary<int, string> GetAll<TEnum>() where TEnum : struct
-            {
-                var enumerationType = typeof(TEnum);
-
-                if (!enumerationType.IsEnum)
-                    throw new ArgumentException("Enumeration type is expected.");
-
-                var dictionary = new Dictionary<int, string>();
-
-                foreach (int value in Enum.GetValues(enumerationType))
-                {
-                    var name = Enum.GetName(enumerationType, value);
-                    dictionary.Add(value, name);
-                }
-
-                return dictionary;
-            }
-        }
+        #endregion
+        
 
     }
 }

@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CommonClass\generatepassword.cs" />
     <Compile Include="CommonClass\SendEMail.cs" />
+    <Compile Include="CommonClass\Shared.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

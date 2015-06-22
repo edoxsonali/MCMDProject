@@ -34,7 +34,8 @@ namespace MCMD.Web.Controllers.Administration
             return Json(new { redirectUrl = Url.Action("Create", "UpgradeService", new { varid }), isRedirect = true, JsonRequestBehavior.AllowGet });
         }
         public ActionResult Create()
-        {
+         {
+             @TempData["Name"] = Session["Name"];
             ViewData["PageRole"] = 1;
 
             int Id = (Convert.ToInt32(Session["EditDoctor"]));
@@ -48,27 +49,74 @@ namespace MCMD.Web.Controllers.Administration
             UpgradeServiceVM.MonthsList = upgradeSerciceRepo.GetMonths().ToList();
             UpgradeServiceVM.GetUpgrdService = upgradeSerciceRepo.GetUpgrdService().ToList();
 
-            UpgradeServiceVM.membershipListTwo = new List<MembershipTwo>() {
-                new MembershipTwo {MembershipId=1,MembershipType="Directory Listing"},//{ID=1,Name="Group 1" },
-                new MembershipTwo {MembershipId=2,MembershipType="Online Appointment Scheduling" },
-                new MembershipTwo {MembershipId=3,MembershipType="Medical Answering Service " },
-               
-            };
-            UpgradeServiceVM.SelectedMember = UpgradeServiceVM.membershipListTwo.Select(x => x.MembershipId).ToArray();
+            UpgradeServiceVM.MembershipList = upgradeSerciceRepo.GetMembers().Where(x => x.InactiveFlag == "N").ToList();
+            UpgradeServiceVM.SelectedMember = UpgradeServiceVM.MembershipList.Select(x => x.MembershipId).ToArray();
 
-            if (editInputs != 0)
-            {
-                List<UpgradeService> NewService = upgradeSerciceRepo.GetServices().Where(x => x.UpgradeServiceId == editInputs).ToList();
-                foreach (var item in NewService)
-                {
-                    UpgradeServiceVM.UpgradeServiceId = item.UpgradeServiceId;
-                    UpgradeServiceVM.MembershipId = item.MembershipId;
-                    //UpgradeServiceVM. = item.LoginId;
-                    UpgradeServiceVM.DurationId = item.Durations;
-                    UpgradeServiceVM.AutoRenavalId = item.AutoRenaval;
-                }
+            //if (editInputs != 0)
+            //{
+            //    List<UpgradeService> NewService = upgradeSerciceRepo.GetServices().Where(x => x.LoginId == 4).ToList();
+              
+            //    foreach (var item in NewService)
+            //    {
+            //        int logid = item.LoginId;
+            //        int memID = item.MembershipId;
 
-            }
+            //        var AllUserInfo = (from u in db.Memberships
+            //                           join m in db.upgradeServices on u.MembershipId equals m.MembershipId 
+            //                           where m.InactiveFlag == "N" && m.LoginId == logid
+            //                           select new
+            //                           {
+            //                               CheckedStatus=m.CheckedStatus,
+            //                               MembershipType=u.MembershipType,
+            //                               MembershipId=u.MembershipId,
+            //                           }).ToList();
+
+            //        var AllUserInfoo = (from u in db.Memberships
+            //                           join m in db.upgradeServices on u.MembershipId equals m.MembershipId
+            //                            where m.InactiveFlag == "N" && u.MembershipId != memID
+            //                           select new
+            //                           {
+            //                               CheckedStatus = u.CheckedStatus,
+            //                               MembershipType = u.MembershipType,
+            //                               MembershipId = u.MembershipId,
+            //                           }).ToList();
+
+            //        List<MCMDMembership> Membershipget = new List<MCMDMembership>();
+
+            //        foreach (var itemm in AllUserInfo)
+            //        {
+            //            var s = new MCMDMembership();
+            //            s.CheckedStatus = itemm.CheckedStatus;
+            //            s.MembershipType = itemm.MembershipType;
+            //            s.MembershipId = itemm.MembershipId;
+            //            Membershipget.Add(s);
+
+            //        }
+            //        foreach (var itemm in AllUserInfoo)
+            //        {
+            //            var s = new MCMDMembership();
+            //            s.CheckedStatus = itemm.CheckedStatus;
+            //            s.MembershipType = itemm.MembershipType;
+            //            s.MembershipId = itemm.MembershipId;
+            //            Membershipget.Add(s);
+
+            //        }
+            //        UpgradeServiceVM.MembershipList = Membershipget;
+            //        UpgradeServiceVM.UpgradeServiceId = item.UpgradeServiceId;
+            //        UpgradeServiceVM.DurationId = item.Durations;
+            //        UpgradeServiceVM.AutoRenavalId = item.AutoRenaval;
+            //        Session["EditService"] = null;
+            //    }
+
+
+            //}
+            //else
+            //{
+
+            //    UpgradeServiceVM.MembershipList = upgradeSerciceRepo.GetMembers().Where(x => x.InactiveFlag == "N").ToList();
+            //    UpgradeServiceVM.SelectedMember = UpgradeServiceVM.MembershipList.Select(x => x.MembershipId).ToArray();
+
+            //}
             return View(UpgradeServiceVM);
         }
         [HttpPost]
@@ -85,7 +133,7 @@ namespace MCMD.Web.Controllers.Administration
 
                     StringBuilder sb = new StringBuilder();
                     sb.Append("SELECTED SERVICES :- ").AppendLine();
-                    foreach (var item in UpgradeServiceVM.membershipListTwo)
+                    foreach (var item in UpgradeServiceVM.MembershipList)
                     {
                         if (item.CheckedStatus == true)
                         {
@@ -96,6 +144,7 @@ namespace MCMD.Web.Controllers.Administration
                             NewService.LoginId = Id;
                             NewService.Durations = UpgradeServiceVM.DurationId;
                             NewService.AutoRenaval = UpgradeServiceVM.AutoRenavalId;
+                            NewService.CheckedStatus = true;
                             NewService.CreatedById = 1;
                             NewService.InactiveFlag = "N";
                             NewService.CreatedOnDate = DateTime.Now;
@@ -114,6 +163,7 @@ namespace MCMD.Web.Controllers.Administration
                             NewSerLog.LoginId = Id;
                             NewSerLog.Durations = UpgradeServiceVM.DurationId;
                             NewSerLog.AutoRenaval = UpgradeServiceVM.AutoRenavalId;
+                            NewService.CheckedStatus = true;
                             NewSerLog.CreatedById = 1;
                             NewSerLog.InactiveFlag = "N";
                             NewSerLog.CreatedOnDate = DateTime.Now;
@@ -138,17 +188,13 @@ namespace MCMD.Web.Controllers.Administration
 
                             //};
                             //upgradeSerciceRepo.Save();
-                            ViewBag.Message = "Successfully added..";
 
+                            @TempData["SuccessMessage"] = "Successfully added..";
 
 
 
                         }
                     }
-
-
-
-                    ViewBag.MembershipTwo = sb.ToString();
 
                     ViewBag.Message = "Successfully added..";
                 }
@@ -156,11 +202,13 @@ namespace MCMD.Web.Controllers.Administration
             catch (Exception)
             {
                 //ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists contact your system administrator.");
+                @TempData["Message"] = "Unable to save changes";
             }
             return RedirectToAction("Create");
         }
         public ActionResult ViewUpgradeServices(UpgradeServiceViewModel UpgradeServiceVM)
         {
+            @TempData["Name"] = Session["Name"];
 
             UpgradeServiceVM.GetUpgrdService = upgradeSerciceRepo.GetUpgrdService().ToList();
             return View(UpgradeServiceVM);
@@ -187,7 +235,7 @@ namespace MCMD.Web.Controllers.Administration
 
                         upgradeSerciceRepo.UpdateService(service);
                         upgradeSerciceRepo.Save();
-                        @TempData["AddNewItemMessage"] = "User having Service is deleted successfully";
+                        @TempData["SuccessMessage"] = "User having Service is deleted successfully";
 
                     }
 

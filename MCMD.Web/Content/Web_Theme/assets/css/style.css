@@ -6,6 +6,7 @@ Website: http://www.keenthemes.com/preview/?theme=metronic
 Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469
 */
 
+
 /* overides metro scrolbars in IE10 and makes them look like a default scrollbar */
 @-ms-viewport{
 	width: auto !important;
@@ -13,7 +14,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 /*Global classes*/
 .container {
-	padding: 0 10px;
+    padding: 0 10px;
+   
 }
 
 .min-hight {
@@ -29,6 +31,7 @@ Top Bar
 ***/
 .front-topbar {
 	border-bottom: solid 1px #f5f5f5;
+  
 }
 
 .front-topbar li {
@@ -45,6 +48,7 @@ Top Bar
 .front-topbar li.sep span {
 	color: #eee;
 	font-size: 11px;
+
 }
 
 .front-topbar li i.topbar-info-icon {
@@ -115,8 +119,9 @@ Header and header elements.
 /*Navigation*/
 .front-header {
 	z-index: 999;
-	position: relative;
+	position: fixed;
 	box-shadow: 0 1px 3px #ddd;
+    width:100%;
 }
 
 .front-header .navbar {
@@ -507,12 +512,13 @@ Content and content elements.
 /*Mixed Block*/
 .mix-block {
 	margin: 30px 0;
+   
 }
 
 /*Tabs*/
 .tab-style-1 ul.nav-tabs {
 	margin-bottom: 0;
-	border-bottom-color: #0da3e2; 
+	/*border-bottom-color: #0da3e2;*/ 
 }
 
 .tab-style-1 ul.nav-tabs > li {
@@ -521,13 +527,13 @@ Content and content elements.
 }
 
 .tab-style-1 ul.nav-tabs li > a {
-	color: #7c858e;
+	color: #1e317F; /*#7c858e;;*/
 	font-size: 14px;
 	margin-top: 1px;
 	min-width: 100px;
 	padding: 5px 15px;
 	text-align: center;
-	background: #f4f4f4;
+	background: #fff; /*#f4f4f4 ;*/
 }
 
 .tab-style-1 ul.nav-tabs li > a:hover {
@@ -660,19 +666,22 @@ Content and content elements.
 	background: #0da3e2 url(../img/steps/one.png) no-repeat right bottom;
 }
 .front-steps.front-step-two {
-	background: #7c858e url(../img/steps/two.png) no-repeat right bottom;
+	background: #e9811a url(../img/steps/two.png) no-repeat right bottom;
 }
 .front-steps.front-step-three {
-	background: #68727c url(../img/steps/three.png) no-repeat right bottom;
+	background: #1f317a url(../img/steps/three.png) no-repeat right bottom;
 }
 
 .front-steps.front-step-one,
-.front-steps.front-step-two {
+.front-steps.front-step-two,
+.front-steps.front-step-three
+ {
 	position: relative;
 }
 
 .front-steps.front-step-one:after,
-.front-steps.front-step-two:after { 
+.front-steps.front-step-two:after,
+.front-steps.front-step-three:after { 
 	top: 50%;
 	width: 0; 
 	height: 0;
@@ -682,13 +691,13 @@ Content and content elements.
 	display: block; 
 	margin-top: -1em; 
 	position: absolute;
-	border-left: 15px solid #36b3e7;
+	border-left: 15px solid #1f317f; /*#36b3e7;*/
 	border-top: 15px solid transparent;
 	border-bottom: 15px solid transparent;
 }
 
 .front-steps.front-step-two:after {
-	border-left-color: #868e96;	
+	border-left-color: #e9811a;	
 }
 
 /*Clients*/
@@ -716,9 +725,9 @@ Content and content elements.
 Footer
 ***/
 .front-footer {
-	padding: 35px 0;
+	
 	font-size: 13px;
-	background: #62707f;
+	background: #34495e; /*#62707f;*/
 }
 
 .front-footer h2 {
@@ -791,11 +800,11 @@ Copyright
 	color: #dee4eb;
 	font-size: 12px;
 	padding: 10px 0;
-	background: #4a5866;
+	background:#e9811a;  /*#4a5866;*/
 }
 
 .front-copyright p {
-	color: #bbb;
+	color: #fff;
 	margin-top: 7px;
 	margin-bottom: 0;
 }
@@ -925,7 +934,7 @@ Copyright
 
 /*Team Blocks*/
 .front-team {
-	margin: 20px 0;
+	/*margin: 20px 0;*/
 }
 
 .front-team h3 {
@@ -1136,7 +1145,7 @@ Blog Item
 }
 
 .blog-item blockquote {
-	margin: 20px 40px 18px;
+	margin: 0px 0px 0px; /*20px 40px 18px;*/
 	border-color: #0da3e2;
 }
 
@@ -1410,3 +1419,4 @@ BXSlider
 .bxslider1 {
   display: none;
 }
+

@@ -169,17 +169,21 @@
     <Compile Include="Controllers\Account\AccountController.cs" />
     <Compile Include="Controllers\Administration\DoctorClinicInfoController.cs" />
     <Compile Include="Controllers\Administration\DoctorInfoController.cs" />
+    <Compile Include="Controllers\Administration\ManageAppointmentController.cs" />
     <Compile Include="Controllers\Administration\MediaController.cs" />
     <Compile Include="Controllers\Administration\MembershipController.cs" />
+    <Compile Include="Controllers\Administration\SchedulingController.cs" />
     <Compile Include="Controllers\Administration\SpecialityController.cs" />
     <Compile Include="Controllers\Administration\UpgradeServiceController.cs" />
     <Compile Include="Controllers\Administration\UserController.cs" />
     <Compile Include="Controllers\Doctor\DocClinicInfoController.cs" />
     <Compile Include="Controllers\Doctor\DocMediaController.cs" />
     <Compile Include="Controllers\Doctor\DocPersonalInfoController.cs" />
+    <Compile Include="Controllers\Doctor\DocUpgradeServiceController.cs" />
     <Compile Include="Controllers\Doctor\HelpController.cs" />
     <Compile Include="Controllers\Doctor\RegisterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Patient\PatientsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -557,6 +561,7 @@
     <Content Include="Content\template_content\assets\img\loading.gif" />
     <Content Include="Content\template_content\assets\img\logo-big.png" />
     <Content Include="Content\template_content\assets\img\logo.png" />
+    <Content Include="Content\template_content\assets\img\logo1.png" />
     <Content Include="Content\template_content\assets\img\menu-toggler.png" />
     <Content Include="Content\template_content\assets\img\overlay-icon.png" />
     <Content Include="Content\template_content\assets\img\pages\2.jpg" />
@@ -1354,6 +1359,7 @@
     <Content Include="Content\template_content\assets\plugins\fullcalendar\demos\agenda-views.html" />
     <Content Include="Content\template_content\assets\plugins\fullcalendar\demos\basic-views.html" />
     <Content Include="Content\template_content\assets\plugins\fullcalendar\demos\cupertino\images\animated-overlay.gif" />
+    <Content Include="Content\template_content\assets\plugins\fullcalendar\demos\cupertino\images\sidebar-toggler.png" />
     <Content Include="Content\template_content\assets\plugins\fullcalendar\demos\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
     <Content Include="Content\template_content\assets\plugins\fullcalendar\demos\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
     <Content Include="Content\template_content\assets\plugins\fullcalendar\demos\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
@@ -2051,11 +2057,13 @@
     <Content Include="Content\Web_Theme\assets\css\style-responsive.css" />
     <Content Include="Content\Web_Theme\assets\css\style.css" />
     <Content Include="Content\Web_Theme\assets\css\themes\blue.css" />
+    <Content Include="Content\Web_Theme\assets\css\themes\bluefb.css" />
     <Content Include="Content\Web_Theme\assets\css\themes\green.css" />
     <Content Include="Content\Web_Theme\assets\css\themes\orange.css" />
     <Content Include="Content\Web_Theme\assets\css\themes\red.css" />
     <Content Include="Content\Web_Theme\assets\fonts\font.css" />
     <Content Include="Content\Web_Theme\assets\img\arrow-testimonials.png" />
+    <Content Include="Content\Web_Theme\assets\img\Background.png" />
     <Content Include="Content\Web_Theme\assets\img\bg\1.jpg" />
     <Content Include="Content\Web_Theme\assets\img\black-opacity.png" />
     <Content Include="Content\Web_Theme\assets\img\clients\client_1.png" />
@@ -2110,6 +2118,9 @@
     <Content Include="Content\Web_Theme\assets\img\icons\social\xing.png" />
     <Content Include="Content\Web_Theme\assets\img\icons\social\yahoo.png" />
     <Content Include="Content\Web_Theme\assets\img\icons\social\youtube.png" />
+    <Content Include="Content\Web_Theme\assets\img\list-back.png" />
+    <Content Include="Content\Web_Theme\assets\img\list-background.png" />
+    <Content Include="Content\Web_Theme\assets\img\logo.png" />
     <Content Include="Content\Web_Theme\assets\img\logo_blue.png" />
     <Content Include="Content\Web_Theme\assets\img\logo_green.png" />
     <Content Include="Content\Web_Theme\assets\img\logo_orange.png" />
@@ -2124,6 +2135,7 @@
     <Content Include="Content\Web_Theme\assets\img\people\img4-small.jpg" />
     <Content Include="Content\Web_Theme\assets\img\people\img5-large.jpg" />
     <Content Include="Content\Web_Theme\assets\img\people\img5-small.jpg" />
+    <Content Include="Content\Web_Theme\assets\img\photos\Hospital.jpg" />
     <Content Include="Content\Web_Theme\assets\img\photos\img1.jpg" />
     <Content Include="Content\Web_Theme\assets\img\photos\img10.jpg" />
     <Content Include="Content\Web_Theme\assets\img\photos\img11.jpg" />
@@ -2136,6 +2148,7 @@
     <Content Include="Content\Web_Theme\assets\img\photos\img7.jpg" />
     <Content Include="Content\Web_Theme\assets\img\photos\img8.jpg" />
     <Content Include="Content\Web_Theme\assets\img\photos\img9.jpg" />
+    <Content Include="Content\Web_Theme\assets\img\photos\IMG_20150307_101341.jpg" />
     <Content Include="Content\Web_Theme\assets\img\pics\img1-large.jpg" />
     <Content Include="Content\Web_Theme\assets\img\pics\img1-medium.jpg" />
     <Content Include="Content\Web_Theme\assets\img\pics\img2-large.jpg" />
@@ -2322,6 +2335,8 @@
     <Content Include="Content\Web_Theme\assets\plugins\jquery-1.10.1.min.js" />
     <Content Include="Content\Web_Theme\assets\plugins\jquery-migrate-1.2.1.min.js" />
     <Content Include="Content\Web_Theme\assets\plugins\jquery.mixitup.min.js" />
+    <Content Include="Content\Web_Theme\assets\plugins\js\custom-imedicajs.min.js" />
+    <Content Include="Content\Web_Theme\assets\plugins\js\jquery.imedica.min.js" />
     <Content Include="Content\Web_Theme\assets\plugins\respond.min.js" />
     <Content Include="Content\Web_Theme\assets\plugins\revolution_slider\css\preview.css" />
     <Content Include="Content\Web_Theme\assets\plugins\revolution_slider\css\rs-style.css" />
@@ -2460,6 +2475,7 @@
     <Content Include="Images\nav-active-bg.jpg" />
     <Content Include="Images\onsite-340B.png" />
     <Content Include="Images\white-trans.png" />
+    <Content Include="Scripts\bootstrap-modal.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
@@ -2750,9 +2766,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -2797,8 +2810,6 @@
     <Content Include="Views\DoctorClinicInfo\Create.cshtml" />
     <Content Include="Views\DoctorInfo\Create.cshtml" />
     <Content Include="Views\Media\Create.cshtml" />
-    <Content Include="Views\Media\Index.cshtml" />
-    <Content Include="Views\Media\ViewMedia.cshtml" />
     <Content Include="Views\DoctorClinicInfo\ViewClinicInfo.cshtml" />
     <Content Include="Views\User\EditUser.cshtml" />
     <Content Include="Views\UpgradeService\Create.cshtml" />
@@ -2811,6 +2822,20 @@
     <Content Include="Views\DocMedia\Create.cshtml" />
     <Content Include="Views\DocClinicInfo\Create.cshtml" />
     <Content Include="Views\DocPersonalInfo\Create.cshtml" />
+    <Content Include="Views\Account\DocLogin.cshtml" />
+    <Content Include="Views\Patients\PatientRegister.cshtml" />
+    <Content Include="Views\DocUpgradeService\Create.cshtml" />
+    <Content Include="Views\ManageAppointment\Appointment.cshtml" />
+    <Content Include="Views\Scheduling\Scheduling.cshtml" />
+    <Content Include="Views\Account\patientLogin.cshtml" />
+    <Content Include="Views\Account\PatientForgotPassword.cshtml" />
+    <Content Include="Views\Home\FAQ.cshtml" />
+    <Content Include="Views\Home\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Home\Pricing.cshtml" />
+    <Content Include="Views\Home\TermServices.cshtml" />
+    <Content Include="Views\Home\DocProfile.cshtml" />
+    <Content Include="Views\Home\Doctors.cshtml" />
+    <Content Include="Views\Home\ClinicProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

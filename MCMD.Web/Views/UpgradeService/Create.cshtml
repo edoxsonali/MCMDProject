@@ -5,12 +5,12 @@
 }
 
 @Html.HiddenFor(x => x.MembershipId)
-<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+@*<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>*@
 <div class="container-fluid">
     <!-- BEGIN PAGE HEADER-->
     <div class="row-fluid">
         <div class="span12">
-          
+
             <h3 class="page-title"></h3>
             <ul class="breadcrumb">
                 <li>
@@ -46,7 +46,10 @@
 
             </ul>
         </div>
-
+        <div>
+            <span class="text-success">@TempData["SuccessMessage"]</span>
+            <span class="text-error">@TempData["Message"]</span>
+        </div>
     </div>
     <!-- END PAGE HEADER-->
     <!-- BEGIN PAGE CONTENT-->
@@ -70,23 +73,34 @@
                 @ViewBag.Message
 
                 <h3> Select Services </h3>
+    <div style="padding-left:180px;">
+        <label> <input id="Select" name="Select" type="checkbox" value="true" disabled checked />Directory Listing </label>
 
+    </div>
                 <table width="100%" class="controls">
-                    @for (int i = 0; i < Model.membershipListTwo.Count; i++)
+
+
+
+                    @for (int i = 1; i < Model.MembershipList.Count; i++)
                     {
                         <tr>
                             <td>
-                                @Html.CheckBoxFor(m => Model.membershipListTwo[i].CheckedStatus)
-                                @Model.membershipListTwo[i].MembershipType
-                                @Html.HiddenFor(m => Model.membershipListTwo[i].MembershipId)
-                                @Html.HiddenFor(m => Model.membershipListTwo[i].MembershipType)
+                             
+                                    @Html.CheckBoxFor(m => Model.MembershipList[i].CheckedStatus)
+                                    @Model.MembershipList[i].MembershipType
+                                    @Html.HiddenFor(m => Model.MembershipList[i].MembershipId)
+                                    @Html.HiddenFor(m => Model.MembershipList[i].MembershipType)
+                                  
+                                
+
                             </td>
+                        
                         </tr>
                     }
 
                     <tr>
                         <td>
-                            @ViewBag.MembershipTwo
+                            @ViewBag.MembershipList
                         </td>
                     </tr>
                 </table>
@@ -110,10 +124,10 @@
                 <label>
                     <span style="color:red">*</span> Indicates mandatory fields.
                 </label>
-                <div class="form-actions">
+                <div class="form-actions" style="padding-left:20px;">
 
-                    <button type="button" id="btnscd" class="btn" name="btnscd" onclick="location.href='@Url.Action("ViewDoctor", "User")'">Back</button>
-                    <button type="Submit" id="btnCreate" name="btnCreate" class="btn blue">Submit</button>
+                    <button type="button" id="btnscd" class="btn blue" style="float:left;" name="btnscd" onclick="location.href='@Url.Action("Create", "Media")'">Back</button>
+                    <button type="Submit" id="btnCreate" name="btnCreate" style="float:right;" class="btn blue">Submit</button>
 
                 </div>
             }
@@ -122,6 +136,123 @@
         </div>
 
 
+    </div>
+
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+           
+                <!-- END BEGIN STYLE CUSTOMIZER -->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title">
+                    Pricing Tables @*<small>pricing table samples</small>*@
+                </h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>
+                        <a href="index.html">Home</a>
+                        <i class="icon-angle-right"></i>
+                    </li>
+                    <li>
+                        <a href="#">Extra</a>
+                        <i class="icon-angle-right"></i>
+                    </li>
+                    <li><a href="#">Pricing Tables</a></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN INLINE NOTIFICATIONS PORTLET-->
+                <div class="portlet">
+                    <div class="portlet-title">
+                        <div class="caption"><i class="icon-cogs"></i>Pricing Tables</div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"></a>
+                            <a href="#portlet-config" data-toggle="modal" class="config"></a>
+                            <a href="javascript:;" class="reload"></a>
+                            <a href="javascript:;" class="remove"></a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row-fluid">
+                            <!-- Pricing -->
+                            <div class="row-fluid margin-bottom-40">
+                                <div class="span4 pricing-active hover-effect">
+                                    <div class="pricing-head">
+                                     
+                                        <h3> @Model.MembershipList[0].MembershipType@*<span>Officia deserunt mollitia</span>*@</h3>
+                                        <h4><i>Rs.</i>Free <span>Per Month</span></h4>
+                                    </div>
+                                    <ul class="pricing-content unstyled">
+                                        <li><i class="icon-tags"></i> At vero eos</li>
+                                        <li><i class="icon-asterisk"></i> No Support</li>
+                                        <li><i class="icon-heart"></i> Fusce condimentum</li>
+                                        <li><i class="icon-star"></i> Ut non libero</li>
+                                        <li><i class="icon-shopping-cart"></i> Consecte adiping elit</li>
+                                    </ul>
+                                    <div class="pricing-footer">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
+                                        @*<a href="#" class="btn green">
+                                         for Payment <i class="m-icon-swapright m-icon-white"></i>
+                                        </a>*@
+                                    </div>
+                                </div>
+                                <div class="span4 pricing-active hover-effect">
+                                    <div class="pricing-head">
+                                        <h3>@Model.MembershipList[1].MembershipType @*<span>Officia deserunt mollitia</span>*@</h3>
+                                        <h4><i>Rs.</i>@Model.MembershipList[1].Fees <span>Per Month</span></h4>
+                                    </div>
+                                    <ul class="pricing-content unstyled">
+                                        <li><i class="icon-tags"></i> At vero eos</li>
+                                        <li><i class="icon-asterisk"></i> No Support</li>
+                                        <li><i class="icon-heart"></i> Fusce condimentum</li>
+                                        <li><i class="icon-star"></i> Ut non libero</li>
+                                        <li><i class="icon-shopping-cart"></i> Consecte adiping elit</li>
+                                    </ul>
+                                    <div class="pricing-footer">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
+                                        <a href="#" class="btn green">
+                                            for Payment <i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="span4 pricing-active hover-effect">
+                                    <div class="pricing-head">
+                                        <h3>&nbsp; @Model.MembershipList[2].MembershipType@*<span>Officia deserunt mollitia</span>*@</h3>
+                                        <h4><i>Rs.</i>@Model.MembershipList[2].Fees <span>Per Month</span></h4>
+                                    </div>
+                                    <ul class="pricing-content unstyled">
+                                        <li><i class="icon-tags"></i> At vero eos</li>
+                                        <li><i class="icon-asterisk"></i> No Support</li>
+                                        <li><i class="icon-heart"></i> Fusce condimentum</li>
+                                        <li><i class="icon-star"></i> Ut non libero</li>
+                                        <li><i class="icon-shopping-cart"></i> Consecte adiping elit</li>
+                                    </ul>
+                                    <div class="pricing-footer">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
+                                        <a href="#" class="btn green">
+                                            for Payment <i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/row-fluid-->
+                            <!--//End Pricing -->
+                        </div>
+                    </div>
+                </div>
+                <!-- END INLINE NOTIFICATIONS PORTLET-->
+            </div>
+        </div>
+        
+        
+        <!-- END PAGE CONTENT-->
     </div>
 
     <!-- END PAGE CONTENT-->

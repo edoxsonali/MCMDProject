@@ -4,7 +4,12 @@
     Layout = "~/Views/Shared/_DoctorLayout.cshtml";
 }
 
+
+
 <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+
+@Scripts.Render("~/bundles/jqueryval")
+
 <!-- BEGIN PAGE CONTAINER-->
 <div class="container-fluid">
     <!-- BEGIN PAGE HEADER-->
@@ -45,7 +50,6 @@
         <div class="portlet-body form">
             <!-- BEGIN FORM-->
             @using (Html.BeginForm(Html.BeginForm("Create", "DocPersonalInfo",
-            new { ReturnUrl = ViewBag.ReturnUrl },
             FormMethod.Post, new { @class = "form-horizontal form-bordered" })))
             {
                 @Html.AntiForgeryToken()
@@ -54,84 +58,87 @@
                     <label class="control-label">First Name<span class="required">*</span></label>
                     <div class="controls">
 
-                        @Html.TextBoxFor(model => model.FirstName, new { @class = "m-wrap span12", @placeholder = "Enter First Name", @maxlength = "30", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-error" })
+                        @Html.TextBoxFor(model => model.FirstName, new { @class = "m-wrap span7", @placeholder = "Enter First Name", @maxlength = "30", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.FirstName, string.Empty, new { @class = "text-error" })
 
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Middle Name</label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.MiddleName, new { @class = "m-wrap span12", @placeholder = "Enter Middle Name", @maxlength = "30", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-error" })
+                        @Html.TextBoxFor(model => model.MiddleName, new { @class = "m-wrap span7", @placeholder = "Enter Middle Name", @maxlength = "30", @autocomplete = "off" })
+                   
+
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Last Name<span class="required">*</span></label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.LastName, new { @class = "m-wrap span12", @placeholder = "Enter Last Name", @maxlength = "30", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-error" })
+                        @Html.TextBoxFor(model => model.LastName, new { @class = "m-wrap span7", @placeholder = "Enter Last Name", @maxlength = "30", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.LastName, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Qualification</label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.Qualification, new { @class = "m-wrap span12", @placeholder = "Enter Qualification", @maxlength = "30", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.Qualification, "", new { @class = "text-error" })
+                        @Html.TextBoxFor(model => model.Qualification, new { @class = "m-wrap span7", @placeholder = "Enter Qualification", @maxlength = "30", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.Qualification, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Speciality<span class="required">*</span></label>
                     <div class="controls">
-                        @Html.DropDownListFor(m => m.SpecialityID, new SelectList(Model.SpecialityList, "SpecialityID", "SpecialityName"), "-Select-", new { @class = "m-wrap span6" })
+                        @Html.DropDownListFor(m => m.SpecialityID, new SelectList(Model.SpecialityList, "SpecialityID", "SpecialityName"), "-Select-", new { @class = "m-wrap span7" })
+                        @Html.ValidationMessageFor(model => model.SpecialityID, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Phone #<span class="required">*</span> </label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.UserPhone, new { @class = "m-wrap span12", @placeholder = "Enter Personal Phone", @maxlength = "15", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.UserPhone, "", new { @class = "text-error" })
+                        @Html.TextBoxFor(model => model.UserPhone, new { @class = "m-wrap span7", @placeholder = "Enter Personal Phone", @maxlength = "15", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.UserPhone, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Email ID <span class="required">*</span></label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.EmailID, new { @class = "m-wrap span12", @placeholder = "Enter Email Id", @maxlength = "30", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-error" })
+                        @Html.TextBoxFor(model => model.EmailID, new { @class = "m-wrap span7", @placeholder = "Enter Email Id", @maxlength = "30", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.EmailID, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Registration No<span class="required">*</span></label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.RegistrationNo, new { @class = "m-wrap span12", @placeholder = "Enter RegistrationNo", @maxlength = "30", autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.RegistrationNo)
+                        @Html.TextBoxFor(model => model.RegistrationNo, new { @class = "m-wrap span7", @placeholder = "Enter RegistrationNo", @maxlength = "30", autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.RegistrationNo, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Affiliation</label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.Affiliation, new { @class = "m-wrap span12", @placeholder = "Enter Affiliation", @maxlength = "50", autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.Affiliation)
+                        @Html.TextBoxFor(model => model.Affiliation, new { @class = "m-wrap span7", @placeholder = "Enter Affiliation", @maxlength = "50", autocomplete = "off" })
+                       
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Experience</label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.AboutExperience, new { @class = "m-wrap span12", @placeholder = "Enter About Experience", @maxlength = "100", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.AboutExperience, "", new { @class = "text-error" })
+                        @Html.TextBoxFor(model => model.AboutExperience, new { @class = "m-wrap span7", @placeholder = "Enter About Experience", @maxlength = "100", @autocomplete = "off" })
+                      
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">About Me</label>
                     <div class="controls">
-                        @Html.TextAreaFor(model => model.AboutMe, new { @class = "m-wrap span12", @placeholder = "Enter About ME", @maxlength = "100", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.AboutMe, "", new { @class = "text-error" })
+                        @Html.TextAreaFor(model => model.AboutMe, new { @class = "m-wrap span7", @placeholder = "Enter About ME", @maxlength = "100", @autocomplete = "off" })
+                     
                     </div>
                 </div>
 
                 <div class="form-actions">
 
-                    <button type="Submit" id="btnSave" class="btn blue" name="btnRegister">Submit</button>
+                    @*<button type="Submit" id="btnSave" class="btn blue" name="btnRegister">Submit</button>*@
+                    <button type="Submit" id="btnCreate" name="btnCreate" class="btn blue">Submit</button>
 
                     <button type="button" id="btnscd" class="btn" name="btnscd" onclick="location.href='@Url.Action("Create", "DocPersonalInfo")'">Reset</button>
                 </div>
@@ -146,4 +153,3 @@
     <!-- END PAGE CONTENT-->
 </div>
 <!-- END PAGE CONTAINER-->
-@Scripts.Render("~/bundles/jqueryval")

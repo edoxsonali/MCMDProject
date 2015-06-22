@@ -10,12 +10,12 @@ a.more {
 
 .theme-btn {
 	color:#fff; 
-	background: #ff8503 !important; 
+	background: #1f317f !important; 
 }
  
 .theme-btn:hover {
 	color:#fff; 
-	background: #e86800 !important; 
+	background: #e9811a !important; 
 }
 
 /********************
@@ -137,15 +137,15 @@ a.btn-transparent:hover {
 }
 
 .tab-style-1 ul.nav-tabs li > a:hover {
-	background: #ff8503;
-	border-color: #ff8503;
+	background: #e9811a;
+	border-color: #e9811a;
 }
 
 .tab-style-1 ul.nav-tabs .active > a,
 .tab-style-1 ul.nav-tabs .active > a:hover,
 .tab-style-1 ul.nav-tabs .active > a:focus {
-	background: #ff8503;
-	border-color: #ff8503;
+	background: #e9811a;
+	border-color: #e9811a;
 }
 
 /*Testimonials*/

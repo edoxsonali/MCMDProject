@@ -90,6 +90,7 @@ D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\MCMD.EntityModel.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\MCMD.EntityModel.pdb
 D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\EntityFramework.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\EntityFramework.SqlServer.dll
+D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\MCMD.Common.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\Microsoft.AspNet.Identity.Core.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\Microsoft.AspNet.Identity.Owin.dll
@@ -100,6 +101,7 @@ D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\Microsoft.Owin.Secur
 D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\Microsoft.Owin.Security.OAuth.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\Newtonsoft.Json.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\Owin.dll
+D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\MCMD.Common.pdb
 D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\EntityFramework.xml
 D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\EntityFramework.SqlServer.xml
 D:\DoxeDox_Project\MCMDProject\MCMD.EntityModel\bin\Release\Microsoft.AspNet.Identity.Core.xml

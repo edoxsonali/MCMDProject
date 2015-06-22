@@ -29,7 +29,8 @@ namespace MCMD.Web.Controllers.Doctor
         }
         public ActionResult Create()
         {
-            Session["Doctor"] = 3;
+            @TempData["Name"] = Session["Name"];
+            //Session["Doctor"] = 3;
             int Id = (Convert.ToInt32(Session["Doctor"]));
             MediaViewModel _MediaVM = new MediaViewModel();
             _MediaVM.GetMedialist = MediaRepository.GetMedias().Where(x => x.InactiveFlag == "N" && x.LoginId == Id).ToList();

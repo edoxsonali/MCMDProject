@@ -18,18 +18,19 @@ namespace MCMD.ViewModel.Administration
        public List<UserLogin> UserLogins { get; set; }
        public List<Speciality> speciality { get; set; }
 
-       public int SpecialityID { get; set; }
+       public int SpecialityIDID { get; set; }
 
      
-       public int LoginId { get; set; }
+       public int? LoginId { get; set; }
 
        public List<UserInfo> UserInfos { get; set; }
 
        public List<GetViewUsers> GetViewUsers { get; set; }
 
-       public List<GetViewDoctor> GetViewDoctors { get; set; }
+    
      //  public string UserName { get; set; }
 
+       public List<GetViewDoctor> getDoctor { get; set; }
       
        public string FirstName { get; set; }
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using MCMD.EntityModel.Administration;
 
 namespace MCMD.ViewModel.Account
 {
@@ -21,5 +22,10 @@ namespace MCMD.ViewModel.Account
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        //public List<category> categorylist { get; set; }
+        //public int selectcategory { get; set; }
+     
+       
     }
 }

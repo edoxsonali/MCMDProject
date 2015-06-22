@@ -21,6 +21,8 @@ namespace MCMD.ViewModel.Administration
         public List<GetViewUpgradeService> GetUpgrdService { get; set; }
         public int DurationId { get; set; }
         public int[] SelectedMember { get; set; }
+
+        public bool check { get; set; }
         public List<MembershipTwo> membershipListTwo { get; set; }
         public MembershipTwo membership { get; set; }
         public UpgradeServiceLog UpgrdServiceLog { get; set; }

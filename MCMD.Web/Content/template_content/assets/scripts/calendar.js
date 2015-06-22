@@ -73,7 +73,7 @@ var Calendar = function () {
 
             var addEvent = function (title) {
                 title = title.length == 0 ? "Untitled Event" : title;
-                var html = $('<div class="external-event label">' + title + '</div>');
+                var html = $('<div class="external-event label" style="padding-top:6px;">' + title + '</div>');
                 jQuery('#event_box').append(html);
                 initDrag(html);
             }
@@ -82,19 +82,25 @@ var Calendar = function () {
                 initDrag($(this))
             });
 
-            $('#event_add').unbind('click').click(function () {
-                var title = $('#event_title').val();
+            $('#event_add').click(function () {
+                var title1 = $('#event_title1').val();
+                var title2 = $('#event_title2').val();
+                var title = ''+title1+'&nbsp;To &nbsp;'+title2;
                 addEvent(title);
+               
             });
 
+           
+
+
             //predefined events
-            $('#event_box').html("");
-            addEvent("My Event 1");
-            addEvent("My Event 2");
-            addEvent("My Event 3");
-            addEvent("My Event 4");
-            addEvent("My Event 5");
-            addEvent("My Event 6");
+            //$('#event_box').html("");
+            //addEvent("My Event 1");
+            //addEvent("My Event 2");
+            //addEvent("My Event 3");
+            //addEvent("My Event 4");
+            //addEvent("My Event 5");
+            //addEvent("My Event 6");
 
             $('#calendar').fullCalendar('destroy'); // destroy the calendar
             $('#calendar').fullCalendar({ //re-initialize the calendar
@@ -124,49 +130,49 @@ var Calendar = function () {
                         $(this).remove();
                     }
                 },
-                events: [{
-                        title: 'All Day Event',                        
-                        start: new Date(y, m, 1),
-                        backgroundColor: App.getLayoutColorCode('yellow')
-                    }, {
-                        title: 'Long Event',
-                        start: new Date(y, m, d - 5),
-                        end: new Date(y, m, d - 2),
-                        backgroundColor: App.getLayoutColorCode('green')
-                    }, {
-                        title: 'Repeating Event',
-                        start: new Date(y, m, d - 3, 16, 0),
-                        allDay: false,
-                        backgroundColor: App.getLayoutColorCode('red')
-                    }, {
-                        title: 'Repeating Event',
-                        start: new Date(y, m, d + 4, 16, 0),
-                        allDay: false,
-                        backgroundColor: App.getLayoutColorCode('green')
-                    }, {
-                        title: 'Meeting',
-                        start: new Date(y, m, d, 10, 30),
-                        allDay: false,
-                    }, {
-                        title: 'Lunch',
-                        start: new Date(y, m, d, 12, 0),
-                        end: new Date(y, m, d, 14, 0),
-                        backgroundColor: App.getLayoutColorCode('grey'),
-                        allDay: false,
-                    }, {
-                        title: 'Birthday Party',
-                        start: new Date(y, m, d + 1, 19, 0),
-                        end: new Date(y, m, d + 1, 22, 30),
-                        backgroundColor: App.getLayoutColorCode('purple'),
-                        allDay: false,
-                    }, {
-                        title: 'Click for Google',
-                        start: new Date(y, m, 28),
-                        end: new Date(y, m, 29),
-                        backgroundColor: App.getLayoutColorCode('yellow'),
-                        url: 'http://google.com/',
-                    }
-                ]
+                //events: [{
+                //        title: 'All Day Event',                        
+                //        start: new Date(y, m, 1),
+                //        backgroundColor: App.getLayoutColorCode('yellow')
+                //    }, {
+                //        title: 'Long Event',
+                //        start: new Date(y, m, d - 5),
+                //        end: new Date(y, m, d - 2),
+                //        backgroundColor: App.getLayoutColorCode('green')
+                //    }, {
+                //        title: 'Repeating Event',
+                //        start: new Date(y, m, d - 3, 16, 0),
+                //        allDay: false,
+                //        backgroundColor: App.getLayoutColorCode('red')
+                //    }, {
+                //        title: 'Repeating Event',
+                //        start: new Date(y, m, d + 4, 16, 0),
+                //        allDay: false,
+                //        backgroundColor: App.getLayoutColorCode('green')
+                //    }, {
+                //        title: 'Meeting',
+                //        start: new Date(y, m, d, 10, 30),
+                //        allDay: false,
+                //    }, {
+                //        title: 'Lunch',
+                //        start: new Date(y, m, d, 12, 0),
+                //        end: new Date(y, m, d, 14, 0),
+                //        backgroundColor: App.getLayoutColorCode('grey'),
+                //        allDay: false,
+                //    }, {
+                //        title: 'Birthday Party',
+                //        start: new Date(y, m, d + 1, 19, 0),
+                //        end: new Date(y, m, d + 1, 22, 30),
+                //        backgroundColor: App.getLayoutColorCode('purple'),
+                //        allDay: false,
+                //    }, {
+                //        title: 'Click for Google',
+                //        start: new Date(y, m, 28),
+                //        end: new Date(y, m, 29),
+                //        backgroundColor: App.getLayoutColorCode('yellow'),
+                //        url: 'http://google.com/',
+                //    }
+                //]
             });
 
         }

@@ -25,14 +25,7 @@ namespace MCMD.EntityModel.Administration
         [Required(ErrorMessage = "Fees must be required.")]
         public int Fees { get; set; }
 
-        //[DisplayName("Duration")]
-        //[Required(ErrorMessage = "Duration must be required.")]
-        //public int Duration { get; set; }
-
-        //[DisplayName("Auto Renaval")]
-        //[Required(ErrorMessage = "AutoRenaval must be required.")]
-        //public int AutoRenaval { get; set; }
-
+        public bool CheckedStatus { get; set; }
         public string InactiveFlag { get; set; }
         public System.DateTime ModifiedDate { get; set; }
     }

@@ -67,7 +67,7 @@ namespace MCMD.EntityModel.Doctor
 
         [DisplayName("ZipCode")]      
         [Required(ErrorMessage = "ZipCode is required.")]
-        public int ZipCode { get; set; }
+        public int? ZipCode { get; set; }
 
         [DisplayName("ClinicServices")]
         //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "ClinicName is not valid.")]

@@ -15,6 +15,7 @@ namespace MCMD.Web.Controllers.Doctor
         }
         public ActionResult Create()
         {
+            @TempData["Name"] = Session["Name"];
             return View();
         }
     }

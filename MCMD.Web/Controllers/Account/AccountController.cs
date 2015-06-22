@@ -10,13 +10,15 @@ using System.Configuration;
 using System.Net.Mail;
 using MCMD.EntityModel;
 using MCMD.Common.CommonClass;
+using MCMD.EntityModel.Administration;
+using System.Globalization;
 
 
 namespace MCMD.Web.Controllers.Account
 {
     public class AccountController : Controller
     {
-            
+
         public ApplicationDbContext db = new ApplicationDbContext();
         public string ServiceUrl = ConfigurationManager.AppSettings["ServiceUrl"];
         public string strApiUserName = ConfigurationManager.AppSettings["ApiUserName"];
@@ -30,7 +32,7 @@ namespace MCMD.Web.Controllers.Account
             return View();
         }
 
-        // POST: /Account/Login
+        // POST: /Account/Login 
         [AllowAnonymous]
         [HttpPost]
         public ActionResult Login(LoginViewModel loginVM, string emailId)
@@ -39,7 +41,7 @@ namespace MCMD.Web.Controllers.Account
             {
                 var crypto = new SimpleCrypto.PBKDF2();
                 var existingUser = db.UserLogins.FirstOrDefault(u => u.EmailID == loginVM.EmailId);
-         
+
 
                 if (ReferenceEquals(existingUser, null))
                 {
@@ -62,6 +64,11 @@ namespace MCMD.Web.Controllers.Account
                             FormsAuthentication.SetAuthCookie(loginVM.EmailId, loginVM.RememberMe);
                             Session["UserName"] = loginVM.EmailId;
 
+                            string FullName = existingUser.FirstName + " " + existingUser.LastName;
+                            string result = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(FullName);
+                            Session["Name"] = result;
+                            @TempData["Name"] = Session["Name"];
+
                             if (exitRole.RoleId != 4)
                             {
                                 Session["Admin"] = existingUser.LoginId;
@@ -70,7 +77,11 @@ namespace MCMD.Web.Controllers.Account
                             else
                             {
                                 Session["Doctor"] = existingUser.LoginId;
+                                string Result = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(FullName);
+                                Session["Name"] = "Dr. " + Result;
+
                                 return RedirectToAction("Create", "DocPersonalInfo");
+
                             }
                         }
                         else
@@ -142,7 +153,7 @@ namespace MCMD.Web.Controllers.Account
                     else
                     {
                         generatepassword genPass = new generatepassword();
-                        var TempPassword =genPass.generate_password();
+                        var TempPassword = genPass.generate_password();
                         //generate password token
                         var crypto = new SimpleCrypto.PBKDF2();
                         var token = crypto.Compute(TempPassword);
@@ -169,16 +180,15 @@ namespace MCMD.Web.Controllers.Account
                         string subject = "Password Reset Token";
                         string body = "<b>You have requested to change the password by Forgot Password option, Please find the Password Reset Token in this mail, You can click on the link or copy and paste the link in you browser</b><br/>" + resetLink; //edit it
                         try
-
                         {
                             SendEMail sendemail = new SendEMail();
                             sendemail.Send_EMail(emailid, subject, body);
-                          //  ViewBag.StatusMessage = "An email has been sent to the email address you registered with. Follow the instruction in this email to complete your password reset.";
+                            //  ViewBag.StatusMessage = "An email has been sent to the email address you registered with. Follow the instruction in this email to complete your password reset.";
                             @TempData["Message"] = "An email has been sent to the email address you registered with. Follow the instruction in this email to complete your password reset.";
                         }
                         catch (Exception ex)
                         {
-                          //  ViewBag.StatusMessage = "Error occured while sending email." + ex.Message;
+                            //  ViewBag.StatusMessage = "Error occured while sending email." + ex.Message;
                             @TempData["ErrorMessage"] = "Error occured while sending email." + ex.Message;
                         }
                         ViewBag.Status = 1;
@@ -192,7 +202,23 @@ namespace MCMD.Web.Controllers.Account
         }
 
 
-                #endregion
+        #endregion
+
+        #region Forgot Password for Patient
+        public ActionResult PatientForgotPassword()
+        {
+            return View();
+        }
+
+        // [HttpPost]
+        //public ActionResult PatientForgotPassword()
+        //{
+        //    return View();
+        //}
+
+
+
+        #endregion
 
 
         #region Reset Password
@@ -204,6 +230,8 @@ namespace MCMD.Web.Controllers.Account
             ResetPasswordConfirmModel model = new ResetPasswordConfirmModel();
             model.EmailId = un;
             model.Token = rt;
+            Session["EmailId"] = model.EmailId;
+            Session["Token"] = model.Token;
             return View(model);
         }
 
@@ -213,6 +241,9 @@ namespace MCMD.Web.Controllers.Account
         {
             if (ModelState.IsValid)
             {
+
+                model.EmailId = Session["EmailId"].ToString();
+                model.Token = Session["Token"].ToString();
                 //TODO: Check the un and rt matching and then perform following
                 //get userid of received username
                 var EmailId = (from i in db.UserLogins
@@ -221,7 +252,7 @@ namespace MCMD.Web.Controllers.Account
                 //check userid and token matches
 
                 bool any = (from j in db.UserLogins
-                            where (j.EmailID == model.EmailId)
+                            where (j.EmailID == EmailId)
                             && (j.PasswordVerificationToken == model.Token)
                             //&& (j.PasswordVerificationTokenExpirationDate < DateTime.Now)
                             select j).Any();
@@ -278,17 +309,152 @@ namespace MCMD.Web.Controllers.Account
                 }
 
             }
+            Session["EmailId"] = null;
+            Session["Token"] = null;
             return View(model);
         }
 
         #endregion
 
-       
-     
-      
+
+        #region Doctor Login
+        public ActionResult DocLogin()
+        {
+            //LoginViewModel loginVM = new LoginViewModel();
+            //loginVM.categorylist = new List<category>() {
+            //    new category {categoryId=1,categoryName="I am Doctor"},
+            //    new category {categoryId=2,categoryName="I am Patient"},
+
+            //};
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DocLogin(LoginViewModel loginVM, string emailId)
+        {
+            if (ModelState.IsValid)
+            {
+                var crypto = new SimpleCrypto.PBKDF2();
+                var existingUser = db.UserLogins.FirstOrDefault(u => u.EmailID == loginVM.EmailId);
+
+
+                if (ReferenceEquals(existingUser, null))
+                {
+                    //Unable to authenticate as user
+                    // ModelState.AddModelError("", "User Name does not exist");
+                    @TempData["ErrorMessage"] = "Email Id does not exist";
+                }
+                else
+                {
+                    //User is active or not
+                    if (existingUser.InactiveFlag == "N")
+                    {
+
+                        //valid user user.Password
+                        if (existingUser.Password == crypto.Compute(loginVM.Password, existingUser.PasswordSalt))
+                        {
+
+                            var exitRole = db.patientlogins.FirstOrDefault(u => u.PatientId == existingUser.LoginId);
+                            //Valid user
+                            FormsAuthentication.SetAuthCookie(loginVM.EmailId, loginVM.RememberMe);
+                            Session["UserName"] = loginVM.EmailId;
+
+                            Session["Doctor"] = existingUser.LoginId;
+                            return RedirectToAction("Create", "DocPersonalInfo");
+
+
+                        }
+                        else
+                        {
+                            //Invalid Password
+                            //  ModelState.AddModelError("", "Invalid Password");
+                            @TempData["ErrorMessage"] = "Invalid Password";
+                        }
+                    }
+                    else
+                    {
+                        //Inactive user
+                        // ModelState.AddModelError("", "InActive User, Please Contact Administrator.");
+                        @TempData["ErrorMessage"] = "InActive User, Please Contact Administrator.";
+                    }
+
+                }
+            }
+
+            // For DOCTOR redirect
+            // return RedirectToAction("viewpageName", "Controller", new { area = "Doctor" });
+
+            return RedirectToAction("DocLogin");
+        }
+
+        #endregion
+
+
+        #region Patient Login
+        public ActionResult patientLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult patientLogin(LoginViewModel loginVM, string emailId)
+        {
+            if (ModelState.IsValid)
+            {
+                var crypto = new SimpleCrypto.PBKDF2();
+                var exitingPatient = db.patientlogins.FirstOrDefault(u => u.EmailID == loginVM.EmailId);
+
+
+                if (ReferenceEquals(exitingPatient, null))
+                {
+                    //Unable to authenticate as user
+                    // ModelState.AddModelError("", "User Name does not exist");
+                    @TempData["ErrorMessage"] = "Email Id does not exist";
+                }
+                else
+                {
+                    //User is active or not
+                    if (exitingPatient.InactiveFlag == "N")
+                    {
+
+                        //valid user user.Password
+                        if (exitingPatient.Password == crypto.Compute(loginVM.Password, exitingPatient.PasswordSalt))
+                        {
+
+                            var exitRole = db.patientlogins.FirstOrDefault(u => u.PatientId == exitingPatient.PatientId);
+                            //Valid user
+                            FormsAuthentication.SetAuthCookie(loginVM.EmailId, loginVM.RememberMe);
+                            Session["UserName"] = loginVM.EmailId;
+
+                            Session["Patient"] = exitingPatient.PatientId;
+                            return RedirectToAction("", "");
+
+
+                        }
+                        else
+                        {
+                            //Invalid Password
+                            //  ModelState.AddModelError("", "Invalid Password");
+                            @TempData["ErrorMessage"] = "Invalid Password";
+                        }
+                    }
+                    else
+                    {
+                        //Inactive user
+                        // ModelState.AddModelError("", "InActive User, Please Contact Administrator.");
+                        @TempData["ErrorMessage"] = "InActive User, Please Contact Administrator.";
+                    }
+
+                }
+            }
+
+
+            return RedirectToAction("patientLogin");
+        }
+
+        #endregion
 
     }
-       
-
 
 }

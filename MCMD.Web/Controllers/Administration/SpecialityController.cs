@@ -21,21 +21,21 @@ namespace MCMD.Web.Controllers.Administration
         }
         // [HttpGet]
         // GET: Speciality
-        public ActionResult Index()
-        {
-            return View();
-        }
+      
+
+        #region Edit speciality
         public ActionResult UserEditSpeciality(int Id)
         {
             Session["EditSpeciality"] = Id;
             var varid = Id;
             return Json(new { varid }, JsonRequestBehavior.AllowGet);
         }
+        #endregion
 
         #region Create/View Speciality
         public ActionResult Create()
         {
-
+            @TempData["Name"] = Session["Name"];
             SpecialityViewModel _specialityVM = new SpecialityViewModel();
             _specialityVM.SpecialityList = specialityRepository.GetSpecialitys().Where(x => x.InactiveFlag == "N").ToList();
 
@@ -57,6 +57,7 @@ namespace MCMD.Web.Controllers.Administration
             return View(_specialityVM);
 
         }
+     
 
         [HttpPost]
         public ActionResult Create(SpecialityViewModel specialityVM)
@@ -84,11 +85,11 @@ namespace MCMD.Web.Controllers.Administration
 
                         }else
                         {
-                            specialityRepository.InsertSpeciality(specialityVM, specialityVM.specialitys);
+                            specialityRepository.InsertSpeciality(specialityVM, specialityVM.specialityss);
                             
                         }
                         specialityRepository.Save();
-                        @TempData["SuccessMessage"] = "Added successfully....";
+                        @TempData["SuccessMessage"] = "Added Successfully....";
                        
                     }
                 }

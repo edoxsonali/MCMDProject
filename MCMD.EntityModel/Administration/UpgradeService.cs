@@ -19,6 +19,7 @@ namespace MCMD.EntityModel.Administration
 
         [Required(ErrorMessage = "AutoRenaval  is required")]
         public int AutoRenaval { set; get; }
+        public bool CheckedStatus { get; set; }
         public string InactiveFlag { get; set; }
 
         public int CreatedById { get; set; }

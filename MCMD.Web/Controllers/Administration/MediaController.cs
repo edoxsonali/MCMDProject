@@ -23,15 +23,12 @@ namespace MCMD.Web.Controllers.Administration
             this.MediaRepository = _MediaRepository;
         }
         // GET: Media
-        public ActionResult Index()
-        {
-            var customer = db.medias.ToList();
-            return View(customer);
-        }
+      
 
-        #region Create User
+        #region Upload Video/Photo
         public ActionResult Create()
         {
+            @TempData["Name"] = Session["Name"];
             int Id = (Convert.ToInt32(Session["EditDoctor"]));
             string FirstName = "";
             string LastName = "";
@@ -49,7 +46,7 @@ namespace MCMD.Web.Controllers.Administration
                     _MediaVM.LastName = item.LastName;
                     FirstName = item.FirstName;
                     LastName = item.LastName;
-                    @TempData["UserName"] = "Doctor Name = " + FirstName + " " + LastName;
+                    @TempData["UserName"] = FirstName + " " + LastName;
                 }
             }
             return View(_MediaVM);
@@ -58,6 +55,7 @@ namespace MCMD.Web.Controllers.Administration
         [HttpPost]
         public ActionResult Create(Media media, MediaViewModel mediaVM, HttpPostedFileBase file)
         {
+
 
             if (ModelState.IsValid)
             {
@@ -82,11 +80,7 @@ namespace MCMD.Web.Controllers.Administration
         }
 
         #endregion
-        public ActionResult ViewMedia(MediaDetailsViewModel mediaDetailVM)
-        {
-            mediaDetailVM.MediaList = MediaRepository.GetMedias().Where(x => x.InactiveFlag == "N").ToList();
-            return View(mediaDetailVM);
-        }
+
 
         #region Delete Media
         [HttpPost]
@@ -110,7 +104,7 @@ namespace MCMD.Web.Controllers.Administration
 
                         MediaRepository.UpdateMedia(medias);
                         MediaRepository.Save();
-                        @TempData["AddNewItemMessage"] = "User having Media is deleted successfully";
+                        @TempData["AddNewItemMessage"] = "User having Media is deleted Successfully";
 
                     }
 

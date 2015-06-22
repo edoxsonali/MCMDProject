@@ -29,32 +29,25 @@ namespace MCMD.Web.Controllers.Administration
             this.membershipRepository = _membershipRepository;
         }
 
-        public ActionResult Index()
-        {
-            var Model = new MembershipViewModel();
-            var members = from s in membershipRepository.GetMembers()
-                          select s;
-            return View(members);
-        }
-
+        #region Edit Membership
         public ActionResult UserEditMembership(int Id)
         {
             Session["EditMembership"] = Id;
             var varid = Id;
             return Json(new { varid }, JsonRequestBehavior.AllowGet);
         }
+        #endregion
 
+        #region Create/View Membership
         //GET: CreateUser/Create
         [AllowAnonymous]
         public ActionResult Create()
         {
+            @TempData["Name"] = Session["Name"];
             ViewData["PageRole"] = 1;
 
-            int editInputs = (Session["EditMembership"] != null) ? (Convert.ToInt32(Session["EditMembership"])) : 0;
-            //Session["EditMembership"] = null;
-            MembershipViewModel _memberShipVM = new MembershipViewModel();
-        //    _memberShipVM.Duration_s = membershipRepository.GetDuration().ToList();
-         //   _memberShipVM.Months = membershipRepository.GetMonths().ToList();
+            int editInputs = (Session["EditMembership"] != null) ? (Convert.ToInt32(Session["EditMembership"])) : 0;         
+            MembershipViewModel _memberShipVM = new MembershipViewModel();     
             _memberShipVM.GetMembers = membershipRepository.GetMembers().ToList();
 
             if (editInputs != 0)
@@ -65,11 +58,6 @@ namespace MCMD.Web.Controllers.Administration
                 {
                     _memberShipVM.MembershipType = item.MembershipType;
                     _memberShipVM.Fees = item.Fees;
-
-                //    _memberShipVM.DurationId = Convert.ToInt32(item.Duration);
-                  //  _memberShipVM.AutoRenavalId = Convert.ToInt32(item.AutoRenaval);
-
-                    Session["EditMembership"] = null;
                 }
 
             }
@@ -77,15 +65,14 @@ namespace MCMD.Web.Controllers.Administration
             return View(_memberShipVM);
         }
 
-        
-
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(MembershipViewModel _memberShipVM)//Pass View Model Data to the Database Entity so send View Model object (i.e _memberShipVM )
         {
             try
             {
-              //  ModelState.Clear();  // Cleare Model state
+              
                 if (ModelState.IsValid)
                 {
 
@@ -93,10 +80,9 @@ namespace MCMD.Web.Controllers.Administration
 
                     newMember.MembershipType = _memberShipVM.MembershipType;  //Pass MembershipType from MembershipViewModel to MCMDMembership Entity Model using theire objects
                     newMember.Fees = _memberShipVM.Fees;                       //Pass Fees from MembershipViewModel to MCMDMembership Entity Model using theire objects(_memberShipVM and newMember )
-                //    newMember.Duration = Convert.ToInt32(_memberShipVM.DurationId); //_memberShipVM.DurationId.ToString();
-                 //   newMember.AutoRenaval = Convert.ToInt32(_memberShipVM.AutoRenavalId);//_memberShipVM.Renaval.ToString(); 
                     newMember.InactiveFlag = "N";//_memberShipVM.member.InactiveFlag;
                     newMember.ModifiedDate = DateTime.Now;//_memberShipVM.member.ModifiedDate;
+                    newMember.CheckedStatus = false;
 
                     if (Session["EditMembership"] != null)
                     {
@@ -111,7 +97,7 @@ namespace MCMD.Web.Controllers.Administration
 
                     };
                     membershipRepository.Save();
-                    ViewBag.Message = "Succsessfully added..";
+                    @TempData["SuccessMessage"] = "Succsessfully added..";
 
 
                 }
@@ -119,29 +105,17 @@ namespace MCMD.Web.Controllers.Administration
             }
             catch (Exception)
             {
-                //ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists contact your system administrator.");
+                
+                @TempData["Message"] = "Unable to save ";
             }
             return RedirectToAction("Create");
 
 
         }
+        #endregion
 
-        [HttpGet]
-        public ActionResult EditMembership()
-        {
 
-            EditMembershipVM editMembership = new EditMembershipVM();
-         //   editMembership.Duration_s = membershipRepository.GetDuration().ToList();
-          //  editMembership.Months = membershipRepository.GetMonths().ToList();
 
-            return View(editMembership);
-        }
-
-        public ActionResult EditMembership(MCMD.EntityModel.Administration.MCMDMembership member)
-        {
-
-            return View();
-        }
     }
 
 

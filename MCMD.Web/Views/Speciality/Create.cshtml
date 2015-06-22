@@ -7,11 +7,11 @@
 
 @{
 
-    int Pages = 10;
+    int Pages = 20;
     WebGrid grid = new WebGrid(Model.SpecialityList, canPage: true, rowsPerPage: Pages);
     grid.Pager(WebGridPagerModes.NextPrevious);
 }
-<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+@*<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>*@
 <script type="text/javascript">
 
     //Delete User on click
@@ -114,7 +114,7 @@
                     <label class="control-label">Speciality Name</label>
                     <div class="controls">
                         @Html.TextBoxFor(model => model.SpecialityName, new { @class = "m-wrap span6", @placeholder = "Enter Speciality Name", @maxlength = "50", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.specialitys.SpecialityName, string.Empty, new { @class = "text-error" })
+                        @Html.ValidationMessageFor(model => model.SpecialityName, string.Empty, new { @class = "text-error" })
 
                     </div>
                 </div>
@@ -131,7 +131,7 @@
 
 
     </div>
-    @Scripts.Render("~/bundles/jqueryval")
+
     <div class="portlet-title">
 
 
@@ -165,4 +165,4 @@
 
 
 
-
+@Scripts.Render("~/bundles/jqueryval")

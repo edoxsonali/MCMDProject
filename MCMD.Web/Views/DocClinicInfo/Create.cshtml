@@ -6,6 +6,9 @@
 
 <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
 
+
+
+
 <!-- BEGIN PAGE CONTAINER-->
 <div class="container-fluid">
     <!-- BEGIN PAGE HEADER-->
@@ -83,25 +86,25 @@
                 <div class="control-group">
                     <label class="control-label">Country<span class="required">*</span></label>
                     <div class="controls">
-                        @Html.DropDownListFor(m => m.Country, new SelectList(Model.countyList, "CountryId", "CountryName"),
+                        @Html.DropDownListFor(m => m.CountryId, new SelectList(Model.countyList, "CountryId", "CountryName"),
                              "-Select-", new { @class = "m-wrap span6" })
-                        @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-error" })
+                        @Html.ValidationMessageFor(m => m.CountryId, "", new { @class = "text-error" })
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">State<span class="required">*</span> </label>
                     <div class="controls">
-                        @Html.DropDownListFor(m => m.State, new SelectList(Model.stateList, "StateId", "StateName"),
-                             "-Select-", new { @class = "m-wrap span6" })
-                        @Html.ValidationMessageFor(m => m.State, "", new { @class = "text-error" })
+                        @Html.DropDownListFor(m => m.StateId, new SelectList(Model.stateList, "StateId", "StateName"),
+                          "-Select-", new { @class = "m-wrap span6" })
+                        @Html.ValidationMessageFor(m => m.StateId, "", new { @class = "text-error" })
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">City<span class="required">*</span></label>
                     <div class="controls">
-                        @Html.DropDownListFor(m => m.City, new SelectList(Model.cityList, "CityId", "CityName"),
-                             "-Select-", new { @class = "m-wrap span6" })
-                        @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-error" })
+                        @Html.DropDownListFor(m => m.CityId, new SelectList(Model.cityList, "CityId", "CityName"),
+                          "-Select-", new { @class = "m-wrap span6" })
+                        @Html.ValidationMessageFor(m => m.CityId, "", new { @class = "text-error" })
                     </div>
                 </div>
                 <div class="control-group">

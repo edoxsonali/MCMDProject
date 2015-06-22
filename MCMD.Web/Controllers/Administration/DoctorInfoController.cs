@@ -22,10 +22,7 @@ namespace MCMD.Web.Controllers.Administration
         {
             this.doctorPersonalInfoRepository = _doctorPersonalInfoRepository;
         }
-        public ActionResult Index()
-        {
-            return View();
-        }
+     
         public ActionResult UserEditDoctor(int Id)
         {
             Session["EditDoctor"] = Id;
@@ -33,10 +30,10 @@ namespace MCMD.Web.Controllers.Administration
             return Json(new { redirectUrl = Url.Action("Create", "DoctorInfo", new { varid }), isRedirect = true, JsonRequestBehavior.AllowGet });
 
         }
-        #region Create DoctorPersonal Info
+        #region Create/Update DoctorPersonal Info
         public ActionResult Create()
         {
-
+            @TempData["Name"] = Session["Name"];
             ViewData["PageRole"] = 1;
 
 
@@ -91,34 +88,64 @@ namespace MCMD.Web.Controllers.Administration
         {
             try
             {
+                ModelState.Clear();
 
                 if (ModelState.IsValid)
                 {
 
+                    _doctorPersonalInfoVM.LoginId = Convert.ToInt32(Session["EditDoctor"]);
+
+                    var existingUser = db.DoctorsPersonals.FirstOrDefault(u => u.LoginId == _doctorPersonalInfoVM.LoginId);
+
                     //Insert the remain data in DoctorPersonalInformation
                     var newDoctor = new DoctorPersonalInformation();
-                    newDoctor.MiddleName = _doctorPersonalInfoVM.MiddleName;
-                    newDoctor.Qualification = _doctorPersonalInfoVM.Qualification;
-                    newDoctor.RegistrationNo = Convert.ToInt32(_doctorPersonalInfoVM.RegistrationNo);
-                    newDoctor.Affiliation = _doctorPersonalInfoVM.Affiliation;
-                    newDoctor.AboutMe = _doctorPersonalInfoVM.AboutMe;
-                    newDoctor.AboutExperience = _doctorPersonalInfoVM.AboutExperience;
-                    newDoctor.InactiveFlag = "N";
-                    newDoctor.CreatedByID = 1;
-                    newDoctor.CreatedDate = DateTime.Now;
-                    newDoctor.ModifiedByID = 1;
-                    newDoctor.ModifiedDate = DateTime.Now;
+
                     newDoctor.LoginId = Convert.ToInt32(Session["EditDoctor"]);
+                    if (ReferenceEquals(existingUser, null))
+                    {
 
-                    doctorPersonalInfoRepository.InsertDoctor(newDoctor);
-                    doctorPersonalInfoRepository.Save();
-                    ViewBag.Message = "Succsessfully added..";
+                        newDoctor.MiddleName = _doctorPersonalInfoVM.MiddleName;
+                        newDoctor.Qualification = _doctorPersonalInfoVM.Qualification;
+                        newDoctor.RegistrationNo = Convert.ToInt32(_doctorPersonalInfoVM.RegistrationNo);
+                        newDoctor.Affiliation = _doctorPersonalInfoVM.Affiliation;
+                        newDoctor.AboutMe = _doctorPersonalInfoVM.AboutMe;
+                        newDoctor.AboutExperience = _doctorPersonalInfoVM.AboutExperience;
+                        newDoctor.InactiveFlag = "N";
+                        newDoctor.CreatedByID = 1;
+                        newDoctor.CreatedDate = DateTime.Now;
+                        newDoctor.ModifiedByID = 1;
+                        newDoctor.ModifiedDate = DateTime.Now;
+
+                        //insert if not exit
+                        doctorPersonalInfoRepository.InsertDoctor(newDoctor);
+                        doctorPersonalInfoRepository.Save();
+
+                    }
+                    else
+                    {
+
+                        existingUser.MiddleName = _doctorPersonalInfoVM.MiddleName;
+                        existingUser.Qualification = _doctorPersonalInfoVM.Qualification;
+                        existingUser.RegistrationNo = Convert.ToInt32(_doctorPersonalInfoVM.RegistrationNo);
+                        existingUser.Affiliation = _doctorPersonalInfoVM.Affiliation;
+                        existingUser.AboutMe = _doctorPersonalInfoVM.AboutMe;
+                        existingUser.AboutExperience = _doctorPersonalInfoVM.AboutExperience;
+                        existingUser.InactiveFlag = "N";
+                        existingUser.CreatedByID = 1;
+                        existingUser.CreatedDate = DateTime.Now;
+                        existingUser.ModifiedByID = 1;
+                        existingUser.ModifiedDate = DateTime.Now;
+                        existingUser.LoginId = Convert.ToInt32(Session["EditDoctor"]);
+
+                        //Update if already exit
+                        doctorPersonalInfoRepository.UpdateDoctorPersonalInfo(existingUser);
+                        doctorPersonalInfoRepository.Save();
 
 
-                    //find the data in table using loginId
-                    UserLogin NewUserlogin = db.UserLogins.Find(newDoctor.LoginId);
+                    }
 
-                    //Update the AutoPopulate data in UserLogin
+                    //find the data in Login table using loginId
+                    var NewUserlogin = db.UserLogins.FirstOrDefault(x => x.LoginId == newDoctor.LoginId);
                     NewUserlogin.FirstName = _doctorPersonalInfoVM.FirstName;
                     NewUserlogin.LastName = _doctorPersonalInfoVM.LastName;
                     NewUserlogin.EmailID = _doctorPersonalInfoVM.EmailID;
@@ -126,30 +153,30 @@ namespace MCMD.Web.Controllers.Administration
 
                     doctorPersonalInfoRepository.UpdateDocUserLogin(NewUserlogin);
                     doctorPersonalInfoRepository.Save();
-                    ViewBag.Message1 = " Update Login Succsessfully ..";
+                    ViewBag.Message1 = "Record Update Succsessfully ..";
 
-                    //find the data in table using loginId
-                    UserLoginSpeciality NewUserLogSpeciality = db.UserLoginSpecialitys.Find(newDoctor.LoginId);
-
-                    //Update the AutoPopulate data in UserLoginSpeciality                
+                    //find the data in Login_Speciality table using loginId
+                    var NewUserLogSpeciality = db.UserLoginSpecialitys.FirstOrDefault(x => x.LoginId == newDoctor.LoginId);
                     NewUserLogSpeciality.SpecialityID = _doctorPersonalInfoVM.SpecialityID;
 
                     doctorPersonalInfoRepository.UpdateDocSpeciality(NewUserLogSpeciality);
                     doctorPersonalInfoRepository.Save();
 
-                    ViewBag.Message2 = " Update Login Speciality Succsessfully ..";
+                   // ViewBag.Message2 = " Update Login Speciality Succsessfully ..";
 
-                    @TempData["Message"] = "Succsessfully save data";
-
-                  
+                    @TempData["SuccessMessage"] = "Record Saved  Successfully";
                 }
+
+
             }
+
+
             catch (Exception)
             {
                 // ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists contact your system administrator.");
+                @TempData["Message"] = "Unable to save changes";
+                return RedirectToAction("Create", "DoctorInfo");
             }
-
-
             return RedirectToAction("Create", "DoctorClinicInfo");
 
         }

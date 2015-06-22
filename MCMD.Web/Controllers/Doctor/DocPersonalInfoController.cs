@@ -25,6 +25,7 @@ namespace MCMD.Web.Controllers.Doctor
         // GET: DocPersonaliInfo
         public ActionResult Create()
         {
+            @TempData["Name"] = Session["Name"];
             ViewData["PageRole"] = 1;
 
             //    Session["Doctor"] = 3;
@@ -69,8 +70,6 @@ namespace MCMD.Web.Controllers.Doctor
 
             }
 
-
-
             return View(_doctorVM);
         }
 
@@ -111,7 +110,6 @@ namespace MCMD.Web.Controllers.Doctor
                         doctorPersonalInfoRepository.InsertDoctor(newDoctor);
                         doctorPersonalInfoRepository.Save();
 
-
                     }
                     else
                     {
@@ -135,30 +133,24 @@ namespace MCMD.Web.Controllers.Doctor
 
 
                     }
-
-
-
-
                     //find the data in table using loginId
-                    UserLogin NewUserlogin = db.UserLogins.Find(newDoctor.LoginId);
+                    var existUserlogin = db.UserLogins.FirstOrDefault(u => u.LoginId == newDoctor.LoginId);
+                   
+                    existUserlogin.FirstName = _doctorPersonalInfoVM.FirstName;
+                    existUserlogin.LastName = _doctorPersonalInfoVM.LastName;
+                    existUserlogin.EmailID = _doctorPersonalInfoVM.EmailID;
+                    existUserlogin.UserPhone = _doctorPersonalInfoVM.UserPhone;
 
-                    //Update the AutoPopulate data in UserLogin
-                    NewUserlogin.FirstName = _doctorPersonalInfoVM.FirstName;
-                    NewUserlogin.LastName = _doctorPersonalInfoVM.LastName;
-                    NewUserlogin.EmailID = _doctorPersonalInfoVM.EmailID;
-                    NewUserlogin.UserPhone = _doctorPersonalInfoVM.UserPhone;
-
-                    doctorPersonalInfoRepository.UpdateDocUserLogin(NewUserlogin);
+                    doctorPersonalInfoRepository.UpdateDocUserLogin(existUserlogin);
                     doctorPersonalInfoRepository.Save();
 
 
                     //find the data in table using loginId
-                    UserLoginSpeciality NewUserLogSpeciality = db.UserLoginSpecialitys.Find(newDoctor.LoginId);
+                    var ExistUserLogSpeciality = db.UserLoginSpecialitys.FirstOrDefault(u => u.LoginId == newDoctor.LoginId);
+                                 
+                    ExistUserLogSpeciality.SpecialityID = _doctorPersonalInfoVM.SpecialityID;
 
-                    //Update the AutoPopulate data in UserLoginSpeciality                
-                    NewUserLogSpeciality.SpecialityID = _doctorPersonalInfoVM.SpecialityID;
-
-                    doctorPersonalInfoRepository.UpdateDocSpeciality(NewUserLogSpeciality);
+                    doctorPersonalInfoRepository.UpdateDocSpeciality(ExistUserLogSpeciality);
                     doctorPersonalInfoRepository.Save();
 
 

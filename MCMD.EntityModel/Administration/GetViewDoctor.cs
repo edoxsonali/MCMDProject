@@ -9,7 +9,7 @@ namespace MCMD.EntityModel.Administration
 {
    public class GetViewDoctor
     {
-        [Key]
+       
         public int LoginId { get; set; }
 
         public string UserName { get; set; }
@@ -24,7 +24,7 @@ namespace MCMD.EntityModel.Administration
         //for Speciality Name
         public string SpecialityName { get; set; }
 
-        public int MembershipId { get; set; }
+       // public int MembershipId { get; set; }
         //for getting Role Name 
         public string RoleName { get; set; }
         //for getting Clinic Name

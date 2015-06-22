@@ -100,6 +100,7 @@ D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\bin\Release\Microsoft.Owin.Securit
 D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\bin\Release\Microsoft.Owin.Security.OAuth.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\bin\Release\Newtonsoft.Json.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\bin\Release\Owin.dll
+D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\bin\Release\MCMD.Common.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\bin\Release\MCMD.EntityModel.pdb
 D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\bin\Release\EntityFramework.xml
 D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\bin\Release\EntityFramework.SqlServer.xml
@@ -111,6 +112,7 @@ D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\bin\Release\Microsoft.Owin.Securit
 D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\bin\Release\Microsoft.Owin.Security.Cookies.xml
 D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\bin\Release\Microsoft.Owin.Security.OAuth.xml
 D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\bin\Release\Newtonsoft.Json.xml
+D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\bin\Release\MCMD.Common.pdb
 D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\obj\Release\MCMD.ViewModel.csprojResolveAssemblyReference.cache
 D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\obj\Release\MCMD.ViewModel.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.ViewModel\obj\Release\MCMD.ViewModel.pdb

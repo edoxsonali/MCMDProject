@@ -12,5 +12,6 @@ D:\Sominath\MCMDProject\MCMD.ApiModel\obj\Release\MCMD.ApiModel.dll
 D:\Sominath\MCMDProject\MCMD.ApiModel\obj\Release\MCMD.ApiModel.pdb
 D:\DoxeDox_Project\MCMDProject\MCMD.ApiModel\bin\Release\MCMD.ApiModel.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.ApiModel\bin\Release\MCMD.ApiModel.pdb
+D:\DoxeDox_Project\MCMDProject\MCMD.ApiModel\obj\Release\MCMD.ApiModel.csprojResolveAssemblyReference.cache
 D:\DoxeDox_Project\MCMDProject\MCMD.ApiModel\obj\Release\MCMD.ApiModel.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.ApiModel\obj\Release\MCMD.ApiModel.pdb

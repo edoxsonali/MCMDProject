@@ -1,228 +1,74 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Search";
-    Layout = "~/Views/Shared/_ThemeLayout.cshtml";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
 }
 
+<!-- BEGIN CONTAINER -->
+<div class="container" style="padding-top:50px;">
+    <div class="hidden-phone hidden-tablet">
 
-<div class="parallax-out wpb_row vc_row-fluid ihome-parallax">
-
-
-    <div id="second" class="upb_row_bg vcpb-hz-jquery" data-upb_br_animation="" data-parallax_sense="30" data-bg-override="ex-full">
-
-        <div class="container">
-            <div class="row">
-                @*<div class="col-md-12 no-pad col-xs-12 col-sm-12">
-                        <h3 style="text-align: center"> <div class="fa fa-search"></div> &nbsp;Find a doctor| Book an appointment  | Meet the doctor </h3>
-
-                    </div>*@
-                <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 column-element" style="border-bottom: none; padding-bottom: 5px; padding-top: 0px;">
-                    <div class="col-md-1 col-sm-1 col-lg-1 col-xs-1 column-element" style="border-bottom: none">
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 column-element" style="border-bottom: none; padding-right: 0px; padding-top: 0px;" data-wow-delay="1.5s" data-wow-offset="200">
-
-
-                        <!--Sidebar-item-->
-                        <div class="post-tabs wow fadeInLeft" data-wow-delay="0.5s" data-wow-offset="50">
-
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#popular" data-toggle="tab" style="font-size: medium">Speciality</a></li>
-                                <li><a href="#recent" data-toggle="tab" style="font-size: medium">Doctor</a></li>
-                                <li><a href="#comment" data-toggle="tab" style="font-size: medium">Clinic</a></li>
-
-                            </ul>
-
-                            <!-- Tab panes -->
-                            <div class="tab-content" style="box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);">
-
-                                <!--popular posts-->
-                                <div class="fade in tab-pane active" id="popular">
-
-                                    <div class="popular-post-box" style="padding-top: 10px; padding-bottom: 0px">
-
-                                        <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
-
-                                            <select class="contact2-textbox" style="margin-bottom: 10px;">
-                                                <option value="volvo">Dentist</option>
-                                                <option value="saab">Ayurveda</option>
-                                                <option value="mercedes">Psychiatrist</option>
-                                                <option value="audi">Spa</option>
-                                            </select>
-
-                                        </div>
-                                        <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-
-                                            <select class="contact2-textbox" style="margin-bottom: 10px;">
-                                                <option value="volvo">Pune</option>
-                                                <option value="saab">Mumbai</option>
-                                                <option value="mercedes">Nagpur</option>
-                                                <option value="audi">Goa</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 col-lg-3 col-xs-3 column-element  " style="padding-top: 0px; padding-bottom: 0px;">
-
-                                            <ul class="primary-buttons ">
-                                                <li><a href="#" class="inner-page-butt-blue large-but fa fa-search" style="font-size: x-large">&nbsp;&nbsp;Search &nbsp;</a></li>
-
-                                            </ul>
-
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                                <!--popular posts end-->
-                                <!--Recent posts-->
-                                <div class="tab-pane fade" id="recent">
-
-                                    <div class="popular-post-box" style="padding-top: 10px; padding-bottom: 0px">
-                                        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-
-                                            <select class="contact2-textbox" style="margin-bottom: 10px;">
-                                                <option value="volvo">Select Doctor*</option>
-                                                <option value="saab">Ayurveda</option>
-                                                <option value="mercedes">Psychiatrist</option>
-                                                <option value="audi">Spa</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-
-                                            <select class="contact2-textbox" style="margin-bottom: 10px;">
-                                                <option value="volvo">Pune</option>
-                                                <option value="saab">Mumbai</option>
-                                                <option value="mercedes">Nagpur</option>
-                                                <option value="audi">Goa</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                                <!--Recent posts End-->
-                                <!--Comments-->
-                                <div class="tab-pane fade" id="comment">
-
-                                    <div class="popular-post-box" style="padding-top: 10px; padding-bottom: 0px">
-
-                                        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-
-                                            <select class="contact2-textbox" style="margin-bottom: 10px;">
-                                                <option value="volvo">Select Clinic*</option>
-                                                <option value="saab">Ayurveda</option>
-                                                <option value="mercedes">Psychiatrist</option>
-                                                <option value="audi">Spa</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-
-                                            <select class="contact2-textbox" style="margin-bottom: 10px;">
-                                                <option value="volvo">Pune</option>
-                                                <option value="saab">Mumbai</option>
-                                                <option value="mercedes">Nagpur</option>
-                                                <option value="audi">Goa</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!--Comments end-->
-
-
-                            </div>
-                            <!-- Tab panes end-->
-
-
-                        </div>
-                        <!-- side item-end -->
-
-
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="row">
-
-                @*<div class=" col-lg-4 col-sm-4 col-md-5 col-xs-12" data-wow-delay="1.5s" data-wow-offset="200">
-                        <!-- tabs left -->
-                        <div class="tabbable tabs-left">
-                            <ul class="nav nav-tab nav nav-tabs col-md-12 col-sm-12 col-xs-12">
-                                <li class="active"><a href="#" data-toggle="tab"><i class="icon-eye-open dept-tabs-icon"></i><span class="tabs-heads">Ophthalmology Clinic</span><i class="right-arr"></i></a></li>
-                                <li><a href="#" data-toggle="tab"><i class="icon-heart dept-tabs-icon"></i><span class="tabs-heads">Cardiac Clinic</span><i class="right-arr"></i></a></li>
-                                <li><a href="#" data-toggle="tab"><i class="icon-food dept-tabs-icon"></i><span class="tabs-heads">Outpatient Surgery</span><i class="right-arr"></i></a></li>
-                                <li><a href="#" data-toggle="tab"><i class="icon-ambulance dept-tabs-icon"></i><span class="tabs-heads">Outpatient Rehab</span><i class="right-arr"></i></a></li>
-                                <li><a href="#" data-toggle="tab"><i class="icon-medkit dept-tabs-icon"></i><span class="tabs-heads">Cardiac Clinic</span><i class="right-arr"></i></a></li>
-                                <li><a href="#" data-toggle="tab"><i class="icon-hospital dept-tabs-icon"></i><span class="tabs-heads">Outpatient Surgery</span><i class="right-arr"></i></a></li>
-                                <li><a href="#" data-toggle="tab"><i class="icon-eye-open dept-tabs-icon"></i><span class="tabs-heads">Ophthalmology Clinic</span><i class="right-arr"></i></a></li>
-                                <li><a href="#" data-toggle="tab"><i class="icon-stethoscope dept-tabs-icon"></i><span class="tabs-heads">Cardiac Clinic</span><i class="right-arr"></i></a></li>
-                                <li><a href="#" data-toggle="tab"><i class="icon-hospital dept-tabs-icon"></i><span class="tabs-heads">Outpatient Surgery</span><i class="right-arr"></i></a></li>
-                                <li><a href="#" data-toggle="tab"><i class="icon-ambulance dept-tabs-icon"></i><span class="tabs-heads">Ophthalmology Clinic</span><i class="right-arr"></i></a></li>
-
-
-                            </ul>
-
-                        </div>
-                    </div>*@
-
-                <div class="float-right col-lg-8 col-sm-8 col-md-8 col-xs-12" style="padding-top: 5px">
-
-                    <div class="iconlist-wrap">
-                        <div class="subtitle notViewed wow fadeInRight" data-wow-delay="0.5s" data-wow-offset="20">Why <span class="iconlist-mid-title">Choose</span> Us</div>
-                        <ul>
-                            <li class="notViewed wow fadeInDown" data-wow-delay="0.5s" data-wow-offset="50">
-                                <i class="icon-hospital2 icon-list-icons"></i>
-                                <div class="iconlist-content">
-
-                                    <div class="iconlist-title">Find a doctor</div>
-                                    <p class="iconlist-text">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                        doloremque laudantium, totam rem aperiam.
-                                    </p>
-                                </div>
-
-                            </li>
-
-                            <li class="notViewed wow fadeInDown" data-wow-delay="0.5s" data-wow-offset="60">
-                                @*<i class="fa fa-ambulance icon-list-icons"></i>*@
-                                <i class="fa icon-file icon-list-icons"></i>
-                                <div class="iconlist-content">
-
-                                    <div class="iconlist-title">Book an appointment</div>
-                                    <p class="iconlist-text">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                        doloremque laudantium, totam rem aperiam.
-                                    </p>
-                                </div>
-
-                            </li>
-
-                            <li class="notViewed wow fadeInDown" data-wow-delay="0.5s" data-wow-offset="70">
-
-                                <i class="fa fa-user-md icon-list-icons"></i>
-                                <div class="iconlist-content">
-
-                                    <div class="iconlist-title">Meet the doctor</div>
-                                    <p class="iconlist-text">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                        doloremque laudantium, totam rem aperiam.
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-
-                </div>
-                <!-- side item-end -->
-                <!--Sidebar-item-->
-            </div>
-
-        </div>
-        <!--.story-->
+        <br /><br />
     </div>
+    <!-- BEGIN TABS AND TESTIMONIALS -->
+
+    <div class="mix-block span12" style="padding-top:130px;padding-bottom:100px;">
+        <div class="span2"></div>
+        <div class="span8 tab-style-1 margin-bottom-20" style="text-align:center;">
+            <ul class="nav nav-tabs" style="border-bottom:none;">
+                <li class="active"><a href="#tab-1" data-toggle="tab" style="border-left-color:#e9811a; border-right-color: #e9811a; border-top-color: #e9811a; border-width:1px;">Speciality</a></li>
+                <li><a href="#tab-2" data-toggle="tab" style="border-left-color:#e9811a; border-right-color: #e9811a; border-top-color: #e9811a; border-width:1px;">Doctor</a></li>
+                <li><a href="#tab-3" data-toggle="tab" style="border-left-color:#e9811a; border-right-color: #e9811a; border-top-color: #e9811a; border-width:1px;">Clinic</a></li>
+                <li><a href="#tab-4" data-toggle="tab" style="border-left-color:#e9811a;  border-right-color: #e9811a; border-top-color: #e9811a; border-width:1px;">Lab</a></li>
+            </ul>
+            <div class="tab-content" style="padding-bottom :2px; padding-top:14px; background:#e9811a;">
+                <div class="tab-pane row-fluid fade in active" id="tab-1">
+                    <input type="text" style="background:#fff; color:grey;" class="span5 m-wrap" placeholder="Enter Speciality">
+                    &nbsp;&nbsp;<input style="background:#fff; color:grey; " class="span5 m-wrap" type="text" placeholder="Enter Location"><button class="btn black" type="button">SEARCH</button>
+                </div>
+                <div class="tab-pane row-fluid fade" id="tab-2">
+                    <input type="text" style="background:#fff; color:grey;" class="span5 m-wrap" placeholder="Enter Speciality">
+                    &nbsp;&nbsp;<input style="background:#fff; color:grey; " class="span5 m-wrap" type="text" placeholder="Enter Location"><button class="btn black" type="button">SEARCH</button>
+                </div>
+                <div class="tab-pane row-fluid fade" id="tab-3">
+                    <input type="text" style="background:#fff; color:grey;" class="span5 m-wrap" placeholder="Enter Speciality">
+                    &nbsp;&nbsp;<input style="background:#fff; color:grey; " class="span5 m-wrap" type="text" placeholder="Enter Location"><button class="btn black" type="button">SEARCH</button>
+                </div>
+                <div class="tab-pane row-fluid fade" id="tab-4">
+                    <input type="text" style="background:#fff; color:grey;" class="span5 m-wrap" placeholder="Enter Speciality">
+                    &nbsp;&nbsp;<input style="background:#fff; color:grey; " class="span5 m-wrap" type="text" placeholder="Enter Location"><button class="btn black" type="button">SEARCH</button>
+                </div>
+
+            </div>
+
+            <!-- END TABS -->
+        </div>
+        <div class="span2"></div>
+
+        <div class="span1"></div>
+
+        <div class="span2"></div>
+
+    </div>
+    <div class="mix-block span6">
+        <div class="span5 testimonials-v1">
+            <div id="myCarousel">
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    <div class="item">
+
+                        <div class="carousel-info">
+                            <img src="~/Content/Web_Theme/assets/img/people/img1-small.jpg" alt="">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- END TABS AND TESTIMONIALS -->
 </div>
-
-
-
-
+<!-- END CONTAINER -->

@@ -13,6 +13,7 @@ namespace MCMD.EntityModel.Administration
         public int LoginId { get; set; }
         public int Durations { get; set; }
         public int AutoRenaval { get; set; }
+        public bool CheckedStatus { get; set; }
         public int CreatedById { get; set; }
         public string InactiveFlag { get; set; }
         public System.DateTime? CreatedOnDate { get; set; }

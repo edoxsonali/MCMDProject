@@ -9,6 +9,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MCMD.EntityModel.Patient;
 
 
 namespace MCMD.EntityModel
@@ -51,6 +52,10 @@ namespace MCMD.EntityModel
         public DbSet<UpgradeServiceLog> upgradeServiceLog { get; set; }
 
         public DbSet<ClinicTimeInformation> clinicTimeInformation { get; set; }
+        public DbSet<PatientLogin> patientlogins { get; set; }
+
+        public DbSet<AppointmentDiary> AppointmentDiary { get; set; }
+        public DbSet<SchedulingDiary> SchedulingDiarys { get; set; }
 
         public static ApplicationDbContext Create()
         {
@@ -122,7 +127,14 @@ namespace MCMD.EntityModel
             modelBuilder.Entity<ClinicTimeInformation>().ToTable("ClinicTime");
             modelBuilder.Entity<ClinicTimeInformation>().HasKey<int>(r => r.ClinicTimeId);
 
+            modelBuilder.Entity<PatientLogin>().ToTable("Patient");
+            modelBuilder.Entity<PatientLogin>().HasKey<int>(r => r.PatientId);
 
+            modelBuilder.Entity<AppointmentDiary>().ToTable("AppointmentDiary");
+            modelBuilder.Entity<AppointmentDiary>().HasKey<int>(r => r.ID);
+
+            modelBuilder.Entity<SchedulingDiary>().ToTable("SchedulingDiary");
+            modelBuilder.Entity<SchedulingDiary>().HasKey<int>(r => r.ID);
 
 
             //  modelBuilder.Entity<Role>().ToTable("MCMDCreateRoles");

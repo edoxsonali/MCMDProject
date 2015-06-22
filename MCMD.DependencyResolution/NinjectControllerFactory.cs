@@ -7,8 +7,10 @@ using System.Linq;
 using Moq;
 using MCMD.IRepository.AdminInterfaces;
 using MCMD.EntityRepository.AdminRepository;
-//using MCMD.IRepository.DoctorInterfaces;
-//using MCMD.EntityRepository.DoctorRepository;
+using MCMD.IRepository.DoctorInterfaces;
+using MCMD.EntityRepository.DoctorRepository;
+using MCMD.EntityRepository.PatientRepository;
+using MCMD.IRepository.PatientInterfaces;
 
 
 namespace MCMD.DependencyInjection
@@ -39,6 +41,8 @@ namespace MCMD.DependencyInjection
             ninjectKernel.Bind<IDoctorClinicInformation>().To<DoctorClinicInformationRepository>();
             ninjectKernel.Bind<IMediaRepository>().To<MediaRepository>();
             ninjectKernel.Bind<IUpgradeService>().To<UpgradeServiceRepository>();
+            ninjectKernel.Bind<IDocRegister>().To<DocRegister>();
+            ninjectKernel.Bind<IPatientRegister>().To<PatientsRepository>();
         }
      
     }

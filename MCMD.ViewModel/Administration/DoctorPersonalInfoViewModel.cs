@@ -21,36 +21,57 @@ namespace MCMD.ViewModel.Administration
 
         public List<UserLogin> UserLogins { get; set; }
         public List<UserLoginSpeciality> UserLoginSpeciality { get; set; }
+
+        [DisplayName("SpecialitiID")]
+        [Required(ErrorMessage = "Speciality is required.")]
         public int SpecialityID { get; set; }
         public int PersonalInfoId { get; set; }
         public int LoginId { get; set; }
         public int LoginSpecialityId { get; set; }
+
+        [DisplayName("First Name")]
+        [RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "First Name is not valid.")]
+        [Required(ErrorMessage = "First Name is required.")]
+        [StringLength(50, ErrorMessage = "First Name cannot be longer than 50 characters.")]
         public string FirstName { get; set; }
 
-        [DisplayName("Middle Name")]
-        [RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "First Name is not valid.")]
-        [Required(ErrorMessage = "Middle Name is required.")]
-        [StringLength(50, ErrorMessage = "Middle Name cannot be longer than 50 characters.")]
+        //[DisplayName("MiddleName")]
+        //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "Middle Name is not valid.")]
+        //[Required(ErrorMessage = "Middle Name is required.")]
+        //[StringLength(50, ErrorMessage = "Middle Name cannot be longer than 50 characters.")]
         public string MiddleName { get; set; }
+
+        [DisplayName("Last Name")]
+        [RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "Last Name is not valid.")]
+        [Required(ErrorMessage = "Last Name is required.")]
+        [StringLength(50, ErrorMessage = "Last Name cannot be longer than 50 characters.")]
         public string LastName { get; set; }
+
+        [DisplayName("SpecialitiID")]
+        [Required(ErrorMessage = "Speciality is required.")]
         public string SpecialitiID { get; set; }
+
+        [DisplayName("EmailID")]
+        [RegularExpression(@"^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$", ErrorMessage = "Email is not valid.")]
+        [Required(ErrorMessage = "Email is required.")]
+        [StringLength(100, ErrorMessage = "Email cannot be longer than 100 characters.")]
         public string EmailID { get; set; }
+
+        [DisplayName("UserPhone")]
+        [Required(ErrorMessage = "Phone is required.")]
         public string UserPhone { get; set; }
 
         [DisplayName("Qualification")]
-        [RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "First Name is not valid.")]
+        [RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "Qualification is not valid.")]
         [Required(ErrorMessage = "Qualification is required.")]
         [StringLength(50, ErrorMessage = "Qualification cannot be longer than 50 characters.")]
         public string Qualification { get; set; }
 
 
-        [DisplayName("Registration No")]
-        [Required(ErrorMessage = "RegistrationNo is required.")]       
-        public int RegistrationNo { get; set; }
+        [DisplayName("RegistrationNo")]
+        [Required(ErrorMessage = "RegistrationNo is required.")]
+        public int? RegistrationNo { get; set; }
 
-        [DisplayName("Affiliation")]
-        [Required(ErrorMessage = "Affiliation is required.")]
-        [StringLength(50, ErrorMessage = "Affiliation cannot be longer than 50 characters.")]
         public string Affiliation { get; set; }
         public string AboutMe { get; set; }
 

@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -32,17 +32,17 @@ namespace MCMD.Web.Controllers.Administration
             this.userRepository = _userRepositorys;
         }
 
-
+                     
         #region Create User
         [HttpGet]
         public ActionResult RegisterUser()
         {
+            @TempData["Name"] = Session["Name"];
+
             UserRegisterViewModel _userRegisterViewModel = new UserRegisterViewModel();
             _userRegisterViewModel.Roles = userRepository.GetRoles().ToList();
-            _userRegisterViewModel.Specialitys = userRepository.GetSpecialitys().ToList();
+            _userRegisterViewModel.Specialitys = userRepository.GetSpecialitys().Where(x => x.InactiveFlag=="N").ToList();
             _userRegisterViewModel.Userlogins = new UserLogin();
-
-
 
             return View(_userRegisterViewModel);
 
@@ -52,7 +52,7 @@ namespace MCMD.Web.Controllers.Administration
         public ActionResult RegisterUser(UserRegisterViewModel registerVM)
         {
 
-            //ModelState.Clear();  // Cleare Model state
+            ModelState.Clear();  // Cleare Model state
             if (ModelState.IsValid)
             {
 
@@ -83,10 +83,9 @@ namespace MCMD.Web.Controllers.Administration
                                     userRepository.InsertUserLoginRoles(newUserRole, registerVM);
                                     userRepository.Save();
 
-
+                                    //  Insert data in Login_Speciality Table
                                     if (registerVM.SpecialityID != 0)
                                     {
-                                        //  Insert data in Login_Speciality Table
                                         var newUserspeciality = db.UserLoginSpecialitys.Create();
                                         userRepository.UserLoginSpecialitys(newUserspeciality, registerVM);
                                         userRepository.Save();
@@ -94,24 +93,24 @@ namespace MCMD.Web.Controllers.Administration
                                     }
 
                                     dbContextTransaction.Commit();
-                                    ViewBag.StatusMessage = " User Name with " + registerVM.Userlogins.UserName + " having Email Id " + registerVM.Userlogins.EmailID + " is created successfully";
-                                    ViewBag.Status = 1;
-
+                                    //ViewBag.StatusMessage = " User Name with " + registerVM.Userlogins.UserName + " having Email Id " + registerVM.Userlogins.EmailID + " is created successfully";
+                                    //ViewBag.Status = 1;
+                                    @TempData["SuccessMessage"] = " User Name with " + registerVM.Userlogins.UserName + " having Email Id " + registerVM.Userlogins.EmailID + " is created successfully";
 
                                     //var callbackUrl = Url.Action("ConfirmEmail", "Account",new { userId = user.Id, code = code },protocol: Request.Url.Scheme);
 
                                     //get user emailid
                                     var emailid = registerVM.Userlogins.EmailID;
                                     //send mail
-                                    string subject = "MyCityMyDoctor  Registration";
-                                    string body = "Dear " + registerVM.Userlogins.FirstName + " " + registerVM.Userlogins.LastName + "<br/> <br/>" + System.Environment.NewLine + System.Environment.NewLine + "You have been successfully registered at MyCityMyDoctor , Your login credentials are given below<br/><br/>" +
-                                    "Username" + " : " + registerVM.Userlogins.UserName + "<br/><br/>Password" + " : " +
-                                     password + "<br/><br/><br/>Thank You" + "<br/>Admin" + "<br/>Edox";  //edit it
+                                    string subject = "doxedox  Registration";
+                                    string body = "Dear " + registerVM.Userlogins.FirstName + " " + registerVM.Userlogins.LastName + "<br/> <br/>" + System.Environment.NewLine + System.Environment.NewLine + "You have been successfully registered at doxedox , Your login credentials are given below<br/><br/>" +
+                                    "Username" + " : " + registerVM.Userlogins.UserName + "<br/><br/>"+"Your Id" + " : " + registerVM.Userlogins.LoginId + "<br/><br/>Password" + " : " +
+                                     password + "<br/><br/><br/>Thank You" + "<br/>Admin" + "<br/>doxedox";  //edit it
                                     try
                                     {
                                         SendEMail sendemail = new SendEMail();
                                         sendemail.Send_EMail(emailid, subject, body);
-                                        @TempData["SuccessMessage"] = "User has been created successfully. Email sent to " + registerVM.Userlogins.EmailID + "";
+                                        @TempData["SuccessMessage"] = "User has been created Successfully. Email sent to " + registerVM.Userlogins.EmailID + "";
                                     }
                                     catch (Exception ex)
                                     {
@@ -148,7 +147,7 @@ namespace MCMD.Web.Controllers.Administration
 
                 }
             }
-            ViewBag.ExistStatus = 1;
+         //   ViewBag.ExistStatus = 1;
             return RedirectToAction("RegisterUser");
 
         }
@@ -159,7 +158,7 @@ namespace MCMD.Web.Controllers.Administration
         [HttpGet]
         public ActionResult ViewUser(int EmpId = 0, int RoleId = 0, string UserFirstName = "", string UserLastName = "", string UserEmailId = "", string UsePhone = "")
         {
-
+            @TempData["Name"] = Session["Name"];
             UserDetailsViewModel userDetailsVM = new UserDetailsViewModel();
             userDetailsVM.Roles = userRepository.GetRoles().Where(x => x.RoleId != 4).ToList();
             //get All info od users
@@ -226,25 +225,27 @@ namespace MCMD.Web.Controllers.Administration
 
         #region View Doctor
         [HttpGet]
-        public ActionResult ViewDoctor(int LogId = 0, int SpeID = 0, int RoleId = 0, string UserFirstName = "", string UserLastName = "", string UserEmailId = "", string UsePhone = "", int Clinicid = 0)
+        public ActionResult ViewDoctor(int LogId = 0, int SpeID = 0, int RoleId = 0, int empId = 0, string UserFirstName = "", string UserLastName = "", string UserEmailId = "", string UsePhone = "", int Clinicid = 0)
         {
+            @TempData["Name"] = Session["Name"];
             UserDetailsViewModel userDetailsVM = new UserDetailsViewModel();
             userDetailsVM.Roles = userRepository.GetRoles().ToList();
             userDetailsVM.DoctorClinicInformation = userRepository.GetClinicInformation().ToList();//Get Clinic Info
             userDetailsVM.speciality = userRepository.GetSpecialitys().ToList();
 
-            if (LogId == 0 && RoleId == 0 && SpeID == 0 && string.IsNullOrEmpty(UserFirstName) && string.IsNullOrEmpty(UserEmailId) && string.IsNullOrEmpty(UsePhone) && Clinicid == 0)
+            if (LogId == 0 && RoleId == 0 && SpeID == 0 && empId == 0 && string.IsNullOrEmpty(UserFirstName) && string.IsNullOrEmpty(UserLastName) && string.IsNullOrEmpty(UserEmailId) && string.IsNullOrEmpty(UsePhone) && Clinicid == 0)
             {
-                userDetailsVM.GetViewDoctors = userRepository.getAllDoctor().ToList();
+                userDetailsVM.getDoctor = userRepository.getAllDoctor().ToList();
 
             }
 
             //get Role Id from dropdown
-            if (RoleId != 0 || LogId != 0 || SpeID != 0 || !string.IsNullOrEmpty(UserFirstName) || !string.IsNullOrEmpty(UserLastName) || !string.IsNullOrEmpty(UserEmailId) || !string.IsNullOrEmpty(UsePhone) || Clinicid != 0)
+            if (RoleId != 0 || LogId != 0 || SpeID != 0 || empId != 0 || !string.IsNullOrEmpty(UserFirstName) || !string.IsNullOrEmpty(UserLastName) || !string.IsNullOrEmpty(UserEmailId) || !string.IsNullOrEmpty(UsePhone) || Clinicid != 0)
             {
                 userDetailsVM.RoleId = RoleId;
-
-                userDetailsVM.GetViewDoctors = userRepository.SearchDoctor(LogId, SpeID, RoleId, UserFirstName, UserLastName, UserEmailId, UsePhone, Clinicid).ToList();
+                userDetailsVM.SpecialityIDID = SpeID;
+                userDetailsVM.LoginId = LogId;
+                userDetailsVM.getDoctor = userRepository.SearchDoctor(LogId, SpeID, RoleId, empId, UserFirstName, UserLastName, UserEmailId, UsePhone, Clinicid).ToList();
             }
 
 
@@ -256,7 +257,7 @@ namespace MCMD.Web.Controllers.Administration
         public ActionResult ViewDoctor(UserDetailsViewModel userDetailsVM)
         {
 
-            int loginId = 0;
+            int? loginId = 0;
             int userRollId = 0;
             string Userfirstname = "";
             string useremailid = "";
@@ -264,20 +265,17 @@ namespace MCMD.Web.Controllers.Administration
             string Userlastname = "";
             int speID = 0;
             int ClinicID = 0;
-
-            if (userDetailsVM.LoginId != 0 || userDetailsVM.RoleId != 0)
+            int? employeeId = 0;
+            if (userDetailsVM.LoginId != 0 || userDetailsVM.RoleId != 0 || userDetailsVM.SpecialityIDID != 0 || userDetailsVM.EmployeeId != 0)
             {
                 loginId = userDetailsVM.LoginId;
                 userRollId = userDetailsVM.RoleId;
-
+                speID = userDetailsVM.SpecialityIDID;
+                employeeId = userDetailsVM.EmployeeId;
             }
             if (!string.IsNullOrEmpty(userDetailsVM.ClinicName))
             {
                 ClinicID = Convert.ToInt32(userDetailsVM.ClinicName);
-            }
-            if (userDetailsVM.SpecialityID != 0)
-            {
-                speID = userDetailsVM.SpecialityID;
             }
             if (!string.IsNullOrEmpty(userDetailsVM.FirstName))
             {
@@ -298,7 +296,7 @@ namespace MCMD.Web.Controllers.Administration
             {
                 userphone = userDetailsVM.UserPhone;
             }
-            return RedirectToAction("ViewDoctor", new { LogId = loginId, SpeID = speID, RoleId = userRollId, UserFirstName = Userfirstname, UserLastName = Userlastname, UserEmailId = useremailid, UsePhone = userphone, Clinicid = ClinicID });
+            return RedirectToAction("ViewDoctor", new { LogId = loginId, SpeID = speID, RoleId = userRollId, empId = employeeId, UserFirstName = Userfirstname, UserLastName = Userlastname, UserEmailId = useremailid, UsePhone = userphone, Clinicid = ClinicID });
 
 
         }
@@ -318,6 +316,7 @@ namespace MCMD.Web.Controllers.Administration
         [HttpGet]
         public ActionResult EditUser()
         {
+            @TempData["Name"] = Session["Name"];
             EditUserViewModel _edituserVM = new EditUserViewModel();
             _edituserVM.Roles = userRepository.GetRoles().Where(x => x.RoleId != 4).ToList();
 

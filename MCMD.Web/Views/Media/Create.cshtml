@@ -7,13 +7,26 @@
 
 @{
 
-    int Pages = 10;
+    int Pages = 20;
     WebGrid grid = new WebGrid(Model.GetMedialist, canPage: true, rowsPerPage: Pages);
     grid.Pager(WebGridPagerModes.NextPrevious);
 }
+<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+<script type="text/javascript" src="assets/plugins/gritter/js/jquery.gritter.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery.pulsate.min.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery.bootpag.min.js"></script>
+<script src="assets/scripts/app.js"></script>
+<script src="assets/scripts/ui-general.js"></script>
 
 <script type="text/javascript">
 
+
+
+    jQuery(document).ready(function () {
+        // initiate layout and plugins
+        App.init();
+        UIGeneral.init();
+    });
     //Delete User on click
     function DeleteUserData(varid) {
         if (varid != null) {
@@ -118,15 +131,20 @@
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 <div class="control-group">
-                    <label class="control-label">Upload Photo/Image<span class="required">*</span></label>
+                    <label class="control-label">Upload Photo/Image@*<span class="required">*</span>*@</label>
                     <div class="controls">
 
                         <input id="ImagePath" title="Upload a clinic image"
                                type="file" name="file" />
                         <div>
-                            <label>
-                                <span style="color:red">*</span> Indicates mandatory fields.
-                            </label>
+                            <div class="alert alert-block alert-success fade in">
+                                <button type="button" class="close" data-dismiss="alert"></button>
+                                <h4 class="alert-heading">Note!</h4>
+                                <p>
+                                    Please Note It,
+                                    Your Images will be Verified/Approved Firstly and then Uploaded in your profile within 24 hours.
+                                </p>
+                            </div>
                             <button type="Submit" id="btnSave" class="btn blue" name="btnRegister">Upload File</button>
                         </div>
                     </div>
@@ -168,13 +186,13 @@
                 </div>
 
 
-                <div class="form-actions">
+                <div class="form-actions" style="padding-left:20px;">
 
 
 
-                    <button type="button" id="btnscd" class="btn" name="btnscd" onclick="location.href='@Url.Action("ViewDoctor", "User")'" style="float: left;">Back</button>
+                    <button type="button" id="btnscd" class="btn blue " name="btnscd" onclick="location.href='@Url.Action("ClinicTiming", "DoctorClinicInfo")'" style="float: left;">Back</button>
 
-                    <button type="button" id="btnscd" class="btn" name="btnscd" onclick="location.href='@Url.Action("Create", "UpgradeService")'" style="float: right;"> Next</button>
+                    <button type="button" id="btnscd" class="btn blue" name="btnscd" onclick="location.href='@Url.Action("Create", "UpgradeService")'" style="float: right;"> Next</button>
                 </div>
             }
 
