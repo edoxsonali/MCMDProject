@@ -1,0 +1,597 @@
+﻿@{
+    ViewBag.Title = "ClinicProfile";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+@Scripts.Render("~/Content/Web_Theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js")
+@Scripts.Render("~/Content/Web_Theme/assets/plugins/bxslider/jquery.bxslider.js")
+
+@Styles.Render("~/Content/Web_Theme/assets/plugins/fancybox/source/jquery.fancybox.css")
+
+@Styles.Render("~/Content/template_content/assets/css/pages/profile.css")
+@Styles.Render("~/Content/template_content/assets/css/style.css")
+@Styles.Render("~/Content/template_content/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.css")
+@Styles.Render("~/Content/template_content/assets/plugins/chosen-bootstrap/chosen/chosen.css")
+@Styles.Render("~/Content/template_content/assets/plugins/uniform/css/uniform.default.css")
+
+@Styles.Render("~/Content/Web_Theme/assets/css/pages/portfolio.css")
+
+
+
+
+<!-- BEGIN CONTAINER -->
+<div class="container min-hight" style="padding-top:130px;">
+    <!-- BEGIN BLOG -->
+    <div class="row-fluid">
+        <!-- BEGIN RIGHT SIDEBAR -->
+        <div class="span3 blog-sidebar">
+            <blockquote style="background:#fae5d1; border-left-color:#1f317f; padding-top:1px;">
+                <form style="padding-bottom:6px;">
+
+
+                    <h4 style="color:black; padding-top:3px; font-family:'PT Sans'">Quick Search</h4>
+
+                    <div class="controls">
+                        <select class="medium m-wrap" tabindex="1">
+                            <option value="Category 1">Select Doctor</option>
+                            <option value="Category 2">Category 2</option>
+                            <option value="Category 3">Category 5</option>
+                            <option value="Category 4">Category 4</option>
+                        </select>
+                    </div>
+
+                    <div class="controls">
+                        <select class="medium m-wrap" tabindex="1">
+                            <option value="Category 1">Select Speaciality</option>
+                            <option value="Category 2">Category 2</option>
+                            <option value="Category 3">Category 5</option>
+                            <option value="Category 4">Category 4</option>
+                        </select>
+                    </div>
+
+                    <div class="controls">
+                        <select class="medium m-wrap" tabindex="1">
+                            <option value="Category 1">Select Clinic</option>
+                            <option value="Category 2">Category 2</option>
+                            <option value="Category 3">Category 5</option>
+                            <option value="Category 4">Category 4</option>
+                        </select>
+                    </div>
+
+                    <div class="controls">
+                        <select class="medium m-wrap" tabindex="1">
+                            <option value="Category 1">Select Lab</option>
+                            <option value="Category 2">Category 2</option>
+                            <option value="Category 3">Category 5</option>
+                            <option value="Category 4">Category 4</option>
+                        </select>
+                    </div>
+
+                    <div class="controls">
+                        <select class="medium m-wrap" tabindex="1">
+                            <option value="Category 1">Select Location</option>
+                            <option value="Category 2">Category 2</option>
+                            <option value="Category 3">Category 5</option>
+                            <option value="Category 4">Category 4</option>
+                        </select>
+                    </div>
+                    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;<button type="submit" class="btn blue" style="padding-bottom:3px; padding-top:3px;">Reset</button> &nbsp;&nbsp;
+                    <button type="submit" class="btn blue" style="padding-bottom:3px; padding-top:3px; ">Submit</button>
+                </form>
+            </blockquote>
+        </div>
+        <!-- END RIGHT SIDEBAR -->
+        <!-- BEGIN LEFT SIDEBAR -->
+        <div class="span9 blog-item margin-bottom-40">
+            <div class="well" style=" background-color:#fff; padding:12px;">
+                <div class="clearfix"></div>
+                <!-- BEGIN PAGE CONTAINER-->
+                <div class="container-fluid" style="padding-left:0px; padding-right:0px;">
+
+                    <div class="span12">
+                        <ul class="unstyled profile-nav span3">
+                            <li><img src="~/Content/Web_Theme/assets/img/photos/IMG_20150307_101341.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:6px;height:191.328px;width:191.328px;" /> @*<a href="#" class="profile-edit">edit</a>*@</li>
+                        </ul>
+                        <div class="span9">
+                            <div class="span12 portfolio-text portfolio-block" style="background-color:#555555; border:4px solid; border-color:#aaa; padding-left:10px;">
+                                <div class="portfolio-text-info">
+                                    <h4 style="font-family:'PT Sans'; color:#e9811a; font-size:22px;">Fortis Hospital - Bannerghatta Road</h4>
+
+                                    <ul style="list-style-type:none;margin-left:0px;">
+                                        <li style="font-family:'Open Sans'; color:white; font-size:14px;">
+                                            Cardiology Hospital
+                                        </li>
+
+                                        <br />
+                                        <li><i class="icon-map-marker" style="font-size:18px; color:#ff8503;float:left;"></i> </li>
+                                        <li style="font-family:'Open Sans'; color:white; font-size:14px; padding-left:24px;">
+                                            #C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune #C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end span9-->
+                    </div>
+                    <div class="span3 myToolTip" style="margin-left:-1px;">
+                        <ul style="list-style-type:none; margin-left:5px;">
+                            <li>
+                                <a href="#" class="btn icn-only" style="height:30px; width:43px;  color:#fff; background-color:#58b5fb;" id="tooltip1" title="Reviews"><i class="icon-envelope" style="display:-webkit-box;"></i></a>
+                                <a href="#" class="btn icn-only" style="height:30px; width:43px;  color:#fff; background-color:#f48bb3;" id="tooltip2" title="Likes"><i class="icon-thumbs-up" style="display:-webkit-box;"></i></a>
+                                <a href="#" class="btn icn-only" style="height:30px; width:43px;  color:#fff; background-color:#8bd04d;" id="tooltip3" title="Feedback"><i class="icon-edit" style="display:-webkit-box;"></i></a>
+                                <a href="#" class="btn icn-only" style="height:30px; width:43px;  color:#fff; background-color:#da6368;" id="tooltip4" title="Likes"><i class="icon-remove" style="display:-webkit-box;"></i></a>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="span9"></div>
+
+
+
+
+                    <!--Start tab-pane-->
+                    <div class="span12" style="margin-left:0px; padding-top:30px">
+                        <div class="tabbable tabbable-custom tabbable-custom-profile ">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_1_11" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px;"><b>About Clinic</b></a></li>
+                                <li><a href="#tab_1_22" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px;"><b>Gallery</b></a></li>
+                                <li><a href="#tab_1_33" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px;"><b>Services</b></a></li>
+                                <li><a href="#tab_1_44" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px;"><b>Map</b></a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1_11">
+                                    <div class="scroller" data-height="290px" data-always-visible="1" data-rail-visible1="1">
+                                        <p style="font-family:inherit; font-size:14px; color:#555555; margin:10px;">
+                                            Fortis Hospital - Bannerghatta Road is a clinic in Bannerghatta Road, Bangalore. The clinic is visited by doctors like Dr. Arul Narayan, Dr. Hethal R Mehta and Dr. Joseph Xavier. The timings of Fortis Hospital - Bannerghatta Road are: Mon to Sun: 12:15am-11:45pm. Click on 'map' to find directions to reach Fortis Hospital - Bannerghatta Road.
+                                        </p>
+                                        <hr style="margin-top:20px; margin-bottom:5px; border-top-color:#d12610;" />
+
+
+
+                                        <br />
+                                        <ul class="thumbnails">
+                                            <li class="span6">
+                                                <i class="icon-map-marker" style="color:#ff8503; font-size:18px;"></i>
+
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b>Fortis Hospital - Bannerghatta Road</b>
+                                                </span>
+
+                                                <p style="padding-left:24px; color:#555555;">#C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune #C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune</p>
+
+                                                <div class="testimonials-v1">
+                                                    <div id="myCarousel" class="carousel slide">
+
+                                                        <!-- Carousel items -->
+                                                        <div class="carousel-inner">
+                                                            <div class="item active">
+                                                                <div class="blog-photo-stream image-link">
+                                                                    <ul class="unstyled" style="padding-left:24px;">
+                                                                        <li>
+                                                                            <a href="~/Content/Web_Theme/assets/img/people/img1-small.jpg" class="fancybox-button" title="Image Title" data-rel="fancybox-button">
+                                                                                <img src="~/Content/Web_Theme/assets/img/people/img1-small.jpg" alt="">
+                                                                            </a>
+                                                                        </li>
+
+                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img2-small.jpg" alt=""></a></li>
+                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img3-small.jpg" alt=""></a></li>
+                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img4-small.jpg" alt=""></a></li>
+
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="item">
+                                                                <div class="blog-photo-stream">
+                                                                    <ul class="unstyled" style="padding-left:24px;">
+                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img1-small.jpg" alt=""></a></li>
+                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img2-small.jpg" alt=""></a></li>
+                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img3-small.jpg" alt=""></a></li>
+                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img4-small.jpg" alt=""></a></li>
+
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Carousel nav -->
+                                                        <a class="left-btn" href="#myCarousel" data-slide="prev"></a>
+                                                        <a class="right-btn" href="#myCarousel" data-slide="next"></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="span3">
+                                                <i class="icon-time" style="color:#ff8503; font-size:18px;"></i>
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b>Mon - Sat</b>
+
+                                                </span>
+                                                <p style="padding-left:24px; color:#555555;">11:00 AM - 1:00 PM <br />6:00 PM - 8:00 PM </p>
+                                            </li>
+                                            <li class="span3">
+                                                <i class="icon-money" style="color:#ff8503; font-size:18px;"></i>
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b>INR 200</b><br /><br />
+
+                                                </span>
+                                            </li>
+                                        </ul>
+
+                                        <hr style="margin-top:0px; margin-bottom:5px; border-top-color:#d12610;" />
+                                        <h4>
+                                            &nbsp;<i class="icon-user-md" style="color:#ff8503; font-size:18px;"></i>
+                                            <span style="font-family:inherit; font-size:16px; color:#1f317f;">
+                                                <b>&nbsp;Affiliated Doctors</b>
+                                            </span>
+                                        </h4>
+                                        <div class="accordion in collapse" id="accordion1" style="height: auto;">
+                                            <div class="accordion-group">
+                                                <div class="accordion-heading" style="background:#08c;">
+                                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse_1" style="padding-top:4px; padding-bottom:4px; color:#fff; text-align:left;">
+
+                                                        Dr.Sonali Borude
+                                                    </a>
+                                                </div>
+                                                <div id="collapse_1" class="accordion-body collapse" style="height: 0px;">
+                                                    <div class="accordion-inner">
+                                                        <div class="span12">
+                                                            <ul class="unstyled profile-nav span3" style="list-style-type:none;">
+                                                                <li><img src="~/Content/Web_Theme/assets/img/people/img3-large.jpg" alt="" style="border:2px solid; border-color:#d12610; border-radius:6px;height:177px;width:177px;" /></li>
+
+                                                            </ul>
+                                                            <div class="span9">
+                                                                <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
+
+                                                                    <h4 style="font-family:'PT Sans'; color:black; font-size:16px;"><a href="@Url.Action("DocProfile", "Home")" style="color:#d12610;">Dr. Sandhya Balasubramanyan Zambre</a></h4>
+
+                                                                    <ul style="list-style-type:none;margin-left:0px;">
+                                                                        <li style="font-family:'Open Sans'; color:black; font-size:14px;">
+                                                                            MS - General Surgery , DNB - Gastroenterology , FRCS , MBBS
+                                                                        </li>
+                                                                        <li style="font-family:'Open Sans'; color:black; font-size:13px;">
+                                                                            Surgeon , 14 Years Experience
+                                                                        </li>
+
+                                                                        <li><i class="icon-map-marker" style="font-size:18px; color:#d12610; float:left;"></i> </li>
+                                                                        <li style="font-family:'Open Sans'; color:black; font-size:14px; padding-left:24px;">
+                                                                            #C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune #C1/101,
+                                                                        </li>
+                                                                        <br />
+                                                                        <li style="font-family:'Open Sans'; color:black;">
+                                                                            &nbsp;<i class=" icon-time" style="color:#d12610;"></i>&nbsp; MON-SAT
+                                                                        </li>
+                                                                        <li style="padding-left:22px; color:black;">
+                                                                            6:00 PM - 8:00 PM &nbsp; 6:00 PM - 8:00 PM
+                                                                        </li>
+                                                                    </ul>
+
+                                                                </blockquote>
+                                                            </div>
+                                                            <!--end span9-->
+                                                        </div>
+                                                        <div class="span12">
+                                                            <div class="span3">
+                                                                <ul class="social-icons social-icons-color">
+                                                                    <li><a href="#" data-original-title="amazon" class="amazon"></a></li>
+                                                                    <li><a href="#" data-original-title="behance" class="behance"></a></li>
+                                                                    <li><a href="#" data-original-title="blogger" class="blogger"></a></li>
+                                                                    <li><a href="#" data-original-title="deviantart" class="deviantart"></a></li>
+                                                                </ul>
+
+                                                            </div>
+                                                            <div class="span9" style="margin-left:-1px;">
+                                                                <div class="span12">
+                                                                    <button class="btn blue btn-block" style="padding-top:4px; padding-bottom:4px;">Book Appointment @*<i class="m-icon-swapright m-icon-white"></i>*@</button>
+
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-group">
+                                                <div class="accordion-heading" style="background:#08c;">
+                                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse_2" style="padding-top:4px; padding-bottom:4px; color:#fff; text-align:left;">
+
+                                                        Dr.Neha Kasar
+                                                    </a>
+                                                </div>
+                                                <div id="collapse_2" class="accordion-body collapse">
+                                                    <div class="accordion-inner">
+                                                        <div class="span12">
+                                                            <ul class="unstyled profile-nav span3" style="list-style-type:none;">
+                                                                <li><img src="~/Content/Web_Theme/assets/img/people/img3-large.jpg" alt="" style="border:2px solid; border-color:#d12610; border-radius:6px;height:177px;width:177px;" /></li>
+
+                                                            </ul>
+                                                            <div class="span9">
+                                                                <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
+
+                                                                    <h4 style="font-family:'PT Sans'; color:black; font-size:16px;"><a href="@Url.Action("DocProfile", "Home")" style="color:#d12610;">Dr. Sandhya Balasubramanyan Zambre</a></h4>
+
+                                                                    <ul style="list-style-type:none;margin-left:0px;">
+                                                                        <li style="font-family:'Open Sans'; color:black; font-size:14px;">
+                                                                            MS - General Surgery , DNB - Gastroenterology , FRCS , MBBS
+                                                                        </li>
+                                                                        <li style="font-family:'Open Sans'; color:black; font-size:13px;">
+                                                                            Surgeon , 14 Years Experience
+                                                                        </li>
+
+                                                                        <li><i class="icon-map-marker" style="font-size:18px; color:#d12610; float:left;"></i> </li>
+                                                                        <li style="font-family:'Open Sans'; color:black; font-size:14px; padding-left:24px;">
+                                                                            #C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune #C1/101,
+                                                                        </li>
+                                                                        <br />
+                                                                        <li style="font-family:'Open Sans'; color:black;">
+                                                                            &nbsp;<i class=" icon-time" style="color:#d12610;"></i>&nbsp; MON-SAT
+                                                                        </li>
+                                                                        <li style="padding-left:22px; color:black;">
+                                                                            6:00 PM - 8:00 PM &nbsp; 6:00 PM - 8:00 PM
+                                                                        </li>
+                                                                    </ul>
+
+                                                                </blockquote>
+
+                                                            </div>
+                                                            <!--end span9-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-group">
+                                                <div class="accordion-heading" style="background:#08c;">
+                                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse_3" style="padding-top:4px; padding-bottom:4px; color:#fff; text-align:left;">
+
+                                                        Dr.Uday Rathod
+                                                    </a>
+                                                </div>
+                                                <div id="collapse_3" class="accordion-body collapse">
+                                                    <div class="accordion-inner">
+                                                        <div class="span12">
+                                                            <ul class="unstyled profile-nav span3" style="list-style-type:none;">
+                                                                <li><img src="~/Content/Web_Theme/assets/img/people/img3-large.jpg" alt="" style="border:2px solid; border-color:#d12610; border-radius:6px;height:177px;width:177px;" /></li>
+
+                                                            </ul>
+                                                            <div class="span9">
+                                                                <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
+
+                                                                    <h4 style="font-family:'PT Sans'; color:black; font-size:16px;"><a href="@Url.Action("DocProfile", "Home")" style="color:#d12610;">Dr. Sandhya Balasubramanyan Zambre</a></h4>
+
+                                                                    <ul style="list-style-type:none;margin-left:0px;">
+                                                                        <li style="font-family:'Open Sans'; color:black; font-size:14px;">
+                                                                            MS - General Surgery , DNB - Gastroenterology , FRCS , MBBS
+                                                                        </li>
+                                                                        <li style="font-family:'Open Sans'; color:black; font-size:13px;">
+                                                                            Surgeon , 14 Years Experience
+                                                                        </li>
+
+                                                                        <li><i class="icon-map-marker" style="font-size:18px; color:#d12610; float:left;"></i> </li>
+                                                                        <li style="font-family:'Open Sans'; color:black; font-size:14px; padding-left:24px;">
+                                                                            #C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune #C1/101,
+                                                                        </li>
+                                                                        <br />
+                                                                        <li style="font-family:'Open Sans'; color:black;">
+                                                                            &nbsp;<i class=" icon-time" style="color:#d12610;"></i>&nbsp; MON-SAT
+                                                                        </li>
+                                                                        <li style="padding-left:22px; color:black;">
+                                                                            6:00 PM - 8:00 PM &nbsp; 6:00 PM - 8:00 PM
+                                                                        </li>
+                                                                    </ul>
+
+                                                                </blockquote>
+
+                                                            </div>
+                                                            <!--end span9-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-group">
+                                                <div class="accordion-heading" style="background:#08c;">
+                                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse_4" style="padding-top:4px; padding-bottom:4px; color:#fff; text-align:left;">
+
+                                                        Dr.Rajshree Bhambre
+                                                    </a>
+                                                </div>
+                                                <div id="collapse_4" class="accordion-body collapse">
+                                                    <div class="accordion-inner">
+                                                        <div class="span12">
+
+                                                            <ul class="unstyled profile-nav span3" style="list-style-type:none;">
+                                                                <li><img src="~/Content/Web_Theme/assets/img/people/img3-large.jpg" alt="" style="border:2px solid; border-color:#d12610; border-radius:6px;height:177px;width:177px;" /></li>
+
+                                                            </ul>
+
+
+                                                            <div class="span9">
+                                                                <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
+
+                                                                    <h4 style="font-family:'PT Sans'; color:black; font-size:16px;"><a href="@Url.Action("DocProfile", "Home")" style="color:#d12610;">Dr. Sandhya Balasubramanyan Zambre</a></h4>
+
+                                                                    <ul style="list-style-type:none;margin-left:0px;">
+                                                                        <li style="font-family:'Open Sans'; color:black; font-size:14px;">
+                                                                            MS - General Surgery , DNB - Gastroenterology , FRCS , MBBS
+                                                                        </li>
+                                                                        <li style="font-family:'Open Sans'; color:black; font-size:13px;">
+                                                                            Surgeon , 14 Years Experience
+                                                                        </li>
+
+                                                                        <li><i class="icon-map-marker" style="font-size:18px; color:#d12610; float:left;"></i> </li>
+                                                                        <li style="font-family:'Open Sans'; color:black; font-size:14px; padding-left:24px;">
+                                                                            #C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune #C1/101,
+                                                                        </li>
+                                                                        <br />
+                                                                        <li style="font-family:'Open Sans'; color:black;">
+                                                                            &nbsp;<i class=" icon-time" style="color:#d12610;"></i>&nbsp; MON-SAT
+                                                                        </li>
+                                                                        <li style="padding-left:22px; color:black;">
+                                                                            6:00 PM - 8:00 PM &nbsp; 6:00 PM - 8:00 PM
+                                                                        </li>
+                                                                    </ul>
+
+                                                                </blockquote>
+
+                                                            </div>
+                                                            <!--end span9-->
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab_1_22">
+                                    <div class="portlet-body" style="display: block; margin-top:10px;">
+                                        <div class="row-fluid search-images">
+                                            <ul class="thumbnails">
+                                                <li class="span3">
+                                                    <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img1.jpg">
+                                                        <img src="~/Content/Web_Theme/assets/img/photos/img1.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+
+                                                    </a>
+                                                </li>
+                                                <li class="span3">
+                                                    <a class="fancybox-button" data-rel="fancybox-button" title="Photo" href="~/Content/Web_Theme/assets/img/photos/img2.jpg">
+                                                        <img src="~/Content/Web_Theme/assets/img/photos/img2.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+
+                                                    </a>
+                                                </li>
+                                                <li class="span3">
+                                                    <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img3.jpg">
+                                                        <img src="~/Content/Web_Theme/assets/img/photos/img3.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+
+                                                    </a>
+                                                </li>
+                                                <li class="span3">
+                                                    <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img4.jpg">
+                                                        <img src="~/Content/Web_Theme/assets/img/photos/img4.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <ul class="thumbnails">
+                                                <li class="span3">
+                                                    <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img5.jpg">
+                                                        <img src="~/Content/Web_Theme/assets/img/photos/img5.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+
+                                                    </a>
+                                                </li>
+                                                <li class="span3">
+                                                    <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img6.jpg">
+                                                        <img src="~/Content/Web_Theme/assets/img/photos/img6.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+
+                                                    </a>
+                                                </li>
+                                                <li class="span3">
+                                                    <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img7.jpg">
+                                                        <img src="~/Content/Web_Theme/assets/img/photos/img7.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+
+                                                    </a>
+                                                </li>
+                                                <li class="span3">
+                                                    <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img8.jpg">
+                                                        <img src="~/Content/Web_Theme/assets/img/photos/img8.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+
+                                                    </a>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab_1_33">
+                                    <div class="scroller" data-height="290px" data-always-visible="1" data-rail-visible1="1">
+                                        <h4>
+                                            <i class="icon-plus-sign-alt" style="color:#ff8503; font-size:18px;"></i>
+                                            <span style="font-family:inherit; font-size:16px; color:#1f317f;">
+                                                <b>Services</b>
+                                            </span>
+                                        </h4>
+                                        <ul class="thumbnails">
+                                            <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                            </li>
+                                            <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                            </li>
+                                            <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab_1_44" style="margin-left:10px;">
+                                    <div class="span6">
+
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3945.918802003381!2d76.910826!3d8.507264999999999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bc0c3d02452f%3A0xa4bc574dba432391!2sLords+Hospital!5e0!3m2!1sen!2sin!4v1434627710340" width="800" height="400" frameborder="0" style="border:0"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End tab-pane-->
+                    <!-- END PAGE CONTENT-->
+
+
+                </div>
+                <!-- END PAGE CONTAINER-->
+            </div>
+            <!-- END LEFT SIDEBAR -->
+        </div>
+        <!-- END BEGIN BLOG -->
+    </div>
+    <!-- END CONTAINER -->
+</div>
+

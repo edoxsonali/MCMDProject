@@ -1,0 +1,173 @@
+﻿@model MCMD.EntityModel.Patient.PatientLogin
+@{
+    ViewBag.Title = "PatientRegister";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+@Styles.Render("~/Content/template_content/assets/css/style.css")
+@Styles.Render("~/Content/template_content/assets/css/style-responsive.css")
+
+@Styles.Render("~/Content/template_content/assets/plugins/uniform/css/uniform.default.css")
+@Styles.Render("~/Content/template_content/assets/plugins/select2/select2_metro.css")
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN PAGE LEVEL STYLES -->
+@Styles.Render("~/Content/template_content/assets/css/pages/login.css")
+<!-- END PAGE LEVEL STYLES -->
+<!-- BEGIN BREADCRUMBS -->
+@*<div class="row-fluid breadcrumbs margin-bottom-40">
+        <div class="container">
+            <div class="span4">
+                <h1>Portfolio Item</h1>
+            </div>
+            <div class="span8">
+                <ul class="pull-right breadcrumb">
+                    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+                    <li><a href="">Pages</a> <span class="divider">/</span></li>
+                    <li class="active">Portfolio Item</li>
+                </ul>
+            </div>
+        </div>
+    </div>*@
+<!-- END BREADCRUMBS -->
+<!-- BEGIN CONTAINER -->
+<div class="container min-hight" style="padding-top:150px;">
+    <!-- BEGIN PORTFOLIO ITEM -->
+    <div class="row-fluid margin-bottom-30">
+        <!-- BEGIN CAROUSEL -->
+        <div class="span4 front-carousel pricing pricing-active" style="border-color:#ff8503">
+            <div id="myCarousel" class="carousel slide">
+                <!-- Carousel items -->
+                <div class="carousel-inner" style="background-color:#FBFCFD;">
+
+                    <div class="pricing-head pricing-head-active" style="text-align:justify;">
+                        <h3 style="background-color:#ff8503;border-bottom: solid 1px #ff8503;text-align:center;">Patient Registration @*<span> Patient registration</span>*@</h3>
+                        @using (Html.BeginForm("PatientRegister", "Patients", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-actions login-form", role = "form", @style = "background-color:#FBFCFD;margin-top:0px;margin-bottom:0px;" }))
+                        {
+                            @Html.ValidationSummary(true)
+
+
+                            <div>
+                                <span class="text-success">@TempData["SuccessMessage"]</span>
+                                <span class="text-error">@TempData["Message"]</span>
+                            </div>
+                            <div class="control-group">
+
+                                <div class="controls">
+                                    <div class="input-icon left">
+
+                                        <i class="icon-font"></i>
+                                        @Html.TextBoxFor(u => u.FirstName, new { @class = "m-wrap", @placeholder = "* Enter First Name", @maxlength = "30", @autocomplete = "off", @style = "min-height:30px;color:gray;border-left: 2px solid #35aa47;min-width:285px;" })
+                                    </div>
+                                    @Html.ValidationMessageFor(u => u.FirstName, string.Empty, new { @class = "text-error" })
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <div class="input-icon left">
+                                        <i class="icon-font"></i>
+                                        @Html.TextBoxFor(u => u.LastName, new { @class = "m-wrap", @placeholder = "* Enter Last Name", @maxlength = "30", @autocomplete = "off", @style = "min-height:30px;color:gray;border-left: 2px solid #35aa47;min-width:285px;" })
+                                    </div>
+                                    @Html.ValidationMessageFor(u => u.LastName, string.Empty, new { @class = "text-error" })
+
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <div class="input-icon left">
+
+                                        <i class="icon-envelope"></i>
+                                        @Html.TextBoxFor(u => u.EmailID, new { @class = "m-wrap", @type = "email", @placeholder = "* Enter Email ID", @maxlength = "40", @autocomplete = "off", @style = "min-height:30px;color:gray;border-left: 2px solid #35aa47;min-width:285px;" })
+                                    </div>
+                                    @Html.ValidationMessageFor(u => u.EmailID, string.Empty, new { @class = "text-error" })
+
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <div class="input-icon left">
+                                        <i class="icon-ok"></i>
+                                        @Html.TextBoxFor(u => u.UserPhone, new { @class = "m-wrap", @placeholder = "* Enter Phone No", @maxlength = "40", @autocomplete = "off", @style = "min-height:30px;color:gray;border-left: 2px solid #35aa47;min-width:285px;" })
+                                    </div>
+                                    @Html.ValidationMessageFor(u => u.UserPhone, string.Empty, new { @class = "text-error" })
+
+                                </div>
+                            </div>
+
+                            <div class="pricing-footer">
+                                <button type="Submit" id="btnCreate" name="btnCreate" class="btn green">Submit</button>
+
+                            </div>
+                            <div class="create-account" style="text-align:center;">
+                                <p>
+                                    Are you Doctor?&nbsp;
+                                    @Html.ActionLink("Create an account", "Create", "Register")
+                                </p>
+                                <p>
+                                    Do you have an account ?&nbsp;
+                                    @Html.ActionLink("Login an account", "DocLogin", "Account")
+                                </p>
+                            </div>
+
+                        }
+
+
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <!-- END CAROUSEL -->
+        <!-- BEGIN PORTFOLIO DESCRIPTION -->
+        <div class="span7">
+            <h2>Quis tempor incididunt</h2>
+            <p>Molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa quis tempor incididunt ut et dolore et dolorum fuga. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus.</p>
+            <p>Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut et dolore Ut veniam unde nostrudlaboris. Sed unde omnis iste natus error sit voluptatem.</p>
+            <br>
+            <div class="row-fluid front-lists-v2 margin-bottom-15">
+                <div class="span6">
+                    <ul class="unstyled">
+                        <li><i class="icon-html5"></i> HTML5/CSS3</li>
+                        <li><i class="icon-bell"></i> Web Deisgn</li>
+                        <li><i class="icon-globe"></i> Web Development</li>
+                        <li><i class="icon-shopping-cart"></i> Shoping Cart</li>
+                    </ul>
+                </div>
+                <div class="span6">
+                    <ul class="unstyled">
+                        <li><i class="icon-dropbox"></i> Free Storage</li>
+                        <li><i class="icon-cloud"></i> Cloud Hosting</li>
+                        <li><i class="icon-comments"></i> Free Support</li>
+                        <li><i class="icon-star"></i> Awesome UI</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="#" class="btn theme-btn"> VISIT THE PROJECT</a>
+        </div>
+        <!-- END PORTFOLIO DESCRIPTION -->
+    </div>
+    <!-- END PORTFOLIO ITEM -->
+    <!-- BEGIN BLOCKQUOTE BLOCK -->
+    <div class="row-fluid quote-v1">
+        <div class="span7 quote-v1-inner">
+            <span>Lorem ipsum dolor sit amet, consectetuer adipiscing tempor</span>
+        </div>
+        <div class="span5 quote-v1-inner text-right">
+            <a class="btn-transparent" href="#"><i class="icon-rocket margin-right-10"></i>Adipiscing</a>
+            <a class="btn-transparent" href="#"><i class="icon-gift margin-right-10"></i>Get it FREE</a>
+        </div>
+    </div>
+    <!-- END BLOCKQUOTE BLOCK -->
+
+    <div class="clearfix"></div>
+
+
+</div>
+@Scripts.Render("~/bundles/jqueryval")
+

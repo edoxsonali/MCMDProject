@@ -2822,20 +2822,20 @@
     <Content Include="Views\DocMedia\Create.cshtml" />
     <Content Include="Views\DocClinicInfo\Create.cshtml" />
     <Content Include="Views\DocPersonalInfo\Create.cshtml" />
-    <Content Include="Views\Account\DocLogin.cshtml" />
-    <Content Include="Views\Patients\PatientRegister.cshtml" />
     <Content Include="Views\DocUpgradeService\Create.cshtml" />
-    <Content Include="Views\ManageAppointment\Appointment.cshtml" />
     <Content Include="Views\Scheduling\Scheduling.cshtml" />
+    <Content Include="Views\Home\TermServices.cshtml" />
+    <Content Include="Views\Account\DocLogin.cshtml" />
     <Content Include="Views\Account\patientLogin.cshtml" />
     <Content Include="Views\Account\PatientForgotPassword.cshtml" />
-    <Content Include="Views\Home\FAQ.cshtml" />
-    <Content Include="Views\Home\PrivacyPolicy.cshtml" />
-    <Content Include="Views\Home\Pricing.cshtml" />
-    <Content Include="Views\Home\TermServices.cshtml" />
+    <Content Include="Views\Home\ClinicProfile.cshtml" />
     <Content Include="Views\Home\DocProfile.cshtml" />
     <Content Include="Views\Home\Doctors.cshtml" />
-    <Content Include="Views\Home\ClinicProfile.cshtml" />
+    <Content Include="Views\Home\FAQ.cshtml" />
+    <Content Include="Views\Home\Pricing.cshtml" />
+    <Content Include="Views\Home\PrivacyPolicy.cshtml" />
+    <Content Include="Views\ManageAppointment\Appointment.cshtml" />
+    <Content Include="Views\Patients\PatientRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

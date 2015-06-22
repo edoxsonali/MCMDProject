@@ -1,0 +1,476 @@
+﻿@{
+    ViewBag.Title = "DocProfile";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+@Scripts.Render("~/Content/Web_Theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js")
+@Scripts.Render("~/Content/Web_Theme/assets/plugins/bxslider/jquery.bxslider.js")
+
+@Styles.Render("~/Content/Web_Theme/assets/plugins/fancybox/source/jquery.fancybox.css")
+
+@Styles.Render("~/Content/template_content/assets/css/pages/profile.css")
+@Styles.Render("~/Content/template_content/assets/css/style.css")
+@Styles.Render("~/Content/template_content/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.css")
+@Styles.Render("~/Content/template_content/assets/plugins/chosen-bootstrap/chosen/chosen.css")
+@Styles.Render("~/Content/template_content/assets/plugins/uniform/css/uniform.default.css")
+
+<style type="text/css">
+    #myToolTip {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 25px;
+        margin-left: 25px;
+    }
+</style>
+
+
+<!-- BEGIN CONTAINER -->
+<div class="container min-hight" style="padding-top:130px;">
+    <!-- BEGIN BLOG -->
+    <div class="row-fluid">
+        <!-- BEGIN RIGHT SIDEBAR -->
+        <div class="span3 blog-sidebar">
+            <blockquote style="background:#fae5d1; border-left-color:#1f317f; padding-top:1px;">
+                <form style="padding-bottom:6px;">
+
+
+                    <h4 style="color:black; padding-top:3px; font-family:'PT Sans'">Quick Search</h4>
+
+                    <div class="controls">
+                        <select class="medium m-wrap" tabindex="1">
+                            <option value="Category 1">Select Doctor</option>
+                            <option value="Category 2">Category 2</option>
+                            <option value="Category 3">Category 5</option>
+                            <option value="Category 4">Category 4</option>
+                        </select>
+                    </div>
+
+                    <div class="controls">
+                        <select class="medium m-wrap" tabindex="1">
+                            <option value="Category 1">Select Speaciality</option>
+                            <option value="Category 2">Category 2</option>
+                            <option value="Category 3">Category 5</option>
+                            <option value="Category 4">Category 4</option>
+                        </select>
+                    </div>
+
+                    <div class="controls">
+                        <select class="medium m-wrap" tabindex="1">
+                            <option value="Category 1">Select Clinic</option>
+                            <option value="Category 2">Category 2</option>
+                            <option value="Category 3">Category 5</option>
+                            <option value="Category 4">Category 4</option>
+                        </select>
+                    </div>
+
+                    <div class="controls">
+                        <select class="medium m-wrap" tabindex="1">
+                            <option value="Category 1">Select Lab</option>
+                            <option value="Category 2">Category 2</option>
+                            <option value="Category 3">Category 5</option>
+                            <option value="Category 4">Category 4</option>
+                        </select>
+                    </div>
+
+                    <div class="controls">
+                        <select class="medium m-wrap" tabindex="1">
+                            <option value="Category 1">Select Location</option>
+                            <option value="Category 2">Category 2</option>
+                            <option value="Category 3">Category 5</option>
+                            <option value="Category 4">Category 4</option>
+                        </select>
+                    </div>
+                    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;<button type="submit" class="btn blue" style="padding-bottom:3px; padding-top:3px;">Reset</button> &nbsp;&nbsp;
+                    <button type="submit" class="btn blue" style="padding-bottom:3px; padding-top:3px; ">Submit</button>
+                </form>
+            </blockquote>
+        </div>
+        <!-- END RIGHT SIDEBAR -->
+        <!-- BEGIN LEFT SIDEBAR -->
+        <div class="span9 blog-item margin-bottom-40">
+            <div class="well" style=" background-color:#fff; padding:12px; border:1px solid; border-color:#1f317f;">
+                <div class="clearfix"></div>
+                <!-- BEGIN PAGE CONTAINER-->
+                <div class="container-fluid" style="padding-left:0px; padding-right:0px;">
+
+                    <div class="span12">
+                        <ul class="unstyled profile-nav span3" style="list-style-type:none;">
+                            <li><img src="~/Content/Web_Theme/assets/img/people/img3-large.jpg" alt="" style="border:2px solid; border-color:#d12610; border-radius:6px;height:191.328px;width:191.328px;" /></li>
+
+                        </ul>
+                        <div class="span9">
+                            <div class="span12 portfolio-text portfolio-block" style="background-color:#555555; border:4px solid; border-color:#aaa; padding-left:10px;">
+                                <div class="portfolio-text-info">
+                                    <h4 style="font-family:'PT Sans'; color:#e9811a; font-size:22px;">Dr. Sandhya Balasubramanyan Zambre</h4>
+
+                                    <ul style="list-style-type:none;margin-left:0px;">
+                                        <li style="font-family:'Open Sans'; color:white; font-size:14px;">
+                                            MS - General Surgery , DNB - Gastroenterology , FRCS , MBBS
+                                        </li>
+                                        <li style="font-family:'Open Sans'; color:#B5B5B5; font-size:13px;">
+                                            Surgeon , 14 Years Experience
+                                        </li>
+
+                                        <li><i class="icon-map-marker" style="font-size:18px; color:#ff8503;float:left;"></i> </li>
+                                        <li style="font-family:'Open Sans'; color:white; font-size:14px; padding-left:24px;">
+                                            #C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune #C1/101,
+                                        </li>
+                                        <br />
+
+                                        <li style="font-family:'Open Sans'; color:white;">
+                                            &nbsp;<i class=" icon-time" style="color:#e9811a;"></i>&nbsp; MON-SAT
+                                        </li>
+                                        <li style="padding-left:22px; color:#fff;">
+                                            6:00 PM - 8:00 PM &nbsp; 6:00 PM - 8:00 PM
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end span9-->
+                    </div>
+                    <div>
+                        <div class="span3 myToolTip">
+                            <ul style="list-style-type:none; margin-left:5px;">
+                                <li>
+                                    <a href="#" class="btn icn-only" style="height:30px; width:43px; color:#fff; background-color:#58b5fb;" id="tooltip1" title="Reviews"><i class="icon-envelope" style="display:-webkit-box;"></i></a>
+                                    <a href="#" class="btn icn-only" style="height:30px; width:43px; color:#fff; background-color:#f48bb3;" id="tooltip2" title="Likes"><i class="icon-thumbs-up" style="display:-webkit-box;"></i></a>
+                                    <a href="#" class="btn icn-only" style="height:30px; width:43px; color:#fff; background-color:#8bd04d;" id="tooltip3" title="Feedback"><i class="icon-edit" style="display:-webkit-box;"></i></a>
+                                    <a href="#" class="btn icn-only" style="height:30px; width:43px; color:#fff; background-color:#da6368;" id="tooltip4" title="Likes"><i class="icon-remove" style="display:-webkit-box;"></i></a>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="span9">
+                            <div class="span12">
+                                <div class="accordion in collapse" id="accordion1" style="height: auto;">
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading" style="background:#08c;">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse_1" style="padding-top:4px; padding-bottom:4px; color:#fff; text-align:center;">
+
+                                                BOOK APPOINTMENT
+                                            </a>
+                                        </div>
+                                        <div id="collapse_1" class="accordion-body collapse ">
+                                            <div class="accordion-inner">
+                                                <p>
+                                                    <a class="btn blue" href="#form_modal10" data-toggle="modal">Book</a>
+                                                </p>
+                                                <div id="form_modal10" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel10" aria-hidden="true" style="display: none;">
+                                                    <div class="portlet box red" style="margin-bottom:0px;">
+                                                        <div class="portlet-title">
+                                                            <div class="caption"><i class="icon-reorder"></i>Confirm Appointment</div>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="opacity:initial;"></button>
+                                                        </div>
+                                                        <div class="portlet-body form" style="display: block; padding-top: 10px;">
+                                                            <div class="span12">
+                                                                <div class="span9">
+                                                                    <h4 style="font-family:'PT Sans'; color:#e9811a; font-size:16px; margin-top: 1px; margin-bottom:1px;">Dr. Neha Kasar</h4>
+                                                                    <h4 style="font-family:'PT Sans'; color:#979797; font-size:14px; margin-top: 2px;">Dentist , Implantologist</h4>
+                                                                </div>
+                                                                <div class="span3">
+                                                                    <p style="margin-bottom: 1px;">
+                                                                        <i class="icon-time" style="color:#e9811a; font-size:16px;"></i>&nbsp;&nbsp;11:00 AM
+                                                                    </p>
+                                                                    <p><i class="icon-calendar" style="color:#e9811a; font-size:16px;"></i>&nbsp;&nbsp;19 Jun 2015</p>
+                                                                </div>
+
+                                                                <div class="span12" style="margin-left:-1px;">
+                                                                    <h4 style="font-family:'PT Sans'; color:#1f317f; font-size:18px; margin-top: 1px; margin-bottom:1px; text-align:center;"><b>Dr. Tamhanes Centre For Advanced Dentistry</b></h4>
+                                                                    <hr style="border-top-color:#e9811a; margin-top: 1px" />
+                                                                </div>
+                                                            </div>
+
+                                                            <form action="#" class="form-horizontal">
+
+                                                                <div class="control-group" style="margin-bottom:0px;">
+                                                                    <label class="control-label">Patient/Visitor Name*</label>
+                                                                    <div class="controls">
+                                                                        <input type="text" placeholder="large" class="m-wrap large">
+                                                                        <span class="help-inline">Some hint here</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="control-group" style="margin-bottom:5px;">
+                                                                    <label class="control-label">Appointment Reason</label>
+                                                                    <div class="controls">
+                                                                        <input type="text" placeholder="large" class="m-wrap large">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="control-group" style="margin-bottom:0px;">
+                                                                    <label class="control-label">Email*</label>
+                                                                    <div class="controls">
+                                                                        <input type="text" placeholder="large" class="m-wrap large">
+                                                                        <span class="help-inline">Some hint here</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="control-group" style="margin-bottom:0px;">
+                                                                    <label class="control-label">Mobile*</label>
+                                                                    <div class="controls">
+                                                                        <input type="text" placeholder="large" class="m-wrap large">
+                                                                        <span class="help-inline">Some hint here</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-actions" style="padding-left:70px;">
+                                                                    <button type="submit" class="btn blue" style="padding-bottom:3px; padding-top:3px;"><i class="icon-ok"></i>Submit</button>
+                                                                    <button type="button" class="btn" style="padding-bottom:3px; padding-top:3px;">Cancel</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="span12" style="margin-left:0px; padding-top:30px">
+                        <div class="tabbable tabbable-custom tabbable-custom-profile ">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_1_11" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px; "><b>About Me</b></a></li>
+                                <li><a href="#tab_1_22" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px; "><b>About Clinic</b></a></li>
+                                <li><a href="#tab_1_33" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px; "><b>Services</b></a></li>
+                                <li><a href="#tab_1_44" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px;"><b>Map</b></a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1_11">
+                                    <p style="font-family:inherit; font-size:14px;">
+                                        Dr. Tamhanes Centre For Advanced Dentistry is a Dental clinic in Chinchwad, Pune. The clinic is visited by dentists like Dr. Vijaykumar Tamhane, Dr. Omprakash Jhuria and Dr Garud. The timings of Dr. Tamhanes Centre For Advanced Dentistry are: Mon to Sat: 9:00am-10:00pm. Some of the services provided by the clinic are: Straightening Teeth (Conventional Braces), Conservative Dentistry, Dental Ceramics, Crowns And Bridges and Braces. Click on 'map' to find directions to reach Dr. Tamhanes Centre For Advanced Dentistry.
+                                    </p>
+                                    <hr style="margin-top:20px; margin-bottom:5px; border-top-color:#d12610;">
+                                    <br />
+
+                                    <ul class="thumbnails ">
+                                        <li class="span6">
+                                            <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b>Speacialization</b>
+                                                </span>
+                                                <ul style="list-style-type:none;">
+                                                    <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Dentist<br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Endodontist<br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Orthodontist<br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Periodontist<br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Pediatric Dentist<br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Prosthodontist<br />
+                                                    </li>
+                                                </ul>
+                                            </blockquote><br />
+                                            <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b>Education</b>
+                                                </span>
+                                                <ul style="list-style-type:none;">
+                                                    <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>BDS - GDC Mumbai, 1998<br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>International College of Continuing Dental Education (FICCDE) - Frankfurt University, Germany, 2007<br />
+                                                    </li>
+                                                </ul>
+                                            </blockquote><br />
+                                            <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b>Experience</b>
+                                                </span>
+                                                <ul style="list-style-type:none;">
+                                                    <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>1999 - Present Owner at Dr. Tamhanes Centre For Advanced Dentistry<br />
+                                                    </li>
+                                                </ul>
+                                            </blockquote>
+                                        </li>
+                                        <li class="span6">
+                                            <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b>Awards and Recognitions</b>
+                                                </span>
+                                                <ul style="list-style-type:none;">
+                                                    <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Pesident Of Medijain Medical Association - 2008<br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Convenor Pune Orthodontic Study Group - 2014<br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Professor - 2014<br />
+                                                    </li>
+                                                </ul>
+                                            </blockquote><br />
+                                            <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b>Affiliation</b>
+                                                </span>
+                                                <ul style="list-style-type:none;">
+                                                    <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>12199-A karnataka state homeopathic council-2002<br />
+                                                    </li>
+                                                </ul>
+                                            </blockquote><br />
+                                            <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b>Registration</b>
+                                                </span>
+                                                <ul style="list-style-type:none;">
+                                                    <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>A.7198 Maharashtra State Dental Council<br />
+
+                                                    </li>
+                                                </ul>
+                                            </blockquote><br />
+                                            <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b>Clinic/Hospital Affiliation</b>
+                                                </span>
+                                                <ul style="list-style-type:none;">
+                                                    <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Smile Elements Dental<br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Vibha Dental Care Centre<br />
+                                                    </li>
+                                                </ul>
+                                            </blockquote>
+                                        </li>
+                                    </ul>
+
+
+
+                                </div>
+                                <div class="tab-pane" id="tab_1_22">
+
+                                    <div class="scroller" data-height="290px" data-always-visible="1" data-rail-visible1="1">
+                                        <p style="font-family:inherit; font-size:14px; color:#6f6f6f;">
+                                            Dr.Neha Kasar is a dentiest in Dr.Mathesul dental orthodontic clinic in pune and has an experienced of 9 years in this field.
+                                        </p>
+                                        <hr style="margin-top:20px; margin-bottom:5px; border-top-color:#e9811a;">
+                                        <br />
+                                        <ul class="thumbnails">
+                                            <li class="span6">
+                                                <i class="icon-map-marker" style="color:#ff8503; font-size:18px;"></i>
+
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b>Dr Mathesul Invisible Cosmetic Dental Clinic</b>
+                                                </span>
+
+                                                <p style="padding-left:24px;">#F6, First Floor, Gera 77, Commercial Building, Above Chitale Bandhu Mithaiwale, Kalyani Nagar Road, Pune, Pune</p>
+
+                                                <div class="testimonials-v1">
+                                                    <div id="myCarousel" class="carousel slide">
+
+                                                        <!-- Carousel items -->
+                                                        <div class="carousel-inner">
+                                                            <div class="item active">
+                                                                <div class="blog-photo-stream image-link ">
+                                                                    <ul class="unstyled" style="padding-left:24px;">
+
+                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img1-small.jpg" alt=""></a></li>
+                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img2-small.jpg" alt=""></a></li>
+                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img3-small.jpg" alt=""></a></li>
+                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img4-small.jpg" alt=""></a></li>
+
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="item">
+                                                                <div class="blog-photo-stream">
+                                                                    <ul class="unstyled" style="padding-left:24px;">
+                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img1-small.jpg" alt=""></a></li>
+                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img2-small.jpg" alt=""></a></li>
+                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img3-small.jpg" alt=""></a></li>
+                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img4-small.jpg" alt=""></a></li>
+
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <!-- Carousel nav -->
+                                                        <a class="left-btn" href="#myCarousel" data-slide="prev"></a>
+                                                        <a class="right-btn" href="#myCarousel" data-slide="next"></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="span3">
+                                                <i class="icon-time" style="color:#ff8503; font-size:18px;"></i>
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b>Mon - Sat</b>
+
+                                                </span>
+                                                <p style="padding-left:24px;">11:00 AM - 1:00 PM <br />6:00 PM - 8:00 PM </p>
+                                            </li>
+                                            <li class="span3">
+                                                <i class="icon-money" style="color:#ff8503; font-size:18px;"></i>
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b>INR 200 </b>
+                                                </span>
+
+
+                                            </li>
+                                        </ul>
+                                        <hr style="margin-top:20px; margin-bottom:5px; border-top-color:#e9811a;">
+                                    </div>
+
+                                </div>
+                                <!--tab-pane-->
+                                <div class="tab-pane" id="tab_1_33">
+                                    <div class="scroller" data-height="290px" data-always-visible="1" data-rail-visible1="1">
+                                        <h4>
+                                            <i class="icon-plus-sign-alt" style="color:#ff8503; font-size:18px;"></i>
+                                            <span style="font-family:inherit; font-size:16px; color:#1f317f;">
+                                                <b>Services</b>
+                                            </span>
+                                        </h4>
+                                        <ul class="thumbnails">
+                                            <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                            </li>
+                                            <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                            </li>
+                                            <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                                <!--tab-pane-->
+                                <div class="tab-pane" id="tab_1_44" style="margin-left:10px;">
+                                    <div class="span6">
+
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3945.918802003381!2d76.910826!3d8.507264999999999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bc0c3d02452f%3A0xa4bc574dba432391!2sLords+Hospital!5e0!3m2!1sen!2sin!4v1434627710340" width="800" height="400" frameborder="0" style="border:0"></iframe>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PAGE CONTENT-->
+
+
+                </div>
+                <!-- END PAGE CONTAINER-->
+            </div>
+            <!-- END LEFT SIDEBAR -->
+        </div>
+        <!-- END BEGIN BLOG -->
+    </div>
+    <!-- END CONTAINER -->
+</div>
+

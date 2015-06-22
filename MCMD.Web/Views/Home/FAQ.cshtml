@@ -1,0 +1,387 @@
+﻿@{
+    ViewBag.Title = "FAQ";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+@Styles.Render("~/Content/template_content/assets/css/style-metro.css")
+@Styles.Render("~/Content/template_content/assets/css/style.css")
+@Styles.Render("~/Content/template_content/assets/css/style-responsive.css")
+@Styles.Render("~/Content/template_content/assets/css/themes/default.css")
+@Styles.Render("~/Content/template_content/assets/plugins/uniform/css/uniform.default.css")
+
+
+<!-- BEGIN BREADCRUMBS -->
+<!-- END BREADCRUMBS -->
+<!-- BEGIN CONTAINER -->
+<div class="container" style="padding-top:170px;">
+
+    <!-- BEGIN PAGE -->
+    <div>
+        <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+        <div id="portlet-config" class="modal hide">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button"></button>
+                <h3>portlet Settings</h3>
+            </div>
+            <div class="modal-body">
+                <p>Here will be a configuration form</p>
+            </div>
+        </div>
+        <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+        <!-- BEGIN PAGE CONTAINER-->
+        <div class="container-fluid">
+
+            <!-- BEGIN PAGE CONTENT-->
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="span3">
+                        <ul class="ver-inline-menu tabbable margin-bottom-10">
+                            <li class=" active">
+                                <a href="#tab_1" data-toggle="tab">
+                                    <i class="icon-briefcase" style="width: 2.5em;"></i>
+                                    <b>About DOXeDOX</b>
+                                </a>
+                                <span class="after"></span>
+                            </li>
+                            <li><a href="#tab_2" data-toggle="tab"><i class="icon-group" style="width: 2.5em;"></i><b> Membership</b></a></li>
+                            <li><a href="#tab_3" data-toggle="tab"><i class="icon-leaf" style="width: 2.5em;"></i> <b>Terms Of Service</b></a></li>
+                            <li><a href="#tab_1" data-toggle="tab"><i class="icon-info-sign" style="width: 2.5em;"></i><b>License Terms</b></a></li>
+                            <li><a href="#tab_2" data-toggle="tab"><i class="icon-tint" style="width: 2.5em;"></i><b>Payment Rules</b></a></li>
+                            <li><a href="#tab_3" data-toggle="tab"><i class="icon-plus" style="width: 2.5em;"></i> <b>Other Questions</b></a></li>
+                        </ul>
+                    </div>
+                    <div class="span9">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                <div class="accordion in collapse" id="accordion1" style="height: auto;">
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse_1" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                What is doxedox?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_1" class="accordion-body collapse in">
+                                            <div class="accordion-inner" style="background-color: #fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    doxedox is an independent online directory of doctors for patients and healthcare community.  We are closely associated with the healthcare community and develop technology solutions that strengthen our customers in their profession. Our vision is to make healthcare accessible to every individual and to empower patients with healthcare providers’ information so that they can take informed decisions confidently.
+                                                    <b>
+                                                        Is doxedox available across India?
+                                                        &nbsp;Yes,
+                                                    </b> you can search doctors and book appointments with doctors who are registered. In order to make you healthcare experience better, more doctors from diverse geography are joining us.
+                                                    <b>Is doxedox free for Patients and Doctors?&nbsp;Yes,</b> Doctors can get listed for free and Patients can search doctors and book appointments without any cost.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse_2" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                How it works?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_2" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse_3" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                How do I make an appointment?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_3" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:12px;text-align:justify;">
+                                                    From the homepage www.doxedox.com select the doctor from a list of healthcare providers who may meet your specific needs. Review the doctor’s profile, qualifications, timings, fees/charges, clinic photographs & reviews. By clicking on an appointment time you'd like you will be directed to follow some quick steps to book your appointment. You will receive and automated EMAIL and SMS confirming the status of your appointment request and other details.
+                                                    How do I Cancel/Reschedule my appointment?
+                                                    It’s very simple, Just call our helpline number and our Care Counselors will be more than happy to assist you.
+                                                    How do I leave a review of my doctor?
+                                                    You will receive an email from us asking for feedback. Just follow the link to review your doctor.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse_4" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                High life accusamus terry richardson ad ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_4" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse_5" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                Reprehenderit enim eiusmod high life accusamus terry quinoa nesciunt laborum eiusmod ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_5" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff; ">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapse_6" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                Wolf moon officia aute non cupidatat skateboard dolor brunch ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_6" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab_2">
+                                <div class="accordion in collapse" id="accordion2" style="height: auto;">
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapse_2_1" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                Cliche reprehenderit, enim eiusmod high life accusamus enim eiusmod ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_2_1" class="accordion-body collapse in">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapse_2_2" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                Pariatur cliche reprehenderit enim eiusmod high life non cupidatat skateboard dolor brunch ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_2_2" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapse_2_3" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                Food truck quinoa nesciunt laborum eiusmod ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_2_3" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapse_2_4" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                High life accusamus terry richardson ad squid enim eiusmod high ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_2_4" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapse_2_5" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                Reprehenderit enim eiusmod high life accusamus terry quinoa nesciunt laborum eiusmod ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_2_5" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmodBrunch 3 wolf moon tempor
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapse_2_6" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                Wolf moon officia aute non cupidatat skateboard dolor brunch ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_2_6" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapse_2_7" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                Reprehenderit enim eiusmod high life accusamus terry quinoa nesciunt laborum eiusmod ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_2_7" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff; ">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmodBrunch 3 wolf moon tempor
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab_3">
+                                <div class="accordion in collapse" id="accordion3" style="height: auto;">
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapse_3_1" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                Cliche reprehenderit, enim eiusmod ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_3_1" class="accordion-body collapse in">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapse_3_2" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                Pariatur skateboard dolor brunch ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_3_2" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapse_3_3" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                Food truck quinoa nesciunt laborum eiusmod ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_3_3" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapse_3_4" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                High life accusamus terry richardson ad squid enim eiusmod high ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_3_4" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapse_3_5" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                Reprehenderit enim eiusmod high  eiusmod ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_3_5" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmodBrunch 3 wolf moon tempor
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapse_3_6" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_3_6" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapse_3_7" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                Reprehenderit enim eiusmod high life accusamus aborum eiusmod ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_3_7" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmodBrunch 3 wolf moon tempor
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapse_3_8" style="background-color:#D5D2D2; color:black; font-size:15px;">
+                                                Reprehenderit enim eiusmod high life accusamus terry quinoa nesciunt laborum eiusmod ?
+                                            </a>
+                                        </div>
+                                        <div id="collapse_3_8" class="accordion-body collapse">
+                                            <div class="accordion-inner" style="background-color:#fff;">
+                                                <p style="font-size:13px;text-align:justify;">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmodBrunch 3 wolf moon tempor
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br /><br />
+                    </div>
+                    <!--end span9-->
+                </div>
+            </div>
+            <!-- END PAGE CONTENT-->
+        </div>
+        <!-- END PAGE CONTAINER-->
+    </div>
+    <!-- END PAGE -->
+</div>
+<!-- END CONTAINER -->
