@@ -1,4 +1,4 @@
-﻿using System;
+﻿  using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,7 +32,7 @@ namespace MCMD.EntityRepository.AdminRepository
                                select new
                                {
                                    LoginId = b.LoginId,
-                                   UserName = b.UserName,
+                                   //UserName = b.UserName,
                                    FirstName = b.FirstName,
                                    LastName = b.LastName,
                                    EmailID = b.EmailID,
@@ -47,7 +47,7 @@ namespace MCMD.EntityRepository.AdminRepository
             {
                 var s = new GetViewUsers();
                 s.LoginId = item.LoginId;
-                s.UserName = item.UserName;
+                //s.UserName = item.UserName;
                 s.FirstName = item.FirstName;
                 s.LastName = item.LastName;
                 s.EmailID = item.EmailID;
@@ -79,7 +79,7 @@ namespace MCMD.EntityRepository.AdminRepository
                                select new
                                {
                                    LoginId = b.LoginId,
-                                   UserName = b.UserName,
+                                   //UserName = b.UserName,
                                    FirstName = b.FirstName,
                                    LastName = b.LastName,
                                    Speciality = s.SpecialityName,
@@ -96,7 +96,7 @@ namespace MCMD.EntityRepository.AdminRepository
             {
                 var s = new GetViewDoctor();
                 s.LoginId = item.LoginId;
-                s.UserName = item.UserName;
+                //s.UserName = item.UserName;
                 s.FirstName = item.FirstName;
                 s.LastName = item.LastName;
                 s.SpecialityName = item.Speciality;
@@ -185,7 +185,7 @@ namespace MCMD.EntityRepository.AdminRepository
 
             var crypto = new SimpleCrypto.PBKDF2();
             var encrypPass = crypto.Compute(registerVM.Userlogins.Password);
-            userlogin.UserName = registerVM.Userlogins.UserName;
+            //userlogin.UserName = registerVM.Userlogins.UserName;
             userlogin.Password = encrypPass;
             userlogin.ConfirmPassword = encrypPass;
             userlogin.PasswordSalt = crypto.Salt;

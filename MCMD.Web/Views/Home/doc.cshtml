@@ -1,0 +1,518 @@
+﻿
+@{
+    ViewBag.Title = "doc";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+@*<script src="@Url.Content("~/Scripts/jquery-ui-1.11.4.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.11.4.min.js")" type="text/javascript"></script>*@
+<!-- BEGIN PAGE LEVEL STYLES -->
+@Styles.Render("~/Content/template_content/assets/plugins/select2/select2_metro.css")
+
+@Styles.Render("~/Content/template_content/assets/plugins/data-tables/DT_bootstrap.css")
+@Styles.Render("~/Content/template_content/assets/css/style-metro.css")
+@Styles.Render("~/Content/template_content/assets/plugins/fancybox/source/jquery.fancybox.css")
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+@Scripts.Render("~/Content/template_content/assets/plugins/select2/select2.min.js")
+@Scripts.Render("~/Content/template_content/assets/plugins/data-tables/jquery.dataTables.js")
+@Scripts.Render("~/Content/template_content/assets/plugins/data-tables/DT_bootstrap.js")
+
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+@Scripts.Render("~/Content/template_content/assets/plugins/data-tables/jquery.dataTables.js")
+@Scripts.Render("~/Content/template_content/assets/plugins/data-tables/jquery.dataTables.min.js")
+  @Scripts.Render("~/Content/template_content/assets/scripts/table-managed.js")
+
+<!-- END PAGE LEVEL STYLES -->
+<script>
+    jQuery(document).ready(function () {
+
+        alert("start");
+
+            // begin first table
+        $('#sample_1').dataTable({
+          
+                "aoColumns": [
+                  { "bSortable": false },
+                  null,
+                  { "bSortable": false },
+                  null,
+                  { "bSortable": false },
+                  { "bSortable": false }
+                ],
+                "aLengthMenu": [
+                    [5, 15, 20, -1],
+                    [5, 15, 20, "All"] // change per page values here
+                ],
+                // set the initial value
+                "iDisplayLength": 5,
+                "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+                "sPaginationType": "bootstrap",
+                "oLanguage": {
+                    "sLengthMenu": "_MENU_ records per page",
+                    "oPaginate": {
+                        "sPrevious": "Prev",
+                        "sNext": "Next"
+                    }
+                },
+                "aoColumnDefs": [{
+                    'bSortable': false,
+                    'aTargets': [0]
+                }
+                ]
+            });
+
+            //jQuery('#sample_1 .group-checkable').change(function () {
+            //    var set = jQuery(this).attr("data-set");
+            //    var checked = jQuery(this).is(":checked");
+            //    jQuery(set).each(function () {
+            //        if (checked) {
+            //            $(this).attr("checked", true);
+            //        } else {
+            //            $(this).attr("checked", false);
+            //        }
+            //    });
+            //    jQuery.uniform.update(set);
+            //});
+
+            //jQuery('#sample_1_wrapper .dataTables_filter input').addClass("m-wrap medium"); // modify table search input
+            //jQuery('#sample_1_wrapper .dataTables_length select').addClass("m-wrap small"); // modify table per page dropdown
+            ////jQuery('#sample_1_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
+
+           
+
+            alert("end");
+
+        
+        
+    });
+</script>
+<!-- BEGIN PAGE -->
+<div class="page-content">
+    <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+    <div id="portlet-config" class="modal hide">
+        <div class="modal-header">
+            <button data-dismiss="modal" class="close" type="button"></button>
+            <h3>portlet Settings</h3>
+        </div>
+        <div class="modal-body">
+            <p>Here will be a configuration form</p>  
+        </div>
+    </div>
+    <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN STYLE CUSTOMIZER -->
+                <div class="color-panel hidden-phone">
+                    <div class="color-mode-icons icon-color"></div>
+                    <div class="color-mode-icons icon-color-close"></div>
+                    <div class="color-mode">
+                        <p>THEME COLOR</p>
+                        <ul class="inline">
+                            <li class="color-black current color-default" data-style="default"></li>
+                            <li class="color-blue" data-style="blue"></li>
+                            <li class="color-brown" data-style="brown"></li>
+                            <li class="color-purple" data-style="purple"></li>
+                            <li class="color-grey" data-style="grey"></li>
+                            <li class="color-white color-light" data-style="light"></li>
+                        </ul>
+                        <label>
+                            <span>Layout</span>
+                            <select class="layout-option m-wrap small">
+                                <option value="fluid" selected>Fluid</option>
+                                <option value="boxed">Boxed</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>Header</span>
+                            <select class="header-option m-wrap small">
+                                <option value="fixed" selected>Fixed</option>
+                                <option value="default">Default</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>Sidebar</span>
+                            <select class="sidebar-option m-wrap small">
+                                <option value="fixed">Fixed</option>
+                                <option value="default" selected>Default</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>Footer</span>
+                            <select class="footer-option m-wrap small">
+                                <option value="fixed">Fixed</option>
+                                <option value="default" selected>Default</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <!-- END BEGIN STYLE CUSTOMIZER -->
+                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                <h3 class="page-title">
+                    Managed Tables <small>managed table samples</small>
+                </h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>
+                        <a href="index.html">Home</a>
+                        <i class="icon-angle-right"></i>
+                    </li>
+                    <li>
+                        <a href="#">Data Tables</a>
+                        <i class="icon-angle-right"></i>
+                    </li>
+                    <li><a href="#">Managed Tables</a></li>
+                </ul>
+                <!-- END PAGE TITLE & BREADCRUMB-->
+            </div>
+        </div>
+        <!-- END PAGE HEADER-->
+        <!-- BEGIN PAGE CONTENT-->
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                <div class="portlet box light-grey">
+                    <div class="portlet-title">
+                        <div class="caption"><i class="icon-globe"></i>Managed Table</div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"></a>
+                            <a href="#portlet-config" data-toggle="modal" class="config"></a>
+                            <a href="javascript:;" class="reload"></a>
+                            <a href="javascript:;" class="remove"></a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="table-toolbar">
+                            <div class="btn-group">
+                                <button id="sample_editable_1_new" class="btn green">
+                                    Add New <i class="icon-plus"></i>
+                                </button>
+                            </div>
+                            <div class="btn-group pull-right">
+                                <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                    Tools <i class="icon-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="#">Print</a></li>
+                                    <li><a href="#">Save as PDF</a></li>
+                                    <li><a href="#">Export to Excel</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <table class="table table-striped table-bordered table-hover" id="sample_1">
+                            <thead>
+                                <tr>
+                                    <th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>
+                                    <th>Username</th>
+                                    <th class="hidden-480">Email</th>
+                                    <th class="hidden-480">Points</th>
+                                    <th class="hidden-480">Joined</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>shuxer</td>
+                                    <td class="hidden-480"><a href="mailto:shuxer@gmail.com">shuxer@gmail.com</a></td>
+                                    <td class="hidden-480">120</td>
+                                    <td class="center hidden-480">12 Jan 2012</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>looper</td>
+                                    <td class="hidden-480"><a href="mailto:looper90@gmail.com">looper90@gmail.com</a></td>
+                                    <td class="hidden-480">120</td>
+                                    <td class="center hidden-480">12.12.2011</td>
+                                    <td><span class="label label-warning">Suspended</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>userwow</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@yahoo.com">userwow@yahoo.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">12.12.2012</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>user1wow</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">userwow@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">12.12.2012</td>
+                                    <td><span class="label label-inverse">Blocked</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>restest</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">test@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">12.12.2012</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>foopl</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">19.11.2010</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>weep</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">19.11.2010</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>coop</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">19.11.2010</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>pppol</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">19.11.2010</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>test</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">19.11.2010</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>userwow</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">userwow@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">12.12.2012</td>
+                                    <td><span class="label label-inverse">Blocked</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>test</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">test@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">12.12.2012</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>goop</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">12.11.2010</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>weep</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">15.11.2011</td>
+                                    <td><span class="label label-inverse">Blocked</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>toopl</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">16.11.2010</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>userwow</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">userwow@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">9.12.2012</td>
+                                    <td><span class="label label-inverse">Blocked</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>tes21t</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">test@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">14.12.2012</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>fop</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">13.11.2010</td>
+                                    <td><span class="label label-warning">Suspended</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>kop</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">17.11.2010</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>vopl</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">19.11.2010</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>userwow</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">userwow@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">12.12.2012</td>
+                                    <td><span class="label label-inverse">Blocked</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>wap</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">test@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">12.12.2012</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>test</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">19.12.2010</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>toop</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">17.12.2010</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                                    <td>weep</td>
+                                    <td class="hidden-480"><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
+                                    <td class="hidden-480">20</td>
+                                    <td class="center hidden-480">15.11.2011</td>
+                                    <td><span class="label label-success">Approved</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE PORTLET-->
+            </div>
+        </div>
+        
+        <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+</div>
+<!-- END PAGE -->
+   <!-- BEGIN TABS AND TESTIMONIALS -->
+<div class="row-fluid mix-block">
+    <!-- TABS -->
+    <div class="span7 tab-style-1 margin-bottom-20">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab-1" data-toggle="tab">Multipurpose</a></li>
+            <li><a href="#tab-2" data-toggle="tab">Documented</a></li>
+            <li><a href="#tab-3" data-toggle="tab">Responsive</a></li>
+            <li><a href="#tab-4" data-toggle="tab">Clean & Fresh</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane row-fluid fade in active" id="tab-1">
+                <div class="span3">
+                    <a href="~/Content/Web_Theme/assets/img/photos/img7.jpg" class="fancybox-button" title="Image Title" data-rel="fancybox-button">
+                        <img class="img-circle" src="~/Content/Web_Theme/assets/img/photos/img7.jpg" alt="" />
+                    </a>
+                </div>
+          
+                <div class="span9">
+                    <p class="margin-bottom-10">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Cosby sweater eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</p>
+                    <p><a class="more" href="#">Read more <i class="icon-angle-right"></i></a></p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab-2">
+                <div class="span9">
+                    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia..</p>
+                </div>
+                <div class="span3">
+                    <a href="~/Content/Web_Theme/assets/img/photos/img10.jpg" class="fancybox-button" title="Image Title" data-rel="fancybox-button">
+                        <img class="img-circle" src="~/Content/Web_Theme/assets/img/photos/img10.jpg" alt="" />
+                    </a>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab-3">
+                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+            </div>
+            <div class="tab-pane fade" id="tab-4">
+                <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+            </div>
+        </div>
+    </div>
+    <!-- END TABS -->
+    <!-- TESTIMONIALS -->
+    <div class="span5 testimonials-v1">
+        <div id="myCarousel" class="carousel slide">
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+                <div class="active item">
+                    <span class="testimonials-slide">Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum dolor met consectetur adipisicing sit amet do eiusmod dolore.</span>
+                    <div class="carousel-info">
+                        <img class="pull-left" src="~/Content/Web_Theme/assets/img/people/img1-small.jpg" alt="" />
+                        <div class="pull-left">
+                            <span class="testimonials-name">Lina Mars</span>
+                            <span class="testimonials-post">Commercial Director</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="testimonials-slide">Raw denim you Mustache cliche tempor, williamsburg carles vegan helvetica probably haven't heard of them jean shorts austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</span>
+                    <div class="carousel-info">
+                        <img class="pull-left" src="~/Content/Web_Theme/assets/img/people/img5-small.jpg" alt="" />
+                        <div class="pull-left">
+                            <span class="testimonials-name">Kate Ford</span>
+                            <span class="testimonials-post">Commercial Director</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="testimonials-slide">Reprehenderit butcher stache cliche tempor, williamsburg carles vegan helvetica.retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</span>
+                    <div class="carousel-info">
+                        <img class="pull-left" src="~/Content/Web_Theme/assets/img/people/img2-small.jpg" alt="" />
+                        <div class="pull-left">
+                            <span class="testimonials-name">Jake Witson</span>
+                            <span class="testimonials-post">Commercial Director</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel nav -->
+            <a class="left-btn" href="#myCarousel" data-slide="prev"></a>
+            <a class="right-btn" href="#myCarousel" data-slide="next"></a>
+        </div>
+    </div>
+    <!-- END TESTIMONIALS -->
+</div>
+<!-- END TABS AND TESTIMONIALS -->
+
+@Scripts.Render("~/bundles/jqueryval")

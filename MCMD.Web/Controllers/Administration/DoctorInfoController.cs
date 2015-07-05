@@ -8,6 +8,7 @@ using MCMD.EntityModel.Administration;
 using MCMD.EntityModel.Doctor;
 using MCMD.IRepository.AdminInterfaces;
 using MCMD.ViewModel.Administration;
+using System.IO;
 
 
 namespace MCMD.Web.Controllers.Administration
@@ -65,10 +66,12 @@ namespace MCMD.Web.Controllers.Administration
                 {
                     _doctorVM.MiddleName = item.MiddleName;
                     _doctorVM.Qualification = item.Qualification;
+                    _doctorVM.Qualification1 = item.Qualification1;
                     _doctorVM.RegistrationNo = item.RegistrationNo;
                     _doctorVM.Affiliation = item.Affiliation;
                     _doctorVM.AboutMe = item.AboutMe;
                     _doctorVM.AboutExperience = item.AboutExperience;
+                    _doctorVM.FolderFilePath = item.FolderFilePath;
                 }
                 foreach (var item in _NewDocSpeciality)
                 {
@@ -84,7 +87,7 @@ namespace MCMD.Web.Controllers.Administration
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(DoctorPersonalInfoViewModel _doctorPersonalInfoVM)
+        public ActionResult Create(DoctorPersonalInfoViewModel _doctorPersonalInfoVM, HttpPostedFileBase file)
         {
             try
             {
@@ -106,7 +109,8 @@ namespace MCMD.Web.Controllers.Administration
 
                         newDoctor.MiddleName = _doctorPersonalInfoVM.MiddleName;
                         newDoctor.Qualification = _doctorPersonalInfoVM.Qualification;
-                        newDoctor.RegistrationNo = Convert.ToInt32(_doctorPersonalInfoVM.RegistrationNo);
+                        newDoctor.Qualification1 = _doctorPersonalInfoVM.Qualification1;
+                        newDoctor.RegistrationNo =_doctorPersonalInfoVM.RegistrationNo;
                         newDoctor.Affiliation = _doctorPersonalInfoVM.Affiliation;
                         newDoctor.AboutMe = _doctorPersonalInfoVM.AboutMe;
                         newDoctor.AboutExperience = _doctorPersonalInfoVM.AboutExperience;
@@ -115,6 +119,22 @@ namespace MCMD.Web.Controllers.Administration
                         newDoctor.CreatedDate = DateTime.Now;
                         newDoctor.ModifiedByID = 1;
                         newDoctor.ModifiedDate = DateTime.Now;
+
+                        if (file != null)
+                        {
+                            string[] formats = new string[] { "image/jpeg", "image/png", "image/gif", "image/Bmp" };
+                            int CheckImgType = Convert.ToInt32(formats.Contains(file.ContentType));
+                            if (CheckImgType != 0)
+                            {
+                                string Imgpath = "~/Media/" + file.FileName;
+                                string path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") + file.FileName);
+                                file.SaveAs(path);
+
+                                newDoctor.FolderFilePath = Imgpath;
+                                newDoctor.UploadType = file.ContentType;
+
+                            }
+                        }
 
                         //insert if not exit
                         doctorPersonalInfoRepository.InsertDoctor(newDoctor);
@@ -126,7 +146,8 @@ namespace MCMD.Web.Controllers.Administration
 
                         existingUser.MiddleName = _doctorPersonalInfoVM.MiddleName;
                         existingUser.Qualification = _doctorPersonalInfoVM.Qualification;
-                        existingUser.RegistrationNo = Convert.ToInt32(_doctorPersonalInfoVM.RegistrationNo);
+                        existingUser.Qualification1 = _doctorPersonalInfoVM.Qualification1;
+                        existingUser.RegistrationNo =_doctorPersonalInfoVM.RegistrationNo;
                         existingUser.Affiliation = _doctorPersonalInfoVM.Affiliation;
                         existingUser.AboutMe = _doctorPersonalInfoVM.AboutMe;
                         existingUser.AboutExperience = _doctorPersonalInfoVM.AboutExperience;
@@ -136,6 +157,22 @@ namespace MCMD.Web.Controllers.Administration
                         existingUser.ModifiedByID = 1;
                         existingUser.ModifiedDate = DateTime.Now;
                         existingUser.LoginId = Convert.ToInt32(Session["EditDoctor"]);
+
+                        if (file != null)
+                        {
+                            string[] formats = new string[] { "image/jpeg", "image/png", "image/gif", "image/Bmp" };
+                            int CheckImgType = Convert.ToInt32(formats.Contains(file.ContentType));
+                            if (CheckImgType != 0)
+                            {
+                                string Imgpath = "~/Media/" + file.FileName;
+                                string path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") + file.FileName);
+                                file.SaveAs(path);
+
+                                existingUser.FolderFilePath = Imgpath;
+                                existingUser.UploadType = file.ContentType;
+
+                            }
+                        }
 
                         //Update if already exit
                         doctorPersonalInfoRepository.UpdateDoctorPersonalInfo(existingUser);

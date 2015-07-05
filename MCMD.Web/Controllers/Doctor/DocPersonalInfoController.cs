@@ -57,6 +57,7 @@ namespace MCMD.Web.Controllers.Doctor
                 {
                     _doctorVM.MiddleName = item.MiddleName;
                     _doctorVM.Qualification = item.Qualification;
+                    _doctorVM.Qualification1 = item.Qualification1;
                     _doctorVM.RegistrationNo = item.RegistrationNo;
                     _doctorVM.Affiliation = item.Affiliation;
                     _doctorVM.AboutMe = item.AboutMe;
@@ -96,7 +97,8 @@ namespace MCMD.Web.Controllers.Doctor
 
                         newDoctor.MiddleName = _doctorPersonalInfoVM.MiddleName;
                         newDoctor.Qualification = _doctorPersonalInfoVM.Qualification;
-                        newDoctor.RegistrationNo = Convert.ToInt32(_doctorPersonalInfoVM.RegistrationNo);
+                        newDoctor.Qualification1 = _doctorPersonalInfoVM.Qualification1;
+                        newDoctor.RegistrationNo =_doctorPersonalInfoVM.RegistrationNo;
                         newDoctor.Affiliation = _doctorPersonalInfoVM.Affiliation;
                         newDoctor.AboutMe = _doctorPersonalInfoVM.AboutMe;
                         newDoctor.AboutExperience = _doctorPersonalInfoVM.AboutExperience;
@@ -116,7 +118,8 @@ namespace MCMD.Web.Controllers.Doctor
 
                         existingUser.MiddleName = _doctorPersonalInfoVM.MiddleName;
                         existingUser.Qualification = _doctorPersonalInfoVM.Qualification;
-                        existingUser.RegistrationNo = Convert.ToInt32(_doctorPersonalInfoVM.RegistrationNo);
+                        existingUser.Qualification1 = _doctorPersonalInfoVM.Qualification1;
+                        existingUser.RegistrationNo =_doctorPersonalInfoVM.RegistrationNo;
                         existingUser.Affiliation = _doctorPersonalInfoVM.Affiliation;
                         existingUser.AboutMe = _doctorPersonalInfoVM.AboutMe;
                         existingUser.AboutExperience = _doctorPersonalInfoVM.AboutExperience;

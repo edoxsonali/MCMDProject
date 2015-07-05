@@ -10,7 +10,6 @@
     WebGrid grid = new WebGrid(Model.getDoctor, canPage: true, rowsPerPage: Pages);
     grid.Pager(WebGridPagerModes.NextPrevious);
 }
-@*<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>*@
 
 
 <script type="text/javascript">
@@ -176,12 +175,12 @@
             <!-- END FORM-->
         </div>
     </div>
-    <div class="portlet ">
+    <div class="portlet box">
 
-        <div class="portlet-body">
+        <div class="portlet-body flip-scroll">
 
             @grid.GetHtml(
-                            tableStyle: "table table-striped table-bordered table-advance table-hover",
+                tableStyle: "table table-striped table-bordered table-advance table-condensed flip-content",
                  footerStyle: "gridFooter",
                         alternatingRowStyle: "alt",
                          htmlAttributes: new { id = "grdUsers" },
@@ -190,10 +189,11 @@
     previousText: "< Previous", nextText: "Next >",
     lastText: "Last >>",
                      columns: new[] {
-                     grid.Column("UserName",header: "User Name", canSort: false),
+                     //grid.Column("UserName",header: "User Name", canSort: false),
+                      grid.Column("LoginId",header: "Doctor Id", canSort: false),
                      grid.Column("FirstName",header: "First Name", canSort: false),
                      grid.Column("LastName",header: "Last Name", canSort: false),
-                     grid.Column("LoginId",header: "Doctor Id", canSort: false),
+
                      grid.Column("SpecialityName",header: "Speciality", canSort: false),
                      grid.Column("EmailID",header: "Email ID", canSort: false),
                      grid.Column("UserPhone",header: "Phone No", canSort: false),

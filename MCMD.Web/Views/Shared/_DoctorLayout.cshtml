@@ -55,6 +55,25 @@
     <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
+<script>
+    $(document).ready(function () {
+        var str = location.href.toLowerCase();
+
+        $('.page-sidebar li a').each(function () {
+            if (str.indexOf(this.href.toLowerCase()) > -1) {
+
+                $("li.active").removeClass("active");
+                $(this).parent().addClass("active");
+            }
+        });
+        $('li.active').parents().each(function () {
+
+            if ($(this).is('li')) {
+                $(this).addClass("active");
+            }
+        });
+    })
+</script>
 <body class="page-header-fixed">
     <!-- BEGIN HEADER -->
     <div class="header navbar navbar-inverse navbar-fixed-top">
@@ -340,7 +359,7 @@
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <li class="dropdown user">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <img alt="" src="~/Content/template_content/assets/img/avatar1_small.jpg" />
+                            <img alt="" src="~/Content/template_content/assets/img/default1.jpg" />
                             <span class="username">@TempData["Name"]</span> @ViewData["Name"]
                             <i class="icon-angle-down"></i>
                         </a>
@@ -373,15 +392,15 @@
                     <div class="sidebar-toggler hidden-phone"></div>
                     <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
                 </li>
-                <li>
+                <li> <br />
                     <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-                    <form class="sidebar-search">
+                    @*<form class="sidebar-search">
                         <div class="input-box">
                             <a href="javascript:;" class="remove"></a>
                             <input type="text" placeholder="Search..." />
                             <input type="button" class="submit" value=" " />
                         </div>
-                    </form>
+                    </form>*@
                     <!-- END RESPONSIVE QUICK SEARCH FORM -->
                 </li>
                 <li class="start active">

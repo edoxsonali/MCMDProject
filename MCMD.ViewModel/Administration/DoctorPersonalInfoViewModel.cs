@@ -62,15 +62,18 @@ namespace MCMD.ViewModel.Administration
         public string UserPhone { get; set; }
 
         [DisplayName("Qualification")]
-        [RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "Qualification is not valid.")]
+        //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "Qualification is not valid.")]
         [Required(ErrorMessage = "Qualification is required.")]
-        [StringLength(50, ErrorMessage = "Qualification cannot be longer than 50 characters.")]
+      //  [StringLength(50, ErrorMessage = "Qualification cannot be longer than 50 characters.")]
         public string Qualification { get; set; }
+
+       
+        public string Qualification1 { get; set; }
 
 
         [DisplayName("RegistrationNo")]
         [Required(ErrorMessage = "RegistrationNo is required.")]
-        public int? RegistrationNo { get; set; }
+        public string RegistrationNo { get; set; }
 
         public string Affiliation { get; set; }
         public string AboutMe { get; set; }
@@ -86,6 +89,9 @@ namespace MCMD.ViewModel.Administration
         public int ModifiedByID { get; set; }
 
         public System.DateTime ModifiedDate { get; set; }
+        public string FolderFilePath { get; set; }
+
+        public string UploadType { get; set; }
 
 
     }

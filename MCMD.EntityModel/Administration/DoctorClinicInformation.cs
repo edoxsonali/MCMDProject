@@ -23,7 +23,7 @@ namespace MCMD.EntityModel.Doctor
 
         [DisplayName("ClinicAddress")]
         [Required(ErrorMessage = "ClinicAddress is required.")]
-        [StringLength(50, ErrorMessage = "ClinicAddress cannot be longer than 100 characters.")]
+        //[StringLength(50, ErrorMessage = "ClinicAddress cannot be longer than 100 characters.")]
         public string ClinicAddress { get; set; }
 
         [DisplayName("ClinicPhoneNo")]      
@@ -92,6 +92,9 @@ namespace MCMD.EntityModel.Doctor
         public int ModifiedByID { get; set; }
 
         public System.DateTime ModifiedDate { get; set; }
+        public string FolderFilePath { get; set; }
+
+        public string UploadType { get; set; }
 
       
 

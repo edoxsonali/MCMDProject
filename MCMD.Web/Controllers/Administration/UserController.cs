@@ -56,12 +56,12 @@ namespace MCMD.Web.Controllers.Administration
             if (ModelState.IsValid)
             {
 
-                var cUser = db.UserLogins.FirstOrDefault(x => x.UserName == registerVM.Userlogins.UserName);
+                //var cUser = db.UserLogins.FirstOrDefault(x => x.UserName == registerVM.Userlogins.UserName);
                 var cUserEmail = db.UserLogins.FirstOrDefault(x => x.EmailID == registerVM.Userlogins.EmailID);
                 var cEmpId = db.UserLogins.FirstOrDefault(X => X.EmployeeId == registerVM.Userlogins.EmployeeId);
 
-                if (ReferenceEquals(cUser, null))
-                {
+                //if (ReferenceEquals(cUser, null))
+                //{
                     if (ReferenceEquals(cUserEmail, null))
                     {
                         if (ReferenceEquals(cEmpId, null))
@@ -95,7 +95,7 @@ namespace MCMD.Web.Controllers.Administration
                                     dbContextTransaction.Commit();
                                     //ViewBag.StatusMessage = " User Name with " + registerVM.Userlogins.UserName + " having Email Id " + registerVM.Userlogins.EmailID + " is created successfully";
                                     //ViewBag.Status = 1;
-                                    @TempData["SuccessMessage"] = " User Name with " + registerVM.Userlogins.UserName + " having Email Id " + registerVM.Userlogins.EmailID + " is created successfully";
+                                    @TempData["SuccessMessage"] = " User Name with " + registerVM.Userlogins.FirstName + "&nbsp;" + registerVM.Userlogins.LastName + " having Email Id " + registerVM.Userlogins.EmailID + " is created successfully";
 
                                     //var callbackUrl = Url.Action("ConfirmEmail", "Account",new { userId = user.Id, code = code },protocol: Request.Url.Scheme);
 
@@ -103,8 +103,8 @@ namespace MCMD.Web.Controllers.Administration
                                     var emailid = registerVM.Userlogins.EmailID;
                                     //send mail
                                     string subject = "doxedox  Registration";
-                                    string body = "Dear " + registerVM.Userlogins.FirstName + " " + registerVM.Userlogins.LastName + "<br/> <br/>" + System.Environment.NewLine + System.Environment.NewLine + "You have been successfully registered at doxedox , Your login credentials are given below<br/><br/>" +
-                                    "Username" + " : " + registerVM.Userlogins.UserName + "<br/><br/>"+"Your Id" + " : " + registerVM.Userlogins.LoginId + "<br/><br/>Password" + " : " +
+                                    string body = "Dear " + registerVM.Userlogins.FirstName + " " + registerVM.Userlogins.LastName + "<br/> <br/>" + System.Environment.NewLine + System.Environment.NewLine + "You have been successfully registered at doxedox , Your login credentials are given below<br/><br/>" 
+                                   +"Your Id" + " : " + registerVM.Userlogins.LoginId + "<br/><br/>Password" + " : " +
                                      password + "<br/><br/><br/>Thank You" + "<br/>Admin" + "<br/>doxedox";  //edit it
                                     try
                                     {
@@ -139,13 +139,13 @@ namespace MCMD.Web.Controllers.Administration
 
                         @TempData["Message"] = "Email ID Already Exist";
                     }
-                }
-                else
-                {
+             //   }
+                //else
+                //{
 
-                    @TempData["Message"] = "User Name Already Exist";
+                //    @TempData["Message"] = "User Name Already Exist";
 
-                }
+                //}
             }
          //   ViewBag.ExistStatus = 1;
             return RedirectToAction("RegisterUser");
@@ -332,7 +332,7 @@ namespace MCMD.Web.Controllers.Administration
                 List<UserLoginRole> _NewUserRole = userRepository.GetUserLoginRole().Where(x => x.LoginRoleId == editUserInputs).ToList();
                 foreach (var item in _NewUserloginInfo)
                 {
-                    _edituserVM.UserName = item.UserName;
+                    //_edituserVM.UserName = item.UserName;
                     _edituserVM.FirstName = item.FirstName;
                     _edituserVM.LastName = item.LastName;
                     _edituserVM.EmailID = item.EmailID;
@@ -364,7 +364,7 @@ namespace MCMD.Web.Controllers.Administration
                     //find the data in table using loginId
                     UserLogin updateUser = db.UserLogins.Find(editUserVM.LoginId);
 
-                    updateUser.UserName = editUserVM.UserName;
+                    //updateUser.UserName = editUserVM.UserName;
                     updateUser.FirstName = editUserVM.FirstName;
                     updateUser.LastName = editUserVM.LastName;
                     updateUser.EmailID = editUserVM.EmailID;

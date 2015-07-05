@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,11 @@ namespace MCMD.EntityRepository.AdminRepository
 
             return DBcontext.DoctorsClinicInfos.ToList();
         }
+        public IEnumerable<ClinicTimeInformation> GetAllClinicTime()
+        {
+            return DBcontext.clinicTimeInformation.ToList();
+        }
+
         public IEnumerable<GetViewCliniInfo> GetClinics()
         {
             var AllClinicInfo = (from n in DBcontext.DoctorsClinicInfos

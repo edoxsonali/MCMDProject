@@ -25,7 +25,7 @@ namespace MCMD.EntityRepository.DoctorRepository
 
             var crypto = new SimpleCrypto.PBKDF2();
             var encrypPass = crypto.Compute(docRegVM.Userlogins.Password);
-            userlogin.UserName = docRegVM.Userlogins.FirstName;
+            //userlogin.UserName = docRegVM.Userlogins.FirstName;
             userlogin.Password = encrypPass;
             userlogin.ConfirmPassword = encrypPass;
             userlogin.PasswordSalt = crypto.Salt;

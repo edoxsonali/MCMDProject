@@ -29,10 +29,13 @@ namespace MCMD.EntityModel.Doctor
         [StringLength(50, ErrorMessage = "Qualification cannot be longer than 50 characters.")]
         public string Qualification { get; set; }
 
+      
+        public string Qualification1 { get; set; }
+
 
         [DisplayName("Registration No")]
         [Required(ErrorMessage = "Registration No is required.")]
-        public int RegistrationNo { get; set; }
+        public string RegistrationNo { get; set; }
 
         [DisplayName("Affiliation")]
         // [RegularExpression(@"^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$", ErrorMessage = "Affiliation is not valid.")]
@@ -55,5 +58,9 @@ namespace MCMD.EntityModel.Doctor
         public int ModifiedByID { get; set; }
 
         public System.DateTime ModifiedDate { get; set; }
+
+        public string FolderFilePath { get; set; }
+
+        public string UploadType { get; set; }
     }
 }

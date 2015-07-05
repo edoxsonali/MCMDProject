@@ -2,7 +2,7 @@
     ViewBag.Title = "Scheduling";
     Layout = "~/Views/Shared/_ThemeLayout.cshtml";
 }
-    <!-------for calender-------->
+<!-------for calender-------->
 @Styles.Render("~/Content/template_content/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css")
 @Styles.Render("~/Content/template_content/assets/plugins/fullcalendar/fullcalendar/fullcalendar.print.css")
 
@@ -16,11 +16,11 @@
         $('#calendar').fullCalendar({
 
             header: {
-                left: 'prev,next today',
+                left: 'prev,next today',//prev
                 center: 'title',
-                right: 'month,agendaWeek,agendaDay'
+                right: 'month'//'month,agendaWeek,agendaDay'
             },
-            defaultView: 'agendaDay',
+            defaultView: 'month',
             editable: true,
             allDaySlot: false,
             selectable: true,
@@ -29,12 +29,26 @@
 
 
             eventClick: function (calEvent, jsEvent, view) {
-                alert('You clicked on event id: ' + calEvent.id
-                    + "\nSpecial ID: " + calEvent.someKey
-                    + "\nAnd the title is: " + calEvent.title);
+                //alert('You clicked on event id: ' + calEvent.id
+                //    + "\nSpecial ID: " + calEvent.someKey
+                //    + "\nAnd the title is: " + calEvent.title);
+
+                alert("You want to delete the Set Time ?");
                 ShowEventPopupClose(calEvent, jsEvent, view);
 
             },
+
+            //dayRender: function (date, cell) {
+               
+            //    var today = new Date();
+            //    today.add
+            //    if (date.getDate() === today.getDate()) {
+            //        cell.css("background-color", "red");
+            //        $(cell).addClass('disabled');
+            //    }
+
+                     
+            //  },
 
 
             eventDrop: function (event, dayDelta, minuteDelta, allDay, revertFunc) {
@@ -71,14 +85,16 @@
             viewRender: function (view, element) {
                 if (!CalLoading) {
                     if (view.name == 'month') {
-                        alert("render month view");
+                       
+                        //alert("render month view");
                         $('#calendar').fullCalendar('removeEventSource', sourceFullView);
                         $('#calendar').fullCalendar('removeEvents');
                         $('#calendar').fullCalendar('addEventSource', sourceSummaryView);
-                        alert("end month view");
+                        // alert("end month view");
                     }
                     else {
-                        alert("render view not month");
+                      
+                        //alert("render view not month");
                         $('#calendar').fullCalendar('removeEventSource', sourceSummaryView);
                         $('#calendar').fullCalendar('removeEvents');
                         $('#calendar').fullCalendar('addEventSource', sourceFullView);
@@ -86,25 +102,27 @@
                 }
             }
 
+
+
         });
 
         CalLoading = false;
 
-        $('#btnInit').click(function () {
-            $.ajax({
-                type: 'POST',
-                url: "/Scheduling/Init",
-                success: function (response) {
-                    if (response == 'True') {
-                        $('#calendar').fullCalendar('refetchEvents');
-                        alert('Database populated! ');
-                    }
-                    else {
-                        alert('Error, could not populate database!');
-                    }
-                }
-            });
-        });
+        //$('#btnInit').click(function () {
+        //    $.ajax({
+        //        type: 'POST',
+        //        url: "/Scheduling/Init",
+        //        success: function (response) {
+        //            if (response == 'True') {
+        //                $('#calendar').fullCalendar('refetchEvents');
+        //                alert('Database populated! ');
+        //            }
+        //            else {
+        //                alert('Error, could not populate database!');
+        //            }
+        //        }
+        //    });
+        //});
 
         $('#btnPopupCancel').click(function () {
             ClearPopupFormValues();
@@ -120,10 +138,10 @@
             $('#popupEventForm').hide();
 
             var dataRow = {
-                'Title': $('#eventTitle').val(),
+                //'Title': $('#eventTitle').val(),
                 'NewEventDate': $('#eventDate').val(),
-                'NewEventTime': $('#eventTime').val(),
-                'NewEventDuration': $('#eventDuration').val(),
+                //'NewEventTime': $('#eventTime').val(),
+                //'NewEventDuration': $('#eventDuration').val(),
                 'NeweventStartTime': $('#eventStart').val(),
                 'NeweventEndTime': $('#eventEnd').val(),
                 'NewCurrentDate': $('#CurrentDate').val()
@@ -150,11 +168,11 @@
 
         $('#btnPopupDelete').click(function () {
             $('#popupEventFormClose').hide();
-            alert('y want to delete');
+            alert('YOU want to delete');
 
             var dataRow = {
                 'NewDeleteEventId': $('#eventID1').val(),
-              
+
             }
 
             $.ajax({
@@ -279,27 +297,27 @@
                     </div>
 
                     <div id="popupEventForm" class="modal hide" style="display: none;">
-                        <div class="modal-header"><h3>Set Scheduling</h3></div>                     
+                        <div class="modal-header"><h3>Set Scheduling</h3></div>
                         <div class="modal-body">
                             <form id="EventForm" class="well">
                                 <input type="hidden" id="eventID">
-                                <label>Event title</label>
-                                <input type="text" id="eventTitle" placeholder="Title here"><br />
+                                @*<label>Event title</label>
+                                    <input type="text" id="eventTitle" placeholder="Title here"><br />*@
                                 <label>Scheduled date</label>
                                 <input type="text" id="eventDate" disabled><br />
-                                <label>Scheduled time</label>
-                                <input type="text" id="eventTime"><br />
-                                <label>Appointment length (minutes)</label>
-                                <input type="text" id="eventDuration" placeholder="15"><br />
-                                <label>Today's Date</label>
-                                <input type="text" id="CurrentDate" disabled>                             
+                                @*<label>Scheduled time</label>
+                                    <input type="text" id="eventTime"><br />*@
+                                @*<label>Appointment length (minutes)</label>
+                                    <input type="text" id="eventDuration" placeholder="15"><br />*@
+                                @*<label>Today's Date</label>*@
+                                <input type="hidden" id="CurrentDate" disabled>
                                 <br />
                                 <div class=" input-append bootstrap-timepicker-component">
-                                    <input type="text" value="" class="m-wrap span9 timepicker-default" placeholder="Start Time" id="eventStart" />
+                                    <input type="text" value="" class="span9 timepicker-default" placeholder="Start Time" id="eventStart" style="height:34px;" readonly />
                                     <span class="add-on"><i class="icon-time"></i></span>
                                 </div>
                                 <div class=" input-append bootstrap-timepicker-component">
-                                    <input type="text" value="" class="m-wrap span9 timepicker-default " placeholder="End Time" id="eventEnd" />
+                                    <input type="text" value="" class="span9 timepicker-default " placeholder="End Time" id="eventEnd" style="height:34px;" readonly />
                                     <span class="add-on"><i class="icon-time"></i></span>
                                 </div>
                                 @*<div class="input_fields_wrap" style="display:initial;">

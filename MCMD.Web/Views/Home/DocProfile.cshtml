@@ -1,18 +1,22 @@
-﻿@{
+﻿@model MCMD.ViewModel.doctor.DocProfileViewModel
+@{
     ViewBag.Title = "DocProfile";
     Layout = "~/Views/Shared/_WebLayout.cshtml";
 }
 
-@Scripts.Render("~/Content/Web_Theme/assets/plugins/fancybox/source/jquery.fancybox.pack.js")
-@Scripts.Render("~/Content/Web_Theme/assets/plugins/bxslider/jquery.bxslider.js")
-
-@Styles.Render("~/Content/Web_Theme/assets/plugins/fancybox/source/jquery.fancybox.css")
-
 @Styles.Render("~/Content/template_content/assets/css/pages/profile.css")
 @Styles.Render("~/Content/template_content/assets/css/style.css")
-@Styles.Render("~/Content/template_content/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.css")
-@Styles.Render("~/Content/template_content/assets/plugins/chosen-bootstrap/chosen/chosen.css")
-@Styles.Render("~/Content/template_content/assets/plugins/uniform/css/uniform.default.css")
+@*@Styles.Render("~/Content/template_content/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.css")
+    @Styles.Render("~/Content/template_content/assets/plugins/chosen-bootstrap/chosen/chosen.css")*@
+@*@Styles.Render("~/Content/template_content/assets/plugins/uniform/css/uniform.default.css")*@
+
+
+@Styles.Render("~/Content/template_content/assets/plugins/fancybox/source/jquery.fancybox.css")
+@Scripts.Render("~/Content/template_content/assets/plugins/fancybox/source/jquery.fancybox.js")
+@Scripts.Render("~/Content/template_content/assets/plugins/fancybox/source/jquery.fancybox.pack.js")
+
+@Styles.Render("~/Content/template_content/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css")
+@Styles.Render("~/Content/template_content/assets/plugins/fullcalendar/fullcalendar/fullcalendar.print.css")
 
 <style type="text/css">
     #myToolTip {
@@ -20,6 +24,95 @@
         margin-bottom: 10px;
         margin-right: 25px;
         margin-left: 25px;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $('#calendar').fullCalendar({
+
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: ''//'month,agendaWeek,agendaDay'
+            },
+            defaultView: 'basicWeek',
+            editable: true,
+            allDaySlot: false,
+            selectable: true,
+            Duration: false,
+
+
+            // events: '/Scheduling/GetDiaryEvents/',
+
+        });
+
+
+        $('.fancybox').fancybox();
+
+        $('.fancybox-buttons').fancybox({
+            openEffect: 'none',
+            closeEffect: 'none',
+
+            prevEffect: 'none',
+            nextEffect: 'none',
+
+            closeBtn: false,
+
+            helpers: {
+                title: {
+                    type: 'inside'
+                },
+                buttons: {}
+            },
+
+            afterLoad: function () {
+                this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+            }
+        });
+
+        $('.fancybox-thumbs').fancybox({
+            prevEffect: 'none',
+            nextEffect: 'none',
+
+            closeBtn: false,
+            arrows: false,
+            nextClick: true,
+
+            helpers: {
+                thumbs: {
+                    width: 50,
+                    height: 50
+                }
+            }
+        });
+
+        $('.fancybox-media')
+            .attr('rel', 'media-gallery')
+            .fancybox({
+                openEffect: 'none',
+                closeEffect: 'none',
+                prevEffect: 'none',
+                nextEffect: 'none',
+
+                arrows: false,
+                helpers: {
+                    media: {},
+                    buttons: {}
+                }
+            });
+
+
+    });
+
+
+
+</script>
+<style type="text/css">
+    .fancybox-custom .fancybox-skin {
+        box-shadow: 0 0 50px #222;
     }
 </style>
 
@@ -95,34 +188,101 @@
 
                     <div class="span12">
                         <ul class="unstyled profile-nav span3" style="list-style-type:none;">
-                            <li><img src="~/Content/Web_Theme/assets/img/people/img3-large.jpg" alt="" style="border:2px solid; border-color:#d12610; border-radius:6px;height:191.328px;width:191.328px;" /></li>
+                            @if(! string.IsNullOrEmpty(Model.FolderFilePath))
+                            { 
+                            <li><img src="@Url.Content(@Model.FolderFilePath)" alt="" style="border:2px solid; border-color:#d12610; border-radius:6px;height:191.328px;width:191.328px;" /></li>
+                            }
+                            else
+                            {
 
+                                <li><img src="~/Content/Img/default_doctor1.jpg" alt="" style="border:2px solid; border-color:#d12610; border-radius:6px;height:191.328px;width:191.328px;" /></li>
+                            }
                         </ul>
                         <div class="span9">
                             <div class="span12 portfolio-text portfolio-block" style="background-color:#555555; border:4px solid; border-color:#aaa; padding-left:10px;">
                                 <div class="portfolio-text-info">
-                                    <h4 style="font-family:'PT Sans'; color:#e9811a; font-size:22px;">Dr. Sandhya Balasubramanyan Zambre</h4>
+                                    <h4 style="font-family:'PT Sans'; color:#e9811a; font-size:22px;">@*Dr. Sandhya Balasubramanyan Zambre*@ Dr.&nbsp;@Html.DisplayFor(e => e.FirstName)&nbsp;@Html.DisplayFor(e => e.MiddleName)&nbsp;@Html.DisplayFor(e => e.LastName) </h4>
 
                                     <ul style="list-style-type:none;margin-left:0px;">
                                         <li style="font-family:'Open Sans'; color:white; font-size:14px;">
-                                            MS - General Surgery , DNB - Gastroenterology , FRCS , MBBS
+                                            @Html.DisplayFor(e => e.Qualification) @*MS - General Surgery , DNB - Gastroenterology , FRCS , MBBS*@
                                         </li>
                                         <li style="font-family:'Open Sans'; color:#B5B5B5; font-size:13px;">
-                                            Surgeon , 14 Years Experience
+                                            @Html.DisplayFor(e => e.SpecialityName),&nbsp;@Html.DisplayFor(e => e.AboutExperience) @*Surgeon , 14 Years Experience*@
                                         </li>
-
                                         <li><i class="icon-map-marker" style="font-size:18px; color:#ff8503;float:left;"></i> </li>
                                         <li style="font-family:'Open Sans'; color:white; font-size:14px; padding-left:24px;">
-                                            #C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune #C1/101,
+                                            @Html.DisplayFor(e => e.ClinicAddress)@*#C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune #C1/101,*@
                                         </li>
                                         <br />
-
                                         <li style="font-family:'Open Sans'; color:white;">
-                                            &nbsp;<i class=" icon-time" style="color:#e9811a;"></i>&nbsp; MON-SAT
+                                            <i class=" icon-time" style="font-size:18px; color:#e9811a;float:left;"></i>&nbsp;
+                                            <a class="btn red-stripe" href="#form_modal10" data-toggle="modal" style="color:#d12610; padding-bottom:3px; padding-top:3px;">View Clinic Time</a>
                                         </li>
-                                        <li style="padding-left:22px; color:#fff;">
-                                            6:00 PM - 8:00 PM &nbsp; 6:00 PM - 8:00 PM
-                                        </li>
+                                        <div id="form_modal10" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel10" aria-hidden="true" style="display: none;">
+                                            <div class="portlet box red" style="margin-bottom:0px;">
+                                                <div class="portlet-title">
+                                                    <div class="caption"><i class="icon-user-md" style="font-size:20px; margin-top:0px;"></i>@Html.DisplayFor(e => e.ClinicName)</div>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="opacity:initial;"></button>
+                                                </div>
+                                                <div class="portlet-body form" style="display: block; padding-top: 10px;">
+
+                                                    <form action="#" class="form-horizontal">
+                                                        <table class="table table-striped table-bordered">
+
+                                                            <tr>
+                                                                <td colspan="4" style="text-align:center;"> Clinic Time</td>
+
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Monday</td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimefs1) &nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimefs1) </td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimess1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimess1) </td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimets1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimets1) </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Tuesday</td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimefs2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs2) </td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimess2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess2) </td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimets2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets2) </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Wednesday</td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimefs3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs3) </td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimess3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess3) </td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimets3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets3) </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Thursday</td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimefs4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs4) </td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimess4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess4) </td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimets4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets4) </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Friday</td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimefs5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs5) </td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimess5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess5) </td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimets5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets5) </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Saturday</td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimefs6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs6) </td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimess6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess6) </td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimets6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets6) </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Sunday</td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimefs7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs7) </td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimess7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess7) </td>
+                                                                <td>@Html.DisplayFor(e => e.StartTimets7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets7) </td>
+                                                            </tr>
+
+                                                        </table>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
@@ -131,12 +291,12 @@
                     </div>
                     <div>
                         <div class="span3 myToolTip">
-                            <ul style="list-style-type:none; margin-left:5px;">
+                            <ul style="list-style-type:none; margin-left:-1px;">
                                 <li>
-                                    <a href="#" class="btn icn-only" style="height:30px; width:43px; color:#fff; background-color:#58b5fb;" id="tooltip1" title="Reviews"><i class="icon-envelope" style="display:-webkit-box;"></i></a>
-                                    <a href="#" class="btn icn-only" style="height:30px; width:43px; color:#fff; background-color:#f48bb3;" id="tooltip2" title="Likes"><i class="icon-thumbs-up" style="display:-webkit-box;"></i></a>
-                                    <a href="#" class="btn icn-only" style="height:30px; width:43px; color:#fff; background-color:#8bd04d;" id="tooltip3" title="Feedback"><i class="icon-edit" style="display:-webkit-box;"></i></a>
-                                    <a href="#" class="btn icn-only" style="height:30px; width:43px; color:#fff; background-color:#da6368;" id="tooltip4" title="Likes"><i class="icon-remove" style="display:-webkit-box;"></i></a>
+                                    <a href="#" class="btn icn-only" style="color:#fff; background-color:#58b5fb;" id="tooltip1" title="Reviews"><i class="icon-envelope" style="display:-webkit-box;"></i></a>
+                                    <a href="#" class="btn icn-only" style="color:#fff; background-color:#f48bb3;" id="tooltip2" title="Likes"><i class="icon-thumbs-up" style="display:-webkit-box;"></i></a>
+                                    <a href="#" class="btn icn-only" style="color:#fff; background-color:#8bd04d;" id="tooltip3" title="Feedback"><i class="icon-edit" style="display:-webkit-box;"></i></a>
+                                    <a href="#" class="btn icn-only" style="color:#fff; background-color:#da6368;" id="tooltip4" title="Likes"><i class="icon-remove" style="display:-webkit-box;"></i></a>
 
                                 </li>
                             </ul>
@@ -147,15 +307,15 @@
                                     <div class="accordion-group">
                                         <div class="accordion-heading" style="background:#08c;">
                                             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse_1" style="padding-top:4px; padding-bottom:4px; color:#fff; text-align:center;">
-
                                                 BOOK APPOINTMENT
                                             </a>
                                         </div>
                                         <div id="collapse_1" class="accordion-body collapse ">
                                             <div class="accordion-inner">
-                                                <p>
-                                                    <a class="btn blue" href="#form_modal10" data-toggle="modal">Book</a>
-                                                </p>
+                                                @*<p>
+                                                <a class="btn blue" href="#form_modal10" data-toggle="modal">Book</a>
+                                                </p>*@
+                                                <div id='calendar'></div>
                                                 <div id="form_modal10" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel10" aria-hidden="true" style="display: none;">
                                                     <div class="portlet box red" style="margin-bottom:0px;">
                                                         <div class="portlet-title">
@@ -184,7 +344,7 @@
                                                             <form action="#" class="form-horizontal">
 
                                                                 <div class="control-group" style="margin-bottom:0px;">
-                                                                    <label class="control-label">Patient/Visitor Name*</label>
+                                                                    <label class="control-label">Patient Name*</label>
                                                                     <div class="controls">
                                                                         <input type="text" placeholder="large" class="m-wrap large">
                                                                         <span class="help-inline">Some hint here</span>
@@ -218,7 +378,6 @@
                                                             </form>
                                                         </div>
                                                     </div>
-
                                                 </div>
 
                                             </div>
@@ -232,7 +391,7 @@
                     <div class="span12" style="margin-left:0px; padding-top:30px">
                         <div class="tabbable tabbable-custom tabbable-custom-profile ">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab_1_11" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px; "><b>About Me</b></a></li>
+                                <li class="active" id="docproli"><a href="#tab_1_11" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px; "><b>About Me</b></a></li>
                                 <li><a href="#tab_1_22" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px; "><b>About Clinic</b></a></li>
                                 <li><a href="#tab_1_33" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px; "><b>Services</b></a></li>
                                 <li><a href="#tab_1_44" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px;"><b>Map</b></a></li>
@@ -240,7 +399,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_1_11">
                                     <p style="font-family:inherit; font-size:14px;">
-                                        Dr. Tamhanes Centre For Advanced Dentistry is a Dental clinic in Chinchwad, Pune. The clinic is visited by dentists like Dr. Vijaykumar Tamhane, Dr. Omprakash Jhuria and Dr Garud. The timings of Dr. Tamhanes Centre For Advanced Dentistry are: Mon to Sat: 9:00am-10:00pm. Some of the services provided by the clinic are: Straightening Teeth (Conventional Braces), Conservative Dentistry, Dental Ceramics, Crowns And Bridges and Braces. Click on 'map' to find directions to reach Dr. Tamhanes Centre For Advanced Dentistry.
+                                        @Html.DisplayFor(e => e.AboutMe)@*Dr. Tamhanes Centre For Advanced Dentistry is a Dental clinic in Chinchwad, Pune. The clinic is visited by dentists like Dr. Vijaykumar Tamhane, Dr. Omprakash Jhuria and Dr Garud. The timings of Dr. Tamhanes Centre For Advanced Dentistry are: Mon to Sat: 9:00am-10:00pm. Some of the services provided by the clinic are: Straightening Teeth (Conventional Braces), Conservative Dentistry, Dental Ceramics, Crowns And Bridges and Braces. Click on 'map' to find directions to reach Dr. Tamhanes Centre For Advanced Dentistry.*@
                                     </p>
                                     <hr style="margin-top:20px; margin-bottom:5px; border-top-color:#d12610;">
                                     <br />
@@ -253,13 +412,13 @@
                                                 </span>
                                                 <ul style="list-style-type:none;">
                                                     <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Dentist<br />
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Endodontist<br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>@Html.DisplayFor(e => e.SpecialityName)<br />
+                                                        @*<i class="icon-caret-right" style="color:#1f317f;"></i>Endodontist<br />
                                                         <i class="icon-caret-right" style="color:#1f317f;"></i>Orthodontist<br />
                                                         <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
                                                         <i class="icon-caret-right" style="color:#1f317f;"></i>Periodontist<br />
                                                         <i class="icon-caret-right" style="color:#1f317f;"></i>Pediatric Dentist<br />
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Prosthodontist<br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Prosthodontist<br />*@
                                                     </li>
                                                 </ul>
                                             </blockquote><br />
@@ -269,8 +428,8 @@
                                                 </span>
                                                 <ul style="list-style-type:none;">
                                                     <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>BDS - GDC Mumbai, 1998<br />
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>International College of Continuing Dental Education (FICCDE) - Frankfurt University, Germany, 2007<br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>@Html.DisplayFor(e => e.Qualification)<br />
+                                                        @*<i class="icon-caret-right" style="color:#1f317f;"></i>International College of Continuing Dental Education (FICCDE) - Frankfurt University, Germany, 2007<br />*@
                                                     </li>
                                                 </ul>
                                             </blockquote><br />
@@ -280,7 +439,7 @@
                                                 </span>
                                                 <ul style="list-style-type:none;">
                                                     <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>1999 - Present Owner at Dr. Tamhanes Centre For Advanced Dentistry<br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>@Html.DisplayFor(e => e.AboutExperience)<br />
                                                     </li>
                                                 </ul>
                                             </blockquote>
@@ -292,30 +451,10 @@
                                                 </span>
                                                 <ul style="list-style-type:none;">
                                                     <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Pesident Of Medijain Medical Association - 2008<br />
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Convenor Pune Orthodontic Study Group - 2014<br />
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Professor - 2014<br />
-                                                    </li>
-                                                </ul>
-                                            </blockquote><br />
-                                            <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
-                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
-                                                    <b>Affiliation</b>
-                                                </span>
-                                                <ul style="list-style-type:none;">
-                                                    <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>12199-A karnataka state homeopathic council-2002<br />
-                                                    </li>
-                                                </ul>
-                                            </blockquote><br />
-                                            <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
-                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
-                                                    <b>Registration</b>
-                                                </span>
-                                                <ul style="list-style-type:none;">
-                                                    <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>A.7198 Maharashtra State Dental Council<br />
-
+                                                        @for (int i = 0; i < Model.getallawards.Count; i++)
+                                                        {
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i> @Model.getallawards[i].awards <br />
+                                                        }
                                                     </li>
                                                 </ul>
                                             </blockquote><br />
@@ -325,11 +464,41 @@
                                                 </span>
                                                 <ul style="list-style-type:none;">
                                                     <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Smile Elements Dental<br />
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Vibha Dental Care Centre<br />
+                                                        @for (int i = 0; i < Model.getallaffiliations.Count; i++)
+                                                        {
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i> @Model.getallaffiliations[i].affiliations<br />
+                                                        }
+                                                        <br />
                                                     </li>
                                                 </ul>
-                                            </blockquote>
+                                            </blockquote><br />
+                                            <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b>Registration</b>
+                                                </span>
+                                                <ul style="list-style-type:none;">
+                                                    <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
+
+                                                        @for (int i = 0; i < Model.getallregistrations.Count; i++)
+                                                        {
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>@Model.getallregistrations[i].registrations<br />
+                                                        }
+                                                        <br />
+
+                                                    </li>
+                                                </ul>
+                                            </blockquote><br />
+                                            @*<blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
+                                            <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                            <b>Clinic/Hospital Affiliation</b>
+                                            </span>
+                                            <ul style="list-style-type:none;">
+                                            <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
+                                            <i class="icon-caret-right" style="color:#1f317f;"></i>Smile Elements Dental<br />
+                                            <i class="icon-caret-right" style="color:#1f317f;"></i>Vibha Dental Care Centre<br />
+                                            </li>
+                                            </ul>
+                                            </blockquote>*@
                                         </li>
                                     </ul>
 
@@ -340,7 +509,7 @@
 
                                     <div class="scroller" data-height="290px" data-always-visible="1" data-rail-visible1="1">
                                         <p style="font-family:inherit; font-size:14px; color:#6f6f6f;">
-                                            Dr.Neha Kasar is a dentiest in Dr.Mathesul dental orthodontic clinic in pune and has an experienced of 9 years in this field.
+                                            @Html.DisplayFor(e => e.AboutClinic)  @*Dr.Neha Kasar is a dentiest in Dr.Mathesul dental orthodontic clinic in pune and has an experienced of 9 years in this field.*@
                                         </p>
                                         <hr style="margin-top:20px; margin-bottom:5px; border-top-color:#e9811a;">
                                         <br />
@@ -349,10 +518,10 @@
                                                 <i class="icon-map-marker" style="color:#ff8503; font-size:18px;"></i>
 
                                                 <span style="font-family:inherit; font-size:15px; color:#1f317f;">
-                                                    <b>Dr Mathesul Invisible Cosmetic Dental Clinic</b>
+                                                    <b>@Html.DisplayFor(e => e.ClinicName)@*Dr Mathesul Invisible Cosmetic Dental Clinic*@</b>
                                                 </span>
 
-                                                <p style="padding-left:24px;">#F6, First Floor, Gera 77, Commercial Building, Above Chitale Bandhu Mithaiwale, Kalyani Nagar Road, Pune, Pune</p>
+                                                <p style="padding-left:24px;">@Html.DisplayFor(e => e.ClinicAddress)@*#F6, First Floor, Gera 77, Commercial Building, Above Chitale Bandhu Mithaiwale, Kalyani Nagar Road, Pune, Pune*@</p>
 
                                                 <div class="testimonials-v1">
                                                     <div id="myCarousel" class="carousel slide">
@@ -362,22 +531,22 @@
                                                             <div class="item active">
                                                                 <div class="blog-photo-stream image-link ">
                                                                     <ul class="unstyled" style="padding-left:24px;">
-
-                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img1-small.jpg" alt=""></a></li>
-                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img2-small.jpg" alt=""></a></li>
-                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img3-small.jpg" alt=""></a></li>
-                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img4-small.jpg" alt=""></a></li>
-
+                                                                        @for (int i = 0; i < 4; i++)
+                                                                        {
+                                                                        <li><a class="fancybox" href="@Url.Content(@Model.getmedias[i].FolderFilePath)" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="@Url.Content(@Model.getmedias[i].FolderFilePath)" alt="" /></a></li>
+                                                                        @*<li><img src="@Url.Content(@Model.getmedias[i].FolderFilePath)" alt=""></li>*@
+                                                                        }
                                                                     </ul>
                                                                 </div>
                                                             </div>
                                                             <div class="item">
                                                                 <div class="blog-photo-stream">
                                                                     <ul class="unstyled" style="padding-left:24px;">
-                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img1-small.jpg" alt=""></a></li>
-                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img2-small.jpg" alt=""></a></li>
-                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img3-small.jpg" alt=""></a></li>
-                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img4-small.jpg" alt=""></a></li>
+                                                                        @for (int i = 4; i < Model.getmedias.Count; i++)
+                                                                        {
+                                                                        <li><a class="fancybox" href="@Url.Content(@Model.getmedias[i].FolderFilePath)" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="@Url.Content(@Model.getmedias[i].FolderFilePath)" alt="" /></a></li>
+                                                                        @*<li><img src="@Url.Content(@Model.getmedias[i].FolderFilePath)" alt=""></li>*@
+                                                                        }
 
                                                                     </ul>
                                                                 </div>
@@ -391,18 +560,80 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="span3">
-                                                <i class="icon-time" style="color:#ff8503; font-size:18px;"></i>
+                                            <li class="span3" style="font-family:'Open Sans'; color:white;">
+                                                <i class=" icon-time" style="font-size:18px; color:#e9811a;float:left;"></i>&nbsp;
                                                 <span style="font-family:inherit; font-size:15px; color:#1f317f;">
-                                                    <b>Mon - Sat</b>
+                                                    <b>Clinic Time</b>
+                                                </span> <br /><br /><a class="btn red-stripe" href="#form_modal10" data-toggle="modal" style="color:#d12610; margin-left:25px; padding-bottom:3px; padding-top:3px;">Click Here...</a>
 
-                                                </span>
-                                                <p style="padding-left:24px;">11:00 AM - 1:00 PM <br />6:00 PM - 8:00 PM </p>
+                                                <div id="form_modal10" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel10" aria-hidden="true" style="display: none;">
+                                                    <div class="portlet box red" style="margin-bottom:0px;">
+                                                        <div class="portlet-title">
+                                                            <div class="caption"><i class="icon-reorder"></i>@Html.DisplayFor(e => e.ClinicName)</div>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="opacity:initial;"></button>
+                                                        </div>
+                                                        <div class="portlet-body form" style="display: block; padding-top: 10px;">
+
+                                                            <form action="#" class="form-horizontal">
+                                                                <table class="table table-striped table-bordered">
+
+                                                                    <tr>
+                                                                        <td colspan="4" style="text-align:center;"> Clinic Time</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>Monday</td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimefs1) &nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimefs1) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimess1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimess1) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimets1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimets1) </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Tuesday</td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimefs2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs2) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimess2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess2) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimets2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets2) </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Wednesday</td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimefs3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs3) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimess3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess3) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimets3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets3) </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Thursday</td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimefs4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs4) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimess4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess4) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimets4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets4) </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Friday</td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimefs5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs5) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimess5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess5) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimets5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets5) </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Saturday</td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimefs6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs6) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimess6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess6) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimets6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets6) </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Sunday</td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimefs7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs7) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimess7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess7) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimets7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets7) </td>
+                                                                    </tr>
+
+                                                                </table>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="span3">
                                                 <i class="icon-money" style="color:#ff8503; font-size:18px;"></i>
                                                 <span style="font-family:inherit; font-size:15px; color:#1f317f;">
-                                                    <b>INR 200 </b>
+                                                    <b>INR&nbsp;@Html.DisplayFor(e => e.ClinicFees) @*INR 200*@ </b>
                                                 </span>
 
 
@@ -423,30 +654,38 @@
                                         </h4>
                                         <ul class="thumbnails">
                                             <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
-                                            </li>
-                                            <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
-                                            </li>
-                                            <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                @for (int i = 0; i < Model.getservices.Count; i++)
+                                                {
+                                                <i class="icon-caret-right" style="color:#1f317f;"></i> @Model.getservices[i].services <br />
+                                                }
                                             </li>
                                         </ul>
+                                        @*<ul class="thumbnails">
+                                        <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                        </li>
+                                        <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                        </li>
+                                        <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                        </li>
+                                        </ul>*@
 
                                     </div>
                                 </div>
@@ -473,4 +712,3 @@
     </div>
     <!-- END CONTAINER -->
 </div>
-

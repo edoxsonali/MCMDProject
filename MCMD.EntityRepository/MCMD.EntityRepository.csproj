@@ -69,6 +69,7 @@
     <Compile Include="DoctorRepository\DocRegister.cs" />
     <Compile Include="PatientRepository\PatientsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebRepository\DocProfileRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MCMD.EntityModel\MCMD.EntityModel.csproj">

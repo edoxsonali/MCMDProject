@@ -72,7 +72,6 @@ D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\bin\Release\MCMD.Entity
 D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\bin\Release\MCMD.ViewModel.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\bin\Release\EntityFramework.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\bin\Release\SimpleCrypto.dll
-D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\bin\Release\MCMD.Common.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\bin\Release\MCMD.EntityRepository.pdb
 D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\bin\Release\MCMD.IRepository.pdb
 D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\bin\Release\Moq.xml
@@ -80,7 +79,8 @@ D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\bin\Release\Ninject.xml
 D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\bin\Release\MCMD.EntityModel.pdb
 D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\bin\Release\MCMD.ViewModel.pdb
 D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\bin\Release\EntityFramework.xml
-D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\bin\Release\MCMD.Common.pdb
 D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\obj\Release\MCMD.DependencyInjection.csprojResolveAssemblyReference.cache
 D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\obj\Release\MCMD.DependencyResolution.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\obj\Release\MCMD.DependencyResolution.pdb
+D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\bin\Release\MCMD.Common.dll
+D:\DoxeDox_Project\MCMDProject\MCMD.DependencyResolution\bin\Release\MCMD.Common.pdb

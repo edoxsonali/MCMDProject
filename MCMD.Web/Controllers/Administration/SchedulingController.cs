@@ -30,9 +30,9 @@ namespace MCMD.Web.Controllers.Administration
         }
 
 
-        public bool SaveEvent(string Title, string NewEventDate, string NewEventTime, string NewEventDuration, string NeweventStartTime, string NeweventEndTime, string NewCurrentDate)
+        public bool SaveEvent(string NewEventDate,string NeweventStartTime, string NeweventEndTime, string NewCurrentDate)
         {
-            return DiaryEvent.CreateNewEvent(Title, NewEventDate, NewEventTime, NewEventDuration, NeweventStartTime, NeweventEndTime, NewCurrentDate);
+            return DiaryEvent.CreateNewEvent(NewEventDate, NeweventStartTime, NeweventEndTime, NewCurrentDate);
         }
 
         public JsonResult GetDiarySummary(double start, double end)
@@ -45,7 +45,7 @@ namespace MCMD.Web.Controllers.Administration
                                 title = e.Title,
                                 start = e.StartDateString,
                                 end = e.EndDateString,
-                                someKey = e.SomeImportantKeyID,
+                              //  someKey = e.SomeImportantKeyID,
                                 allDay = false
                             };
             var rows = eventList.ToArray();
@@ -64,7 +64,7 @@ namespace MCMD.Web.Controllers.Administration
                                // end = e.EndDateString,
                                 color = e.StatusColor,
                                 className = e.ClassName,
-                                someKey = e.SomeImportantKeyID,
+                               // someKey = e.SomeImportantKeyID,
                                 statue=e.StatusString,
                                 allDay = false
                             };

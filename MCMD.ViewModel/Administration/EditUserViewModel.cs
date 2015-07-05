@@ -23,11 +23,11 @@ namespace MCMD.ViewModel.Administration
         [Required(ErrorMessage = "User Role is required.")]
         public int RoleID { get; set; }
 
-        [DisplayName("UserName")]
-        [RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "UserName is not valid.")]
-        [Required(ErrorMessage = "UserName is required.")]
-        [StringLength(100, ErrorMessage = "UserName cannot be longer than 100 characters.")]
-        public string UserName { get; set; }
+        //[DisplayName("UserName")]
+        //[RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "UserName is not valid.")]
+        //[Required(ErrorMessage = "UserName is required.")]
+        //[StringLength(100, ErrorMessage = "UserName cannot be longer than 100 characters.")]
+        //public string UserName { get; set; }
 
         [DisplayName("First Name")]
         [RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "First Name is not valid.")]

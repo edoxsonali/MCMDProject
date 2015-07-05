@@ -1,4 +1,5 @@
-﻿@{
+﻿@model MCMD.ViewModel.doctor.ClinicProfileViewModel
+@{
     ViewBag.Title = "ClinicProfile";
     Layout = "~/Views/Shared/_WebLayout.cshtml";
 }
@@ -16,7 +17,80 @@
 
 @Styles.Render("~/Content/Web_Theme/assets/css/pages/portfolio.css")
 
+<script type="text/javascript">
+    $(document).ready(function () {
+       
+        $('.fancybox').fancybox();
 
+        $('.fancybox-buttons').fancybox({
+            openEffect: 'none',
+            closeEffect: 'none',
+
+            prevEffect: 'none',
+            nextEffect: 'none',
+
+            closeBtn: false,
+
+            helpers: {
+                title: {
+                    type: 'inside'
+                },
+                buttons: {}
+            },
+
+            afterLoad: function () {
+                this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+            }
+        });
+
+
+        /*
+         *  Thumbnail helper. Disable animations, hide close button, arrows and slide to next gallery item if clicked
+         */
+
+        $('.fancybox-thumbs').fancybox({
+            prevEffect: 'none',
+            nextEffect: 'none',
+
+            closeBtn: false,
+            arrows: false,
+            nextClick: true,
+
+            helpers: {
+                thumbs: {
+                    width: 50,
+                    height: 50
+                }
+            }
+        });
+
+        /*
+         *  Media helper. Group items, disable animations, hide arrows, enable media and button helpers.
+        */
+        $('.fancybox-media')
+            .attr('rel', 'media-gallery')
+            .fancybox({
+                openEffect: 'none',
+                closeEffect: 'none',
+                prevEffect: 'none',
+                nextEffect: 'none',
+
+                arrows: false,
+                helpers: {
+                    media: {},
+                    buttons: {}
+                }
+            });
+
+    
+
+    });
+</script>
+<style type="text/css">
+    .fancybox-custom .fancybox-skin {
+        box-shadow: 0 0 50px #222;
+    }
+</style>
 
 
 <!-- BEGIN CONTAINER -->
@@ -90,22 +164,32 @@
 
                     <div class="span12">
                         <ul class="unstyled profile-nav span3">
-                            <li><img src="~/Content/Web_Theme/assets/img/photos/IMG_20150307_101341.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:6px;height:191.328px;width:191.328px;" /> @*<a href="#" class="profile-edit">edit</a>*@</li>
+                            @if(! string.IsNullOrEmpty(Model.FolderFilePath))
+                            { 
+                            <li><img src="@Url.Content(@Model.FolderFilePath)" alt="" style="border:2px solid; border-color:#d12610; border-radius:6px;height:191.328px;width:191.328px;" /></li>
+                            }
+                            else
+                            { 
+                                <li><img src="~/Content/Img/Defult_clinic1.jpg" alt="" style="border:2px solid; border-color:#d12610; border-radius:6px;height:191.328px;width:191.328px;" /></li>
+                            }
                         </ul>
                         <div class="span9">
                             <div class="span12 portfolio-text portfolio-block" style="background-color:#555555; border:4px solid; border-color:#aaa; padding-left:10px;">
                                 <div class="portfolio-text-info">
-                                    <h4 style="font-family:'PT Sans'; color:#e9811a; font-size:22px;">Fortis Hospital - Bannerghatta Road</h4>
+                                    <h4 style="font-family:'PT Sans'; color:#e9811a; font-size:22px;"> @Html.DisplayFor(e => e.ClinicName) @*Fortis Hospital - Bannerghatta Road*@</h4>
 
                                     <ul style="list-style-type:none;margin-left:0px;">
                                         <li style="font-family:'Open Sans'; color:white; font-size:14px;">
-                                            Cardiology Hospital
+                                            @Html.DisplayFor(e => e.SpecialityName) Clinic @*Cardiology Hospital*@
                                         </li>
-
                                         <br />
+                                        <li style="font-family:'Open Sans'; color:white; font-size:14px;">
+                                            <img src="~/Content/Img/Phone1.png" style="margin-right:0px;" />@Html.DisplayFor(e => e.ClinicPhoneNo)
+                                        </li>
                                         <li><i class="icon-map-marker" style="font-size:18px; color:#ff8503;float:left;"></i> </li>
                                         <li style="font-family:'Open Sans'; color:white; font-size:14px; padding-left:24px;">
-                                            #C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune #C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune
+                                            @Html.DisplayFor(e => e.ClinicAddress)
+                                            @*#C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune #C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune*@
                                         </li>
                                     </ul>
                                 </div>
@@ -114,12 +198,12 @@
                         <!--end span9-->
                     </div>
                     <div class="span3 myToolTip" style="margin-left:-1px;">
-                        <ul style="list-style-type:none; margin-left:5px;">
+                        <ul style="list-style-type:none; margin-left:-1px;">
                             <li>
-                                <a href="#" class="btn icn-only" style="height:30px; width:43px;  color:#fff; background-color:#58b5fb;" id="tooltip1" title="Reviews"><i class="icon-envelope" style="display:-webkit-box;"></i></a>
-                                <a href="#" class="btn icn-only" style="height:30px; width:43px;  color:#fff; background-color:#f48bb3;" id="tooltip2" title="Likes"><i class="icon-thumbs-up" style="display:-webkit-box;"></i></a>
-                                <a href="#" class="btn icn-only" style="height:30px; width:43px;  color:#fff; background-color:#8bd04d;" id="tooltip3" title="Feedback"><i class="icon-edit" style="display:-webkit-box;"></i></a>
-                                <a href="#" class="btn icn-only" style="height:30px; width:43px;  color:#fff; background-color:#da6368;" id="tooltip4" title="Likes"><i class="icon-remove" style="display:-webkit-box;"></i></a>
+                                <a href="#" class="btn icn-only" style="color:#fff; background-color:#58b5fb;" id="tooltip1" title="Reviews"><i class="icon-envelope" style="display:-webkit-box;"></i></a>
+                                <a href="#" class="btn icn-only" style="color:#fff; background-color:#f48bb3;" id="tooltip2" title="Likes"><i class="icon-thumbs-up" style="display:-webkit-box;"></i></a>
+                                <a href="#" class="btn icn-only" style="color:#fff; background-color:#8bd04d;" id="tooltip3" title="Feedback"><i class="icon-edit" style="display:-webkit-box;"></i></a>
+                                <a href="#" class="btn icn-only" style="color:#fff; background-color:#da6368;" id="tooltip4" title="Likes"><i class="icon-remove" style="display:-webkit-box;"></i></a>
 
                             </li>
                         </ul>
@@ -134,7 +218,7 @@
                         <div class="tabbable tabbable-custom tabbable-custom-profile ">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#tab_1_11" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px;"><b>About Clinic</b></a></li>
-                                <li><a href="#tab_1_22" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px;"><b>Gallery</b></a></li>
+                                @*<li><a href="#tab_1_22" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px;"><b>Gallery</b></a></li>*@
                                 <li><a href="#tab_1_33" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px;"><b>Services</b></a></li>
                                 <li><a href="#tab_1_44" data-toggle="tab" style="font-family:'Open Sans'; font-size:14px;"><b>Map</b></a></li>
                             </ul>
@@ -142,22 +226,19 @@
                                 <div class="tab-pane active" id="tab_1_11">
                                     <div class="scroller" data-height="290px" data-always-visible="1" data-rail-visible1="1">
                                         <p style="font-family:inherit; font-size:14px; color:#555555; margin:10px;">
-                                            Fortis Hospital - Bannerghatta Road is a clinic in Bannerghatta Road, Bangalore. The clinic is visited by doctors like Dr. Arul Narayan, Dr. Hethal R Mehta and Dr. Joseph Xavier. The timings of Fortis Hospital - Bannerghatta Road are: Mon to Sun: 12:15am-11:45pm. Click on 'map' to find directions to reach Fortis Hospital - Bannerghatta Road.
+                                            @Html.DisplayFor(e => e.AboutClinic) @*Fortis Hospital - Bannerghatta Road is a clinic in Bannerghatta Road, Bangalore. The clinic is visited by doctors like Dr. Arul Narayan, Dr. Hethal R Mehta and Dr. Joseph Xavier. The timings of Fortis Hospital - Bannerghatta Road are: Mon to Sun: 12:15am-11:45pm. Click on 'map' to find directions to reach Fortis Hospital - Bannerghatta Road.*@
                                         </p>
                                         <hr style="margin-top:20px; margin-bottom:5px; border-top-color:#d12610;" />
-
-
-
                                         <br />
                                         <ul class="thumbnails">
                                             <li class="span6">
                                                 <i class="icon-map-marker" style="color:#ff8503; font-size:18px;"></i>
 
                                                 <span style="font-family:inherit; font-size:15px; color:#1f317f;">
-                                                    <b>Fortis Hospital - Bannerghatta Road</b>
+                                                    <b>@Html.DisplayFor(e => e.ClinicName)</b>
                                                 </span>
 
-                                                <p style="padding-left:24px; color:#555555;">#C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune #C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune</p>
+                                                <p style="padding-left:24px; color:#555555;">@Html.DisplayFor(e => e.ClinicAddress)</p>
 
                                                 <div class="testimonials-v1">
                                                     <div id="myCarousel" class="carousel slide">
@@ -167,15 +248,15 @@
                                                             <div class="item active">
                                                                 <div class="blog-photo-stream image-link">
                                                                     <ul class="unstyled" style="padding-left:24px;">
-                                                                        <li>
-                                                                            <a href="~/Content/Web_Theme/assets/img/people/img1-small.jpg" class="fancybox-button" title="Image Title" data-rel="fancybox-button">
-                                                                                <img src="~/Content/Web_Theme/assets/img/people/img1-small.jpg" alt="">
-                                                                            </a>
-                                                                        </li>
+                                                                        @for (int i = 0; i < 4; i++)
+                                                                        {
+                                                                            <li>
+                                                                                <a class="fancybox" href="@Url.Content(@Model.getclinicmedias[i].FolderFilePath)" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet">
+                                                                                    <img src="@Url.Content(@Model.getclinicmedias[i].FolderFilePath)" alt="" />
+                                                                                </a>
+                                                                            </li>
 
-                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img2-small.jpg" alt=""></a></li>
-                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img3-small.jpg" alt=""></a></li>
-                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img4-small.jpg" alt=""></a></li>
+                                                                        }
 
                                                                     </ul>
                                                                 </div>
@@ -183,10 +264,15 @@
                                                             <div class="item">
                                                                 <div class="blog-photo-stream">
                                                                     <ul class="unstyled" style="padding-left:24px;">
-                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img1-small.jpg" alt=""></a></li>
-                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img2-small.jpg" alt=""></a></li>
-                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img3-small.jpg" alt=""></a></li>
-                                                                        <li><a href="#"><img src="~/Content/Web_Theme/assets/img/people/img4-small.jpg" alt=""></a></li>
+                                                                        @for (int i = 4; i < Model.getclinicmedias.Count; i++)
+                                                                        {
+                                                                            <li>
+                                                                                <a class="fancybox" href="@Url.Content(@Model.getclinicmedias[i].FolderFilePath)" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet">
+                                                                                    <img src="@Url.Content(@Model.getclinicmedias[i].FolderFilePath)" alt="" />
+                                                                                </a>
+                                                                            </li>
+
+                                                                        }
 
                                                                     </ul>
                                                                 </div>
@@ -199,19 +285,84 @@
                                                 </div>
                                             </li>
                                             <li class="span3">
-                                                <i class="icon-time" style="color:#ff8503; font-size:18px;"></i>
+                                                <i class=" icon-time" style="font-size:18px; color:#e9811a;float:left;"></i>&nbsp;
                                                 <span style="font-family:inherit; font-size:15px; color:#1f317f;">
-                                                    <b>Mon - Sat</b>
+                                                    <b>Clinic Time</b>
+                                                </span> <br /><br /><a class="btn red-stripe" href="#form_modal10" data-toggle="modal" style="color:#d12610; margin-left:25px; padding-bottom:3px; padding-top:3px;">Click Here...</a>
 
-                                                </span>
-                                                <p style="padding-left:24px; color:#555555;">11:00 AM - 1:00 PM <br />6:00 PM - 8:00 PM </p>
+                                                <div id="form_modal10" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel10" aria-hidden="true" style="display: none;">
+                                                    <div class="portlet box red" style="margin-bottom:0px;">
+                                                        <div class="portlet-title">
+                                                            <div class="caption"><i class="icon-user-md" style="font-size:20px; margin-top:0px;"></i>@Html.DisplayFor(e => e.ClinicName)</div>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="opacity:initial;"></button>
+                                                        </div>
+                                                        <div class="portlet-body form" style="display: block; padding-top: 10px;">
+
+                                                            <form action="#" class="form-horizontal">
+                                                                <table class="table table-striped table-bordered">
+                                                                    <tr>
+                                                                        <td colspan="4" style="text-align:center;"> Clinic Time</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Monday</td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimefs1) &nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimefs1) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimess1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimess1) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimets1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimets1) </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Tuesday</td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimefs2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs2) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimess2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess2) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimets2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets2) </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Wednesday</td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimefs3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs3) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimess3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess3) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimets3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets3) </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Thursday</td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimefs4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs4) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimess4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess4) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimets4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets4) </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Friday</td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimefs5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs5) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimess5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess5) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimets5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets5) </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Saturday</td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimefs6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs6) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimess6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess6) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimets6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets6) </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Sunday</td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimefs7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs7) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimess7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess7) </td>
+                                                                        <td>@Html.DisplayFor(e => e.StartTimets7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets7) </td>
+                                                                    </tr>
+
+                                                                </table>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </li>
                                             <li class="span3">
                                                 <i class="icon-money" style="color:#ff8503; font-size:18px;"></i>
                                                 <span style="font-family:inherit; font-size:15px; color:#1f317f;">
-                                                    <b>INR 200</b><br /><br />
-
+                                                    <b>INR @Html.DisplayFor(e => e.ClinicFees)</b><br /><br />
                                                 </span>
+                                                @*@for (int i = 0; i < Model.getclinicvideos.Count; i++)
+                                                    {
+
+                                                        <iframe src="http://player.vimeo.com/video/56974716?portrait=0" height="205" style="width:100%; border:0" allowfullscreen></iframe>
+
+                                                    }*@
                                             </li>
                                         </ul>
 
@@ -240,7 +391,7 @@
                                                             <div class="span9">
                                                                 <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
 
-                                                                    <h4 style="font-family:'PT Sans'; color:black; font-size:16px;"><a href="@Url.Action("DocProfile", "Home")" style="color:#d12610;">Dr. Sandhya Balasubramanyan Zambre</a></h4>
+                                                                    <h4 style="font-family:'PT Sans'; color:black; font-size:16px;"><a href="@Url.Action(" docprofile", "Home" )" style="color:#d12610;">Dr. Sandhya Balasubramanyan Zambre</a></h4>
 
                                                                     <ul style="list-style-type:none;margin-left:0px;">
                                                                         <li style="font-family:'Open Sans'; color:black; font-size:14px;">
@@ -305,7 +456,7 @@
                                                             <div class="span9">
                                                                 <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
 
-                                                                    <h4 style="font-family:'PT Sans'; color:black; font-size:16px;"><a href="@Url.Action("DocProfile", "Home")" style="color:#d12610;">Dr. Sandhya Balasubramanyan Zambre</a></h4>
+                                                                    <h4 style="font-family:'PT Sans'; color:black; font-size:16px;"><a href="@Url.Action(" docprofile", "Home" )" style="color:#d12610;">Dr. Sandhya Balasubramanyan Zambre</a></h4>
 
                                                                     <ul style="list-style-type:none;margin-left:0px;">
                                                                         <li style="font-family:'Open Sans'; color:black; font-size:14px;">
@@ -353,7 +504,7 @@
                                                             <div class="span9">
                                                                 <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
 
-                                                                    <h4 style="font-family:'PT Sans'; color:black; font-size:16px;"><a href="@Url.Action("DocProfile", "Home")" style="color:#d12610;">Dr. Sandhya Balasubramanyan Zambre</a></h4>
+                                                                    <h4 style="font-family:'PT Sans'; color:black; font-size:16px;"><a href="@Url.Action(" docprofile", "Home" )" style="color:#d12610;">Dr. Sandhya Balasubramanyan Zambre</a></h4>
 
                                                                     <ul style="list-style-type:none;margin-left:0px;">
                                                                         <li style="font-family:'Open Sans'; color:black; font-size:14px;">
@@ -404,7 +555,7 @@
                                                             <div class="span9">
                                                                 <blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
 
-                                                                    <h4 style="font-family:'PT Sans'; color:black; font-size:16px;"><a href="@Url.Action("DocProfile", "Home")" style="color:#d12610;">Dr. Sandhya Balasubramanyan Zambre</a></h4>
+                                                                    <h4 style="font-family:'PT Sans'; color:black; font-size:16px;"><a href="@Url.Action(" docprofile", "Home" )" style="color:#d12610;">Dr. Sandhya Balasubramanyan Zambre</a></h4>
 
                                                                     <ul style="list-style-type:none;margin-left:0px;">
                                                                         <li style="font-family:'Open Sans'; color:black; font-size:14px;">
@@ -440,65 +591,65 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="tab_1_22">
-                                    <div class="portlet-body" style="display: block; margin-top:10px;">
-                                        <div class="row-fluid search-images">
-                                            <ul class="thumbnails">
-                                                <li class="span3">
-                                                    <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img1.jpg">
-                                                        <img src="~/Content/Web_Theme/assets/img/photos/img1.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+                                @*<div class="tab-pane" id="tab_1_22">
+                                        <div class="portlet-body" style="display: block; margin-top:10px;">
+                                            <div class="row-fluid search-images">
+                                                <ul class="thumbnails">
+                                                    <li class="span3">
+                                                        <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img1.jpg">
+                                                            <img src="~/Content/Web_Theme/assets/img/photos/img1.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
 
-                                                    </a>
-                                                </li>
-                                                <li class="span3">
-                                                    <a class="fancybox-button" data-rel="fancybox-button" title="Photo" href="~/Content/Web_Theme/assets/img/photos/img2.jpg">
-                                                        <img src="~/Content/Web_Theme/assets/img/photos/img2.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+                                                        </a>
+                                                    </li>
+                                                    <li class="span3">
+                                                        <a class="fancybox-button" data-rel="fancybox-button" title="Photo" href="~/Content/Web_Theme/assets/img/photos/img2.jpg">
+                                                            <img src="~/Content/Web_Theme/assets/img/photos/img2.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
 
-                                                    </a>
-                                                </li>
-                                                <li class="span3">
-                                                    <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img3.jpg">
-                                                        <img src="~/Content/Web_Theme/assets/img/photos/img3.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+                                                        </a>
+                                                    </li>
+                                                    <li class="span3">
+                                                        <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img3.jpg">
+                                                            <img src="~/Content/Web_Theme/assets/img/photos/img3.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
 
-                                                    </a>
-                                                </li>
-                                                <li class="span3">
-                                                    <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img4.jpg">
-                                                        <img src="~/Content/Web_Theme/assets/img/photos/img4.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+                                                        </a>
+                                                    </li>
+                                                    <li class="span3">
+                                                        <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img4.jpg">
+                                                            <img src="~/Content/Web_Theme/assets/img/photos/img4.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
 
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <ul class="thumbnails">
-                                                <li class="span3">
-                                                    <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img5.jpg">
-                                                        <img src="~/Content/Web_Theme/assets/img/photos/img5.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <ul class="thumbnails">
+                                                    <li class="span3">
+                                                        <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img5.jpg">
+                                                            <img src="~/Content/Web_Theme/assets/img/photos/img5.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
 
-                                                    </a>
-                                                </li>
-                                                <li class="span3">
-                                                    <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img6.jpg">
-                                                        <img src="~/Content/Web_Theme/assets/img/photos/img6.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+                                                        </a>
+                                                    </li>
+                                                    <li class="span3">
+                                                        <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img6.jpg">
+                                                            <img src="~/Content/Web_Theme/assets/img/photos/img6.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
 
-                                                    </a>
-                                                </li>
-                                                <li class="span3">
-                                                    <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img7.jpg">
-                                                        <img src="~/Content/Web_Theme/assets/img/photos/img7.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+                                                        </a>
+                                                    </li>
+                                                    <li class="span3">
+                                                        <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img7.jpg">
+                                                            <img src="~/Content/Web_Theme/assets/img/photos/img7.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
 
-                                                    </a>
-                                                </li>
-                                                <li class="span3">
-                                                    <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img8.jpg">
-                                                        <img src="~/Content/Web_Theme/assets/img/photos/img8.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
+                                                        </a>
+                                                    </li>
+                                                    <li class="span3">
+                                                        <a class="fancybox-button" data-rel="fancybox-button" title="390 x 220 - keenthemes.com" href="~/Content/Web_Theme/assets/img/photos/img8.jpg">
+                                                            <img src="~/Content/Web_Theme/assets/img/photos/img8.jpg" alt="" style="border:2px solid; border-color:#1f317f; border-radius:10px;">
 
-                                                    </a>
-                                                </li>
-                                            </ul>
+                                                        </a>
+                                                    </li>
+                                                </ul>
 
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </div>*@
                                 <div class="tab-pane" id="tab_1_33">
                                     <div class="scroller" data-height="290px" data-always-visible="1" data-rail-visible1="1">
                                         <h4>
@@ -509,72 +660,76 @@
                                         </h4>
                                         <ul class="thumbnails">
                                             <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                @for (int i = 0; i < Model.getservices.Count; i++)
+                                                {
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i> @Model.getservices[i].services <br />
+                                                }
+                                                <br />
+                                                @*<i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />*@
                                             </li>
-                                            <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
-                                            </li>
-                                            <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
-                                            </li>
+                                            @*
+                                                <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                </li>
+                                                <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
+                                                    <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
+                                                </li>*@
                                         </ul>
 
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tab_1_44" style="margin-left:10px;">
                                     <div class="span6">
-
                                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3945.918802003381!2d76.910826!3d8.507264999999999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bc0c3d02452f%3A0xa4bc574dba432391!2sLords+Hospital!5e0!3m2!1sen!2sin!4v1434627710340" width="800" height="400" frameborder="0" style="border:0"></iframe>
                                     </div>
                                 </div>
@@ -583,8 +738,6 @@
                     </div>
                     <!--End tab-pane-->
                     <!-- END PAGE CONTENT-->
-
-
                 </div>
                 <!-- END PAGE CONTAINER-->
             </div>
@@ -594,4 +747,3 @@
     </div>
     <!-- END CONTAINER -->
 </div>
-

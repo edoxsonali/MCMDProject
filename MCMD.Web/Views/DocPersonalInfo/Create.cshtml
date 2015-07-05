@@ -81,8 +81,9 @@
                 <div class="control-group">
                     <label class="control-label">Qualification</label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.Qualification, new { @class = "m-wrap span7", @placeholder = "Enter Qualification", @maxlength = "30", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.Qualification, string.Empty, new { @class = "text-error" })
+                        @Html.TextBoxFor(model => model.Qualification, new { @class = "m-wrap span7", @placeholder = "Enter Qualification", @maxlength = "58", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.Qualification, string.Empty, new { @class = "text-error" })<br /><br />
+                        @Html.TextAreaFor(model => model.Qualification1, new { @class = "m-wrap span7", @placeholder = "Enter Qualification", @maxlength = "500", @autocomplete = "off" })
                     </div>
                 </div>
                 <div class="control-group">
@@ -107,16 +108,16 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label">Registration No<span class="required">*</span></label>
+                    <label class="control-label">Registration <span class="required">*</span></label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.RegistrationNo, new { @class = "m-wrap span7", @placeholder = "Enter RegistrationNo", @maxlength = "30", autocomplete = "off" })
+                        @Html.TextAreaFor(model => model.RegistrationNo, new { @class = "m-wrap span7", @placeholder = "Enter RegistrationNo", @maxlength = "100", autocomplete = "off" })
                         @Html.ValidationMessageFor(model => model.RegistrationNo, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label">Affiliation</label>
+                    <label class="control-label">Clinic/Hospital Affiliation</label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.Affiliation, new { @class = "m-wrap span7", @placeholder = "Enter Affiliation", @maxlength = "50", autocomplete = "off" })
+                        @Html.TextAreaFor(model => model.Affiliation, new { @class = "m-wrap span7", @placeholder = "Enter Affiliation", @maxlength = "500", autocomplete = "off" })
                        
                     </div>
                 </div>
@@ -130,7 +131,7 @@
                 <div class="control-group">
                     <label class="control-label">About Me</label>
                     <div class="controls">
-                        @Html.TextAreaFor(model => model.AboutMe, new { @class = "m-wrap span7", @placeholder = "Enter About ME", @maxlength = "100", @autocomplete = "off" })
+                        @Html.TextAreaFor(model => model.AboutMe, new { @class = "m-wrap span7", @placeholder = "Enter About ME", @maxlength = "600", @autocomplete = "off" })
                      
                     </div>
                 </div>

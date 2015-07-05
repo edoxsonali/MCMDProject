@@ -48,7 +48,7 @@
             <!-- BEGIN FORM-->
             @using (Html.BeginForm(Html.BeginForm("Create", "DoctorInfo",
             new { ReturnUrl = ViewBag.ReturnUrl },
-            FormMethod.Post, new { @class = "form-horizontal form-bordered" })))
+            FormMethod.Post, new { @class = "form-horizontal form-bordered", enctype = "multipart/form-data" })))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
@@ -67,7 +67,7 @@
                     <label class="control-label">Middle Name</label>
                     <div class="controls">
                         @Html.TextBoxFor(model => model.MiddleName, new { @class = "m-wrap span7", @placeholder = "Enter Middle Name", @maxlength = "30", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-error" })
+                        @*@Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-error" })*@
                     </div>
                 </div>
                 <div class="control-group">
@@ -80,8 +80,11 @@
                 <div class="control-group">
                     <label class="control-label">Qualification<span class="required">*</span></label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.Qualification, new { @class = "m-wrap span7", @placeholder = "Enter Qualification", @maxlength = "30", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.Qualification, "", new { @class = "text-error" })
+                        @Html.TextBoxFor(model => model.Qualification, new { @class = "m-wrap span7", @placeholder = "Enter Qualification*", @maxlength = "58", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.Qualification, "", new { @class = "text-error" })<br /><br />
+                        @Html.TextAreaFor(model => model.Qualification1, new { @class = "m-wrap span7", @placeholder = "Enter Qualification", @maxlength = "500", @autocomplete = "off" })
+
+
                     </div>
                 </div>
                 <div class="control-group">
@@ -106,31 +109,43 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label">Registration No<span class="required">*</span></label>
+                    <label class="control-label">Registrations <span class="required">*</span></label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.RegistrationNo, new { @class = "m-wrap span7", @placeholder = "Enter Registration No", @maxlength = "30", autocomplete = "off" })
+                        @Html.TextAreaFor(model => model.RegistrationNo, new { @class = "m-wrap span7", @placeholder = "Enter Registration No", @maxlength = "100", autocomplete = "off"})
                         @Html.ValidationMessageFor(model => model.RegistrationNo, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label">Affiliation</label>
+                    <label class="control-label">Clinic/Hospital Affiliation</label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.Affiliation, new { @class = "m-wrap span7", @placeholder = "Enter Affiliation", @maxlength = "50", autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.Affiliation)
+                        @Html.TextAreaFor(model => model.Affiliation, new { @class = "m-wrap span7", @placeholder = "Enter Affiliation", @maxlength = "500", autocomplete = "off" })
+                        @*@Html.ValidationMessageFor(model => model.Affiliation)*@
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Experience</label>
                     <div class="controls">
                         @Html.TextBoxFor(model => model.AboutExperience, new { @class = "m-wrap span7", @placeholder = "Enter About Experience", @maxlength = "100", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.AboutExperience, "", new { @class = "text-error" })
+                        @*@Html.ValidationMessageFor(model => model.AboutExperience, "", new { @class = "text-error" })*@
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">About Me</label>
                     <div class="controls">
-                        @Html.TextAreaFor(model => model.AboutMe, new { @class = "m-wrap span7", @placeholder = "Enter About ME", @maxlength = "100", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(model => model.AboutMe, "", new { @class = "text-error" })
+                        @Html.TextAreaFor(model => model.AboutMe, new { @class = "m-wrap span7", @placeholder = "Enter About ME", @autocomplete = "off", @rows = 5 })
+                        @*@Html.ValidationMessageFor(model => model.AboutMe, "", new { @class = "text-error" })*@
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Profile Photo @*<span class="required">*</span>*@</label>
+                    <div class="controls">
+
+                        <input id="ImagePath" title="Upload a clinic image"
+                               type="file" name="file" />
+                        @if (!string.IsNullOrEmpty(@Model.FolderFilePath))
+                        {
+                            <img src="@Url.Content(@Model.FolderFilePath)" alt="" style="border:2px solid; border-color:#d12610; border-radius:6px;height:70px;width:70px;" />
+                        }
                     </div>
                 </div>
                 <label>

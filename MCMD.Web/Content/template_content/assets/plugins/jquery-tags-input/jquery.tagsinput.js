@@ -47,7 +47,8 @@
   $.fn.resetAutosize = function(options){
     // alert(JSON.stringify(options));
     var minWidth =  $(this).data('minwidth') || options.minInputWidth || $(this).width(),
-        maxWidth = $(this).data('maxwidth') || options.maxInputWidth || ($(this).closest('.tagsinput').width() - options.inputPadding),
+        maxWidth = $(this).data('maxwidth') || options.maxInputWidth || ($(this).closest('.
+').width() - options.inputPadding),
         val = '',
         input = $(this),
         testSubject = $('<tester/>').css({
@@ -177,7 +178,7 @@
 	$.fn.tagsInput = function(options) { 
     var settings = jQuery.extend({
       interactive:true,
-      defaultText:'add a tag',
+      defaultText:'add a service',
       minChars:0,
       width:'300px',
       height:'100px',

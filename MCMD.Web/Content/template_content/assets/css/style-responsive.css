@@ -11,7 +11,7 @@
  	Page sidebar
  	***/
  	.page-sidebar {
-		position: absolute;
+		position: fixed;
  		width: 225px;
   	}
 

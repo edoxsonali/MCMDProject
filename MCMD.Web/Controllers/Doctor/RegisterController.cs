@@ -94,7 +94,7 @@ namespace MCMD.Web.Controllers.Doctor
                             dbContextTransaction.Commit();
                           //  ViewBag.StatusMessage = " User Name with " + docRegVM.Userlogins.UserName + " having Email Id " + docRegVM.Userlogins.EmailID + " is created successfully";
                           //  ViewBag.Status = 1;
-                            @TempData["SuccessMessage"] = " User Name with " + docRegVM.Userlogins.UserName + " having Email Id " + docRegVM.Userlogins.EmailID + " is created successfully";
+                            @TempData["SuccessMessage"] = " User Name with " + docRegVM.Userlogins.FirstName + " " + docRegVM.Userlogins.LastName + " having Email Id " + docRegVM.Userlogins.EmailID + " is created successfully";
 
                             //var callbackUrl = Url.Action("ConfirmEmail", "Account",new { userId = user.Id, code = code },protocol: Request.Url.Scheme);
 
@@ -102,8 +102,8 @@ namespace MCMD.Web.Controllers.Doctor
                             var emailid = docRegVM.Userlogins.EmailID;
                             //send mail
                             string subject = "MyCityMyDoctor  Registration";
-                            string body = "Dear " + docRegVM.Userlogins.FirstName + " " + docRegVM.Userlogins.LastName + "<br/> <br/>" + System.Environment.NewLine + System.Environment.NewLine + "You have been successfully registered at MyCityMyDoctor , Your login credentials are given below<br/><br/>" +
-                            "Username" + " : " + docRegVM.Userlogins.UserName + "<br/><br/>Password" + " : " +
+                            string body = "Dear " + docRegVM.Userlogins.FirstName + " " + docRegVM.Userlogins.LastName + "<br/> <br/>" + System.Environment.NewLine + System.Environment.NewLine + "You have been successfully registered at MyCityMyDoctor , Your login credentials are given below<br/><br/>" 
+                           + "<br/><br/>Password" + " : " +
                              password + "<br/><br/><br/>Thank You" + "<br/>Admin" + "<br/>Edox";  //edit it
                             try
                             {

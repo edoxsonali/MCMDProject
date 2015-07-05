@@ -8,6 +8,8 @@ using MCMD.EntityModel.Doctor;
 using MCMD.IRepository.AdminInterfaces;
 using MCMD.ViewModel.Administration;
 using MCMD.EntityModel.Administration;
+using System.IO;
+
 
 namespace MCMD.Web.Controllers.Administration
 {
@@ -58,6 +60,7 @@ namespace MCMD.Web.Controllers.Administration
                     doctorClinicVM.AwardsAndRecognization = item.AwardsAndRecognization;
                     doctorClinicVM.AboutClinic = item.AboutClinic;
                     doctorClinicVM.ZipCode = item.ZipCode;
+                    doctorClinicVM.FolderFilePath = item.FolderFilePath;
                 }
 
 
@@ -66,7 +69,7 @@ namespace MCMD.Web.Controllers.Administration
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(DoctorClinicInformationViewModel _doctorClinicVM)
+        public ActionResult Create(DoctorClinicInformationViewModel _doctorClinicVM, HttpPostedFileBase file)
         {
             try
             {
@@ -86,9 +89,9 @@ namespace MCMD.Web.Controllers.Administration
                         newClinic.ClinicAddress = _doctorClinicVM.ClinicAddress;
                         newClinic.ClinicPhoneNo = _doctorClinicVM.ClinicPhoneNo;
                         newClinic.ClinicFees = _doctorClinicVM.ClinicFees;
-                        newClinic.Country = _doctorClinicVM.Country;
-                        newClinic.State = _doctorClinicVM.State;
-                        newClinic.City = _doctorClinicVM.City;
+                        newClinic.Country = _doctorClinicVM.CountryId;
+                        newClinic.State = _doctorClinicVM.StateId;
+                        newClinic.City = _doctorClinicVM.CityId;
                         newClinic.ZipCode = _doctorClinicVM.ZipCode;
                         newClinic.ClinicServices = _doctorClinicVM.ClinicServices;
                         newClinic.AwardsAndRecognization = _doctorClinicVM.AwardsAndRecognization;
@@ -99,6 +102,22 @@ namespace MCMD.Web.Controllers.Administration
                         newClinic.ModifiedByID = 1;// for now we add 1 later we change
                         newClinic.ModifiedDate = DateTime.Now;
                         newClinic.LoginId = Id;
+
+                        if (file != null)
+                        {
+                            string[] formats = new string[] { "image/jpeg", "image/png", "image/gif", "image/Bmp" };
+                            int CheckImgType = Convert.ToInt32(formats.Contains(file.ContentType));
+                            if (CheckImgType != 0)
+                            {
+                                string Imgpath = "~/Media/" + file.FileName;
+                                string path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") + file.FileName);
+                                file.SaveAs(path);
+
+                                newClinic.FolderFilePath = Imgpath;
+                                newClinic.UploadType = file.ContentType;
+
+                            }
+                        }
 
                         doctorClinicRepository.InsertClinic(newClinic);
                         doctorClinicRepository.Save();
@@ -111,9 +130,9 @@ namespace MCMD.Web.Controllers.Administration
                         existingUser.ClinicAddress = _doctorClinicVM.ClinicAddress;
                         existingUser.ClinicPhoneNo = _doctorClinicVM.ClinicPhoneNo;
                         existingUser.ClinicFees = _doctorClinicVM.ClinicFees;
-                        existingUser.Country = _doctorClinicVM.Country;
-                        existingUser.State = _doctorClinicVM.State;
-                        existingUser.City = _doctorClinicVM.City;
+                        existingUser.Country = _doctorClinicVM.CountryId;
+                        existingUser.State = _doctorClinicVM.StateId;
+                        existingUser.City = _doctorClinicVM.CityId;
                         existingUser.ZipCode = _doctorClinicVM.ZipCode;
                         existingUser.ClinicServices = _doctorClinicVM.ClinicServices;
                         existingUser.AwardsAndRecognization = _doctorClinicVM.AwardsAndRecognization;
@@ -124,6 +143,22 @@ namespace MCMD.Web.Controllers.Administration
                         existingUser.ModifiedByID = 1;// for now we add 1 later we change
                         existingUser.ModifiedDate = DateTime.Now;
                         existingUser.LoginId = Id;
+
+                        if (file != null)
+                        {
+                            string[] formats = new string[] { "image/jpeg", "image/png", "image/gif", "image/Bmp" };
+                            int CheckImgType = Convert.ToInt32(formats.Contains(file.ContentType));
+                            if (CheckImgType != 0)
+                            {
+                                string Imgpath = "~/Media/" + file.FileName;
+                                string path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") + file.FileName);
+                                file.SaveAs(path);
+
+                                existingUser.FolderFilePath = Imgpath;
+                                existingUser.UploadType = file.ContentType;
+
+                            }
+                        }
 
                         //Update if already exit 
                         doctorClinicRepository.UpdateClinic(existingUser);
@@ -138,6 +173,8 @@ namespace MCMD.Web.Controllers.Administration
             catch (Exception)
             {
                 //ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists contact your system administrator.");
+              //  string errorMessages = string.Join("; ", ex.EntityValidationErrors.SelectMany(x => x.ValidationErrors).Select(x => x.PropertyName + ": " + x.ErrorMessage));
+                @TempData["Message"] = "Unable to save changes";
             }
             return RedirectToAction("ClinicTiming", "DoctorClinicInfo");
         }
@@ -170,6 +207,20 @@ namespace MCMD.Web.Controllers.Administration
         }
           #endregion
 
+        //  #region add services
+        //[HttpPost]
+        //public ActionResult addservices(string[] strarry)
+        //{
+        //    var newClinic = new DoctorClinicInformation();
+        //    foreach (var item in strarry)
+        //    {
+        //        newClinic.ClinicServices = item;
+        //    }
+        //    return Json("strarry", JsonRequestBehavior.AllowGet);
+        //}
+
+        //  #endregion
+
         #region View Clinic Info
         public ActionResult ViewClinicInfo()
         {
@@ -186,7 +237,7 @@ namespace MCMD.Web.Controllers.Administration
         {
             @TempData["Name"] = Session["Name"];
             ClinicTimingViewModel docClinicTimeVM = new ClinicTimingViewModel();
-
+             int Id = (Convert.ToInt32(Session["EditDoctor"]));
 
             docClinicTimeVM.GetCheckList = new List<DaysCheckList>() {
                 new DaysCheckList {DayscheckId=1,Days="Monday", DayChecked=true},
@@ -199,7 +250,161 @@ namespace MCMD.Web.Controllers.Administration
             };
             docClinicTimeVM.SelectedMember1 = docClinicTimeVM.GetCheckList.Select(x => x.DayscheckId).ToArray();
 
+            docClinicTimeVM.getClinicTimie = doctorClinicRepository.GetAllClinicTime().ToList();
 
+               List<ClinicTimeInformation>  GetclinicTimeFirst = doctorClinicRepository.GetAllClinicTime().Where(x => x.LoginId == Id && x.FirstSetting == "1st seating Timing").ToList();
+               List<ClinicTimeInformation>  GetclinicTimeSecond = doctorClinicRepository.GetAllClinicTime().Where(x => x.LoginId == Id && x.FirstSetting == "2nd seating Timing").ToList();
+               List<ClinicTimeInformation>  GetclinicTimeThird = doctorClinicRepository.GetAllClinicTime().Where(x => x.LoginId == Id && x.FirstSetting == "3rd seating Timing").ToList();
+                
+            foreach (var item in GetclinicTimeFirst)
+            {
+               
+                    //convert start time of first seating
+                    string startime1 = item.StartTime.ToString();
+                    DateTime sd1 = DateTime.Parse(startime1);
+                    string st1 = sd1.ToString("hh:mm");
+                    //convert End time of first seating
+                    string endtime1 = item.EndTime.ToString();
+                    DateTime ed1 = DateTime.Parse(endtime1);
+                    string et1 = ed1.ToString("hh:mm");
+                if(item.Day=="Monday")
+                {
+                    docClinicTimeVM.StartTimefs1 = st1+" "+item.StartSlot;
+                    docClinicTimeVM.EndTimefs1 = et1+" "+item.EndSlot;
+                  }
+                if (item.Day == "Tuesday")
+                {
+                    docClinicTimeVM.StartTimefs2 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimefs2 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Wednesday")
+                {
+                    docClinicTimeVM.StartTimefs3 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimefs3 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Thursday")
+                {
+                    docClinicTimeVM.StartTimefs4 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimefs4 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Friday")
+                {
+                    docClinicTimeVM.StartTimefs5 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimefs5 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Saturday")
+                {
+                    docClinicTimeVM.StartTimefs6 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimefs6 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Sunday")
+                {
+                    docClinicTimeVM.StartTimefs7 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimefs7 = et1 + " " + item.EndSlot;
+                }
+                   
+           
+            }
+            foreach (var item in GetclinicTimeSecond)
+            {
+
+                //convert start time of first seating
+                string startime1 = item.StartTime.ToString();
+                DateTime sd1 = DateTime.Parse(startime1);
+                string st1 = sd1.ToString("hh:mm");
+                //convert End time of first seating
+                string endtime1 = item.EndTime.ToString();
+                DateTime ed1 = DateTime.Parse(endtime1);
+                string et1 = ed1.ToString("hh:mm");
+                if (item.Day == "Monday")
+                {
+                    docClinicTimeVM.StartTimess1 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimess1 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Tuesday")
+                {
+                    docClinicTimeVM.StartTimess2 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimess2 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Wednesday")
+                {
+                    docClinicTimeVM.StartTimess3 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimess3 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Thursday")
+                {
+                    docClinicTimeVM.StartTimess4 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimess4 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Friday")
+                {
+                    docClinicTimeVM.StartTimess5 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimess5 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Saturday")
+                {
+                    docClinicTimeVM.StartTimess6 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimess6 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Sunday")
+                {
+                    docClinicTimeVM.StartTimess7 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimess7 = et1 + " " + item.EndSlot;
+                }
+
+
+            }
+            foreach (var item in GetclinicTimeThird)
+            {
+
+                //convert start time of first seating
+                string startime1 = item.StartTime.ToString();
+                DateTime sd1 = DateTime.Parse(startime1);
+                string st1 = sd1.ToString("hh:mm");
+                //convert End time of first seating
+                string endtime1 = item.EndTime.ToString();
+                DateTime ed1 = DateTime.Parse(endtime1);
+                string et1 = ed1.ToString("hh:mm");
+                if (item.Day == "Monday")
+                {
+                    docClinicTimeVM.StartTimets1 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimets1 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Tuesday")
+                {
+                    docClinicTimeVM.StartTimets2 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimets2 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Wednesday")
+                {
+                    docClinicTimeVM.StartTimets3 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimets3 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Thursday")
+                {
+                    docClinicTimeVM.StartTimets4 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimets4 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Friday")
+                {
+                    docClinicTimeVM.StartTimets5 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimets5 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Saturday")
+                {
+                    docClinicTimeVM.StartTimets6 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimets6 = et1 + " " + item.EndSlot;
+                }
+                if (item.Day == "Sunday")
+                {
+                    docClinicTimeVM.StartTimets7 = st1 + " " + item.StartSlot;
+                    docClinicTimeVM.EndTimets7 = et1 + " " + item.EndSlot;
+                }
+
+
+            }
+         
+           
             return View(docClinicTimeVM);
 
         }
@@ -361,7 +566,7 @@ namespace MCMD.Web.Controllers.Administration
 
                             NewClinicTime.LoginId = Id;//add session here
                             NewClinicTime.Day = item.Days;
-                            NewClinicTime.FirstSetting = true;
+                            NewClinicTime.FirstSetting = docClinicTime.Setting;
                             NewClinicTime.IsWorkingDay = item.DayChecked;
                             NewClinicTime.CreatedById = 1;
                             NewClinicTime.CreatedOnDate = DateTime.Now;
@@ -385,7 +590,8 @@ namespace MCMD.Web.Controllers.Administration
                 //ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists contact your system administrator.");
                 @TempData["Message"] = "Unable to save";
             }
-            return RedirectToAction("ClinicTiming");
+            //return RedirectToAction("ClinicTiming");
+            return View(docClinicTime);
         }
         #endregion
         

@@ -1,0 +1,153 @@
+﻿@model MCMD.ViewModel.Patient.PatientViewModel
+@{
+    ViewBag.Title = "ViewPatients";
+    Layout = "~/Views/Shared/_ThemeLayout.cshtml";
+}
+
+
+
+@{
+
+    int Pages = 20;
+    WebGrid grid = new WebGrid(Model.GetPatient, canPage: true, rowsPerPage: Pages);
+    grid.Pager(WebGridPagerModes.NextPrevious);
+}
+
+<script type="text/javascript">
+
+    //Delete User on click
+    function DeleteUserData(varid) {
+        if (varid != null) {
+            if (confirm('Are you sure you want to delete the selected user')) {
+                var deleteInputs = [];
+                //$('.chkview:checked').each(function (i, chk) {
+                deleteInputs.push(varid);
+                //});
+                var url = '@Url.Action("BatchDelete", "Patients")';
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    cache: false,
+                    url: url,
+                    traditional: true,
+                    data: { deleteInputs: deleteInputs },
+                    success: function (data) {
+                        var url = '@Url.Action("ViewPatients", "Patients")';
+                        window.location.href = url;
+
+                    }
+                });
+            }
+        }
+    }
+</script>
+
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->
+    <div class="row-fluid">
+        <div class="span12">
+
+            <h3 class="page-title">Manage Patient </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="">Home</a>
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">Manage Users </a>
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">Manage Patient</a>
+                    <span class="icon-angle-right"></span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- END PAGE HEADER-->
+    <!-- BEGIN PAGE CONTENT-->
+    <div class="portlet box blue ">
+        <div class="portlet-title">
+            <div class="caption"><i class="icon-reorder"></i>View Patients</div>
+
+        </div>
+
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            @using (Html.BeginForm(Html.BeginForm("ViewPatients", "Patients", new { ReturnUrl = ViewBag.ReturnUrl },
+            FormMethod.Post, new { @class = "form-horizontal form-bordered" })))
+            {
+
+                @Html.ValidationSummary(true)
+                @Html.AntiForgeryToken()
+                <div class="control-group">
+                    <label class="control-label">Patient Id</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(u => u.PatientId, new { @class = "m-wrap span6", @placeholder = "Search By Patient Id", @maxlength = "10", @autocomplete = "off" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">First Name</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(u => u.FirstName, new { @class = "m-wrap span6", @placeholder = "Search By First Name", @maxlength = "20", autocomplete = "off" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Last Name</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(u => u.LastName, new { @class = "m-wrap span6", @placeholder = "Search By Last Name", @maxlength = "20", autocomplete = "off" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Email ID</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(u => u.EmailID, new { @class = "m-wrap span6", @type = "email", @placeholder = "Search By email Id", @maxlength = "50", autocomplete = "off" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Phone #</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(u => u.UserPhone, new { @class = "m-wrap span6", @type = " Search By phone", @placeholder = "Enter Phone number format is{ 0123456789, 012-345-6789, (012)-345-6789 }", @maxlength = "15", @autocomplete = "off" })
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="Submit" id="btnCreate" name="btnCreate" class="btn blue">Search</button>
+                    <button type="button" id="btnscd" class="btn" name="btnscd" onclick="location.href='@Url.Action("ViewPatients", "Patients")'">Reset</button>
+                </div>
+            }
+
+            <!-- END FORM-->
+        </div>
+
+
+    </div>
+    <div class="portlet box">
+
+        <div class="portlet-body flip-scroll">
+
+            @grid.GetHtml(tableStyle: "table table-striped table-bordered table-advance table-condensed flip-content",
+                                         footerStyle: "gridFooter",
+                                                alternatingRowStyle: "alt",
+                                                 htmlAttributes: new { id = "grdUsers" },
+                                                 mode: WebGridPagerModes.All,
+                                               firstText: "<< First",
+                            previousText: "< Previous", nextText: "Next >",
+                            lastText: "Last >>",
+                                             columns: new[] {
+                                                  grid.Column("PatientId",header: "Patient Id", canSort: false),
+                                                  grid.Column("FirstName",header: "First Name", canSort: false),
+                                                  grid.Column("LastName",header: "Last Name", canSort: false),
+                                                  grid.Column("EmailID",header: "Email Address", canSort: false),
+                                                  grid.Column("UserPhone",header: "User Phone", canSort: false),
+                                                  grid.Column(header: "Option", format: @<text>
+                                                    @*<a id="btnEdit" style="cursor:pointer;" onclick="EditServiceData( @item.PatientId)">Edit</a>|*@
+                                                    <a id="btnDelete" style="cursor:pointer;" onclick="DeleteUserData( @item.PatientId)">Delete</a>
+                                                </text>)
+                                        })
+        </div>
+
+    </div>
+    <!-- END PAGE CONTENT-->
+</div>

@@ -11,6 +11,8 @@ using MCMD.IRepository.DoctorInterfaces;
 using MCMD.EntityRepository.DoctorRepository;
 using MCMD.EntityRepository.PatientRepository;
 using MCMD.IRepository.PatientInterfaces;
+using MCMD.IRepository.WebInterfaces;
+using MCMD.EntityRepository.WebRepository;
 
 
 namespace MCMD.DependencyInjection
@@ -43,6 +45,7 @@ namespace MCMD.DependencyInjection
             ninjectKernel.Bind<IUpgradeService>().To<UpgradeServiceRepository>();
             ninjectKernel.Bind<IDocRegister>().To<DocRegister>();
             ninjectKernel.Bind<IPatientRegister>().To<PatientsRepository>();
+            ninjectKernel.Bind<IDocProfile>().To<DocProfileRepository>();
         }
      
     }

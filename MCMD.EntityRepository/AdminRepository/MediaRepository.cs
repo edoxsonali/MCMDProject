@@ -54,7 +54,7 @@ namespace MCMD.EntityRepository.AdminRepository
                     if (CheckImgType != 0)
                     {
                         mediaVM.GetMediacount = DBcontext.medias.Where(x => x.LoginId == mediaVM.LoginId && x.InactiveFlag == "N").ToList();
-                        if (mediaVM.GetMediacount.Count() < 2)
+                        if (mediaVM.GetMediacount.Count() < 8)
                         {
                             string Imgpath = "~/Media/" + file.FileName;
                             string path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") + file.FileName);
@@ -74,7 +74,7 @@ namespace MCMD.EntityRepository.AdminRepository
                         }
                         else
                         {
-                            mediaVM.Message = "Not Allowed to uploade more than 2 image";
+                            mediaVM.Message = "Not Allowed to uploade more than 8 image";
                         }
                     }
 

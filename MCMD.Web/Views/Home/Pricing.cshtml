@@ -1,90 +1,94 @@
 ﻿@{
-    ViewBag.Title = "Pricing";
+    ViewBag.Title = "PriceNew";
     Layout = "~/Views/Shared/_WebLayout.cshtml";
 }
+@Styles.Render("~/Content/Web_Theme/assets/css/themes/Price.css")
 
 
+<div class="container" style="padding-top:100px;">
+    <div class="row-fluid">
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 price-table-wrap pull-left">
 
-<!-- BEGIN CONTAINER -->
-<div class="container min-hight" style="padding-top:150px;">
-    <!-- BEGIN PRICING OPTION1 -->
-    <div class="row-fluid margin-bottom-40">
-        <div class="span3 pricing pricing-active" style="border-color:#e9811a;">
-            <div class="pricing-head pricing-head-active">
-                <h3 style="background-color:#e9811a; border-bottom-color:#e9811a;">Doctor Profile@*<span>Officia deserunt mollitia</span>*@</h3>
-                <h4 style="color:#1f317f;"><i>100% FREE</i> @*<span>Per Month</span>*@</h4>
+            <!--Prising table-->
+            <div class="col-md-3 col-sm-6 col-lg-3 col-xs-12 no-pad">
+                <div class="price-table iprice-no-right-border" style="background-color:#fff;">
+                    <div class="price-figure">
+                        100% Free
+                        <div class="price-semi-circle"></div>
+                    </div>
+                    <div class="price-plan"><div class="price-plan-title" style="color:#e9811a;">Doctors Profile</div><span style="color:#8C99A9; font-weight:700;">PER MONTH</span></div>
+                    <ul style="list-style-type:none; margin-left:0px; margin-top:0px; margin-bottom:0px;">
+                        <li style="color:black; font-size:15px; font-family:PT Sans; background-color:#F7F7F7;">Increase Visibility</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans; ">Attract more Patients</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans; background-color:#F7F7F7;">1 Time a Year</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans; ">Manage your Account</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans; background-color:#F7F7F7;">Accessible 24/7</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans; ">Free</li>
+                        <li><a href="#"><div class="learn-more">Read More</div></a></li>
+                    </ul>
+                </div>
             </div>
-            <ul class="pricing-content unstyled" style="background-color:#fcf2e8; margin-bottom:-1px;">
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i>Increase Visibility</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i>Attract more Patients</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i>Manage your Account</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i>Accessible 24/7</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i>Free </li>
-            </ul>
-            <div class="pricing-footer" style="background-color:#fcf2e8;">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
-                <a href="#" class="btn theme-btn">Read More</a>
-            </div>
-        </div>
-        <div class="span3 pricing pricing-active" style="border-color:#e9811a;">
-            <div class="pricing-head pricing-head-active">
-                <h3 style="background-color:#e9811a; border-bottom-color:#e9811a;">Online Appointment@*<span>Officia deserunt mollitia</span>*@</h3>
-                <h4 style="color:#1f317f;"><i class="icon-rupee" style="font-style:normal;"></i>&nbsp;<i>999 Per Month</i></h4>
-            </div>
-            <ul class="pricing-content unstyled" style="background-color:#fcf2e8; margin-bottom:-1px;">
 
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i>Patient Self-Scheduling</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i>Reduced No-Shows</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i>Accessibility</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i>Customization</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i>Marketing</li>
-            </ul>
-            <div class="pricing-footer" style="background-color:#fcf2e8;">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
-                <a href="#" class="btn theme-btn">Read More</a>
-            </div>
-        </div>
-        <div class="span3 pricing pricing-active" style="border-color:#e9811a;">
-            <div class="pricing-head pricing-head-active">
-                <h3 style="background-color:#e9811a; border-bottom-color:#e9811a;">Edox Connect@*<span>Officia deserunt mollitia</span>*@</h3>
-                <h4 style="color:#1f317f;"><i>aaa</i></h4>
-            </div>
-            <ul class="pricing-content unstyled" style="background-color:#fcf2e8; margin-bottom:-1px;">
+            <!--Prising table-->
+            <!--Prising table-->
 
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i> Personalized Greetings</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i>Increases your Efficiency</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i>Trained Care Counselors</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i> HIPAA Compliance</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i> Simple Pricing</li>
-            </ul>
-            <div class="pricing-footer" style="background-color:#fcf2e8;">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
-                <a href="#" class="btn theme-btn">Read More</a>
+            <div class="col-md-3 col-sm-6 col-lg-3 col-xs-12 no-pad">
+                <div class="price-table price-table-big" style="background-color:#fff;">
+                    <div class="price-figure"><i class="icon-rupee"></i>&nbsp;999<div class="price-semi-circle-premium"></div></div>
+                    <div class="price-plan"><div class="price-plan-title" style="color:#e9811a;">Online Appointment</div><span style="color:#8C99A9; font-weight:700;">PER MONTH</span></div>
+                    <ul style="list-style-type:none; margin-left:0px;">
+                        <li style="color:black; font-size:15px; font-family:'PT Sans'; background-color:#F7F7F7;">Increase Visibility</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans;">Attract more Patients</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans; background-color:#F7F7F7;">1 Time a Year</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans;">Manage your Account</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans; background-color:#F7F7F7;">Accessible 24/7</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans;">Free</li>
+                        <li><a href="#"><div class="learn-more">Read More</div></a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="span3 pricing pricing-active" style="border-color:#e9811a;">
-            <div class="pricing-head pricing-head-active">
-                <h3 style="background-color:#e9811a; border-bottom-color:#e9811a;">Integrated @*<span>Officia deserunt mollitia</span>*@</h3>
-                <h4 style="color:#1f317f;"><i>100% FREE</i></h4>
-            </div>
-            <ul class="pricing-content unstyled" style="background-color:#fcf2e8; margin-bottom:-1px;">
 
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i> At vero eos</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i> No Support</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i> Fusce condimentum</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i> Ut non libero</li>
-                <li style="color:black; font-size:15px; font-family:sans-serif;"><i class="icon-caret-right" style="color:#1f317f;"></i> Consecte adiping elit</li>
-            </ul>
-            <div class="pricing-footer" style="background-color:#fcf2e8;">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
-                <a href="#" class="btn theme-btn">Read More</a>
+            <!--Prising table-->
+            <!--Prising table-->
+
+            <div class="col-md-3 col-sm-6 col-lg-3 col-xs-12 no-pad">
+                <div class="price-table iprice-no-right-border" style="background-color:#fff;">
+                    <div class="price-figure"><i class="icon-rupee"></i>&nbsp;999<div class="price-semi-circle"></div></div>
+                    <div class="price-plan"><div class="price-plan-title" style="color:#e9811a;">Edox Connect</div><span style="color:#8C99A9; font-weight:700;">PER MONTH</span></div>
+                    <ul style="list-style-type:none; margin-left:0px;">
+                        <li style="color:black; font-size:15px; font-family:PT Sans; background-color:#F7F7F7;">Increase Visibility</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans;">Attract more Patients</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans; background-color:#F7F7F7;">1 Time a Year</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans;">Manage your Account</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans; background-color:#F7F7F7;">Accessible 24/7</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans;">Free</li>
+                        <li><a href="#"><div class="learn-more">Read More</div></a></li>
+                    </ul>
+                </div>
             </div>
+
+            <!--Prising table-->
+            <!--Prising table-->
+
+            <div class="col-md-3 col-sm-6 col-lg-3 col-xs-12 no-pad">
+                <div class="price-table" style="background-color:#fff;">
+                    <div class="price-figure"><i class="icon-rupee"></i>&nbsp;999<div class="price-semi-circle"></div></div>
+                    <div class="price-plan"><div class="price-plan-title" style="color:#e9811a;">Integrated</div><span style="color:#8C99A9; font-weight:700;">PER MONTH</span></div>
+                    <ul style="list-style-type:none; margin-left:0px;">
+                        <li style="color:black; font-size:15px; font-family:PT Sans; background-color:#F7F7F7;">Increase Visibility</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans;">Attract more Patients</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans; background-color:#F7F7F7;">1 Time a Year</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans;">Manage your Account</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans; background-color:#F7F7F7;">Accessible 24/7</li>
+                        <li style="color:black; font-size:15px; font-family:PT Sans;">Free</li>
+                        <li><a href="#"><div class="learn-more">Read More</div></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--Prising table-->
         </div>
     </div>
-    <!-- END PRICING OPTION1 -->
-
-
-
-
 </div>
-<!-- END CONTAINER -->
+
+
+

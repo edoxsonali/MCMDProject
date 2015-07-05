@@ -20,7 +20,7 @@ namespace MCMD.Common.CommonClass
             WriteLog("Send Email Start..");
             SmtpClient client = new SmtpClient();
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.EnableSsl = true;// To encrept the connection
+            client.EnableSsl = false;// To encrept the connection
             client.Host = ConfigurationManager.AppSettings["SMTPHost"];
             client.Port = Convert.ToInt32(ConfigurationManager.AppSettings["SMPTPort"]);
 

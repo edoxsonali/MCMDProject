@@ -196,8 +196,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom-styles.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Img\default_doctor1.jpg" />
+    <Content Include="Content\Img\Defult_clinic1.jpg" />
     <Content Include="Content\Img\down.png" />
     <Content Include="Content\Img\minus.png" />
+    <Content Include="Content\Img\Phone1.png" />
     <Content Include="Content\Img\plus.png" />
     <Content Include="Content\Img\sorting_sprite.png" />
     <Content Include="Content\Img\up.png" />
@@ -274,6 +277,7 @@
     <Content Include="Content\template_content\assets\img\blog\8.jpg" />
     <Content Include="Content\template_content\assets\img\blog\9.jpg" />
     <Content Include="Content\template_content\assets\img\datatable-row-openclose.png" />
+    <Content Include="Content\template_content\assets\img\default1.jpg" />
     <Content Include="Content\template_content\assets\img\flags\ad.png" />
     <Content Include="Content\template_content\assets\img\flags\ae.png" />
     <Content Include="Content\template_content\assets\img\flags\af.png" />
@@ -555,6 +559,7 @@
     <Content Include="Content\template_content\assets\img\icon-color.png" />
     <Content Include="Content\template_content\assets\img\icon-img-down.png" />
     <Content Include="Content\template_content\assets\img\icon-img-up.png" />
+    <Content Include="Content\template_content\assets\img\images1.jpg" />
     <Content Include="Content\template_content\assets\img\inbox-nav-arrow-blue.png" />
     <Content Include="Content\template_content\assets\img\input-spinner.gif" />
     <Content Include="Content\template_content\assets\img\invoice\walmart.png" />
@@ -2060,6 +2065,7 @@
     <Content Include="Content\Web_Theme\assets\css\themes\bluefb.css" />
     <Content Include="Content\Web_Theme\assets\css\themes\green.css" />
     <Content Include="Content\Web_Theme\assets\css\themes\orange.css" />
+    <Content Include="Content\Web_Theme\assets\css\themes\Price.css" />
     <Content Include="Content\Web_Theme\assets\css\themes\red.css" />
     <Content Include="Content\Web_Theme\assets\fonts\font.css" />
     <Content Include="Content\Web_Theme\assets\img\arrow-testimonials.png" />
@@ -2732,6 +2738,7 @@
     <Content Include="Content\template_content\assets\plugins\uniform\images\Thumbs.db" />
     <Content Include="Content\template_content\assets\plugins\uniform\README.textile" />
     <Content Include="Content\template_content\demo\username_checker.php" />
+    <None Include="Properties\PublishProfiles\doxedox.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ie-emulation-modes-warning.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -2762,7 +2769,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -2836,6 +2845,10 @@
     <Content Include="Views\Home\PrivacyPolicy.cshtml" />
     <Content Include="Views\ManageAppointment\Appointment.cshtml" />
     <Content Include="Views\Patients\PatientRegister.cshtml" />
+    <Content Include="Views\Home\doc.cshtml" />
+    <Content Include="Views\Home\img.cshtml" />
+    <Content Include="Views\Account\ResetPasswordPatient.cshtml" />
+    <Content Include="Views\Patients\ViewPatients.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -175,12 +175,12 @@
 
 
     </div>
-    <div class="portlet">
+    <div class="portlet box">
 
-        <div class="portlet-body">
+        <div class="portlet-body flip-scroll">
 
             @grid.GetHtml(
-                                         tableStyle: "table table-striped table-bordered table-advance table-hover",
+                    tableStyle: "table table-striped table-bordered table-advance table-condensed flip-content",
                      footerStyle: "gridFooter",
                             alternatingRowStyle: "alt",
                              htmlAttributes: new { id = "grdUsers" },
@@ -189,7 +189,7 @@
         previousText: "< Previous", nextText: "Next >",
         lastText: "Last >>",
                          columns: new[] {
-                         grid.Column("UserName",header: "User Name", canSort: false),
+                         //grid.Column("UserName",header: "User Name", canSort: false),
                          grid.Column("FirstName",header: "First Name", canSort: false),
                          grid.Column("LastName",header: "Last Name", canSort: false),
                          grid.Column("EmailID",header: "Email ID", canSort: false),

@@ -50,6 +50,7 @@
     <Compile Include="DoctorInterfaces\IDocRegister.cs" />
     <Compile Include="PatientInterfaces\IPatientRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebInterfaces\IDocProfile.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MCMD.EntityModel\MCMD.EntityModel.csproj">
@@ -61,7 +62,9 @@
       <Name>MCMD.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

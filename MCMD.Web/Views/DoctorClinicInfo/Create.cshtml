@@ -4,16 +4,21 @@
     Layout = "~/Views/Shared/_ThemeLayout.cshtml";
 }
 
-<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+@*<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>*@
+@*<script src="@Url.Content("~/Content/template_content/assets/plugins/jquery-tags-input/jquery.tagsinput.js")" type="text/javascript"></script>*@
+@Styles.Render("~/Content/template_content/assets/plugins/jquery-tags-input/jquery.tagsinput.css")
+
 
 <script type="text/javascript">
     $(document).ready(function () {
 
+
+
+
         //Get City list on changing of State dropdown list
         $('#STATEID').change(function () {
-          
+
             var id = $("#STATEID :selected").val();
-            alert(id);
             if (id != "") {
                 $.ajax({
                     type: "GET",
@@ -22,9 +27,10 @@
                     data: { "StateIDID": id },
                     dataType: "json",
                     success: function (data) {
+
                         var items = '<option value="0">-Select-</option>';
                         $.each(data, function (i, city) {
-                       
+
                             items += "<option value='" + city.Value + "'>" + city.Text + "</option>";
                         });
                         // Fill city Dropdown list
@@ -40,11 +46,14 @@
                 $('#CITYID').html(items);
             }
         });
+
+
+
+
+
     });
-   
+
 </script>
-
-
 
 <!-- BEGIN PAGE CONTAINER-->
 <div class="container-fluid">
@@ -90,7 +99,7 @@
             <!-- BEGIN FORM-->
             @using (Html.BeginForm(Html.BeginForm("Create", "DoctorClinicInfo",
             new { ReturnUrl = ViewBag.ReturnUrl },
-            FormMethod.Post, new { @class = "form-horizontal form-bordered" })))
+            FormMethod.Post, new { @class = "form-horizontal form-bordered", enctype = "multipart/form-data" })))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
@@ -98,7 +107,7 @@
                     <label class="control-label">Name of the Clinic<span class="required">*</span></label>
                     <div class="controls">
 
-                        @Html.TextBoxFor(u => u.ClinicName, new { @class = "m-wrap span7", @placeholder = " Clinic Name", @maxlength = "30", @autocomplete = "off" })
+                        @Html.TextBoxFor(u => u.ClinicName, new { @class = "m-wrap span7", @placeholder = " Clinic Name", @maxlength = "50", @autocomplete = "off" })
                         @Html.ValidationMessageFor(u => u.ClinicName, string.Empty, new { @class = "text-error" })
 
                     </div>
@@ -106,24 +115,11 @@
                 <div class="control-group">
                     <label class="control-label">Address<span class="required">*</span> </label>
                     <div class="controls">
-                        @Html.TextBoxFor(u => u.ClinicAddress, new { @class = "m-wrap span7", @placeholder = "Clinic Address", @maxlength = "30", @autocomplete = "off" })
+                        @Html.TextAreaFor(u => u.ClinicAddress, new { @class = "m-wrap span7", @placeholder = "Clinic Address", @maxlength = "500", @autocomplete = "off" })
                         @Html.ValidationMessageFor(u => u.ClinicAddress, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
-                <div class="control-group">
-                    <label class="control-label">Phone #<span class="required">*</span></label>
-                    <div class="controls">
-                        @Html.TextBoxFor(u => u.ClinicPhoneNo, new { @class = "m-wrap span7", @placeholder = "Clinic Phone No", @maxlength = "30", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(u => u.ClinicPhoneNo, string.Empty, new { @class = "text-error" })
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">Consultancy Charges</label>
-                    <div class="controls">
-                        @Html.TextBoxFor(u => u.ClinicFees, new { @class = "m-wrap span7", @placeholder = "Clinic Fees", @maxlength = "30", @autocomplete = "off" })
-                        @Html.ValidationMessageFor(u => u.ClinicFees, string.Empty, new { @class = "text-error" })
-                    </div>
-                </div>
+
                 <div class="control-group">
                     <label class="control-label">Country<span class="required">*</span></label>
                     <div class="controls">
@@ -148,32 +144,62 @@
                         @Html.ValidationMessageFor(m => m.CityId, "", new { @class = "text-error" })
                     </div>
                 </div>
+
+                <div class="control-group">
+                    <label class="control-label">Phone #<span class="required">*</span></label>
+                    <div class="controls">
+                        @Html.TextBoxFor(u => u.ClinicPhoneNo, new { @class = "m-wrap span7", @placeholder = "Clinic Phone No", @maxlength = "15", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(u => u.ClinicPhoneNo, string.Empty, new { @class = "text-error" })
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Consultancy Charges</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(u => u.ClinicFees, new { @class = "m-wrap span7", @placeholder = "Clinic Fees", @maxlength = "10", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(u => u.ClinicFees, string.Empty, new { @class = "text-error" })
+                    </div>
+                </div>
+
+
                 <div class="control-group">
                     <label class="control-label">Pin Code<span class="required">*</span></label>
                     <div class="controls">
-                        @Html.TextBoxFor(u => u.ZipCode, new { @class = "m-wrap span7", @placeholder = "Pin Code", @maxlength = "30", @autocomplete = "off" })
+                        @Html.TextBoxFor(u => u.ZipCode, new { @class = "m-wrap span7", @placeholder = "Pin Code", @maxlength = "10", @autocomplete = "off" })
                         @Html.ValidationMessageFor(u => u.ZipCode, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Services offered</label>
                     <div class="controls">
-                        @Html.TextBoxFor(u => u.ClinicServices, new { @class = "m-wrap span7", @placeholder = "Clinic Services", @maxlength = "30", @autocomplete = "off" })
+
+                        @Html.TextAreaFor(u => u.ClinicServices, new { @class = "m-wrap span7", @placeholder = "Clinic Services", @autocomplete = "off", @rows = 3 })
 
                     </div>
+
                 </div>
                 <div class="control-group">
                     <label class="control-label">Awards And Recognization</label>
                     <div class="controls">
-                        @Html.TextBoxFor(u => u.AwardsAndRecognization, new { @class = "m-wrap span7", @placeholder = "Awards And Recognization", @maxlength = "30", @autocomplete = "off" })
+                        @Html.TextAreaFor(u => u.AwardsAndRecognization, new { @class = "m-wrap span7", @placeholder = "Awards And Recognization", @maxlength = "800", @autocomplete = "off", @rows = 3 })
 
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">About Clinic</label>
                     <div class="controls">
-                        @Html.TextAreaFor(u => u.AboutClinic, new { @class = "m-wrap span7", @placeholder = "About Clinic", @maxlength = "30", @autocomplete = "off" })
+                        @Html.TextAreaFor(u => u.AboutClinic, new { @class = "m-wrap span7", @placeholder = "About Clinic", @maxlength = "600", @autocomplete = "off", @rows = 5 })
 
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Upload Photo/Image@*<span class="required">*</span>*@</label>
+                    <div class="controls">
+                        <input id="ImagePath" title="Upload a clinic image"
+                               type="file" name="file" />
+                        @if (!string.IsNullOrEmpty(@Model.FolderFilePath))
+                        {
+                            <img src="@Url.Content(@Model.FolderFilePath)" alt="" style="border:2px solid; border-color:#d12610; border-radius:6px;height:70px;width:70px;" />
+                        }
                     </div>
                 </div>
                 <label>
@@ -182,7 +208,7 @@
                 <div class="form-actions" style="padding-left:20px;">
 
                     <button type="button" id="btnscd" class="btn blue" name="btnscd" style="float:left;" onclick="location.href='@Url.Action("Create", "DoctorInfo")'">Back</button>
-                    <button type="Submit" id="btnCreate" class="btn blue" name="btnCreate" style="float:right;">Next</button>              
+                    <button type="Submit" id="btnCreate" class="btn blue" name="btnCreate" style="float:right;">Next</button>
 
                 </div>
             }
