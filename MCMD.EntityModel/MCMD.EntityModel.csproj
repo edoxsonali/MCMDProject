@@ -109,6 +109,7 @@
     <Compile Include="Administration\MembershipTwo.cs" />
     <Compile Include="Administration\Role.cs" />
     <Compile Include="Administration\SchedulingDiary.cs" />
+    <Compile Include="Administration\Seating.cs" />
     <Compile Include="Administration\State.cs" />
     <Compile Include="Administration\UpgradeService.cs" />
     <Compile Include="Administration\UpgradeServiceLog.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Administration\UserLoginSpeciality.cs" />
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Doctor\GetAffiliations.cs" />
+    <Compile Include="Doctor\GetAllData.cs" />
     <Compile Include="Doctor\GetAwards.cs" />
     <Compile Include="Doctor\GetRegistrations.cs" />
     <Compile Include="Doctor\GetService.cs" />
@@ -137,7 +139,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DbScript\MCMD_DB_05june.sql" />
+    <Content Include="DbScript\MCMD_DB_10July.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

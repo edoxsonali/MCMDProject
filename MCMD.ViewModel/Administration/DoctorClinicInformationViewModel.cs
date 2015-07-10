@@ -37,6 +37,10 @@ namespace MCMD.ViewModel.Administration
         [Required(ErrorMessage = "Clinic Name is required.")]
         public string ClinicName { get; set; }
 
+        [DisplayName("ClinicType")]
+        [Required(ErrorMessage = "Clinic Type is required.")]
+        public string ClinicType { get; set; }
+
         [DisplayName("ClinicAddress")]
         [Required(ErrorMessage = "Clinic Address is required.")]
         public string ClinicAddress { get; set; }

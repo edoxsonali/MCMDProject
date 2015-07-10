@@ -107,15 +107,24 @@
                     <label class="control-label">Name of the Clinic<span class="required">*</span></label>
                     <div class="controls">
 
-                        @Html.TextBoxFor(u => u.ClinicName, new { @class = "m-wrap span7", @placeholder = " Clinic Name", @maxlength = "50", @autocomplete = "off" })
+                        @Html.TextBoxFor(u => u.ClinicName, new { @class = "m-wrap span7", @placeholder = "Enter Clinic Name", @maxlength = "50", @autocomplete = "off" })
                         @Html.ValidationMessageFor(u => u.ClinicName, string.Empty, new { @class = "text-error" })
+
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Clinic Type<span class="required">*</span></label>
+                    <div class="controls">
+
+                        @Html.TextBoxFor(u => u.ClinicType, new { @class = "m-wrap span7", @placeholder = "Enter Clinic Type", @maxlength = "50", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(u => u.ClinicType, string.Empty, new { @class = "text-error" })
 
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Address<span class="required">*</span> </label>
                     <div class="controls">
-                        @Html.TextAreaFor(u => u.ClinicAddress, new { @class = "m-wrap span7", @placeholder = "Clinic Address", @maxlength = "500", @autocomplete = "off" })
+                        @Html.TextAreaFor(u => u.ClinicAddress, new { @class = "m-wrap span7", @placeholder = "Enter Clinic Address", @maxlength = "500", @autocomplete = "off" })
                         @Html.ValidationMessageFor(u => u.ClinicAddress, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
@@ -148,14 +157,14 @@
                 <div class="control-group">
                     <label class="control-label">Phone #<span class="required">*</span></label>
                     <div class="controls">
-                        @Html.TextBoxFor(u => u.ClinicPhoneNo, new { @class = "m-wrap span7", @placeholder = "Clinic Phone No", @maxlength = "15", @autocomplete = "off" })
+                        @Html.TextBoxFor(u => u.ClinicPhoneNo, new { @class = "m-wrap span7", @placeholder = "Enter Clinic Phone Number", @maxlength = "15", @autocomplete = "off" })
                         @Html.ValidationMessageFor(u => u.ClinicPhoneNo, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Consultancy Charges</label>
                     <div class="controls">
-                        @Html.TextBoxFor(u => u.ClinicFees, new { @class = "m-wrap span7", @placeholder = "Clinic Fees", @maxlength = "10", @autocomplete = "off" })
+                        @Html.TextBoxFor(u => u.ClinicFees, new { @class = "m-wrap span7", @placeholder = "Enter Clinic Fees", @maxlength = "10", @autocomplete = "off" })
                         @Html.ValidationMessageFor(u => u.ClinicFees, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
@@ -164,7 +173,7 @@
                 <div class="control-group">
                     <label class="control-label">Pin Code<span class="required">*</span></label>
                     <div class="controls">
-                        @Html.TextBoxFor(u => u.ZipCode, new { @class = "m-wrap span7", @placeholder = "Pin Code", @maxlength = "10", @autocomplete = "off" })
+                        @Html.TextBoxFor(u => u.ZipCode, new { @class = "m-wrap span7", @placeholder = "Enter Pin Code", @maxlength = "10", @autocomplete = "off" })
                         @Html.ValidationMessageFor(u => u.ZipCode, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
@@ -172,7 +181,7 @@
                     <label class="control-label">Services offered</label>
                     <div class="controls">
 
-                        @Html.TextAreaFor(u => u.ClinicServices, new { @class = "m-wrap span7", @placeholder = "Clinic Services", @autocomplete = "off", @rows = 3 })
+                        @Html.TextAreaFor(u => u.ClinicServices, new { @class = "m-wrap span7", @placeholder = "Enter Services offered", @autocomplete = "off", @rows = 3 })
 
                     </div>
 
@@ -180,19 +189,19 @@
                 <div class="control-group">
                     <label class="control-label">Awards And Recognization</label>
                     <div class="controls">
-                        @Html.TextAreaFor(u => u.AwardsAndRecognization, new { @class = "m-wrap span7", @placeholder = "Awards And Recognization", @maxlength = "800", @autocomplete = "off", @rows = 3 })
+                        @Html.TextAreaFor(u => u.AwardsAndRecognization, new { @class = "m-wrap span7", @placeholder = " Enter Awards And Recognization", @maxlength = "800", @autocomplete = "off", @rows = 3 })
 
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">About Clinic</label>
                     <div class="controls">
-                        @Html.TextAreaFor(u => u.AboutClinic, new { @class = "m-wrap span7", @placeholder = "About Clinic", @maxlength = "600", @autocomplete = "off", @rows = 5 })
+                        @Html.TextAreaFor(u => u.AboutClinic, new { @class = "m-wrap span7", @placeholder = "Enter About Clinic", @maxlength = "600", @autocomplete = "off", @rows = 5 })
 
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label">Upload Photo/Image@*<span class="required">*</span>*@</label>
+                    <label class="control-label">Clinic Profile Photo</label>
                     <div class="controls">
                         <input id="ImagePath" title="Upload a clinic image"
                                type="file" name="file" />

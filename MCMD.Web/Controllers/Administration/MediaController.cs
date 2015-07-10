@@ -56,7 +56,7 @@ namespace MCMD.Web.Controllers.Administration
         public ActionResult Create(Media media, MediaViewModel mediaVM, HttpPostedFileBase file)
         {
 
-
+          
             if (ModelState.IsValid)
             {
                 int Id = (Convert.ToInt32(Session["EditDoctor"]));

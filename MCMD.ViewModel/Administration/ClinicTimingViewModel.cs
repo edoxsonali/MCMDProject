@@ -16,14 +16,25 @@ namespace MCMD.ViewModel.Administration
         public int LoginId { get; set; }
 
         public List<DaysCheckList> GetCheckList { get; set; }
+        public List<DaysCheckList> GetCheckList2 { get; set; }
+        public List<DaysCheckList> GetCheckList3 { get; set; }
+
+        public List<DaysCheckList> AutoGetCheckList { get; set; }
         public bool DayChecked { get; set; }
 
         public List<ClinicTimeInformation> getClinicTimie { get; set; }
+
+        public List<Seating> SeatingList { get; set; }
+
         public string Setting { get; set; }
+        public string Setting2 { get; set; }
+        public string Setting3 { get; set; }
 
         public int[] SelectedMember1 { get; set; }
+        public int[] SelectedMember2 { get; set; }
+        public int[] SelectedMember3 { get; set; }
         
-
+        //1st seating
         public string StartTimeMon { get; set; }
         public string EndtTimeMon { get; set; }
         public string StartTimeTue { get; set; }
@@ -39,12 +50,44 @@ namespace MCMD.ViewModel.Administration
         public string StartTimeSun { get; set; }
         public string EndtTimeSun { get; set; }
 
+        //2nd seatting
+        public string StartTimeMon2 { get; set; }
+        public string EndtTimeMon2 { get; set; }
+        public string StartTimeTue2 { get; set; }
+        public string EndtTimeTue2 { get; set; }
+        public string StartTimeWed2 { get; set; }
+        public string EndtTimeWed2 { get; set; }
+        public string StartTimeThu2 { get; set; }
+        public string EndtTimeThu2 { get; set; }
+        public string StartTimeFri2 { get; set; }
+        public string EndtTimeFri2 { get; set; }
+        public string StartTimeSat2 { get; set; }
+        public string EndtTimeSat2 { get; set; }
+        public string StartTimeSun2 { get; set; }
+        public string EndtTimeSun2 { get; set; }
+
+        //3rd seatting
+        public string StartTimeMon3 { get; set; }
+        public string EndtTimeMon3 { get; set; }
+        public string StartTimeTue3 { get; set; }
+        public string EndtTimeTue3 { get; set; }
+        public string StartTimeWed3 { get; set; }
+        public string EndtTimeWed3 { get; set; }
+        public string StartTimeThu3 { get; set; }
+        public string EndtTimeThu3 { get; set; }
+        public string StartTimeFri3 { get; set; }
+        public string EndtTimeFri3 { get; set; }
+        public string StartTimeSat3 { get; set; }
+        public string EndtTimeSat3 { get; set; }
+        public string StartTimeSun3 { get; set; }
+        public string EndtTimeSun3 { get; set; }
+
         public List<ClinicTimeInformation> GetclinicTimeFirst { get; set; }
         public List<ClinicTimeInformation> GetclinicTimeSecond { get; set; }
         public List<ClinicTimeInformation> GetclinicTimeThird { get; set; }
 
-        public List<GetAllTime> GetTime1 { get; set; }
-        public List<GetAllTime> GetTime2 { get; set; }
+        //public List<GetAllTime> GetTime1 { get; set; }
+        //public List<GetAllTime> GetTime2 { get; set; }
 
       //first seating time
         public string StartTimefs1 { get; set; }

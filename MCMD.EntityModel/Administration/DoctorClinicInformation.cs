@@ -21,6 +21,10 @@ namespace MCMD.EntityModel.Doctor
         [StringLength(50, ErrorMessage = "ClinicName cannot be longer than 50 characters.")]
         public string ClinicName { get; set; }
 
+        [DisplayName("ClinicType")]
+        [Required(ErrorMessage = "Clinic Type is required.")]
+        public string ClinicType { get; set; }
+
         [DisplayName("ClinicAddress")]
         [Required(ErrorMessage = "ClinicAddress is required.")]
         //[StringLength(50, ErrorMessage = "ClinicAddress cannot be longer than 100 characters.")]

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MCMD.EntityModel.Administration;
+using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace MCMD.ViewModel.Administration
 {
@@ -21,6 +23,11 @@ namespace MCMD.ViewModel.Administration
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Message { get; set; }
+
+        [Required(ErrorMessage = "Please Upload File")]
+        [Display(Name = "Upload File")]
+        //[ValidateFile]
+        public HttpPostedFileBase file { get; set; }
 
 
     }

@@ -1,9 +1,102 @@
-﻿@{
+﻿@model MCMD.ViewModel.doctor.HomeDocSearchViewModel
+@{
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_WebLayout.cshtml";
 }
 
-<!-- BEGIN CONTAINER -->
+<div class="container" style="padding-top:50px;">
+    @using (Html.BeginForm(Html.BeginForm("Search", "Home",
+            new { ReturnUrl = ViewBag.ReturnUrl },
+            FormMethod.Post, new { @class = "form-horizontal form-bordered" })))
+    {
+        @Html.ValidationSummary(true)
+
+        <div class="hidden-phone hidden-tablet">
+
+            <br /><br />
+        </div>
+    <!-- BEGIN TABS AND TESTIMONIALS -->
+
+
+        <div class="mix-block span12" style="padding-top:130px;padding-bottom:100px;">
+            <div class="span2"></div>
+            <div class="span8 tab-style-1 margin-bottom-20" style="text-align:center;">
+                <ul class="nav nav-tabs" style="border-bottom:none;">
+                    <li class="active" id="specialityLI">
+                        <a href="#tab-1" data-toggle="tab" style="border-left-color:#e9811a; border-right-color: #e9811a; border-top-color:#e9811a; border-width:1px;">Speciality</a>
+                    </li>
+                    <li>
+                        <a href="#tab-2" data-toggle="tab" style="border-left-color:#e9811a; border-right-color: #e9811a; border-top-color: #e9811a; border-width:1px;">Doctor</a>
+                    </li>
+                    <li>
+                        <a href="#tab-3" data-toggle="tab" style="border-left-color:#e9811a; border-right-color: #e9811a; border-top-color: #e9811a; border-width:1px;">Clinic/Lab</a>
+                    </li>
+                   
+                </ul>
+                <div class="tab-content" style="padding-bottom :13px; padding-top:14px; background:#e9811a;">
+                    <div class="tab-pane row-fluid fade in active" id="tab-1">
+                        @*<input type="text" style="background:#fff; color:grey;" class="span5 m-wrap" placeholder="Enter Speciality">*@
+                        @Html.DropDownListFor(m => m.SpecialityID, new SelectList(Model.GetSpecialitylist, "SpecialityID", "SpecialityName"), "-Select Speciality-", new { style = "background:#fff; color:grey;", @class = "span5 m-wrap", @placeholder = "Select Speciality" })
+                        &nbsp;&nbsp;@Html.DropDownListFor(m => m.CityId, new SelectList(Model.GetCitys, "CityId", "CityName"), "-Select City-", new { style = "background:#fff; color:grey;", @class = "span5 m-wrap", @placeholder = "Select Speciality" })<button class="btn black" type="submit">
+                            @*<input style="background:#fff; color:grey; " class="span5 m-wrap" type="text" placeholder="Enter Location"><button class="btn black" type="button">*@
+                            SEARCH
+                        </button>
+                    </div>
+                    <div class="tab-pane row-fluid fade" id="tab-2">
+                        @*<input type="text" style="background:#fff; color:grey;" class="span5 m-wrap" placeholder="Eg.Dr.Name">*@
+                        @Html.DropDownListFor(m => m.FirstName, new SelectList(Model.getDoctor, "FirstName", "FirstName"), "-Select Name-", new { style = "background:#fff; color:grey;", @class = "span5 m-wrap", @placeholder = "Select Doctor" })
+                        &nbsp;&nbsp;@Html.DropDownListFor(m => m.CityId, new SelectList(Model.GetCitys, "CityId", "CityName"), "-Select City-", new { style = "background:#fff; color:grey;", @class = "span5 m-wrap", @placeholder = "Select Speciality" })<button class="btn black" type="submit">
+                            @*<input style="background:#fff; color:grey; " class="span5 m-wrap" type="text" placeholder="Enter Location"><button class="btn black" type="button">*@
+                            SEARCH
+                        </button>
+                    </div>
+                  
+                    <div class="tab-pane row-fluid fade" id="tab-4">
+                        <input type="text" style="background:#fff; color:grey;" class="span5 m-wrap" placeholder="Enter Lab Name">
+                        &nbsp;&nbsp;@Html.DropDownListFor(m => m.CityId, new SelectList(Model.GetCitys, "CityId", "CityName"), "-Select City-", new { style = "background:#fff; color:grey;", @class = "span5 m-wrap", @placeholder = "Select Speciality" })<button class="btn black" type="button">
+
+                            SEARCH
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- END TABS -->
+            </div>
+            <div class="span2"></div>
+
+            <div class="span1"></div>
+
+            <div class="span2"></div>
+
+        </div>
+
+
+        <div class="mix-block span6">
+            <div class="span5 testimonials-v1">
+                <div id="myCarousel">
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                        <div class="item">
+
+                            <div class="carousel-info">
+                                <img src="~/Content/Web_Theme/assets/img/people/img1-small.jpg" alt="">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    }
+    <!-- END TABS AND TESTIMONIALS -->
+</div>
+
+
+@*<!-- BEGIN CONTAINER -->
 <div class="container" style="padding-top:50px;">
     <div class="hidden-phone hidden-tablet">
 
@@ -26,11 +119,11 @@
                     &nbsp;&nbsp;<input style="background:#fff; color:grey; " class="span5 m-wrap" type="text" placeholder="Enter Location"><button class="btn black" type="button">SEARCH</button>
                 </div>
                 <div class="tab-pane row-fluid fade" id="tab-2">
-                    <input type="text" style="background:#fff; color:grey;" class="span5 m-wrap" placeholder="Enter Speciality">
+                    <input type="text" style="background:#fff; color:grey;" class="span5 m-wrap" placeholder="Enter Doctor Name">
                     &nbsp;&nbsp;<input style="background:#fff; color:grey; " class="span5 m-wrap" type="text" placeholder="Enter Location"><button class="btn black" type="button">SEARCH</button>
                 </div>
                 <div class="tab-pane row-fluid fade" id="tab-3">
-                    <input type="text" style="background:#fff; color:grey;" class="span5 m-wrap" placeholder="Enter Speciality">
+                    <input type="text" style="background:#fff; color:grey;" class="span5 m-wrap" placeholder="Enter Clinic/Lab Name">
                     &nbsp;&nbsp;<input style="background:#fff; color:grey; " class="span5 m-wrap" type="text" placeholder="Enter Location"><button class="btn black" type="button">SEARCH</button>
                 </div>
               
@@ -68,4 +161,4 @@
 
     <!-- END TABS AND TESTIMONIALS -->
 </div>
-<!-- END CONTAINER -->
+<!-- END CONTAINER -->*@

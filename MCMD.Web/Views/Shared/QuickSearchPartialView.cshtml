@@ -1,0 +1,96 @@
+﻿@model MCMD.ViewModel.doctor.HomeDocSearchViewModel
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $('#DDSelect').change(function () {
+            var id = $("#DDSelect :selected").val();
+           // alert(id);
+            if (id == 2) {
+
+                $("#DocSpeciality").show();
+                $("#City").show();
+
+                $("#DoctorName").hide();
+                $("#ClinicName").hide();
+
+
+            }
+            if (id == 3) {
+
+                $("#DoctorName").show();
+                $("#City").show();
+                $("#DocSpeciality").hide();
+                $("#ClinicName").hide();
+
+            }
+            if (id == 4) {
+
+                $("#ClinicName").show();
+                $("#City").show();
+
+                $("#DoctorName").hide();
+                $("#DocSpeciality").hide();
+
+            }
+        });
+    });
+</script>
+<div class="row-fluid">
+    <!-- BEGIN RIGHT SIDEBAR -->
+    @using (Html.BeginForm(Html.BeginForm("Doctors", "Home",
+            new { ReturnUrl = ViewBag.ReturnUrl },
+            FormMethod.Post, new { @class = "" })))
+    {
+        @Html.ValidationSummary(true)
+
+        <form style="padding-bottom:6px;">
+
+
+            <h4 style="color:black; padding-top:3px; font-family:'PT Sans'">Quick Search</h4>
+            <div class="controls">
+                <select class="medium m-wrap" tabindex="1" id="DDSelect">
+                    <option value="1">-Select Catagories- </option>
+                    <option value="2"> Speciality</option>
+                    <option value="3"> Doctor</option>
+                    <option value="4"> Clinic</option>
+                </select>
+
+            </div>
+            <div class="form-group" id='DoctorName'>
+                <div class="controls">
+                    @Html.DropDownListFor(m => m.FirstName, new SelectList(Model.getDoctor, "FirstName", "FirstName"), "-Select Name-", new { style = "background:#fff; color:grey;", @class = "medium m-wrap", @placeholder = "Select Doctor" })
+
+                </div>
+            </div>
+
+            <div class="form-group" id='DocSpeciality'>
+                <div class="controls">
+                    @Html.DropDownListFor(m => m.SpecialityID, new SelectList(Model.GetSpecialitylist, "SpecialityID", "SpecialityName"), "-Select Speciality-", new { style = "background:#fff; color:grey;", @class = "medium m-wrap", @placeholder = "Select Speciality" })
+
+                </div>
+            </div>
+
+            <div class="form-group" id='ClinicName'>
+                <div class="controls">
+                    @Html.DropDownListFor(m => m.ClinicName, new SelectList(Model.GetDoctorClinicInformation, "ClinicName", "ClinicName"), "-Select Clinic/Lab -", new { style = "background:#fff; color:grey;", @class = "medium m-wrap", @placeholder = "Enter Clinic Name" })
+
+                </div>
+            </div>
+
+
+            <div class="form-group" id='City'>
+                <div class="controls">
+                    @Html.DropDownListFor(m => m.CityId, new SelectList(Model.GetCitys, "CityId", "CityName"), "-Select City-", new { style = "background:#fff; color:grey;", @class = "medium m-wrap", @placeholder = "Select Speciality" })
+
+                </div>
+            </div>
+            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;@*<button type="reset" class="btn blue" style="padding-bottom:3px; padding-top:3px;">Reset</button>*@ &nbsp;&nbsp;
+            <button type="submit" class="btn blue" style="padding-bottom:3px; padding-top:3px; ">Submit</button>
+        </form>
+    }
+</div>
+<!-- END RIGHT SIDEBAR -->
+@Scripts.Render("~/bundles/jqueryval")

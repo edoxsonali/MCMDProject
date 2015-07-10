@@ -214,6 +214,7 @@ D:\DoxeDox_Project\MCMDProject\MCMD.Web\bin\MCMD.Web.pdb
 D:\DoxeDox_Project\MCMDProject\MCMD.Web\bin\Antlr3.Runtime.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.Web\bin\EntityFramework.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.Web\bin\EntityFramework.SqlServer.dll
+D:\DoxeDox_Project\MCMDProject\MCMD.Web\bin\GoogleMaps.LocationServices.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.Web\bin\MCMD.Common.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.Web\bin\MCMD.DependencyResolution.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.Web\bin\MCMD.EntityModel.dll

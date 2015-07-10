@@ -68,48 +68,63 @@
     </div>
     <!-- END PAGE HEADER-->
     <!-- BEGIN PAGE CONTENT-->
-    <div class="portlet box blue ">
+    <div class="portlet box blue">
         <div class="portlet-title">
             <div class="caption"><i class="icon-reorder"></i>View Patients</div>
 
         </div>
-
         <div class="portlet-body form">
             <!-- BEGIN FORM-->
             @using (Html.BeginForm(Html.BeginForm("ViewPatients", "Patients", new { ReturnUrl = ViewBag.ReturnUrl },
-            FormMethod.Post, new { @class = "form-horizontal form-bordered" })))
+            FormMethod.Post, new { @class = "form-horizontal" })))
             {
 
                 @Html.ValidationSummary(true)
                 @Html.AntiForgeryToken()
-                <div class="control-group">
-                    <label class="control-label">Patient Id</label>
-                    <div class="controls">
-                        @Html.TextBoxFor(u => u.PatientId, new { @class = "m-wrap span6", @placeholder = "Search By Patient Id", @maxlength = "10", @autocomplete = "off" })
+                <div class="row-fluid">
+                    <div class="span6 ">
+                        <div class="control-group">
+                            <label class="span3" style="text-align:left; margin-top:5px;">Patient Id</label>
+                            <div>
+                                @Html.TextBoxFor(u => u.PatientId, new { @class = "m-wrap span9", @placeholder = "Search By Patient Id", @maxlength = "10", @autocomplete = "off" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span6 ">
+                        <div class="control-group">
+                            <label class="span3" style="text-align:left; margin-top:5px;">Phone #</label>
+                            <div>
+                                @Html.TextBoxFor(u => u.UserPhone, new { @class = "m-wrap span9", @type = " Search By phone", @placeholder = " Enter Phone number", @maxlength = "15", @autocomplete = "off" })
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="control-group">
-                    <label class="control-label">First Name</label>
-                    <div class="controls">
-                        @Html.TextBoxFor(u => u.FirstName, new { @class = "m-wrap span6", @placeholder = "Search By First Name", @maxlength = "20", autocomplete = "off" })
+                <div class="row-fluid">
+                    <div class="span6 ">
+                        <div class="control-group">
+                            <label class="span3" style="text-align:left; margin-top:5px;">First Name</label>
+                            <div>
+                                @Html.TextBoxFor(u => u.FirstName, new { @class = "m-wrap span9", @placeholder = "Search By First Name", @maxlength = "20", autocomplete = "off" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span6 ">
+                        <div class="control-group">
+                            <label class="span3" style="text-align:left; margin-top:5px;">Email ID</label>
+                            <div>
+                                @Html.TextBoxFor(u => u.EmailID, new { @class = "m-wrap span9", @type = "email", @placeholder = "Search By email Id", @maxlength = "50", autocomplete = "off" })
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="control-group">
-                    <label class="control-label">Last Name</label>
-                    <div class="controls">
-                        @Html.TextBoxFor(u => u.LastName, new { @class = "m-wrap span6", @placeholder = "Search By Last Name", @maxlength = "20", autocomplete = "off" })
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">Email ID</label>
-                    <div class="controls">
-                        @Html.TextBoxFor(u => u.EmailID, new { @class = "m-wrap span6", @type = "email", @placeholder = "Search By email Id", @maxlength = "50", autocomplete = "off" })
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">Phone #</label>
-                    <div class="controls">
-                        @Html.TextBoxFor(u => u.UserPhone, new { @class = "m-wrap span6", @type = " Search By phone", @placeholder = "Enter Phone number format is{ 0123456789, 012-345-6789, (012)-345-6789 }", @maxlength = "15", @autocomplete = "off" })
+                <div class="row-fluid">
+                    <div class="span6 ">
+                        <div class="control-group">
+                            <label class="span3" style="text-align:left; margin-top:5px;">Last Name</label>
+                            <div>
+                                @Html.TextBoxFor(u => u.LastName, new { @class = "m-wrap span9", @placeholder = "Search By Last Name", @maxlength = "20", autocomplete = "off" })
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-actions">
@@ -117,11 +132,8 @@
                     <button type="button" id="btnscd" class="btn" name="btnscd" onclick="location.href='@Url.Action("ViewPatients", "Patients")'">Reset</button>
                 </div>
             }
-
             <!-- END FORM-->
         </div>
-
-
     </div>
     <div class="portlet box">
 

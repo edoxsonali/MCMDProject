@@ -124,86 +124,86 @@ namespace MCMD.Web.Controllers.Administration
         public ActionResult Create(UpgradeServiceViewModel UpgradeServiceVM)
         {
 
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    int Id = (Convert.ToInt32(Session["EditDoctor"]));
+            //try
+            //{
+            //    if (ModelState.IsValid)
+            //    {
+            //        int Id = (Convert.ToInt32(Session["EditDoctor"]));
 
 
-                    StringBuilder sb = new StringBuilder();
-                    sb.Append("SELECTED SERVICES :- ").AppendLine();
-                    foreach (var item in UpgradeServiceVM.MembershipList)
-                    {
-                        if (item.CheckedStatus == true)
-                        {
-                            //Inserting Values Also in upgradeServiceL  Tabale 
-                            var NewService = new UpgradeService();
-                            sb.Append(item.MembershipType + ", ").AppendLine();
-                            NewService.MembershipId = item.MembershipId;
-                            NewService.LoginId = Id;
-                            NewService.Durations = UpgradeServiceVM.DurationId;
-                            NewService.AutoRenaval = UpgradeServiceVM.AutoRenavalId;
-                            NewService.CheckedStatus = true;
-                            NewService.CreatedById = 1;
-                            NewService.InactiveFlag = "N";
-                            NewService.CreatedOnDate = DateTime.Now;
-                            NewService.ModifiedById = 1;
-                            NewService.ModifiedOnDate = DateTime.Now;
-                            upgradeSerciceRepo.InsertSrvice(NewService);
-                            upgradeSerciceRepo.Save();
+            //        StringBuilder sb = new StringBuilder();
+            //        sb.Append("SELECTED SERVICES :- ").AppendLine();
+            //        foreach (var item in UpgradeServiceVM.MembershipList)
+            //        {
+            //            if (item.CheckedStatus == true)
+            //            {
+            //                //Inserting Values Also in upgradeServiceL  Tabale 
+            //                var NewService = new UpgradeService();
+            //                sb.Append(item.MembershipType + ", ").AppendLine();
+            //                NewService.MembershipId = item.MembershipId;
+            //                NewService.LoginId = Id;
+            //                NewService.Durations = UpgradeServiceVM.DurationId;
+            //                NewService.AutoRenaval = UpgradeServiceVM.AutoRenavalId;
+            //                NewService.CheckedStatus = true;
+            //                NewService.CreatedById = 1;
+            //                NewService.InactiveFlag = "N";
+            //                NewService.CreatedOnDate = DateTime.Now;
+            //                NewService.ModifiedById = 1;
+            //                NewService.ModifiedOnDate = DateTime.Now;
+            //                upgradeSerciceRepo.InsertSrvice(NewService);
+            //                upgradeSerciceRepo.Save();
 
-                            //Inserting Values Also in upgradeServiceLog History Tabale 
-                            //var NewSerLog = new UpgradeServiceLog();
+            //                //Inserting Values Also in upgradeServiceLog History Tabale 
+            //                //var NewSerLog = new UpgradeServiceLog();
 
-                            UpgradeServiceLog NewSerLog = new UpgradeServiceLog();
-
-
-                            NewSerLog.MembershipId = item.MembershipId;
-                            NewSerLog.LoginId = Id;
-                            NewSerLog.Durations = UpgradeServiceVM.DurationId;
-                            NewSerLog.AutoRenaval = UpgradeServiceVM.AutoRenavalId;
-                            NewService.CheckedStatus = true;
-                            NewSerLog.CreatedById = 1;
-                            NewSerLog.InactiveFlag = "N";
-                            NewSerLog.CreatedOnDate = DateTime.Now;
-                            NewSerLog.ModifiedById = 1;
-                            NewSerLog.ModifiedOnDate = DateTime.Now;
-                            upgradeSerciceRepo.InsertServiceLog(NewSerLog);
-                            upgradeSerciceRepo.Save();
+            //                UpgradeServiceLog NewSerLog = new UpgradeServiceLog();
 
 
-                            //if (Session["EditService"] != null)
-                            //{
+            //                NewSerLog.MembershipId = item.MembershipId;
+            //                NewSerLog.LoginId = Id;
+            //                NewSerLog.Durations = UpgradeServiceVM.DurationId;
+            //                NewSerLog.AutoRenaval = UpgradeServiceVM.AutoRenavalId;
+            //                NewService.CheckedStatus = true;
+            //                NewSerLog.CreatedById = 1;
+            //                NewSerLog.InactiveFlag = "N";
+            //                NewSerLog.CreatedOnDate = DateTime.Now;
+            //                NewSerLog.ModifiedById = 1;
+            //                NewSerLog.ModifiedOnDate = DateTime.Now;
+            //                upgradeSerciceRepo.InsertServiceLog(NewSerLog);
+            //                upgradeSerciceRepo.Save();
 
-                            //    NewService.UpgradeServiceId = Convert.ToInt32(Session["EditService"]);// assign the View Model Id to Entities Id
-                            //    upgradeSerciceRepo.UpdateService(NewService);
-                            //    //Session["EditService"] = null;
-                            //}
-                            //else
-                            //{
-                            //    upgradeSerciceRepo.InsertSrvice(NewService);
 
+            //                //if (Session["EditService"] != null)
+            //                //{
 
-
-                            //};
-                            //upgradeSerciceRepo.Save();
-
-                            @TempData["SuccessMessage"] = "Successfully added..";
+            //                //    NewService.UpgradeServiceId = Convert.ToInt32(Session["EditService"]);// assign the View Model Id to Entities Id
+            //                //    upgradeSerciceRepo.UpdateService(NewService);
+            //                //    //Session["EditService"] = null;
+            //                //}
+            //                //else
+            //                //{
+            //                //    upgradeSerciceRepo.InsertSrvice(NewService);
 
 
 
-                        }
-                    }
+            //                //};
+            //                //upgradeSerciceRepo.Save();
 
-                    ViewBag.Message = "Successfully added..";
-                }
-            }
-            catch (Exception)
-            {
-                //ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists contact your system administrator.");
-                @TempData["Message"] = "Unable to save changes";
-            }
+            //                @TempData["SuccessMessage"] = "Successfully added..";
+
+
+
+            //            }
+            //        }
+
+            //        ViewBag.Message = "Successfully added..";
+            //    }
+            //}
+            //catch (Exception)
+            //{
+               
+            //    @TempData["Message"] = "Unable to save changes";
+            //}
             return RedirectToAction("Create");
         }
         public ActionResult ViewUpgradeServices(UpgradeServiceViewModel UpgradeServiceVM)

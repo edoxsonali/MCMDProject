@@ -14,7 +14,7 @@ namespace MCMD.EntityModel.Administration
         public int LoginId { get; set; }
         public string Day { get; set; }
 
-        public string FirstSetting { get; set; }
+        public int Setting { get; set; }
 
         public bool IsWorkingDay { get; set; }
 

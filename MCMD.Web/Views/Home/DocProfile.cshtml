@@ -1,4 +1,4 @@
-﻿@model MCMD.ViewModel.doctor.DocProfileViewModel
+﻿@model MCMD.ViewModel.doctor.HomeDocSearchViewModel
 @{
     ViewBag.Title = "DocProfile";
     Layout = "~/Views/Shared/_WebLayout.cshtml";
@@ -6,11 +6,6 @@
 
 @Styles.Render("~/Content/template_content/assets/css/pages/profile.css")
 @Styles.Render("~/Content/template_content/assets/css/style.css")
-@*@Styles.Render("~/Content/template_content/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.css")
-    @Styles.Render("~/Content/template_content/assets/plugins/chosen-bootstrap/chosen/chosen.css")*@
-@*@Styles.Render("~/Content/template_content/assets/plugins/uniform/css/uniform.default.css")*@
-
-
 @Styles.Render("~/Content/template_content/assets/plugins/fancybox/source/jquery.fancybox.css")
 @Scripts.Render("~/Content/template_content/assets/plugins/fancybox/source/jquery.fancybox.js")
 @Scripts.Render("~/Content/template_content/assets/plugins/fancybox/source/jquery.fancybox.pack.js")
@@ -124,73 +119,30 @@
         <!-- BEGIN RIGHT SIDEBAR -->
         <div class="span3 blog-sidebar">
             <blockquote style="background:#fae5d1; border-left-color:#1f317f; padding-top:1px;">
-                <form style="padding-bottom:6px;">
-
-
-                    <h4 style="color:black; padding-top:3px; font-family:'PT Sans'">Quick Search</h4>
-
-                    <div class="controls">
-                        <select class="medium m-wrap" tabindex="1">
-                            <option value="Category 1">Select Doctor</option>
-                            <option value="Category 2">Category 2</option>
-                            <option value="Category 3">Category 5</option>
-                            <option value="Category 4">Category 4</option>
-                        </select>
-                    </div>
-
-                    <div class="controls">
-                        <select class="medium m-wrap" tabindex="1">
-                            <option value="Category 1">Select Speaciality</option>
-                            <option value="Category 2">Category 2</option>
-                            <option value="Category 3">Category 5</option>
-                            <option value="Category 4">Category 4</option>
-                        </select>
-                    </div>
-
-                    <div class="controls">
-                        <select class="medium m-wrap" tabindex="1">
-                            <option value="Category 1">Select Clinic</option>
-                            <option value="Category 2">Category 2</option>
-                            <option value="Category 3">Category 5</option>
-                            <option value="Category 4">Category 4</option>
-                        </select>
-                    </div>
-
-                    <div class="controls">
-                        <select class="medium m-wrap" tabindex="1">
-                            <option value="Category 1">Select Lab</option>
-                            <option value="Category 2">Category 2</option>
-                            <option value="Category 3">Category 5</option>
-                            <option value="Category 4">Category 4</option>
-                        </select>
-                    </div>
-
-                    <div class="controls">
-                        <select class="medium m-wrap" tabindex="1">
-                            <option value="Category 1">Select Location</option>
-                            <option value="Category 2">Category 2</option>
-                            <option value="Category 3">Category 5</option>
-                            <option value="Category 4">Category 4</option>
-                        </select>
-                    </div>
-                    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;<button type="submit" class="btn blue" style="padding-bottom:3px; padding-top:3px;">Reset</button> &nbsp;&nbsp;
-                    <button type="submit" class="btn blue" style="padding-bottom:3px; padding-top:3px; ">Submit</button>
-                </form>
+                @Html.Partial("QuickSearchPartialView")
             </blockquote>
         </div>
         <!-- END RIGHT SIDEBAR -->
         <!-- BEGIN LEFT SIDEBAR -->
+
+      
         <div class="span9 blog-item margin-bottom-40">
             <div class="well" style=" background-color:#fff; padding:12px; border:1px solid; border-color:#1f317f;">
                 <div class="clearfix"></div>
                 <!-- BEGIN PAGE CONTAINER-->
                 <div class="container-fluid" style="padding-left:0px; padding-right:0px;">
-
+                    @using System.Globalization;
+                    @{
+                        var textinfo = new CultureInfo(Culture, false).TextInfo;
+                        var FullName = @Html.DisplayFor(e => e.FirstName) + " " + @Html.DisplayFor(e => e.MiddleName) +" "+ @Html.DisplayFor(e => e.LastName);                       
+                        var Fname = textinfo.ToTitleCase(FullName.ToString());
+                       
+                    }
                     <div class="span12">
                         <ul class="unstyled profile-nav span3" style="list-style-type:none;">
-                            @if(! string.IsNullOrEmpty(Model.FolderFilePath))
-                            { 
-                            <li><img src="@Url.Content(@Model.FolderFilePath)" alt="" style="border:2px solid; border-color:#d12610; border-radius:6px;height:191.328px;width:191.328px;" /></li>
+                            @if (!string.IsNullOrEmpty(Model.FolderFilePath))
+                            {
+                                <li><img src="@Url.Content(@Model.FolderFilePath)" alt="" style="border:2px solid; border-color:#d12610; border-radius:6px;height:191.328px;width:191.328px;" /></li>
                             }
                             else
                             {
@@ -201,18 +153,18 @@
                         <div class="span9">
                             <div class="span12 portfolio-text portfolio-block" style="background-color:#555555; border:4px solid; border-color:#aaa; padding-left:10px;">
                                 <div class="portfolio-text-info">
-                                    <h4 style="font-family:'PT Sans'; color:#e9811a; font-size:22px;">@*Dr. Sandhya Balasubramanyan Zambre*@ Dr.&nbsp;@Html.DisplayFor(e => e.FirstName)&nbsp;@Html.DisplayFor(e => e.MiddleName)&nbsp;@Html.DisplayFor(e => e.LastName) </h4>
+                                    <h4 style="font-family:'PT Sans'; color:#e9811a; font-size:22px;"> Dr.&nbsp;@*@Html.DisplayFor(e => e.FirstName)&nbsp;@Html.DisplayFor(e => e.MiddleName)&nbsp;@Html.DisplayFor(e => e.LastName)*@ @Fname</h4>
 
                                     <ul style="list-style-type:none;margin-left:0px;">
                                         <li style="font-family:'Open Sans'; color:white; font-size:14px;">
-                                            @Html.DisplayFor(e => e.Qualification) @*MS - General Surgery , DNB - Gastroenterology , FRCS , MBBS*@
+                                            @Html.DisplayFor(e => e.Qualification)
                                         </li>
-                                        <li style="font-family:'Open Sans'; color:#B5B5B5; font-size:13px;">
-                                            @Html.DisplayFor(e => e.SpecialityName),&nbsp;@Html.DisplayFor(e => e.AboutExperience) @*Surgeon , 14 Years Experience*@
+                                        <li style="font-family:'Open Sans'; color:#B5B5B5; font-size:13px;"
+                                            @Html.DisplayFor(e => e.SpecialityName) &nbsp; @Html.DisplayFor(e => e.ExperienceInYear) @Html.DisplayFor(e => e.ExperienceInMonth)
                                         </li>
                                         <li><i class="icon-map-marker" style="font-size:18px; color:#ff8503;float:left;"></i> </li>
                                         <li style="font-family:'Open Sans'; color:white; font-size:14px; padding-left:24px;">
-                                            @Html.DisplayFor(e => e.ClinicAddress)@*#C1/101, Silver Oak Society, Kalyani Nagar, Landmark: Above Bank of Maharashtra, Pune #C1/101,*@
+                                            @Html.DisplayFor(e => e.ClinicAddress)
                                         </li>
                                         <br />
                                         <li style="font-family:'Open Sans'; color:white;">
@@ -225,61 +177,65 @@
                                                     <div class="caption"><i class="icon-user-md" style="font-size:20px; margin-top:0px;"></i>@Html.DisplayFor(e => e.ClinicName)</div>
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="opacity:initial;"></button>
                                                 </div>
-                                                <div class="portlet-body form" style="display: block; padding-top: 10px;">
+                                                <div class="portlet-body flip-scroll">
 
-                                                    <form action="#" class="form-horizontal">
-                                                        <table class="table table-striped table-bordered">
 
-                                                            <tr>
-                                                                <td colspan="4" style="text-align:center;"> Clinic Time</td>
+                                                    <table class="table table-striped table-bordered table-condensed flip-content">
+                                                        <tr>
+                                                            <th style="text-align:center;">DAYS</th>
+                                                            <th colspan="3" style="text-align:center;">CLINIC TIME</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td style="text-align:center; color:#08C;"><b>1st Seating Time</b></td>
+                                                            <td style="text-align:center; color:#08C;"><b>2nd Seating Time</b></td>
+                                                            <td style="text-align:center; color:#08C;"><b>3rd Seating Time</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="color:#08C; font-family:'Open Sans'"><b>Monday</b></td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimefs1) &nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimefs1) </td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimess1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimess1) </td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimets1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimets1) </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="color:#08C; font-family:'Open Sans'"><b>Tuesday</b></td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimefs2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs2) </td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimess2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess2) </td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimets2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets2) </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="color:#08C; font-family:'Open Sans'"><b>Wednesday</b></td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimefs3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs3) </td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimess3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess3) </td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimets3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets3) </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="color:#08C; font-family:'Open Sans'"><b>Thursday</b></td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimefs4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs4) </td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimess4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess4) </td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimets4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets4) </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="color:#08C; font-family:'Open Sans'"><b>Friday</b></td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimefs5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs5) </td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimess5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess5) </td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimets5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets5) </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="color:#08C; font-family:'Open Sans'"><b>Saturday</b></td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimefs6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs6) </td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimess6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess6) </td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimets6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets6) </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="color:#08C; font-family:'Open Sans'"><b>Sunday</b></td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimefs7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs7) </td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimess7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess7) </td>
+                                                            <td>@Html.DisplayFor(e => e.StartTimets7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets7) </td>
+                                                        </tr>
 
-                                                            </tr>
+                                                    </table>
 
-                                                            <tr>
-                                                                <td>Monday</td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimefs1) &nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimefs1) </td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimess1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimess1) </td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimets1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimets1) </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Tuesday</td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimefs2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs2) </td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimess2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess2) </td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimets2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets2) </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Wednesday</td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimefs3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs3) </td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimess3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess3) </td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimets3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets3) </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Thursday</td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimefs4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs4) </td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimess4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess4) </td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimets4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets4) </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Friday</td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimefs5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs5) </td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimess5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess5) </td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimets5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets5) </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Saturday</td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimefs6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs6) </td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimess6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess6) </td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimets6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets6) </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Sunday</td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimefs7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs7) </td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimess7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess7) </td>
-                                                                <td>@Html.DisplayFor(e => e.StartTimets7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets7) </td>
-                                                            </tr>
-
-                                                        </table>
-                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -312,11 +268,11 @@
                                         </div>
                                         <div id="collapse_1" class="accordion-body collapse ">
                                             <div class="accordion-inner">
-                                                @*<p>
-                                                <a class="btn blue" href="#form_modal10" data-toggle="modal">Book</a>
-                                                </p>*@
+                                                <p>
+                                                    <a class="btn blue" href="#form_modal" data-toggle="modal">Book</a>
+                                                </p>
                                                 <div id='calendar'></div>
-                                                <div id="form_modal10" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel10" aria-hidden="true" style="display: none;">
+                                                <div id="form_modal" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                                     <div class="portlet box red" style="margin-bottom:0px;">
                                                         <div class="portlet-title">
                                                             <div class="caption"><i class="icon-reorder"></i>Confirm Appointment</div>
@@ -399,7 +355,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_1_11">
                                     <p style="font-family:inherit; font-size:14px;">
-                                        @Html.DisplayFor(e => e.AboutMe)@*Dr. Tamhanes Centre For Advanced Dentistry is a Dental clinic in Chinchwad, Pune. The clinic is visited by dentists like Dr. Vijaykumar Tamhane, Dr. Omprakash Jhuria and Dr Garud. The timings of Dr. Tamhanes Centre For Advanced Dentistry are: Mon to Sat: 9:00am-10:00pm. Some of the services provided by the clinic are: Straightening Teeth (Conventional Braces), Conservative Dentistry, Dental Ceramics, Crowns And Bridges and Braces. Click on 'map' to find directions to reach Dr. Tamhanes Centre For Advanced Dentistry.*@
+                                        @Html.DisplayFor(e => e.AboutMe)
                                     </p>
                                     <hr style="margin-top:20px; margin-bottom:5px; border-top-color:#d12610;">
                                     <br />
@@ -413,12 +369,7 @@
                                                 <ul style="list-style-type:none;">
                                                     <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
                                                         <i class="icon-caret-right" style="color:#1f317f;"></i>@Html.DisplayFor(e => e.SpecialityName)<br />
-                                                        @*<i class="icon-caret-right" style="color:#1f317f;"></i>Endodontist<br />
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Orthodontist<br />
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Periodontist<br />
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Pediatric Dentist<br />
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Prosthodontist<br />*@
+
                                                     </li>
                                                 </ul>
                                             </blockquote><br />
@@ -429,7 +380,7 @@
                                                 <ul style="list-style-type:none;">
                                                     <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
                                                         <i class="icon-caret-right" style="color:#1f317f;"></i>@Html.DisplayFor(e => e.Qualification)<br />
-                                                        @*<i class="icon-caret-right" style="color:#1f317f;"></i>International College of Continuing Dental Education (FICCDE) - Frankfurt University, Germany, 2007<br />*@
+
                                                     </li>
                                                 </ul>
                                             </blockquote><br />
@@ -439,7 +390,7 @@
                                                 </span>
                                                 <ul style="list-style-type:none;">
                                                     <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>@Html.DisplayFor(e => e.AboutExperience)<br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>@Html.DisplayFor(e => e.ExperienceInYear) &nbsp; @Html.DisplayFor(e => e.ExperienceInMonth)<br />
                                                     </li>
                                                 </ul>
                                             </blockquote>
@@ -451,9 +402,12 @@
                                                 </span>
                                                 <ul style="list-style-type:none;">
                                                     <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
-                                                        @for (int i = 0; i < Model.getallawards.Count; i++)
+                                                        @if (!ReferenceEquals(Model.getallawards, null))
                                                         {
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i> @Model.getallawards[i].awards <br />
+                                                            for (int i = 0; i < Model.getallawards.Count; i++)
+                                                            {
+                                                                <i class="icon-caret-right" style="color:#1f317f;"></i> @Model.getallawards[i].awards <br />
+                                                            }
                                                         }
                                                     </li>
                                                 </ul>
@@ -464,9 +418,12 @@
                                                 </span>
                                                 <ul style="list-style-type:none;">
                                                     <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
-                                                        @for (int i = 0; i < Model.getallaffiliations.Count; i++)
+                                                        @if (!ReferenceEquals(Model.getallaffiliations, null))
                                                         {
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i> @Model.getallaffiliations[i].affiliations<br />
+                                                            for (int i = 0; i < Model.getallaffiliations.Count; i++)
+                                                            {
+                                                                <i class="icon-caret-right" style="color:#1f317f;"></i> @Model.getallaffiliations[i].affiliations<br />
+                                                            }
                                                         }
                                                         <br />
                                                     </li>
@@ -478,10 +435,12 @@
                                                 </span>
                                                 <ul style="list-style-type:none;">
                                                     <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
-
-                                                        @for (int i = 0; i < Model.getallregistrations.Count; i++)
+                                                        @if (!ReferenceEquals(Model.getallregistrations, null))
                                                         {
-                                                        <i class="icon-caret-right" style="color:#1f317f;"></i>@Model.getallregistrations[i].registrations<br />
+                                                            for (int i = 0; i < Model.getallregistrations.Count; i++)
+                                                            {
+                                                                <i class="icon-caret-right" style="color:#1f317f;"></i>@Model.getallregistrations[i].registrations<<br />
+                                                            }
                                                         }
                                                         <br />
 
@@ -489,15 +448,25 @@
                                                 </ul>
                                             </blockquote><br />
                                             @*<blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
-                                            <span style="font-family:inherit; font-size:15px; color:#1f317f;">
-                                            <b>Clinic/Hospital Affiliation</b>
-                                            </span>
-                                            <ul style="list-style-type:none;">
-                                            <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
-                                            <i class="icon-caret-right" style="color:#1f317f;"></i>Smile Elements Dental<br />
-                                            <i class="icon-caret-right" style="color:#1f317f;"></i>Vibha Dental Care Centre<br />
-                                            </li>
-                                            </ul>
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b></b>
+                                                </span>
+                                                <ul style="list-style-type:none;">
+                                                    <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i><br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i><br />
+                                                    </li>
+                                                </ul>
+                                            </blockquote><blockquote style="background:#eee; border-left-color:#d12610; padding-top:1px;">
+                                                <span style="font-family:inherit; font-size:15px; color:#1f317f;">
+                                                    <b></b>
+                                                </span>
+                                                <ul style="list-style-type:none;">
+                                                    <li style="font-family: 'PT Sans'; font-size: 14px; margin-left:-20px;">
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i><br />
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i><br />
+                                                    </li>
+                                                </ul>
                                             </blockquote>*@
                                         </li>
                                     </ul>
@@ -509,7 +478,7 @@
 
                                     <div class="scroller" data-height="290px" data-always-visible="1" data-rail-visible1="1">
                                         <p style="font-family:inherit; font-size:14px; color:#6f6f6f;">
-                                            @Html.DisplayFor(e => e.AboutClinic)  @*Dr.Neha Kasar is a dentiest in Dr.Mathesul dental orthodontic clinic in pune and has an experienced of 9 years in this field.*@
+                                            @Html.DisplayFor(e => e.AboutClinic)
                                         </p>
                                         <hr style="margin-top:20px; margin-bottom:5px; border-top-color:#e9811a;">
                                         <br />
@@ -518,10 +487,10 @@
                                                 <i class="icon-map-marker" style="color:#ff8503; font-size:18px;"></i>
 
                                                 <span style="font-family:inherit; font-size:15px; color:#1f317f;">
-                                                    <b>@Html.DisplayFor(e => e.ClinicName)@*Dr Mathesul Invisible Cosmetic Dental Clinic*@</b>
+                                                    <b>@Html.DisplayFor(e => e.ClinicName)</b>
                                                 </span>
 
-                                                <p style="padding-left:24px;">@Html.DisplayFor(e => e.ClinicAddress)@*#F6, First Floor, Gera 77, Commercial Building, Above Chitale Bandhu Mithaiwale, Kalyani Nagar Road, Pune, Pune*@</p>
+                                                <p style="padding-left:24px;">@Html.DisplayFor(e => e.ClinicAddress)</p>
 
                                                 <div class="testimonials-v1">
                                                     <div id="myCarousel" class="carousel slide">
@@ -531,32 +500,44 @@
                                                             <div class="item active">
                                                                 <div class="blog-photo-stream image-link ">
                                                                     <ul class="unstyled" style="padding-left:24px;">
-                                                                        @for (int i = 0; i < 4; i++)
+                                                                        @if (!ReferenceEquals(Model.getmedias, null))
                                                                         {
-                                                                        <li><a class="fancybox" href="@Url.Content(@Model.getmedias[i].FolderFilePath)" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="@Url.Content(@Model.getmedias[i].FolderFilePath)" alt="" /></a></li>
-                                                                        @*<li><img src="@Url.Content(@Model.getmedias[i].FolderFilePath)" alt=""></li>*@
-                                                                        }
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div class="item">
-                                                                <div class="blog-photo-stream">
-                                                                    <ul class="unstyled" style="padding-left:24px;">
-                                                                        @for (int i = 4; i < Model.getmedias.Count; i++)
-                                                                        {
-                                                                        <li><a class="fancybox" href="@Url.Content(@Model.getmedias[i].FolderFilePath)" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="@Url.Content(@Model.getmedias[i].FolderFilePath)" alt="" /></a></li>
-                                                                        @*<li><img src="@Url.Content(@Model.getmedias[i].FolderFilePath)" alt=""></li>*@
-                                                                        }
+                                                                           
+                                                                            for (int i = 0; i < Model.getmedias.Count; i++)
+                                                                            {
 
+                                                                                <li><a class="fancybox" href="@Url.Content(@Model.getmedias[i].FolderFilePath)" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="@Url.Content(@Model.getmedias[i].FolderFilePath)" alt="" /></a></li>
+
+                                                                            }
+                                                                        }
                                                                     </ul>
                                                                 </div>
                                                             </div>
+                                                            @*<div class="item">
+                                                                    <div class="blog-photo-stream">
+                                                                        <ul class="unstyled" style="padding-left:24px;">
+                                                                            @if (!ReferenceEquals(Model.getmedias, null))
+                                                                            {
+                                                                                var count=Model.getmedias.Count;
+                                                                                if(count > 3 )
+                                                                                { 
+                                                                                for (int i = 4; i < Model.getmedias.Count; i++)
+                                                                                {
+                                                                                    <li><a class="fancybox" href="@Url.Content(@Model.getmedias[i].FolderFilePath)" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="@Url.Content(@Model.getmedias[i].FolderFilePath)" alt="" /></a></li>
+
+                                                                                }
+                                                                                }
+                                                                            }
+
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>*@
 
                                                         </div>
 
                                                         <!-- Carousel nav -->
-                                                        <a class="left-btn" href="#myCarousel" data-slide="prev"></a>
-                                                        <a class="right-btn" href="#myCarousel" data-slide="next"></a>
+                                                        @*<a class="left-btn" href="#myCarousel" data-slide="prev"></a>
+                                                        <a class="right-btn" href="#myCarousel" data-slide="next"></a>*@
                                                     </div>
                                                 </div>
                                             </li>
@@ -569,63 +550,68 @@
                                                 <div id="form_modal10" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel10" aria-hidden="true" style="display: none;">
                                                     <div class="portlet box red" style="margin-bottom:0px;">
                                                         <div class="portlet-title">
-                                                            <div class="caption"><i class="icon-reorder"></i>@Html.DisplayFor(e => e.ClinicName)</div>
+                                                            <div class="caption"><i class="icon-user-md"></i>@Html.DisplayFor(e => e.ClinicName)</div>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="opacity:initial;"></button>
                                                         </div>
-                                                        <div class="portlet-body form" style="display: block; padding-top: 10px;">
+                                                        <div class="portlet-body flip-scroll">
 
-                                                            <form action="#" class="form-horizontal">
-                                                                <table class="table table-striped table-bordered">
 
-                                                                    <tr>
-                                                                        <td colspan="4" style="text-align:center;"> Clinic Time</td>
-                                                                    </tr>
+                                                            <table class="table table-striped table-bordered table-condensed flip-content">
+                                                                <tr>
+                                                                    <th style="text-align:center;">DAYS</th>
+                                                                    <th colspan="3" style="text-align:center;">CLINIC TIME</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td style="text-align:center; color:#08C;"><b>1st Seating Time</b></td>
+                                                                    <td style="text-align:center; color:#08C;"><b>2nd Seating Time</b></td>
+                                                                    <td style="text-align:center; color:#08C;"><b>3rd Seating Time</b></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="color:#08C; font-family:'Open Sans'"><b>Monday</b></td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimefs1) &nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimefs1) </td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimess1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimess1) </td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimets1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimets1) </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="color:#08C; font-family:'Open Sans'"><b>Tuesday</b></td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimefs2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs2) </td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimess2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess2) </td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimets2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets2) </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="color:#08C; font-family:'Open Sans'"><b>Wednesday</b></td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimefs3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs3) </td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimess3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess3) </td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimets3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets3) </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="color:#08C; font-family:'Open Sans'"><b>Thursday</b></td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimefs4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs4) </td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimess4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess4) </td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimets4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets4) </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="color:#08C; font-family:'Open Sans'"><b>Friday</b></td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimefs5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs5) </td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimess5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess5) </td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimets5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets5) </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="color:#08C; font-family:'Open Sans'"><b>Saturday</b></td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimefs6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs6) </td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimess6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess6) </td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimets6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets6) </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="color:#08C; font-family:'Open Sans'"><b>Sunday</b></td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimefs7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs7) </td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimess7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess7) </td>
+                                                                    <td>@Html.DisplayFor(e => e.StartTimets7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets7) </td>
+                                                                </tr>
 
-                                                                    <tr>
-                                                                        <td>Monday</td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimefs1) &nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimefs1) </td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimess1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimess1) </td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimets1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimets1) </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Tuesday</td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimefs2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs2) </td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimess2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess2) </td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimets2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets2) </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Wednesday</td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimefs3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs3) </td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimess3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess3) </td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimets3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets3) </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Thursday</td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimefs4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs4) </td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimess4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess4) </td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimets4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets4) </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Friday</td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimefs5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs5) </td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimess5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess5) </td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimets5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets5) </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Saturday</td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimefs6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs6) </td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimess6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess6) </td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimets6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets6) </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Sunday</td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimefs7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs7) </td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimess7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess7) </td>
-                                                                        <td>@Html.DisplayFor(e => e.StartTimets7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets7) </td>
-                                                                    </tr>
+                                                            </table>
 
-                                                                </table>
-                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -633,7 +619,7 @@
                                             <li class="span3">
                                                 <i class="icon-money" style="color:#ff8503; font-size:18px;"></i>
                                                 <span style="font-family:inherit; font-size:15px; color:#1f317f;">
-                                                    <b>INR&nbsp;@Html.DisplayFor(e => e.ClinicFees) @*INR 200*@ </b>
+                                                    <b>INR&nbsp;@Html.DisplayFor(e => e.ClinicFees)</b>
                                                 </span>
 
 
@@ -654,38 +640,16 @@
                                         </h4>
                                         <ul class="thumbnails">
                                             <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
-                                                @for (int i = 0; i < Model.getservices.Count; i++)
+                                                @if (!ReferenceEquals(Model.getservices, null))
                                                 {
-                                                <i class="icon-caret-right" style="color:#1f317f;"></i> @Model.getservices[i].services <br />
+                                                    for (int i = 0; i < Model.getservices.Count; i++)
+                                                    {
+                                                        <i class="icon-caret-right" style="color:#1f317f;"></i> @Model.getservices[i].services <br />
+                                                    }
                                                 }
                                             </li>
                                         </ul>
-                                        @*<ul class="thumbnails">
-                                        <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
-                                        </li>
-                                        <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
-                                        </li>
-                                        <li class="span4" style="font-family: 'PT Sans'; font-size: 15px;">
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Acrylic Partial Denture<br />
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Artificial Teeth<br />
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Braces<br />
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Conscious Sedation<br />
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Crowns And Bridges<br />
-                                        <i class="icon-caret-right" style="color:#1f317f;"></i>Aesthetic Crown And Bridges<br />
-                                        </li>
-                                        </ul>*@
+
 
                                     </div>
                                 </div>

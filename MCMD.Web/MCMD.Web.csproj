@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GoogleMaps.LocationServices">
+      <HintPath>..\packages\GoogleMaps.LocationServices.0.9.8.5\lib\net40\GoogleMaps.LocationServices.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -199,6 +202,7 @@
     <Content Include="Content\Img\default_doctor1.jpg" />
     <Content Include="Content\Img\Defult_clinic1.jpg" />
     <Content Include="Content\Img\down.png" />
+    <Content Include="Content\Img\favicon.png" />
     <Content Include="Content\Img\minus.png" />
     <Content Include="Content\Img\Phone1.png" />
     <Content Include="Content\Img\plus.png" />
@@ -2449,6 +2453,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="GoogleMaps.LocationServices.readme.txt" />
     <Content Include="Images\calender-icon.jpg" />
     <Content Include="Images\desktop-nav-active-bg.jpg" />
     <Content Include="Images\edox-logo.png" />
@@ -2849,6 +2854,7 @@
     <Content Include="Views\Home\img.cshtml" />
     <Content Include="Views\Account\ResetPasswordPatient.cshtml" />
     <Content Include="Views\Patients\ViewPatients.cshtml" />
+    <Content Include="Views\Shared\QuickSearchPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

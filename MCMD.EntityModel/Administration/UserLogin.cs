@@ -37,7 +37,7 @@ namespace MCMD.EntityModel.Administration
 
         [DisplayName("Email")]
         [RegularExpression(@"^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$", ErrorMessage = "Email is not valid.")]
-        [Required(ErrorMessage = "Email is required.")]
+        [Required(ErrorMessage = "Email ID is required.")]
         [StringLength(100, ErrorMessage = "Email cannot be longer than 100 characters.")]
         public string EmailID { get; set; }
 
@@ -61,7 +61,7 @@ namespace MCMD.EntityModel.Administration
 
         [DisplayName("Phone No")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "{0} must be a Number and only 10 digit.")]
-        [Required(ErrorMessage = "Phone No is required.")]
+        [Required(ErrorMessage = "Phone # is required.")]
         public string UserPhone { get; set; }
 
         public Nullable<bool> IslockedOut { get; set; }

@@ -20,7 +20,8 @@ namespace MCMD.ViewModel.doctor
 
         public string SpecialityName { get; set; }
 
-        public string AboutExperience { get; set; }
+        public string ExperienceInYear { get; set; }
+        public string ExperienceInMonth { get; set; }
 
         public string ClinicAddress { get; set; }
         public string AboutMe { get; set; }

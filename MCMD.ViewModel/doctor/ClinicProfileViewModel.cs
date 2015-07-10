@@ -19,6 +19,9 @@ namespace MCMD.ViewModel.doctor
         public string FolderFilePath { get; set; }
         public string ClinicPhoneNo { get; set; }
 
+        public string latitude { get; set; }
+        public string longitude { get; set; }
+
         public List<GetService> getservices { get; set; }
         public List<Media> getclinicmedias { get; set; }
         public List<Media> getclinicvideos { get; set; }

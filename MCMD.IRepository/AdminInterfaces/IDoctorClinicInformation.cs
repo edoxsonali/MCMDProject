@@ -13,6 +13,7 @@ namespace MCMD.IRepository.AdminInterfaces
         //Declare all Entities Collections
         IEnumerable<DoctorClinicInformation> GetClinic();
         IEnumerable<ClinicTimeInformation> GetAllClinicTime();
+        IEnumerable<Seating> GetAllSeating();
         IEnumerable<Country> GetCountrys();
         IEnumerable<State> GetStates();
         IEnumerable<City> GetCities();

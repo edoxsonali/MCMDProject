@@ -2,174 +2,310 @@
 
 @{
     ViewBag.Title = "ClinicTiming";
-    //Layout = "~/Views/Shared/_AdminLayout.cshtml";
     Layout = "~/Views/Shared/_ThemeLayout.cshtml";
 
 }
-@{
-
-    int Pages = 20;
-    WebGrid grid = new WebGrid(Model.getClinicTimie, canPage: true, rowsPerPage: Pages);
-    grid.Pager(WebGridPagerModes.NextPrevious);
-}
-<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
-
 <script type="text/javascript">
     $(document).ready(function () {
 
-        $('#lblsetting').val("1st seating Timing");
-
+        $('#lblsetting1').val("1st seating Timing");
 
 
         //Get check the check box relevant textbox get disable
-        $('#checkbox1').change(function () {
+        $('#checkbox1,#checkbox21,#checkbox31').change(function () {
             if (!$(this).is(":checked")) {
-
-                //$("#StartMon").prop("disabled", "disabled");
-                //$("#EndMon").prop("disabled", "disabled");
+                //1st seating
                 $("#MonSpanStart").removeClass('add-on');
                 $("#MonSpanEnd").removeClass('add-on');
                 $("#StartMon").val("");
                 $("#EndMon").val("");
                 $("#MonOff").show();
                 $('#HideText').hide();
+                //2nd seating
+                $("#MonSpanStart2").removeClass('add-on');
+                $("#MonSpanEnd2").removeClass('add-on');
+                $("#MonOff2").show();
+                $("#StartMon2").val("");
+                $("#EndMon2").val("");
+
+                //3rd seating
+                $("#MonSpanStart3").removeClass('add-on');
+                $("#MonSpanEnd3").removeClass('add-on');
+                $("#MonOff3").show();
+                $("#StartMon3").val("");
+                $("#EndMon3").val("");
 
 
             }
             else {
-                //$("#StartMon").removeAttr("disabled");
-                //$("#EndMon").removeAttr("disabled");
+                //1st seating
                 $("#MonSpanStart").addClass('add-on');
                 $("#MonSpanEnd").addClass('add-on');
                 $("#MonOff").hide();
+                //2nd seating
+                $("#MonSpanStart2").addClass('add-on');
+                $("#MonSpanEnd2").addClass('add-on');
+                $("#MonOff2").hide();
 
+                //3rd seating
+                $("#MonSpanStart3").addClass('add-on');
+                $("#MonSpanEnd3").addClass('add-on');
+                $("#MonOff3").hide();
 
             }
         });
 
-        $('#checkbox2').change(function () {
+        $('#checkbox2,#checkbox22,#checkbox32').change(function () {
             if (!$(this).is(":checked")) {
-
-                //$("#StartTue").prop("disabled", "disabled");
-                //$("#EndTue").prop("disabled", "disabled");
+                //1st seating
                 $("#TueSpanStart").removeClass('add-on');
                 $("#TueSpanEnd").removeClass('add-on');
                 $("#StartTue").val("");
                 $("#EndTue").val("");
                 $("#TueOff").show();
+
+                //2nd seating
+                $("#TueSpanStart2").removeClass('add-on');
+                $("#TueSpanEnd2").removeClass('add-on');
+                $("#TueOff2").show();
+                $("#StartTue2").val("");
+                $("#EndTue2").val("");
+
+                //3rd seating
+                $("#TueSpanStart3").removeClass('add-on');
+                $("#TueSpanEnd3").removeClass('add-on');
+                $("#TueOff3").show();
+                $("#StartTue3").val("");
+                $("#EndTue3").val("");
             }
             else {
-                //$("#StartTue").removeAttr("disabled");
-                //$("#EndTue").removeAttr("disabled");
+                //1st seating
                 $("#TueSpanStart").addClass('add-on');
                 $("#TueSpanEnd").addClass('add-on');
                 $("#TueOff").hide();
 
+                //2nd seating
+                $("#TueSpanStart2").addClass('add-on');
+                $("#TueSpanEnd2").addClass('add-on');
+                $("#TueOff2").hide();
+
+                //3rd seating
+                $("#TueSpanStart3").addClass('add-on');
+                $("#TueSpanEnd3").addClass('add-on');
+                $("#TueOff3").hide();
+
             }
         });
 
-        $('#checkbox3').change(function () {
+        $('#checkbox3,#checkbox23,#checkbox33').change(function () {
             if (!$(this).is(":checked")) {
-
-                //$("#StartWed").prop("disabled", "disabled");
-                //$("#EndWed").prop("disabled", "disabled");
+                //1st seating
                 $("#WedSpanStart").removeClass('add-on');
                 $("#WedSpanEnd").removeClass('add-on');
                 $("#StartWed").val("");
                 $("#EndWed").val("");
                 $("#WedOff").show();
+
+                //2nd seating
+                $("#WedSpanStart2").removeClass('add-on');
+                $("#WedSpanEnd2").removeClass('add-on');
+                $("#WedOff2").show();
+                $("#StartWed2").val("");
+                $("#EndWed2").val("");
+
+                //3rd seating
+                $("#WedSpanStart3").removeClass('add-on');
+                $("#WedSpanEnd3").removeClass('add-on');
+                $("#WedOff3").show();
+                $("#StartWed3").val("");
+                $("#EndWed3").val("");
+
+
             }
             else {
-                //$("#StartWed").removeAttr("disabled");
-                //$("#EndWed").removeAttr("disabled");
+                //1st seating
                 $("#WedSpanStart").addClass('add-on');
                 $("#WedSpanEnd").addClass('add-on');
                 $("#WedOff").hide();
 
+                //2nd seating
+                $("#WedSpanStart2").addClass('add-on');
+                $("#WedSpanEnd2").addClass('add-on');
+                $("#WedOff2").hide();
+
+                //3re seating
+                $("#WedSpanStart3").addClass('add-on');
+                $("#WedSpanEnd3").addClass('add-on');
+                $("#WedOff3").hide();
+
+
             }
         });
 
-        $('#checkbox4').change(function () {
+        $('#checkbox4,#checkbox24,#checkbox34').change(function () {
             if (!$(this).is(":checked")) {
-
-                //$("#StartThu").prop("disabled", "disabled");
-                //$("#EndThu").prop("disabled", "disabled");
+                //1st seating
                 $("#ThuSpanStart").removeClass('add-on');
                 $("#ThuSpanEnd").removeClass('add-on');
                 $("#StartThu").val("");
                 $("#EndThu").val("");
                 $("#ThuOff").show();
+
+                //2nd seating
+                $("#ThuSpanStart2").removeClass('add-on');
+                $("#ThuSpanEnd2").removeClass('add-on');
+                $("#ThuOff2").show();
+                $("#StartThu2").val("");
+                $("#EndThu2").val("");
+
+                //3rd seating
+                $("#ThuSpanStart3").removeClass('add-on');
+                $("#ThuSpanEnd3").removeClass('add-on');
+                $("#ThuOff3").show();
+                $("#StartThu3").val("");
+                $("#EndThu3").val("");
+
             }
             else {
-                //$("#StartThu").removeAttr("disabled");
-                //$("#EndThu").removeAttr("disabled");
+                // 1st seating
                 $("#ThuSpanStart").addClass('add-on');
                 $("#ThuSpanEnd").addClass('add-on');
                 $("#ThuOff").hide();
 
+                //2nd seating
+                $("#ThuSpanStart2").addClass('add-on');
+                $("#ThuSpanEnd2").addClass('add-on');
+                $("#ThuOff2").hide();
+
+                //3rd seating
+                $("#ThuSpanStart3").addClass('add-on');
+                $("#ThuSpanEnd3").addClass('add-on');
+                $("#ThuOff3").hide();
             }
         });
 
-        $('#checkbox5').change(function () {
+        $('#checkbox5,#checkbox25,#checkbox35').change(function () {
             if (!$(this).is(":checked")) {
-
-                //$("#StartFri").prop("disabled", "disabled");
-                //$("#EndFri").prop("disabled", "disabled");
+                //1st seating
                 $("#FriSpanStart").removeClass('add-on');
                 $("#FriSpanEnd").removeClass('add-on');
                 $("#StartFri").val("");
                 $("#EndFri").val("");
                 $("#FriOff").show();
+
+                //2nd seating
+                $("#FriSpanStart2").removeClass('add-on');
+                $("#FriSpanEnd2").removeClass('add-on');
+                $("#FriOff2").show();
+                $("#StartFri2").val("");
+                $("#EndFri2").val("");
+
+                //3rd seating
+                $("#FriSpanStart3").removeClass('add-on');
+                $("#FriSpanEnd3").removeClass('add-on');
+                $("#FriOff3").show();
+                $("#StartFri3").val("");
+                $("#EndFri3").val("");
+
             }
             else {
-                //$("#StartFri").removeAttr("disabled");
-                //$("#EndFri").removeAttr("disabled");
+                //1st seating
                 $("#FriSpanStart").addClass('add-on');
                 $("#FriSpanEnd").addClass('add-on');
                 $("#FriOff").hide();
 
+                //2nd seating
+                $("#FriSpanStart2").addClass('add-on');
+                $("#FriSpanEnd2").addClass('add-on');
+                $("#FriOff2").hide();
+
+                //3rd seating
+                $("#FriSpanStart3").addClass('add-on');
+                $("#FriSpanEnd3").addClass('add-on');
+                $("#FriOff3").hide();
+
             }
         });
 
-        $('#checkbox6').change(function () {
+        $('#checkbox6,#checkbox26,#checkbox36').change(function () {
             if (!$(this).is(":checked")) {
-
-                //$("#StartSat").prop("disabled", "disabled");
-                //$("#EndSat").prop("disabled", "disabled");
+                //1st seating
                 $("#SatSpanStart").removeClass('add-on');
                 $("#SatSpanEnd").removeClass('add-on');
                 $("#StartSat").val("");
                 $("#EndSat").val("");
                 $("#SatOff").show();
+
+                //2nd seating
+                $("#SatSpanStart2").removeClass('add-on');
+                $("#SatSpanEnd2").removeClass('add-on');
+                $("#SatOff2").show();
+                $("#StartSat2").val("");
+                $("#EndSat2").val("");
+
+                //3rd seating
+                $("#SatSpanStart3").removeClass('add-on');
+                $("#SatSpanEnd3").removeClass('add-on');
+                $("#SatOff3").show();
+                $("#StartSat3").val("");
+                $("#EndSat3").val("");
             }
             else {
-                //$("#StartSat").removeAttr("disabled");
-                //$("#EndSat").removeAttr("disabled");
+                //1st seating
                 $("#SatSpanStart").addClass('add-on');
                 $("#SatSpanEnd").addClass('add-on');
                 $("#SatOff").hide();
 
+                //2nd seating
+                $("#SatSpanStart2").addClass('add-on');
+                $("#SatSpanEnd2").addClass('add-on');
+                $("#SatOff2").hide();
+
+                //3rd seating
+                $("#SatSpanStart3").addClass('add-on');
+                $("#SatSpanEnd3").addClass('add-on');
+                $("#SatOff3").hide();
             }
         });
 
-        $('#checkbox7').change(function () {
+        $('#checkbox7,#checkbox27,#checkbox37').change(function () {
             if (!$(this).is(":checked")) {
-
-                //$("#StartSun").prop("disabled", "disabled");
-                //$("#EndSun").prop("disabled", "disabled");
+                //1st seating
                 $("#SunSpanStart").removeClass('add-on');
                 $("#SunSpanEnd").removeClass('add-on');
                 $("#StartSun").val("");
                 $("#EndSun").val("");
                 $("#SunOff").show();
+
+                //2nd seating
+                $("#SunSpanStart2").removeClass('add-on');
+                $("#SunSpanEnd2").removeClass('add-on');
+                $("#SunOff2").show();
+                $("#StartSun2").val("");
+                $("#EndSun2").val("");
+
+                //3rd seating
+                $("#SunSpanStart3").removeClass('add-on');
+                $("#SunSpanEnd3").removeClass('add-on');
+                $("#SunOff3").show();
+                $("#StartSun3").val("");
+                $("#EndSun3").val("");
             }
             else {
-                //$("#StartSun").removeAttr("disabled");
-                //$("#EndSun").removeAttr("disabled");
+                //1st seating
                 $("#SunSpanStart").addClass('add-on');
                 $("#SunSpanEnd").addClass('add-on');
                 $("#SunOff").hide();
 
+                //2nd seating
+                $("#SunSpanStart2").addClass('add-on');
+                $("#SunSpanEnd2").addClass('add-on');
+                $("#SunOff2").hide();
+
+                //3rd seating
+                $("#SunSpanStart3").addClass('add-on');
+                $("#SunSpanEnd3").addClass('add-on');
+                $("#SunOff3").hide();
             }
         });
 
@@ -182,6 +318,25 @@
 
         });
 
+        $('#StartMon2,#EndMon2').change(function () {
+            var varMon2 = $("#StartMon2").val();
+            var varTue2 = $("#EndMon2").val();
+            if (varMon2 != "" && varTue2 != "") {
+                $('#HideText2').show();
+            }
+
+        });
+
+        $('#StartMon3,#EndMon3').change(function () {
+            var varMon3 = $("#StartMon3").val();
+            var varTue3 = $("#EndMon3").val();
+            if (varMon3 != "" && varTue3 != "") {
+                $('#HideText3').show();
+            }
+
+        });
+
+        //1st seating copy time to all days
         $('#CopyTime').click(function () {
             var varMon1 = $("#StartMon").val();
             var varMon2 = $("#EndMon").val();
@@ -214,27 +369,97 @@
 
         });
 
+        //2nd seating copy time to all days
+        $('#CopyTime2').click(function () {
+            var varMon1 = $("#StartMon2").val();
+            var varMon2 = $("#EndMon2").val();
+            if ($('#TueSpanStart2').hasClass("add-on")) {
+                $("#StartTue2").val(varMon1);
+                $("#EndTue2").val(varMon2);
+            }
+            if ($('#WedSpanStart2').hasClass("add-on")) {
+                $("#StartWed2").val(varMon1);
+                $("#EndWed2").val(varMon2);
+            }
+            if ($('#ThuSpanStart2').hasClass("add-on")) {
+                $("#StartThu2").val(varMon1);
+                $("#EndThu2").val(varMon2);
+            }
+            if ($('#FriSpanStart2').hasClass("add-on")) {
+                $("#StartFri2").val(varMon1);
+                $("#EndFri2").val(varMon2);
+            }
+            if ($('#SatSpanStart2').hasClass("add-on")) {
+                $("#StartSat2").val(varMon1);
+                $("#EndSat2").val(varMon2);
+            }
+            if ($('#SunSpanStart2').hasClass("add-on")) {
+
+                $("#StartSun2").val(varMon1);
+                $("#EndSun2").val(varMon2);
+            }
+            $('#HideText2').hide();
+
+        });
+
+        //3rd seating copy time to all days
+        $('#CopyTime3').click(function () {
+            var varMon1 = $("#StartMon3").val();
+            var varMon2 = $("#EndMon3").val();
+            if ($('#TueSpanStart3').hasClass("add-on")) {
+                $("#StartTue3").val(varMon1);
+                $("#EndTue3").val(varMon2);
+            }
+            if ($('#WedSpanStart3').hasClass("add-on")) {
+                $("#StartWed3").val(varMon1);
+                $("#EndWed3").val(varMon2);
+            }
+            if ($('#ThuSpanStart3').hasClass("add-on")) {
+                $("#StartThu3").val(varMon1);
+                $("#EndThu3").val(varMon2);
+            }
+            if ($('#FriSpanStart3').hasClass("add-on")) {
+                $("#StartFri3").val(varMon1);
+                $("#EndFri3").val(varMon2);
+            }
+            if ($('#SatSpanStart3').hasClass("add-on")) {
+                $("#StartSat3").val(varMon1);
+                $("#EndSat3").val(varMon2);
+            }
+            if ($('#SunSpanStart3').hasClass("add-on")) {
+
+                $("#StartSun3").val(varMon1);
+                $("#EndSun3").val(varMon2);
+            }
+            $('#HideText3').hide();
+
+        });
+
         $('#btn1stsetting').click(function () {
-            // location.reload();
-            $('#lblsetting').val("1st seating Timing");
-            Clearseating();
+           
+            $('#lblsetting1').val("1st seating Timing");
+            $('#lblsetting2').val("");
+            $('#lblsetting3').val("");
+            // Clearseating();
             $('#HideText').hide();
 
         });
         $('#btn2stsetting').click(function () {
-            //   location.reload();
-            $('#lblsetting').val("2nd seating Timing");
-            Clearseating();
+           
+            $('#lblsetting2').val("2nd seating Timing");
+            $('#lblsetting1').val("");
+            $('#lblsetting3').val("");
+            //  Clearseating();
             $('#HideText').hide();
         });
         $('#btn3stsetting').click(function () {
-            //  location.reload();
-            $('#lblsetting').val("3rd seating Timing");
-            Clearseating();
+           
+            $('#lblsetting3').val("3rd seating Timing");
+            $('#lblsetting1').val("");
+            $('#lblsetting2').val("");
+            //   Clearseating();
             $('#HideText').hide();
         });
-
-
     });
 
     function Clearseating() {
@@ -253,36 +478,10 @@
         $('#StartSun').val("");
         $('#EndSun').val("");
         $('#HideText').hide();
-        //$("#MonOff").hide();
-        //$("#TueOff").hide();
-        //$("#WedOff").hide();
-        //$("#ThuOff").hide();
-        //$("#WedOff").hide();
-        //$("#FriOff").hide();
-        //$("#SatOff").hide();
-        //$("#SunOff").hide();
-        //$("#MonSpanStart").addClass('add-on');
-        //$("#MonSpanEnd").addClass('add-on');
-        //$("#TueSpanStart").addClass('add-on');
-        //$("#TueSpanEnd").addClass('add-on');
-        //$("#WedSpanStart").addClass('add-on');
-        //$("#WedSpanEnd").addClass('add-on');
-        //$("#ThuSpanStart").addClass('add-on');
-        //$("#ThuSpanEnd").addClass('add-on');
-        //$("#FriSpanStart").addClass('add-on');
-        //$("#FriSpanEnd").addClass('add-on');
-        //$("#SatSpanStart").addClass('add-on');
-        //$("#SatSpanEnd").addClass('add-on');
-        //$("#SunSpanStart").addClass('add-on');
-        //$("#SunSpanEnd").addClass('add-on');
+
 
     }
-
-
 </script>
-
-
-
 <!-- BEGIN PAGE CONTAINER-->
 <div class="container-fluid">
     <!-- BEGIN PAGE HEADER-->
@@ -336,34 +535,31 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="span6 responsive" data-tablet="span12 fix-offset" data-desktop="span8">
-                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                    <!-- BEGIN SAMPLE FORM PORTLET-->
                     <div class="portlet box blue tabbable">
                         <div class="portlet-title">
-                            <div class="caption hidden-480">
-                                <i class="icon-reorder hidden-480"></i>
+                            <div class="caption">
+                                <i class="icon-reorder"></i>
                                 <span class="hidden-480">Clinic Timing</span>
                             </div>
-
                         </div>
-
                         <div class="portlet-body form">
                             <div class="tabbable portlet-tabs">
                                 <ul class="nav nav-tabs">
-                                    <li><a href="#portlet_tab1" data-toggle="tab" style="color:#000;" id="btn3stsetting">3 seating</a></li>
-                                    <li><a href="#portlet_tab1" data-toggle="tab" style="color:#000;" id="btn2stsetting">2 seating</a></li>
-                                    <li class="active"><a href="#portlet_tab1" data-toggle="tab" style="color:#000;" id="btn1stsetting">1 seating</a></li>
+                                    <li id="btn3stsetting"><a href="#portlet_tab3" data-toggle="tab">3 seating</a></li>
+                                    <li id="btn2stsetting"><a href="#portlet_tab2" data-toggle="tab">2 seating</a></li>
+                                    <li id="btn1stsetting" class="active"><a href="#portlet_tab1" data-toggle="tab">1 seating</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="portlet_tab1">
-
-
+                                        <!-- BEGIN FORM-->
                                         <table class="table table-striped table-bordered table-hover" id="sample_2">
                                             <thead>
                                                 <tr>
-                                                    <th style="width:0px;">@*<input type="checkbox" class="group-checkable" data-set="#sample_2 .checkboxes" />*@</th>
+                                                    <th style="width:0px;">&nbsp; </th>
 
                                                     <th class="hidden-480" style="width:550px;text-align:center;">
-                                                        <div> @Html.TextBoxFor(u => u.Setting, new { @class = "btn mini", @readonly = "readonly", @id = "lblsetting" })</div>
+                                                        <div> @Html.TextBoxFor(u => u.Setting, new { @class = "btn mini", @readonly = "readonly", @id = "lblsetting1" })</div>
                                                     </th>
 
                                                 </tr>
@@ -372,10 +568,23 @@
                                                 <tr class="odd gradeX">
                                                     <td>
 
-                                                        @Html.CheckBoxFor(m => m.GetCheckList[0].DayChecked, new { @class = "checkboxes", @id = "checkbox1" })
-                                                        @Model.GetCheckList[0].Days
-                                                        @Html.HiddenFor(m => Model.GetCheckList[0].DayscheckId)
-                                                        @Html.HiddenFor(m => Model.GetCheckList[0].Days)
+
+                                                        @if (Model.GetCheckList.Count > 0 && Model.GetCheckList[0].Days == "Monday")
+                                                        {
+                                                            @Html.CheckBoxFor(m => m.GetCheckList[0].DayChecked, new { @class = "checkboxes", @id = "checkbox1" })
+                                                            @Model.GetCheckList[0].Days
+                                                            @Html.HiddenFor(m => Model.GetCheckList[0].DayscheckId)
+                                                            @Html.HiddenFor(m => Model.GetCheckList[0].Days)
+                                                        }
+
+
+                                                        else
+                                                        {
+                                                            @Html.CheckBoxFor(m => m.GetCheckList[0].DayChecked, new { @class = "checkboxes", @id = "checkbox1" })
+                                                            @Model.GetCheckList[0].Days
+                                                            @Html.HiddenFor(m => Model.GetCheckList[0].DayscheckId)
+                                                            @Html.HiddenFor(m => Model.GetCheckList[0].Days)
+                                                        }
 
                                                     </td>
 
@@ -394,7 +603,7 @@
                                                                 <span class="add-on" id="MonSpanEnd"><i class="icon-time"></i></span>
 
                                                             </div>
-                                                            <span class="label label-important" style="display: none;" id='MonOff'>OFF Day</span>
+                                                            <span class="label label-important" style="display: none;" id='MonOff'>holiday</span>
                                                             <div style='display: none;' id='HideText'><a href="#" id="CopyTime">Copy above time for all days</a> </div>
 
                                                         </div>
@@ -402,10 +611,22 @@
                                                 </tr>
                                                 <tr class="odd gradeX">
                                                     <td>
-                                                        @Html.CheckBoxFor(m => m.GetCheckList[1].DayChecked, new { @class = "checkboxes", @id = "checkbox2" })
-                                                        @Model.GetCheckList[1].Days
-                                                        @Html.HiddenFor(m => Model.GetCheckList[1].DayscheckId)
-                                                        @Html.HiddenFor(m => Model.GetCheckList[1].Days)
+
+                                                        @if (Model.GetCheckList.Count > 0 && Model.GetCheckList[1].Days == "Tuesday")
+                                                        {
+                                                            @Html.CheckBoxFor(m => m.GetCheckList[1].DayChecked, new { @class = "checkboxes", @id = "checkbox2" })
+                                                            @Model.GetCheckList[1].Days
+                                                            @Html.HiddenFor(m => Model.GetCheckList[1].DayscheckId)
+                                                            @Html.HiddenFor(m => Model.GetCheckList[1].Days)
+                                                        }
+
+                                                        else
+                                                        {
+                                                            @Html.CheckBoxFor(m => m.GetCheckList[1].DayChecked, new { @class = "checkboxes", @id = "checkbox2" })
+                                                            @Model.GetCheckList[1].Days
+                                                            @Html.HiddenFor(m => Model.GetCheckList[1].DayscheckId)
+                                                            @Html.HiddenFor(m => Model.GetCheckList[1].Days)
+                                                        }
 
                                                     </td>
 
@@ -422,17 +643,29 @@
 
                                                                 <span class="add-on" id="TueSpanEnd"><i class="icon-time"></i></span>
                                                             </div>
-                                                            <span class="label label-important" style='display: none;' id='TueOff'>OFF Day</span>
+                                                            <span class="label label-important" style='display: none;' id='TueOff'>holiday</span>
                                                         </div>
                                                     </td>
 
                                                 </tr>
                                                 <tr class="odd gradeX">
                                                     <td>
-                                                        @Html.CheckBoxFor(m => m.GetCheckList[2].DayChecked, new { @class = "checkboxes", @id = "checkbox3" })
-                                                        @Model.GetCheckList[2].Days
-                                                        @Html.HiddenFor(m => Model.GetCheckList[2].DayscheckId)
-                                                        @Html.HiddenFor(m => Model.GetCheckList[2].Days)
+
+                                                        @if (Model.GetCheckList.Count > 0 && Model.GetCheckList[2].Days == "Wednesday")
+                                                        {
+                                                            @Html.CheckBoxFor(m => m.GetCheckList[2].DayChecked, new { @class = "checkboxes", @id = "checkbox3" })
+                                                            @Model.GetCheckList[2].Days
+                                                            @Html.HiddenFor(m => Model.GetCheckList[2].DayscheckId)
+                                                            @Html.HiddenFor(m => Model.GetCheckList[2].Days)
+                                                        }
+
+                                                        else
+                                                        {
+                                                            @Html.CheckBoxFor(m => m.GetCheckList[2].DayChecked, new { @class = "checkboxes", @id = "checkbox3" })
+                                                            @Model.GetCheckList[2].Days
+                                                            @Html.HiddenFor(m => Model.GetCheckList[2].DayscheckId)
+                                                            @Html.HiddenFor(m => Model.GetCheckList[2].Days)
+                                                        }
 
 
                                                     </td>
@@ -451,17 +684,30 @@
 
                                                                 <span class="add-on" id="WedSpanEnd"><i class="icon-time"></i></span>
                                                             </div>
-                                                            <span class="label label-important" style='display: none;' id='WedOff'>OFF Day</span>
+                                                            <span class="label label-important" style='display: none;' id='WedOff'>holiday</span>
                                                         </div>
                                                     </td>
 
                                                 </tr>
                                                 <tr class="odd gradeX">
                                                     <td>
-                                                        @Html.CheckBoxFor(m => m.GetCheckList[3].DayChecked, new { @class = "checkboxes", @id = "checkbox4" })
-                                                        @Model.GetCheckList[3].Days
-                                                        @Html.HiddenFor(m => Model.GetCheckList[3].DayscheckId)
-                                                        @Html.HiddenFor(m => Model.GetCheckList[3].Days)
+
+                                                        @if (Model.GetCheckList.Count > 0 && Model.GetCheckList[3].Days == "Thursday")
+                                                        {
+                                                            @Html.CheckBoxFor(m => m.GetCheckList[3].DayChecked, new { @class = "checkboxes", @id = "checkbox4" })
+                                                            @Model.GetCheckList[3].Days
+                                                            @Html.HiddenFor(m => Model.GetCheckList[3].DayscheckId)
+                                                            @Html.HiddenFor(m => Model.GetCheckList[3].Days)
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.CheckBoxFor(m => m.GetCheckList[3].DayChecked, new { @class = "checkboxes", @id = "checkbox4" })
+                                                            @Model.GetCheckList[3].Days
+                                                            @Html.HiddenFor(m => Model.GetCheckList[3].DayscheckId)
+                                                            @Html.HiddenFor(m => Model.GetCheckList[3].Days)
+
+                                                        }
+
 
                                                     </td>
 
@@ -479,17 +725,28 @@
 
                                                                 <span class="add-on" id="ThuSpanEnd"><i class="icon-time"></i></span>
                                                             </div>
-                                                            <span class="label label-important" style='display: none;' id='ThuOff'>OFF Day</span>
+                                                            <span class="label label-important" style='display: none;' id='ThuOff'>holiday</span>
                                                         </div>
                                                     </td>
 
                                                 </tr>
                                                 <tr class="odd gradeX">
                                                     <td>
-                                                        @Html.CheckBoxFor(m => m.GetCheckList[4].DayChecked, new { @class = "checkboxes", @id = "checkbox5" })
-                                                        @Model.GetCheckList[4].Days
-                                                        @Html.HiddenFor(m => Model.GetCheckList[4].DayscheckId)
-                                                        @Html.HiddenFor(m => Model.GetCheckList[4].Days)
+
+                                                        @if (Model.GetCheckList.Count > 0 && Model.GetCheckList[4].Days == "Friday")
+                                                        {
+                                                            @Html.CheckBoxFor(m => m.GetCheckList[4].DayChecked, new { @class = "checkboxes", @id = "checkbox5" })
+                                                            @Model.GetCheckList[4].Days
+                                                            @Html.HiddenFor(m => Model.GetCheckList[4].DayscheckId)
+                                                            @Html.HiddenFor(m => Model.GetCheckList[4].Days)
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.CheckBoxFor(m => m.GetCheckList[4].DayChecked, new { @class = "checkboxes", @id = "checkbox5" })
+                                                            @Model.GetCheckList[4].Days
+                                                            @Html.HiddenFor(m => Model.GetCheckList[4].DayscheckId)
+                                                            @Html.HiddenFor(m => Model.GetCheckList[4].Days)
+                                                        }
 
                                                     </td>
 
@@ -506,17 +763,30 @@
 
                                                                 <span class="add-on" id="FriSpanEnd"><i class="icon-time"></i></span>
                                                             </div>
-                                                            <span class="label label-important" style='display: none;' id='FriOff'>OFF Day</span>
+                                                            <span class="label label-important" style='display: none;' id='FriOff'>holiday</span>
                                                         </div>
                                                     </td>
 
                                                 </tr>
                                                 <tr class="odd gradeX">
                                                     <td>
-                                                        @Html.CheckBoxFor(m => m.GetCheckList[5].DayChecked, new { @class = "checkboxes", @id = "checkbox6" })
-                                                        @Model.GetCheckList[5].Days
-                                                        @Html.HiddenFor(m => Model.GetCheckList[5].DayscheckId)
-                                                        @Html.HiddenFor(m => Model.GetCheckList[5].Days)
+
+                                                        @if (Model.GetCheckList[5].Days == "Saturday")
+                                                        {
+                                                            @Html.CheckBoxFor(m => m.GetCheckList[5].DayChecked, new { @class = "checkboxes", @id = "checkbox6" })
+                                                            @Model.GetCheckList[5].Days
+                                                            @Html.HiddenFor(m => Model.GetCheckList[5].DayscheckId)
+                                                            @Html.HiddenFor(m => Model.GetCheckList[5].Days)
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.CheckBoxFor(m => m.GetCheckList[5].DayChecked, new { @class = "checkboxes", @id = "checkbox6" })
+                                                            @Model.GetCheckList[5].Days
+                                                            @Html.HiddenFor(m => Model.GetCheckList[5].DayscheckId)
+                                                            @Html.HiddenFor(m => Model.GetCheckList[5].Days)
+                                                        }
+
+
 
 
                                                     </td>
@@ -534,17 +804,32 @@
 
                                                             <span class="add-on" id="SatSpanEnd"><i class="icon-time"></i></span>
                                                         </div>
-                                                        <span class="label label-important" style='display: none;' id='SatOff'>OFF Day</span>
+                                                        <span class="label label-important" style='display: none;' id='SatOff'>holiday</span>
 
                                                     </td>
 
                                                 </tr>
                                                 <tr class="odd gradeX">
                                                     <td>
-                                                        @Html.CheckBoxFor(m => m.GetCheckList[6].DayChecked, new { @class = "checkboxes", @id = "checkbox7" })
-                                                        @Model.GetCheckList[6].Days
-                                                        @Html.HiddenFor(m => Model.GetCheckList[6].DayscheckId)
-                                                        @Html.HiddenFor(m => Model.GetCheckList[6].Days)
+
+
+                                                     
+                                                            @if (Model.GetCheckList[5].Days == "Sunday")
+                                                            {
+                                                                @Html.CheckBoxFor(m => m.GetCheckList[6].DayChecked, new { @class = "checkboxes", @id = "checkbox7" })
+                                                                @Model.GetCheckList[6].Days
+                                                                @Html.HiddenFor(m => Model.GetCheckList[6].DayscheckId)
+                                                                @Html.HiddenFor(m => Model.GetCheckList[6].Days)
+                                                            }
+                                                        
+
+                                                        else
+                                                        {
+                                                            @Html.CheckBoxFor(m => m.GetCheckList[6].DayChecked, new { @class = "checkboxes", @id = "checkbox7" })
+                                                            @Model.GetCheckList[6].Days
+                                                            @Html.HiddenFor(m => Model.GetCheckList[6].DayscheckId)
+                                                            @Html.HiddenFor(m => Model.GetCheckList[6].Days)
+                                                        }
 
                                                     </td>
 
@@ -561,7 +846,7 @@
 
                                                                 <span class="add-on" id="SunSpanEnd"><i class="icon-time"></i></span>
                                                             </div>
-                                                            <span class="label label-important" style='display: none;' id='SunOff'>OFF Day</span>
+                                                            <span class="label label-important" style='display: none;' id='SunOff'>holiday</span>
                                                         </div>
                                                     </td>
 
@@ -569,56 +854,484 @@
 
                                             </tbody>
                                         </table>
-                                        <div>
-
+                                        <div class="form-actions" style="padding-left:20px;">
                                             <button type="button" id="btnscd" class="btn blue" style="float:left;" name="btnscd" onclick="location.href='@Url.Action("Create", "DoctorClinicInfo")'">Back</button>
                                             <div style="text-align:center;">
-                                                <button type="Submit" id="btnSave" class="btn" style="text-align:center;" name="btnSave">Save</button>
+                                                <button type="Submit" id="btnSave" class="btn" style="text-align:center;" name="btnSave">Save 1st Seating Time</button>
                                                 <button type="button" id="btnReset" class="btn blue" name="btnscd" style="float:right;" onclick="location.href='@Url.Action("Create", "Media")'">Next</button>
                                             </div>
-
                                         </div>
+                                        <!-- END FORM-->
                                     </div>
                                     <div class="tab-pane " id="portlet_tab2">
+                                        <!-- BEGIN FORM-->
+                                        <table class="table table-striped table-bordered table-hover" id="sample_2">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width:0px;">&nbsp; </th>
 
+                                                    <th class="hidden-480" style="width:550px;text-align:center;">
+                                                        <div> @Html.TextBoxFor(u => u.Setting2, new { @class = "btn mini", @readonly = "readonly", @id = "lblsetting2" })</div>
+                                                    </th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="odd gradeX">
+                                                    <td>
+
+                                                        @Html.CheckBoxFor(m => m.GetCheckList2[0].DayChecked, new { @class = "checkboxes", @id = "checkbox21" })
+                                                        @Model.GetCheckList2[0].Days
+                                                        @Html.HiddenFor(m => Model.GetCheckList2[0].DayscheckId)
+                                                        @Html.HiddenFor(m => Model.GetCheckList2[0].Days)
+
+                                                    </td>
+
+                                                    <td>
+
+                                                        <div class="controls">
+                                                            From
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.StartTimeMon2, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "StartMon2", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="MonSpanStart2"><i class="icon-time"></i></span>
+                                                            </div>To
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.EndtTimeMon2, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "EndMon2", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="MonSpanEnd2"><i class="icon-time"></i></span>
+
+                                                            </div>
+                                                            <span class="label label-important" style="display: none;" id='MonOff2'>holiday</span>
+                                                            <div style='display: none;' id='HideText2'><a href="#" id="CopyTime2">Copy above time for all days</a> </div>
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        @Html.CheckBoxFor(m => m.GetCheckList2[1].DayChecked, new { @class = "checkboxes", @id = "checkbox22" })
+                                                        @Model.GetCheckList2[1].Days
+                                                        @Html.HiddenFor(m => Model.GetCheckList2[1].DayscheckId)
+                                                        @Html.HiddenFor(m => Model.GetCheckList2[1].Days)
+
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="controls">
+                                                            From
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.StartTimeTue2, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "StartTue2", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="TueSpanStart2"><i class="icon-time"></i></span>
+                                                            </div>To
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.EndtTimeTue2, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "EndTue2", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="TueSpanEnd2"><i class="icon-time"></i></span>
+                                                            </div>
+                                                            <span class="label label-important" style='display: none;' id='TueOff2'>holiday</span>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        @Html.CheckBoxFor(m => m.GetCheckList2[2].DayChecked, new { @class = "checkboxes", @id = "checkbox23" })
+                                                        @Model.GetCheckList2[2].Days
+                                                        @Html.HiddenFor(m => Model.GetCheckList2[2].DayscheckId)
+                                                        @Html.HiddenFor(m => Model.GetCheckList2[2].Days)
+
+
+                                                    </td>
+
+                                                    <td>
+
+                                                        <div class="controls">
+                                                            From
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.StartTimeWed2, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "StartWed2", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="WedSpanStart2"><i class="icon-time"></i></span>
+                                                            </div>To
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.EndtTimeWed2, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "EndWed2", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="WedSpanEnd2"><i class="icon-time"></i></span>
+                                                            </div>
+                                                            <span class="label label-important" style='display: none;' id='WedOff2'>holiday</span>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        @Html.CheckBoxFor(m => m.GetCheckList2[3].DayChecked, new { @class = "checkboxes", @id = "checkbox24" })
+                                                        @Model.GetCheckList2[3].Days
+                                                        @Html.HiddenFor(m => Model.GetCheckList2[3].DayscheckId)
+                                                        @Html.HiddenFor(m => Model.GetCheckList2[3].Days)
+
+                                                    </td>
+
+                                                    <td>
+
+                                                        <div class="controls">
+                                                            From
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.StartTimeThu2, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "StartThu2", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="ThuSpanStart2"><i class="icon-time"></i></span>
+                                                            </div>To
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.EndtTimeThu2, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "EndThu2", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="ThuSpanEnd2"><i class="icon-time"></i></span>
+                                                            </div>
+                                                            <span class="label label-important" style='display: none;' id='ThuOff2'>holiday</span>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        @Html.CheckBoxFor(m => m.GetCheckList2[4].DayChecked, new { @class = "checkboxes", @id = "checkbox25" })
+                                                        @Model.GetCheckList2[4].Days
+                                                        @Html.HiddenFor(m => Model.GetCheckList2[4].DayscheckId)
+                                                        @Html.HiddenFor(m => Model.GetCheckList2[4].Days)
+
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="controls">
+                                                            From
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.StartTimeFri2, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "StartFri2", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="FriSpanStart2"><i class="icon-time"></i></span>
+                                                            </div>To
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.EndtTimeFri2, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "EndFri2", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="FriSpanEnd2"><i class="icon-time"></i></span>
+                                                            </div>
+                                                            <span class="label label-important" style='display: none;' id='FriOff2'>holiday</span>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        @Html.CheckBoxFor(m => m.GetCheckList2[5].DayChecked, new { @class = "checkboxes", @id = "checkbox26" })
+                                                        @Model.GetCheckList2[5].Days
+                                                        @Html.HiddenFor(m => Model.GetCheckList2[5].DayscheckId)
+                                                        @Html.HiddenFor(m => Model.GetCheckList2[5].Days)
+
+
+                                                    </td>
+
+                                                    <td>
+
+                                                        From
+                                                        <div class="input-append bootstrap-timepicker-component">
+                                                            @Html.TextBoxFor(u => u.StartTimeSat2, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "StartSat2", @readonly = "readonly" })
+
+                                                            <span class="add-on" id="SatSpanStart2"><i class="icon-time"></i></span>
+                                                        </div>To
+                                                        <div class="input-append bootstrap-timepicker-component">
+                                                            @Html.TextBoxFor(u => u.EndtTimeSat2, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "EndSat2", @readonly = "readonly" })
+
+                                                            <span class="add-on" id="SatSpanEnd2"><i class="icon-time"></i></span>
+                                                        </div>
+                                                        <span class="label label-important" style='display: none;' id='SatOff2'>holiday</span>
+
+                                                    </td>
+
+                                                </tr>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        @Html.CheckBoxFor(m => m.GetCheckList2[6].DayChecked, new { @class = "checkboxes", @id = "checkbox27" })
+                                                        @Model.GetCheckList2[6].Days
+                                                        @Html.HiddenFor(m => Model.GetCheckList2[6].DayscheckId)
+                                                        @Html.HiddenFor(m => Model.GetCheckList2[6].Days)
+
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="controls">
+                                                            From
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.StartTimeSun2, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "StartSun2", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="SunSpanStart2"><i class="icon-time"></i></span>
+                                                            </div>To
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.EndtTimeSun2, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "EndSun2", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="SunSpanEnd2"><i class="icon-time"></i></span>
+                                                            </div>
+                                                            <span class="label label-important" style='display: none;' id='SunOff2'>holiday</span>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                        <div class="form-actions" style="padding-left:20px;">
+                                            <button type="button" id="btnscd2" class="btn blue" style="float:left;" name="btnscd" onclick="location.href='@Url.Action("Create", "DoctorClinicInfo")'">Back</button>
+                                            <div style="text-align:center;">
+                                                <button type="Submit" id="btnSave2" class="btn" style="text-align:center;" name="btnSave">Save 2nd Seating Time</button>
+                                                <button type="button" id="btnReset2" class="btn blue" name="btnscd" style="float:right;" onclick="location.href='@Url.Action("Create", "Media")'">Next</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- END FORM-->
                                     </div>
                                     <div class="tab-pane " id="portlet_tab3">
+                                        <!-- BEGIN FORM-->
+                                        <table class="table table-striped table-bordered table-hover" id="sample_2">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width:0px;">&nbsp; </th>
 
+                                                    <th class="hidden-480" style="width:550px;text-align:center;">
+                                                        <div> @Html.TextBoxFor(u => u.Setting3, new { @class = "btn mini", @readonly = "readonly", @id = "lblsetting3" })</div>
+                                                    </th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="odd gradeX">
+                                                    <td>
+
+                                                        @Html.CheckBoxFor(m => m.GetCheckList3[0].DayChecked, new { @class = "checkboxes", @id = "checkbox31" })
+                                                        @Model.GetCheckList3[0].Days
+                                                        @Html.HiddenFor(m => Model.GetCheckList3[0].DayscheckId)
+                                                        @Html.HiddenFor(m => Model.GetCheckList3[0].Days)
+
+                                                    </td>
+
+                                                    <td>
+
+                                                        <div class="controls">
+                                                            From
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.StartTimeMon3, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "StartMon3", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="MonSpanStart3"><i class="icon-time"></i></span>
+                                                            </div>To
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.EndtTimeMon3, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "EndMon3", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="MonSpanEnd3"><i class="icon-time"></i></span>
+
+                                                            </div>
+                                                            <span class="label label-important" style="display: none;" id='MonOff3'>holiday</span>
+                                                            <div style='display: none;' id='HideText3'><a href="#" id="CopyTime3">Copy above time for all days</a> </div>
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        @Html.CheckBoxFor(m => m.GetCheckList3[1].DayChecked, new { @class = "checkboxes", @id = "checkbox32" })
+                                                        @Model.GetCheckList3[1].Days
+                                                        @Html.HiddenFor(m => Model.GetCheckList3[1].DayscheckId)
+                                                        @Html.HiddenFor(m => Model.GetCheckList3[1].Days)
+
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="controls">
+                                                            From
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.StartTimeTue3, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "StartTue3", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="TueSpanStart3"><i class="icon-time"></i></span>
+                                                            </div>To
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.EndtTimeTue3, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "EndTue3", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="TueSpanEnd3"><i class="icon-time"></i></span>
+                                                            </div>
+                                                            <span class="label label-important" style='display: none;' id='TueOff3'>holiday</span>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        @Html.CheckBoxFor(m => m.GetCheckList3[2].DayChecked, new { @class = "checkboxes", @id = "checkbox33" })
+                                                        @Model.GetCheckList3[2].Days
+                                                        @Html.HiddenFor(m => Model.GetCheckList3[2].DayscheckId)
+                                                        @Html.HiddenFor(m => Model.GetCheckList3[2].Days)
+
+
+                                                    </td>
+
+                                                    <td>
+
+                                                        <div class="controls">
+                                                            From
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.StartTimeWed3, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "StartWed3", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="WedSpanStart3"><i class="icon-time"></i></span>
+                                                            </div>To
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.EndtTimeWed3, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "EndWed3", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="WedSpanEnd3"><i class="icon-time"></i></span>
+                                                            </div>
+                                                            <span class="label label-important" style='display: none;' id='WedOff3'>holiday</span>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        @Html.CheckBoxFor(m => m.GetCheckList3[3].DayChecked, new { @class = "checkboxes", @id = "checkbox34" })
+                                                        @Model.GetCheckList3[3].Days
+                                                        @Html.HiddenFor(m => Model.GetCheckList3[3].DayscheckId)
+                                                        @Html.HiddenFor(m => Model.GetCheckList3[3].Days)
+
+                                                    </td>
+
+                                                    <td>
+
+                                                        <div class="controls">
+                                                            From
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.StartTimeThu3, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "StartThu3", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="ThuSpanStart3"><i class="icon-time"></i></span>
+                                                            </div>To
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.EndtTimeThu3, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "EndThu3", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="ThuSpanEnd3"><i class="icon-time"></i></span>
+                                                            </div>
+                                                            <span class="label label-important" style='display: none;' id='ThuOff3'>holiday</span>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        @Html.CheckBoxFor(m => m.GetCheckList3[4].DayChecked, new { @class = "checkboxes", @id = "checkbox35" })
+                                                        @Model.GetCheckList3[4].Days
+                                                        @Html.HiddenFor(m => Model.GetCheckList3[4].DayscheckId)
+                                                        @Html.HiddenFor(m => Model.GetCheckList3[4].Days)
+
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="controls">
+                                                            From
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.StartTimeFri3, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "StartFri3", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="FriSpanStart3"><i class="icon-time"></i></span>
+                                                            </div>To
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.EndtTimeFri3, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "EndFri3", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="FriSpanEnd3"><i class="icon-time"></i></span>
+                                                            </div>
+                                                            <span class="label label-important" style='display: none;' id='FriOff3'>holiday</span>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        @Html.CheckBoxFor(m => m.GetCheckList3[5].DayChecked, new { @class = "checkboxes", @id = "checkbox36" })
+                                                        @Model.GetCheckList3[5].Days
+                                                        @Html.HiddenFor(m => Model.GetCheckList3[5].DayscheckId)
+                                                        @Html.HiddenFor(m => Model.GetCheckList3[5].Days)
+
+
+                                                    </td>
+
+                                                    <td>
+
+                                                        From
+                                                        <div class="input-append bootstrap-timepicker-component">
+                                                            @Html.TextBoxFor(u => u.StartTimeSat3, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "StartSat3", @readonly = "readonly" })
+
+                                                            <span class="add-on" id="SatSpanStart3"><i class="icon-time"></i></span>
+                                                        </div>To
+                                                        <div class="input-append bootstrap-timepicker-component">
+                                                            @Html.TextBoxFor(u => u.EndtTimeSat3, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "EndSat3", @readonly = "readonly" })
+
+                                                            <span class="add-on" id="SatSpanEnd3"><i class="icon-time"></i></span>
+                                                        </div>
+                                                        <span class="label label-important" style='display: none;' id='SatOff3'>holiday</span>
+
+                                                    </td>
+
+                                                </tr>
+                                                <tr class="odd gradeX">
+                                                    <td>
+                                                        @Html.CheckBoxFor(m => m.GetCheckList3[6].DayChecked, new { @class = "checkboxes", @id = "checkbox37" })
+                                                        @Model.GetCheckList3[6].Days
+                                                        @Html.HiddenFor(m => Model.GetCheckList3[6].DayscheckId)
+                                                        @Html.HiddenFor(m => Model.GetCheckList3[6].Days)
+
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="controls">
+                                                            From
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.StartTimeSun3, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "StartSun3", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="SunSpanStart3"><i class="icon-time"></i></span>
+                                                            </div>To
+                                                            <div class="input-append bootstrap-timepicker-component">
+                                                                @Html.TextBoxFor(u => u.EndtTimeSun3, new { @class = "m-ctrl-small timepicker-default", style = "width:100px;height:24px;", @id = "EndSun3", @readonly = "readonly" })
+
+                                                                <span class="add-on" id="SunSpanEnd3"><i class="icon-time"></i></span>
+                                                            </div>
+                                                            <span class="label label-important" style='display: none;' id='SunOff3'>holiday</span>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                        <div class="form-actions" style="padding-left:20px;">
+                                            <button type="button" id="btnscd3" class="btn blue" style="float:left;" name="btnscd" onclick="location.href='@Url.Action("Create", "DoctorClinicInfo")'">Back</button>
+                                            <div style="text-align:center;">
+                                                <button type="Submit" id="btnSave3" class="btn" style="text-align:center;" name="btnSave">Save 3rd Seating Time</button>
+                                                <button type="button" id="btnReset3" class="btn blue" name="btnscd" style="float:right;" onclick="location.href='@Url.Action("Create", "Media")'">Next</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- END FORM-->
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
-                    <!-- END EXAMPLE TABLE PORTLET-->
+                    <!-- END SAMPLE FORM PORTLET-->
                 </div>
 
                 <div class="span6">
+                    <div class="alert alert-success">
+
+                        <div style="font-size:large; color:CaptionText">
+                            <i class="icon-reorder"></i>&nbsp;
+                            @TempData["UserName"]
+                        </div>
+                    </div>
 
                     <div class="portlet">
 
                         <div class="portlet-body">
 
-                            @*@grid.GetHtml(
-                            tableStyle: "table table-striped table-bordered table-advance table-hover",
-                 footerStyle: "gridFooter",
-                        alternatingRowStyle: "alt",
-                         htmlAttributes: new { id = "grdUsers" },
-                         mode: WebGridPagerModes.All,
-                       firstText: "<< First",
-    previousText: "< Previous", nextText: "Next >",
-    lastText: "Last >>",
-                     columns: new[] {
-                   
-                     grid.Column("Day",header: "Day", canSort: false),
-                     grid.Column("FirstSetting",header: "Seating", canSort: false),
-                     grid.Column("StartTime",header: "Start Time", canSort: false),
-                     grid.Column("StartSlot",header: "Start Slot", canSort: false),
-                     grid.Column("EndTime",header: "EndT ime", canSort: false),
-                     grid.Column("EndSlot",header: "End Slot", canSort: false),
-                   
-                })*@
+
                             <table class="table table-striped table-bordered">
 
                                 <tr>
@@ -678,68 +1391,8 @@
 
 
                 </div>
-
-
             </div>
-
-            @*<table class="table table-striped table-bordered">
-             
-                <tr>
-                    <td colspan="4" style="text-align:center;"> Clinic Time</td>
-                  
-                </tr>
-               
-               <tr>
-                   <td>Monday</td>
-                   <td>@Html.DisplayFor(e=>e.StartTimefs1) &nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimefs1) </td>
-                   <td>@Html.DisplayFor(e => e.StartTimess1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimess1) </td>
-                   <td>@Html.DisplayFor(e => e.StartTimets1)&nbsp;-&nbsp; @Html.DisplayFor(e => e.EndTimets1) </td>
-               </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td>@Html.DisplayFor(e => e.StartTimefs2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs2) </td>
-                    <td>@Html.DisplayFor(e => e.StartTimess2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess2) </td>
-                    <td>@Html.DisplayFor(e => e.StartTimets2)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets2) </td>
-                </tr>
-                <tr>
-                    <td>Wednesday</td>
-                    <td>@Html.DisplayFor(e => e.StartTimefs3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs3) </td>
-                    <td>@Html.DisplayFor(e => e.StartTimess3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess3) </td>
-                    <td>@Html.DisplayFor(e => e.StartTimets3)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets3) </td>
-                </tr>
-                <tr>
-                    <td>Thursday</td>
-                    <td>@Html.DisplayFor(e => e.StartTimefs4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs4) </td>
-                    <td>@Html.DisplayFor(e => e.StartTimess4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess4) </td>
-                    <td>@Html.DisplayFor(e => e.StartTimets4)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets4) </td>
-                </tr>
-                <tr>
-                    <td>Friday</td>
-                    <td>@Html.DisplayFor(e => e.StartTimefs5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs5) </td>
-                    <td>@Html.DisplayFor(e => e.StartTimess5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess5) </td>
-                    <td>@Html.DisplayFor(e => e.StartTimets5)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets5) </td>
-                </tr>
-                <tr>
-                    <td>Saturday</td>
-                    <td>@Html.DisplayFor(e => e.StartTimefs6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs6) </td>
-                    <td>@Html.DisplayFor(e => e.StartTimess6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess6) </td>
-                    <td>@Html.DisplayFor(e => e.StartTimets6)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets6) </td>
-                </tr>
-                <tr>
-                    <td>Sunday</td>
-                    <td>@Html.DisplayFor(e => e.StartTimefs7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimefs7) </td>
-                    <td>@Html.DisplayFor(e => e.StartTimess7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimess7) </td>
-                    <td>@Html.DisplayFor(e => e.StartTimets7)&nbsp;-&nbsp;@Html.DisplayFor(e => e.EndTimets7) </td>
-                </tr>
-                
-            </table>*@
-    
-
         </div>
-    <!-- END PAGE CONTENT-->
-
     }
-
 </div>
-
 @Scripts.Render("~/bundles/jqueryval")

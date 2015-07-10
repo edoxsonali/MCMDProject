@@ -134,8 +134,10 @@
                     <label class="control-label">Upload Photo/Image@*<span class="required">*</span>*@</label>
                     <div class="controls">
 
-                        <input id="ImagePath" title="Upload a clinic image"
-                               type="file" name="file" />
+                        @*<input id="ImagePath" title="Upload a clinic image"
+                               type="file" name="file" />*@
+                        @Html.TextBoxFor(m => m.file, new { type = "file", })
+                        @Html.ValidationMessageFor(m => m.file, string.Empty, new { @class = "text-error" })
                         <div>
                             <div class="alert alert-block alert-success fade in">
                                 <button type="button" class="close" data-dismiss="alert"></button>
@@ -151,6 +153,7 @@
                 </div>
                 <div class="portlet">
                     <div class="portlet-body">
+                  
 
                         @grid.GetHtml(
                                                     tableStyle: "table table-striped table-bordered table-advance table-hover",

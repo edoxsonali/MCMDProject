@@ -53,11 +53,11 @@
     </div>
     <!-- END PAGE HEADER-->
     <!-- BEGIN PAGE CONTENT-->
-    <div class="portlet box blue ">
-        <div class="portlet-title">
+    @*<div class="portlet box blue ">*@
+        @*<div class="portlet-title">
             <div class="caption"><i class="icon-reorder"></i>Choose the desired service/services and billing plan for your practice </div>
 
-        </div>
+        </div>*@
 
         <div class="portlet-body form">
             <!-- BEGIN FORM-->
@@ -72,8 +72,8 @@
 
                 @ViewBag.Message
 
-                <h3> Select Services </h3>
-    <div style="padding-left:180px;">
+                @*<h3> Select Services </h3>
+                <div style="padding-left:180px;">
         <label> <input id="Select" name="Select" type="checkbox" value="true" disabled checked />Directory Listing </label>
 
     </div>
@@ -129,131 +129,94 @@
                     <button type="button" id="btnscd" class="btn blue" style="float:left;" name="btnscd" onclick="location.href='@Url.Action("Create", "Media")'">Back</button>
                     <button type="Submit" id="btnCreate" name="btnCreate" style="float:right;" class="btn blue">Submit</button>
 
+                </div>*@
+
+    <div class="portlet">
+        <div class="portlet-title">
+            <div class="caption"><i class="icon-cogs"></i>Choose the desired service/services and billing plan for your practice </div>
+            @*<div class="tools">
+                <a href="javascript:;" class="collapse"></a>
+                <a href="#portlet-config" data-toggle="modal" class="config"></a>
+                <a href="javascript:;" class="reload"></a>
+                <a href="javascript:;" class="remove"></a>
+            </div>*@
+        </div>
+        <div class="portlet-body">
+            <div class="row-fluid">
+                <!-- Pricing -->
+                <div class="row-fluid margin-bottom-40">
+                    <div class="span3 pricing-active hover-effect">
+                        <div class="pricing-head">
+
+                            <h3 style="font-size:25px;"> @Model.MembershipList[0].MembershipType</h3>
+                            <h4><i>Rs.</i>Free <span>Per Month</span></h4>
+                        </div>
+                        <ul class="pricing-content unstyled">
+                            <li><i class="icon-tags"></i> At vero eos</li>
+                            <li><i class="icon-asterisk"></i> No Support</li>
+                            <li><i class="icon-heart"></i> Fusce condimentum</li>
+                            <li><i class="icon-star"></i> Ut non libero</li>
+                            <li><i class="icon-shopping-cart"></i> Consecte adiping elit</li>
+                        </ul>
+                        <div class="pricing-footer">
+                            @*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>*@
+                          
+                        </div>
+                    </div>
+                    <div class="span3 pricing-active hover-effect">
+                        <div class="pricing-head">
+                            <h3 style="font-size:25px;">@Model.MembershipList[1].MembershipType </h3>
+                            <h4><i>Rs.</i>@Model.MembershipList[1].Fees <span>Per Month</span></h4>
+                        </div>
+                        <ul class="pricing-content unstyled">
+                            <li><i class="icon-tags"></i> At vero eos</li>
+                            <li><i class="icon-asterisk"></i> No Support</li>
+                            <li><i class="icon-heart"></i> Fusce condimentum</li>
+                            <li><i class="icon-star"></i> Ut non libero</li>
+                            <li><i class="icon-shopping-cart"></i> Consecte adiping elit</li>
+                        </ul>
+                        <div class="pricing-footer">
+                            @*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>*@
+                            <a href="#" class="btn green">
+                                for Payment <i class="m-icon-swapright m-icon-white"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="span3 pricing-active hover-effect">
+                        <div class="pricing-head">
+                            <h3 style="font-size:25px;">&nbsp; @Model.MembershipList[2].MembershipType</h3>
+                            <h4><i>Rs.</i>@Model.MembershipList[2].Fees <span>Per Month</span></h4>
+                        </div>
+                        <ul class="pricing-content unstyled">
+                            <li><i class="icon-tags"></i> At vero eos</li>
+                            <li><i class="icon-asterisk"></i> No Support</li>
+                            <li><i class="icon-heart"></i> Fusce condimentum</li>
+                            <li><i class="icon-star"></i> Ut non libero</li>
+                            <li><i class="icon-shopping-cart"></i> Consecte adiping elit</li>
+                        </ul>
+                        <div class="pricing-footer">
+                            @*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>*@
+                            <a href="#" class="btn green">
+                                for Payment <i class="m-icon-swapright m-icon-white"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                <!--/row-fluid-->
+                <!--//End Pricing -->
+            </div>
+        </div>
+    </div>
             }
 
             <!-- END FORM-->
         </div>
 
 
-    </div>
+    @*</div>*@
 
-    <div class="container-fluid">
-        <!-- BEGIN PAGE HEADER-->
-        <div class="row-fluid">
-            <div class="span12">
-           
-                <!-- END BEGIN STYLE CUSTOMIZER -->
-                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-                <h3 class="page-title">
-                    Pricing Tables @*<small>pricing table samples</small>*@
-                </h3>
-                <ul class="breadcrumb">
-                    <li>
-                        <i class="icon-home"></i>
-                        <a href="index.html">Home</a>
-                        <i class="icon-angle-right"></i>
-                    </li>
-                    <li>
-                        <a href="#">Extra</a>
-                        <i class="icon-angle-right"></i>
-                    </li>
-                    <li><a href="#">Pricing Tables</a></li>
-                </ul>
-                <!-- END PAGE TITLE & BREADCRUMB-->
-            </div>
-        </div>
-        <!-- END PAGE HEADER-->
-        <!-- BEGIN PAGE CONTENT-->
-        <div class="row-fluid">
-            <div class="span12">
-                <!-- BEGIN INLINE NOTIFICATIONS PORTLET-->
-                <div class="portlet">
-                    <div class="portlet-title">
-                        <div class="caption"><i class="icon-cogs"></i>Pricing Tables</div>
-                        <div class="tools">
-                            <a href="javascript:;" class="collapse"></a>
-                            <a href="#portlet-config" data-toggle="modal" class="config"></a>
-                            <a href="javascript:;" class="reload"></a>
-                            <a href="javascript:;" class="remove"></a>
-                        </div>
-                    </div>
-                    <div class="portlet-body">
-                        <div class="row-fluid">
-                            <!-- Pricing -->
-                            <div class="row-fluid margin-bottom-40">
-                                <div class="span4 pricing-active hover-effect">
-                                    <div class="pricing-head">
-                                     
-                                        <h3> @Model.MembershipList[0].MembershipType@*<span>Officia deserunt mollitia</span>*@</h3>
-                                        <h4><i>Rs.</i>Free <span>Per Month</span></h4>
-                                    </div>
-                                    <ul class="pricing-content unstyled">
-                                        <li><i class="icon-tags"></i> At vero eos</li>
-                                        <li><i class="icon-asterisk"></i> No Support</li>
-                                        <li><i class="icon-heart"></i> Fusce condimentum</li>
-                                        <li><i class="icon-star"></i> Ut non libero</li>
-                                        <li><i class="icon-shopping-cart"></i> Consecte adiping elit</li>
-                                    </ul>
-                                    <div class="pricing-footer">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
-                                        @*<a href="#" class="btn green">
-                                         for Payment <i class="m-icon-swapright m-icon-white"></i>
-                                        </a>*@
-                                    </div>
-                                </div>
-                                <div class="span4 pricing-active hover-effect">
-                                    <div class="pricing-head">
-                                        <h3>@Model.MembershipList[1].MembershipType @*<span>Officia deserunt mollitia</span>*@</h3>
-                                        <h4><i>Rs.</i>@Model.MembershipList[1].Fees <span>Per Month</span></h4>
-                                    </div>
-                                    <ul class="pricing-content unstyled">
-                                        <li><i class="icon-tags"></i> At vero eos</li>
-                                        <li><i class="icon-asterisk"></i> No Support</li>
-                                        <li><i class="icon-heart"></i> Fusce condimentum</li>
-                                        <li><i class="icon-star"></i> Ut non libero</li>
-                                        <li><i class="icon-shopping-cart"></i> Consecte adiping elit</li>
-                                    </ul>
-                                    <div class="pricing-footer">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
-                                        <a href="#" class="btn green">
-                                            for Payment <i class="m-icon-swapright m-icon-white"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                
-                                <div class="span4 pricing-active hover-effect">
-                                    <div class="pricing-head">
-                                        <h3>&nbsp; @Model.MembershipList[2].MembershipType@*<span>Officia deserunt mollitia</span>*@</h3>
-                                        <h4><i>Rs.</i>@Model.MembershipList[2].Fees <span>Per Month</span></h4>
-                                    </div>
-                                    <ul class="pricing-content unstyled">
-                                        <li><i class="icon-tags"></i> At vero eos</li>
-                                        <li><i class="icon-asterisk"></i> No Support</li>
-                                        <li><i class="icon-heart"></i> Fusce condimentum</li>
-                                        <li><i class="icon-star"></i> Ut non libero</li>
-                                        <li><i class="icon-shopping-cart"></i> Consecte adiping elit</li>
-                                    </ul>
-                                    <div class="pricing-footer">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .</p>
-                                        <a href="#" class="btn green">
-                                            for Payment <i class="m-icon-swapright m-icon-white"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/row-fluid-->
-                            <!--//End Pricing -->
-                        </div>
-                    </div>
-                </div>
-                <!-- END INLINE NOTIFICATIONS PORTLET-->
-            </div>
-        </div>
-        
-        
-        <!-- END PAGE CONTENT-->
-    </div>
+    
 
     <!-- END PAGE CONTENT-->
 </div>

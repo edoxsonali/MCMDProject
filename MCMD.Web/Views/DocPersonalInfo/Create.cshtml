@@ -67,7 +67,7 @@
                     <label class="control-label">Middle Name</label>
                     <div class="controls">
                         @Html.TextBoxFor(model => model.MiddleName, new { @class = "m-wrap span7", @placeholder = "Enter Middle Name", @maxlength = "30", @autocomplete = "off" })
-                   
+
 
                     </div>
                 </div>
@@ -118,21 +118,22 @@
                     <label class="control-label">Clinic/Hospital Affiliation</label>
                     <div class="controls">
                         @Html.TextAreaFor(model => model.Affiliation, new { @class = "m-wrap span7", @placeholder = "Enter Affiliation", @maxlength = "500", autocomplete = "off" })
-                       
+
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Experience</label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.AboutExperience, new { @class = "m-wrap span7", @placeholder = "Enter About Experience", @maxlength = "100", @autocomplete = "off" })
-                      
+                        @Html.TextBoxFor(model => model.ExperienceInYear, new { @class = "m-wrap span3", @placeholder = "Eg.20 Years", @maxlength = "20", @autocomplete = "off" })
+                        @Html.TextBoxFor(model => model.ExperienceInMonth, new { @class = "m-wrap span3", @placeholder = "Eg.2 Months", @maxlength = "20", @autocomplete = "off" })
+
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">About Me</label>
                     <div class="controls">
                         @Html.TextAreaFor(model => model.AboutMe, new { @class = "m-wrap span7", @placeholder = "Enter About ME", @maxlength = "600", @autocomplete = "off" })
-                     
+
                     </div>
                 </div>
 

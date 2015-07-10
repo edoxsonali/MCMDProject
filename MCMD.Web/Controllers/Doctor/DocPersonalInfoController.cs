@@ -61,7 +61,8 @@ namespace MCMD.Web.Controllers.Doctor
                     _doctorVM.RegistrationNo = item.RegistrationNo;
                     _doctorVM.Affiliation = item.Affiliation;
                     _doctorVM.AboutMe = item.AboutMe;
-                    _doctorVM.AboutExperience = item.AboutExperience;
+                    _doctorVM.ExperienceInYear = item.ExperienceInYear;
+                    _doctorVM.ExperienceInMonth = item.ExperienceInMonth;
                 }
                 foreach (var item in _NewDocSpeciality)
                 {
@@ -101,7 +102,8 @@ namespace MCMD.Web.Controllers.Doctor
                         newDoctor.RegistrationNo =_doctorPersonalInfoVM.RegistrationNo;
                         newDoctor.Affiliation = _doctorPersonalInfoVM.Affiliation;
                         newDoctor.AboutMe = _doctorPersonalInfoVM.AboutMe;
-                        newDoctor.AboutExperience = _doctorPersonalInfoVM.AboutExperience;
+                        newDoctor.ExperienceInYear = _doctorPersonalInfoVM.ExperienceInYear;
+                        newDoctor.ExperienceInMonth = _doctorPersonalInfoVM.ExperienceInMonth;
                         newDoctor.InactiveFlag = "N";
                         newDoctor.CreatedByID = 1;
                         newDoctor.CreatedDate = DateTime.Now;
@@ -122,7 +124,8 @@ namespace MCMD.Web.Controllers.Doctor
                         existingUser.RegistrationNo =_doctorPersonalInfoVM.RegistrationNo;
                         existingUser.Affiliation = _doctorPersonalInfoVM.Affiliation;
                         existingUser.AboutMe = _doctorPersonalInfoVM.AboutMe;
-                        existingUser.AboutExperience = _doctorPersonalInfoVM.AboutExperience;
+                        existingUser.ExperienceInYear = _doctorPersonalInfoVM.ExperienceInYear;
+                        existingUser.ExperienceInMonth = _doctorPersonalInfoVM.ExperienceInMonth;
                         existingUser.InactiveFlag = "N";
                         existingUser.CreatedByID = 1;
                         existingUser.CreatedDate = DateTime.Now;

@@ -56,6 +56,7 @@ namespace MCMD.EntityModel
 
         public DbSet<AppointmentDiary> AppointmentDiary { get; set; }
         public DbSet<SchedulingDiary> SchedulingDiarys { get; set; }
+        public DbSet<Seating> seatings { get; set; }
 
         public static ApplicationDbContext Create()
         {
@@ -135,6 +136,9 @@ namespace MCMD.EntityModel
 
             modelBuilder.Entity<SchedulingDiary>().ToTable("SchedulingDiary");
             modelBuilder.Entity<SchedulingDiary>().HasKey<int>(r => r.ID);
+
+            modelBuilder.Entity<Seating>().ToTable("Seating");
+            modelBuilder.Entity<Seating>().HasKey<int>(r => r.SeatingId);
 
 
             //  modelBuilder.Entity<Role>().ToTable("MCMDCreateRoles");

@@ -15,6 +15,10 @@ namespace MCMD.IRepository.WebInterfaces
         IEnumerable<UserLogin> GetDocLoginInfo();
         IEnumerable<DoctorClinicInformation> GetDocClinicInfo();
         IEnumerable<ClinicTimeInformation> GetDocClinicTime();
+        IEnumerable<City> GetCity();
+        IEnumerable<DoctorClinicInformation> GetClinicInformation();
+        IEnumerable<GetAllData> SearchAllDoctor(int SpecialityIDVM, int RoleIdVM, int CityIdVM, string UserFirstNameVm, string UserLastNameVM, string @ClinicNameVM);
+        IEnumerable<GetViewDoctor> getAllDoctor();
         IEnumerable<Speciality> GetDocSpeciality();
         IEnumerable<UserLoginSpeciality> GetDocLoginSpeciality();
         IEnumerable<Media> GetDocMediaInfo();

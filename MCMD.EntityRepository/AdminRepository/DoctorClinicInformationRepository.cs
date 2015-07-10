@@ -30,7 +30,10 @@ namespace MCMD.EntityRepository.AdminRepository
         {
             return DBcontext.clinicTimeInformation.ToList();
         }
-
+        public IEnumerable<Seating> GetAllSeating()
+        {
+            return DBcontext.seatings.ToList();
+        }
         public IEnumerable<GetViewCliniInfo> GetClinics()
         {
             var AllClinicInfo = (from n in DBcontext.DoctorsClinicInfos

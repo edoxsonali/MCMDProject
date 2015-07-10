@@ -111,7 +111,7 @@
                 <div class="control-group">
                     <label class="control-label">Registrations <span class="required">*</span></label>
                     <div class="controls">
-                        @Html.TextAreaFor(model => model.RegistrationNo, new { @class = "m-wrap span7", @placeholder = "Enter Registration No", @maxlength = "100", autocomplete = "off"})
+                        @Html.TextAreaFor(model => model.RegistrationNo, new { @class = "m-wrap span7", @placeholder = "Enter Registration No", @maxlength = "100", autocomplete = "off" })
                         @Html.ValidationMessageFor(model => model.RegistrationNo, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
@@ -125,8 +125,9 @@
                 <div class="control-group">
                     <label class="control-label">Experience</label>
                     <div class="controls">
-                        @Html.TextBoxFor(model => model.AboutExperience, new { @class = "m-wrap span7", @placeholder = "Enter About Experience", @maxlength = "100", @autocomplete = "off" })
-                        @*@Html.ValidationMessageFor(model => model.AboutExperience, "", new { @class = "text-error" })*@
+                        @Html.TextBoxFor(model => model.ExperienceInYear, new { @class = "m-wrap span3", @placeholder = "Eg.20 Years", @maxlength = "20", @autocomplete = "off" })
+                        @Html.TextBoxFor(model => model.ExperienceInMonth, new { @class = "m-wrap span3", @placeholder = "Eg.2 Months", @maxlength = "20", @autocomplete = "off" })
+
                     </div>
                 </div>
                 <div class="control-group">
@@ -137,7 +138,7 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label">Profile Photo @*<span class="required">*</span>*@</label>
+                    <label class="control-label">Doctor Profile Photo @*<span class="required">*</span>*@</label>
                     <div class="controls">
 
                         <input id="ImagePath" title="Upload a clinic image"

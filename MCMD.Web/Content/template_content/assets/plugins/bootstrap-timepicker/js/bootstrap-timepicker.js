@@ -98,6 +98,7 @@
 
         , showWidget: function(e) {
             e.stopPropagation();
+
             e.preventDefault();
 
             if (this.open) {
@@ -790,7 +791,7 @@
       minuteStep: 15
     , secondStep: 15
     , disableFocus: false
-    , defaultTime: 'current'
+    , defaultTime: '09:00 AM'
     , showSeconds: false
     , showInputs: true
     , showMeridian: true

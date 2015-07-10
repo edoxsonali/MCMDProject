@@ -9,6 +9,7 @@ using MCMD.EntityModel.Doctor;
 using MCMD.IRepository.AdminInterfaces;
 using MCMD.ViewModel.Administration;
 using System.IO;
+using System.Data.Entity.Validation;
 
 
 namespace MCMD.Web.Controllers.Administration
@@ -23,7 +24,7 @@ namespace MCMD.Web.Controllers.Administration
         {
             this.doctorPersonalInfoRepository = _doctorPersonalInfoRepository;
         }
-     
+
         public ActionResult UserEditDoctor(int Id)
         {
             Session["EditDoctor"] = Id;
@@ -70,7 +71,8 @@ namespace MCMD.Web.Controllers.Administration
                     _doctorVM.RegistrationNo = item.RegistrationNo;
                     _doctorVM.Affiliation = item.Affiliation;
                     _doctorVM.AboutMe = item.AboutMe;
-                    _doctorVM.AboutExperience = item.AboutExperience;
+                    _doctorVM.ExperienceInYear = item.ExperienceInYear;
+                    _doctorVM.ExperienceInMonth = item.ExperienceInMonth;
                     _doctorVM.FolderFilePath = item.FolderFilePath;
                 }
                 foreach (var item in _NewDocSpeciality)
@@ -106,14 +108,39 @@ namespace MCMD.Web.Controllers.Administration
                     newDoctor.LoginId = Convert.ToInt32(Session["EditDoctor"]);
                     if (ReferenceEquals(existingUser, null))
                     {
+                        if (!ReferenceEquals(newDoctor.MiddleName, null))
+                        {
+                            newDoctor.MiddleName = _doctorPersonalInfoVM.MiddleName;
+                        }
 
-                        newDoctor.MiddleName = _doctorPersonalInfoVM.MiddleName;
                         newDoctor.Qualification = _doctorPersonalInfoVM.Qualification;
-                        newDoctor.Qualification1 = _doctorPersonalInfoVM.Qualification1;
-                        newDoctor.RegistrationNo =_doctorPersonalInfoVM.RegistrationNo;
-                        newDoctor.Affiliation = _doctorPersonalInfoVM.Affiliation;
-                        newDoctor.AboutMe = _doctorPersonalInfoVM.AboutMe;
-                        newDoctor.AboutExperience = _doctorPersonalInfoVM.AboutExperience;
+
+                        if (!ReferenceEquals(newDoctor.Qualification1, null))
+                        {
+                            newDoctor.Qualification1 = _doctorPersonalInfoVM.Qualification1;
+                        }
+
+                        newDoctor.RegistrationNo = _doctorPersonalInfoVM.RegistrationNo;
+
+                        if (!ReferenceEquals(newDoctor.Affiliation, null))
+                        {
+
+                            newDoctor.Affiliation = _doctorPersonalInfoVM.Affiliation;
+                        }
+
+                        if (!ReferenceEquals(newDoctor.AboutMe, null))
+                        {
+                            newDoctor.AboutMe = _doctorPersonalInfoVM.AboutMe;
+                        }
+
+                        if (!ReferenceEquals(newDoctor.ExperienceInYear, null))
+                        {
+                            newDoctor.ExperienceInYear = _doctorPersonalInfoVM.ExperienceInYear;
+                        }
+                        if (!ReferenceEquals(newDoctor.ExperienceInMonth, null))
+                        {
+                            newDoctor.ExperienceInMonth = _doctorPersonalInfoVM.ExperienceInMonth;
+                        }
                         newDoctor.InactiveFlag = "N";
                         newDoctor.CreatedByID = 1;
                         newDoctor.CreatedDate = DateTime.Now;
@@ -147,10 +174,11 @@ namespace MCMD.Web.Controllers.Administration
                         existingUser.MiddleName = _doctorPersonalInfoVM.MiddleName;
                         existingUser.Qualification = _doctorPersonalInfoVM.Qualification;
                         existingUser.Qualification1 = _doctorPersonalInfoVM.Qualification1;
-                        existingUser.RegistrationNo =_doctorPersonalInfoVM.RegistrationNo;
+                        existingUser.RegistrationNo = _doctorPersonalInfoVM.RegistrationNo;
                         existingUser.Affiliation = _doctorPersonalInfoVM.Affiliation;
                         existingUser.AboutMe = _doctorPersonalInfoVM.AboutMe;
-                        existingUser.AboutExperience = _doctorPersonalInfoVM.AboutExperience;
+                        existingUser.ExperienceInYear = _doctorPersonalInfoVM.ExperienceInYear;
+                        existingUser.ExperienceInMonth = _doctorPersonalInfoVM.ExperienceInMonth;
                         existingUser.InactiveFlag = "N";
                         existingUser.CreatedByID = 1;
                         existingUser.CreatedDate = DateTime.Now;
@@ -199,7 +227,7 @@ namespace MCMD.Web.Controllers.Administration
                     doctorPersonalInfoRepository.UpdateDocSpeciality(NewUserLogSpeciality);
                     doctorPersonalInfoRepository.Save();
 
-                   // ViewBag.Message2 = " Update Login Speciality Succsessfully ..";
+                    // ViewBag.Message2 = " Update Login Speciality Succsessfully ..";
 
                     @TempData["SuccessMessage"] = "Record Saved  Successfully";
                 }
@@ -208,10 +236,12 @@ namespace MCMD.Web.Controllers.Administration
             }
 
 
-            catch (Exception)
+            catch (DbEntityValidationException ex)
             {
                 // ModelState.AddModelError(string.Empty, "Unable to save changes. Try again, and if the problem persists contact your system administrator.");
-                @TempData["Message"] = "Unable to save changes";
+                var errorMessages = string.Join("; ", ex.EntityValidationErrors.SelectMany(x => x.ValidationErrors).Select(x => x.ErrorMessage));
+                //  var newException = new FormattedDbEntityValidationException(ex);
+                @TempData["Message"] = errorMessages;
                 return RedirectToAction("Create", "DoctorInfo");
             }
             return RedirectToAction("Create", "DoctorClinicInfo");

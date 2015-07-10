@@ -46,8 +46,8 @@ namespace MCMD.EntityRepository.AdminRepository
                 string[] videoFormat = new string[] { "video/mp4" };
 
 
-                int CheckImgType = Convert.ToInt32(formats.Contains(file.ContentType));
-                int CheckVideoType = Convert.ToInt32(videoFormat.Contains(file.ContentType));
+                int CheckImgType = Convert.ToInt32(formats.Contains(mediaVM.file.ContentType));
+                int CheckVideoType = Convert.ToInt32(videoFormat.Contains(mediaVM.file.ContentType));
 
                 if (CheckImgType != 0 || CheckVideoType != 0)
                 {
@@ -56,12 +56,12 @@ namespace MCMD.EntityRepository.AdminRepository
                         mediaVM.GetMediacount = DBcontext.medias.Where(x => x.LoginId == mediaVM.LoginId && x.InactiveFlag == "N").ToList();
                         if (mediaVM.GetMediacount.Count() < 8)
                         {
-                            string Imgpath = "~/Media/" + file.FileName;
-                            string path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") + file.FileName);
+                            string Imgpath = "~/Media/" +mediaVM.file.FileName;
+                            string path = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") + mediaVM.file.FileName);
                             file.SaveAs(path);
                             media.LoginId = mediaVM.LoginId;
                             media.FolderFilePath = Imgpath;
-                            media.UploadType = file.ContentType;
+                            media.UploadType = mediaVM.file.ContentType;
                             media.InactiveFlag = "N";
                             media.CreatedByID = 1; // for now we add 1 later we change
                             media.CreatedDate = DateTime.Now;
@@ -80,18 +80,18 @@ namespace MCMD.EntityRepository.AdminRepository
 
                     if (CheckVideoType != 0)
                     {
-                        string filetype = file.ContentType;
+                        string filetype = mediaVM.file.ContentType;
                         mediaVM.GetMediacount = DBcontext.medias.Where(x => x.LoginId == mediaVM.LoginId && x.UploadType == filetype && x.InactiveFlag == "N").ToList();
                         if (mediaVM.GetMediacount.Count() < 1)
                         {
                             //if(file.ContentLength < 1024 * 1024 * 1)
                             //{
 
-                            string path = System.IO.Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") + file.FileName);
+                            string path = System.IO.Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Media/") +mediaVM.file.FileName);
                             file.SaveAs(path);
                             media.FolderFilePath = path;
                             media.LoginId = mediaVM.LoginId;
-                            media.UploadType = file.ContentType;
+                            media.UploadType = mediaVM.file.ContentType;
                             media.InactiveFlag = "N";
                             media.CreatedByID = 1; // for now we add 1 later we change
                             media.CreatedDate = DateTime.Now;
@@ -114,6 +114,10 @@ namespace MCMD.EntityRepository.AdminRepository
                 }
                
 
+            }
+            else
+            {
+                mediaVM.Message = "Please Upload File";
             }
 
 

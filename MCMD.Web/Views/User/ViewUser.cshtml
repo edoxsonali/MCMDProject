@@ -99,7 +99,85 @@
     </div>
     <!-- END PAGE HEADER-->
     <!-- BEGIN PAGE CONTENT-->
-    <div class="portlet box blue ">
+
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption"><i class="icon-reorder"></i>Manage Admin/COE</div>
+
+        </div>
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            @using (Html.BeginForm(Html.BeginForm("ViewUser", "User",
+            new { ReturnUrl = ViewBag.ReturnUrl },
+            FormMethod.Post, new { @class = "form-horizontal" })))
+            {
+
+                @Html.ValidationSummary(true)
+                <div class="row-fluid">
+                    <div class="span6 ">
+                        <div class="control-group">
+                            <label class="span3" style="text-align:left; margin-top:5px;">User Type</label>
+                            <div>
+                                @Html.DropDownListFor(m => m.RoleId, new SelectList(Model.Roles, "RoleId", "RoleName"),
+                         "-Select-", new { @class = "m-wrap span9" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span6 ">
+                        <div class="control-group">
+                            <label class="span3" style="text-align:left; margin-top:5px;">First Name</label>
+                            <div>
+                                @Html.TextBoxFor(u => u.FirstName, new { @class = "m-wrap span9", @placeholder = "Enter First Name", @maxlength = "30", autocomplete = "off" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6 ">
+                        <div class="control-group">
+                            <label class="span3" style="text-align:left; margin-top:5px;">Employee Id</label>
+                            <div>
+                                @Html.TextBoxFor(u => u.EmployeeId, new { @class = "m-wrap span9", @placeholder = "Enter Employee Id", @maxlength = "30", @autocomplete = "off" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span6 ">
+                        <div class="control-group">
+                            <label class="span3" style="text-align:left; margin-top:5px;">Last Name</label>
+                            <div>
+                                @Html.TextBoxFor(u => u.LastName, new { @class = "m-wrap span9", @placeholder = "Enter Last Name", @maxlength = "30", autocomplete = "off" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6 ">
+                        <div class="control-group">
+                            <label class="span3" style="text-align:left; margin-top:5px;">Phone #</label>
+                            <div>
+                                @Html.TextBoxFor(u => u.UserPhone, new { @class = "m-wrap span9", @type = "phone", @placeholder = " Enter Phone number", @maxlength = "15", @autocomplete = "off" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span6 ">
+                        <div class="control-group">
+                            <label class="span3" style="text-align:left; margin-top:5px;">Email ID</label>
+                            <div>
+                                @Html.TextBoxFor(u => u.EmailID, new { @class = "m-wrap span9", @type = "email", @placeholder = "Enter email Id", @maxlength = "50", autocomplete = "off" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="Submit" id="btnCreate" name="btnCreate" class="btn blue">Search</button>
+                    <button type="button" id="btnscd" class="btn" name="btnscd" onclick="location.href='@Url.Action("ViewUser", "User")'">Reset</button>
+                </div>
+            }
+
+            <!-- END FORM-->
+        </div>
+    </div>
+    @*<div class="portlet box blue ">
         <div class="portlet-title">
             <div class="caption"><i class="icon-reorder"></i>Manage Admin/COE</div>
 
@@ -127,7 +205,7 @@
                 <div class="control-group">
                     <label class="control-label">Employee Id</label>
                     <div class="controls">
-                        @Html.TextBoxFor(u => u.EmployeeId, new { @class = "m-wrap span6", @placeholder = "Enter Employee Id", @maxlength = "30", @autocomplete = "off" })
+                        @Html.TextBoxFor(u => u.EmployeeId, new { @class = "m-wrap span6", @placeholder = "Enter Employee Id", @maxlength = "30", @autocomplete = "off"})
 
                     </div>
                 </div>
@@ -174,7 +252,7 @@
         </div>
 
 
-    </div>
+    </div>*@
     <div class="portlet box">
 
         <div class="portlet-body flip-scroll">

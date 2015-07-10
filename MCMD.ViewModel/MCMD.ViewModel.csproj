@@ -92,6 +92,7 @@
     <Compile Include="doctor\ClinicProfileViewModel.cs" />
     <Compile Include="doctor\DocProfileViewModel.cs" />
     <Compile Include="doctor\DocRegisterViewModel.cs" />
+    <Compile Include="doctor\HomeDocSearchViewModel.cs" />
     <Compile Include="Patient\PatientViewModel.cs" />
     <Compile Include="Patient\ViewPatientDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

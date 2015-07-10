@@ -17,16 +17,16 @@ namespace MCMD.EntityModel.Doctor
 
 
 
-        [DisplayName("MiddleName")]
+      //  [DisplayName("MiddleName")]
         // [RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "MiddleName is not valid.")]
-        [Required(ErrorMessage = "MiddleName is required.")]
-        [StringLength(50, ErrorMessage = "MiddleName cannot be longer than 50 characters.")]
+      //  [Required(ErrorMessage = "MiddleName is required.")]
+      //  [StringLength(50, ErrorMessage = "MiddleName cannot be longer than 50 characters.")]
         public string MiddleName { get; set; }
 
         [DisplayName("Qualification")]
         // [RegularExpression(@"^([a-zA-Z]+(([\s|\x27|\.][a-zA-Z]+)*([\.][\s][a-zA-Z]+)*)*[\s]*)$", ErrorMessage = "Qualification is not valid.")]
         [Required(ErrorMessage = "Qualification is required.")]
-        [StringLength(50, ErrorMessage = "Qualification cannot be longer than 50 characters.")]
+       // [StringLength(50, ErrorMessage = "Qualification cannot be longer than 50 characters.")]
         public string Qualification { get; set; }
 
       
@@ -37,16 +37,17 @@ namespace MCMD.EntityModel.Doctor
         [Required(ErrorMessage = "Registration No is required.")]
         public string RegistrationNo { get; set; }
 
-        [DisplayName("Affiliation")]
+       // [DisplayName("Affiliation")]
         // [RegularExpression(@"^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$", ErrorMessage = "Affiliation is not valid.")]
-        [Required(ErrorMessage = "Affiliation is required.")]
-        [StringLength(100, ErrorMessage = "Affiliation cannot be longer than 100 characters.")]
+      //  [Required(ErrorMessage = "Affiliation is required.")]
+       // [StringLength(100, ErrorMessage = "Affiliation cannot be longer than 100 characters.")]
         public string Affiliation { get; set; }
 
 
         public string AboutMe { get; set; }
 
-        public string AboutExperience { get; set; }
+        public string ExperienceInYear { get; set; }
+        public string ExperienceInMonth { get; set; }
 
         public string InactiveFlag { get; set; }
 

@@ -154,6 +154,7 @@ D:\DoxeDox_Project\MCMDProject\MCMD.Web.Tests\bin\Release\Microsoft.Owin.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.Web.Tests\bin\Release\SimpleCrypto.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.Web.Tests\bin\Release\EntityFramework.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.Web.Tests\bin\Release\MCMD.Common.dll
+D:\DoxeDox_Project\MCMDProject\MCMD.Web.Tests\bin\Release\GoogleMaps.LocationServices.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.Web.Tests\bin\Release\MCMD.DependencyResolution.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.Web.Tests\bin\Release\Ninject.dll
 D:\DoxeDox_Project\MCMDProject\MCMD.Web.Tests\bin\Release\MCMD.EntityRepository.dll

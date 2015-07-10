@@ -53,12 +53,12 @@ namespace MCMD.ViewModel.Administration
 
         [DisplayName("EmailID")]
         [RegularExpression(@"^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$", ErrorMessage = "Email is not valid.")]
-        [Required(ErrorMessage = "Email is required.")]
-        [StringLength(100, ErrorMessage = "Email cannot be longer than 100 characters.")]
+        [Required(ErrorMessage = "Email ID is required.")]
+        [StringLength(100, ErrorMessage = "Email ID cannot be longer than 100 characters.")]
         public string EmailID { get; set; }
 
         [DisplayName("UserPhone")]
-        [Required(ErrorMessage = "Phone is required.")]
+        [Required(ErrorMessage = "Phone Number is required.")]
         public string UserPhone { get; set; }
 
         [DisplayName("Qualification")]
@@ -72,13 +72,14 @@ namespace MCMD.ViewModel.Administration
 
 
         [DisplayName("RegistrationNo")]
-        [Required(ErrorMessage = "RegistrationNo is required.")]
+        [Required(ErrorMessage = "Registration is required.")]
         public string RegistrationNo { get; set; }
 
         public string Affiliation { get; set; }
         public string AboutMe { get; set; }
 
-        public string AboutExperience { get; set; }
+        public string ExperienceInYear { get; set; }
+        public string ExperienceInMonth { get; set; }
         public string InactiveFlag { get; set; }
 
         public int CreatedByID { get; set; }

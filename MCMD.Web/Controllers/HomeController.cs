@@ -8,6 +8,7 @@ using MCMD.EntityModel.Doctor;
 using MCMD.IRepository.WebInterfaces;
 using MCMD.EntityRepository.WebRepository;
 using MCMD.ViewModel.doctor;
+using GoogleMaps.LocationServices;
 
 
 namespace MCMD.Web.Controllers
@@ -19,10 +20,64 @@ namespace MCMD.Web.Controllers
         {
             this.docprofile = _docprofile;
         }
+        #region Search
         public ActionResult Search()
         {
-            return View();
+            HomeDocSearchViewModel homeDocSearchVM = new HomeDocSearchViewModel();
+
+            homeDocSearchVM.GetSpecialitylist = docprofile.GetDocSpeciality().ToList();
+            homeDocSearchVM.GetCitys = docprofile.GetCity().ToList();
+            homeDocSearchVM.GetDoctorClinicInformation = docprofile.GetClinicInformation().ToList();
+            homeDocSearchVM.getDoctor = docprofile.getAllDoctor().ToList();
+
+
+            return View(homeDocSearchVM);
         }
+        [HttpPost]
+        public ActionResult Search(HomeDocSearchViewModel homeDocSearchVM)
+        {
+            homeDocSearchVM.GetSpecialitylist = docprofile.GetDocSpeciality().ToList();
+            homeDocSearchVM.GetCitys = docprofile.GetCity().ToList();
+            homeDocSearchVM.GetDoctorClinicInformation = docprofile.GetClinicInformation().ToList();
+            homeDocSearchVM.getDoctor = docprofile.getAllDoctor().ToList();
+
+            int SpecialityID = 0;
+
+            int CityId = 0;
+            string Userfirstname = "";
+            string Userlastname = "";
+            string ClinicName = "";
+
+            if (homeDocSearchVM.SpecialityID != 0 || homeDocSearchVM.RoleId != 0 || homeDocSearchVM.CityId != 0)
+            {
+                SpecialityID = homeDocSearchVM.SpecialityID;
+
+                CityId = homeDocSearchVM.CityId;
+
+            }
+
+            if (!string.IsNullOrEmpty(homeDocSearchVM.FirstName))
+            {
+                Userfirstname = homeDocSearchVM.FirstName;
+
+            }
+            if (!string.IsNullOrEmpty(homeDocSearchVM.LastName))
+            {
+                Userlastname = homeDocSearchVM.LastName;
+
+            }
+            if (!string.IsNullOrEmpty(homeDocSearchVM.ClinicName))
+            {
+                ClinicName = homeDocSearchVM.ClinicName;
+            }
+            return RedirectToAction("Doctors", new { SpeID = SpecialityID, CityId = CityId, UserFirstName = Userfirstname, UserLastName = Userlastname, ClinicName = ClinicName });
+
+
+            // return View(homeDocSearchVM);
+
+        }
+
+        #endregion
         public ActionResult FAQ()
         {
             return View();
@@ -42,32 +97,40 @@ namespace MCMD.Web.Controllers
         }
         #region DoctorProfile
 
-        public ActionResult DocProfile()
+        public ActionResult DocProfile(int Id = 0)
         {
-            DocProfileViewModel _docprofileVM = new DocProfileViewModel();
-            Session["DocProfileID"] = 2;
+            HomeDocSearchViewModel homeDocSearchVM = new HomeDocSearchViewModel();
+
+            homeDocSearchVM.GetSpecialitylist = docprofile.GetDocSpeciality().ToList();
+            homeDocSearchVM.GetCitys = docprofile.GetCity().ToList();
+            homeDocSearchVM.GetDoctorClinicInformation = docprofile.GetClinicInformation().ToList();
+            homeDocSearchVM.getDoctor = docprofile.getAllDoctor().ToList();
+
+            // DocProfileViewModel _docprofileVM = new DocProfileViewModel();
+            Session["DocProfileID"] = Id;
             int DocProfileID = Convert.ToInt32(Session["DocProfileID"]);
             List<DoctorPersonalInformation> _ObDocPersonalInfo = docprofile.GetDocPersonalInfo().Where(x => x.LoginId == DocProfileID && x.InactiveFlag == "N").ToList();
             List<UserLogin> _ObDocLoginInfo = docprofile.GetDocLoginInfo().Where(x => x.LoginId == DocProfileID && x.InactiveFlag == "N").ToList();
             List<UserLoginSpeciality> _ObDocLoginSpecialityInfo = docprofile.GetDocLoginSpeciality().Where(x => x.LoginId == DocProfileID).ToList();
             List<DoctorClinicInformation> _ObDocClinicInfo = docprofile.GetDocClinicInfo().Where(x => x.LoginId == DocProfileID && x.InactiveFlag == "N").ToList();
             List<Media> _obDocMediaInfo = docprofile.GetDocMediaInfo().Where(x => x.LoginId == DocProfileID && x.InactiveFlag == "N" && x.UploadType != "video/mp4").ToList();
-            List<ClinicTimeInformation> _ObDocClinicTimeInfo = docprofile.GetDocClinicTime().Where(x => x.LoginId == DocProfileID && x.FirstSetting == "1st seating Timing").ToList();
-            List<ClinicTimeInformation> GetclinicTimeFirst = docprofile.GetAllClinicTime().Where(x => x.LoginId == DocProfileID && x.FirstSetting == "1st seating Timing").ToList();
-            List<ClinicTimeInformation> GetclinicTimeSecond = docprofile.GetAllClinicTime().Where(x => x.LoginId == DocProfileID && x.FirstSetting == "2nd seating Timing").ToList();
-            List<ClinicTimeInformation> GetclinicTimeThird = docprofile.GetAllClinicTime().Where(x => x.LoginId == DocProfileID && x.FirstSetting == "3rd seating Timing").ToList();
+            List<ClinicTimeInformation> _ObDocClinicTimeInfo = docprofile.GetDocClinicTime().Where(x => x.LoginId == DocProfileID && x.Setting == 1).ToList();
+            List<ClinicTimeInformation> GetclinicTimeFirst = docprofile.GetAllClinicTime().Where(x => x.LoginId == DocProfileID && x.Setting == 1).ToList();
+            List<ClinicTimeInformation> GetclinicTimeSecond = docprofile.GetAllClinicTime().Where(x => x.LoginId == DocProfileID && x.Setting == 2).ToList();
+            List<ClinicTimeInformation> GetclinicTimeThird = docprofile.GetAllClinicTime().Where(x => x.LoginId == DocProfileID && x.Setting == 3).ToList();
 
-         
+
             foreach (var item in _ObDocPersonalInfo)
             {
-                _docprofileVM.MiddleName = item.MiddleName;
-                _docprofileVM.Qualification = item.Qualification;
-                _docprofileVM.AboutExperience = item.AboutExperience;
-                _docprofileVM.AboutMe = item.AboutMe;
+                homeDocSearchVM.MiddleName = item.MiddleName;
+                homeDocSearchVM.Qualification = item.Qualification;
+                homeDocSearchVM.ExperienceInYear = item.ExperienceInYear;
+                homeDocSearchVM.ExperienceInMonth = item.ExperienceInMonth;
+                homeDocSearchVM.AboutMe = item.AboutMe;
                 //_docprofileVM.Affiliation = item.Affiliation;
 
                 //Profile Photo
-                _docprofileVM.FolderFilePath = item.FolderFilePath;
+                homeDocSearchVM.FolderFilePath = item.FolderFilePath;
 
                 string straffilation = item.Affiliation;
                 string[] strsplitaffil = straffilation.Split(',');
@@ -78,7 +141,7 @@ namespace MCMD.Web.Controllers
                     p.affiliations = c;
                     getaffiliations.Add(p);
                 }
-                _docprofileVM.getallaffiliations = getaffiliations;
+                homeDocSearchVM.getallaffiliations = getaffiliations;
 
                 string strregistration = item.RegistrationNo;
                 string[] strsplitreg = strregistration.Split(',');
@@ -89,18 +152,18 @@ namespace MCMD.Web.Controllers
                     Q.registrations = d;
                     getregistrations.Add(Q);
                 }
-                _docprofileVM.getallregistrations = getregistrations;
+                homeDocSearchVM.getallregistrations = getregistrations;
 
             }
             foreach (var item in _ObDocLoginInfo)
             {
-                _docprofileVM.FirstName = item.FirstName;
-                _docprofileVM.LastName = item.LastName;
+                homeDocSearchVM.FirstName = item.FirstName;
+                homeDocSearchVM.LastName = item.LastName;
 
             }
             foreach (var item in _ObDocClinicInfo)
             {
-                _docprofileVM.ClinicAddress = item.ClinicAddress;
+                homeDocSearchVM.ClinicAddress = item.ClinicAddress;
 
                 string strawards = item.AwardsAndRecognization;
                 string[] strsplitaward = strawards.Split(',');
@@ -111,11 +174,11 @@ namespace MCMD.Web.Controllers
                     t.awards = b;
                     getawardss.Add(t);
                 }
-                _docprofileVM.getallawards = getawardss;
+                homeDocSearchVM.getallawards = getawardss;
 
-                _docprofileVM.ClinicName = item.ClinicName;
-                _docprofileVM.ClinicServices = item.ClinicServices;
-                _docprofileVM.ClinicFees = item.ClinicFees;
+                homeDocSearchVM.ClinicName = item.ClinicName;
+                homeDocSearchVM.ClinicServices = item.ClinicServices;
+                homeDocSearchVM.ClinicFees = item.ClinicFees;
 
                 string strservice = item.ClinicServices;
                 string[] strspli = strservice.Split(',');
@@ -127,7 +190,7 @@ namespace MCMD.Web.Controllers
                     getservice.Add(s);
 
                 }
-                _docprofileVM.getservices = getservice;
+                homeDocSearchVM.getservices = getservice;
             }
 
             foreach (var item in _ObDocLoginSpecialityInfo)
@@ -135,12 +198,12 @@ namespace MCMD.Web.Controllers
                 List<Speciality> _ObDocSpecialityInfo = docprofile.GetDocSpeciality().Where(x => x.SpecialityID == item.SpecialityID).ToList();
                 foreach (var item1 in _ObDocSpecialityInfo)
                 {
-                    _docprofileVM.SpecialityName = item1.SpecialityName;
+                    homeDocSearchVM.SpecialityName = item1.SpecialityName;
                 }
             }
 
             // Clinic Photos frm media
-            _docprofileVM.getmedias = _obDocMediaInfo;
+            homeDocSearchVM.getmedias = _obDocMediaInfo;
 
             //first time seating
             foreach (var item in GetclinicTimeFirst)
@@ -156,38 +219,38 @@ namespace MCMD.Web.Controllers
                 string et1 = ed1.ToString("hh:mm");
                 if (item.Day == "Monday")
                 {
-                    _docprofileVM.StartTimefs1 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimefs1 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimefs1 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimefs1 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Tuesday")
                 {
-                    _docprofileVM.StartTimefs2 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimefs2 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimefs2 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimefs2 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Wednesday")
                 {
-                    _docprofileVM.StartTimefs3 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimefs3 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimefs3 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimefs3 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Thursday")
                 {
-                    _docprofileVM.StartTimefs4 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimefs4 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimefs4 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimefs4 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Friday")
                 {
-                    _docprofileVM.StartTimefs5 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimefs5 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimefs5 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimefs5 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Saturday")
                 {
-                    _docprofileVM.StartTimefs6 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimefs6 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimefs6 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimefs6 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Sunday")
                 {
-                    _docprofileVM.StartTimefs7 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimefs7 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimefs7 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimefs7 = et1 + " " + item.EndSlot;
                 }
             }
 
@@ -205,38 +268,38 @@ namespace MCMD.Web.Controllers
                 string et1 = ed1.ToString("hh:mm");
                 if (item.Day == "Monday")
                 {
-                    _docprofileVM.StartTimess1 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimess1 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimess1 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimess1 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Tuesday")
                 {
-                    _docprofileVM.StartTimess2 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimess2 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimess2 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimess2 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Wednesday")
                 {
-                    _docprofileVM.StartTimess3 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimess3 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimess3 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimess3 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Thursday")
                 {
-                    _docprofileVM.StartTimess4 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimess4 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimess4 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimess4 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Friday")
                 {
-                    _docprofileVM.StartTimess5 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimess5 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimess5 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimess5 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Saturday")
                 {
-                    _docprofileVM.StartTimess6 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimess6 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimess6 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimess6 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Sunday")
                 {
-                    _docprofileVM.StartTimess7 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimess7 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimess7 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimess7 = et1 + " " + item.EndSlot;
                 }
             }
 
@@ -254,74 +317,163 @@ namespace MCMD.Web.Controllers
                 string et1 = ed1.ToString("hh:mm");
                 if (item.Day == "Monday")
                 {
-                    _docprofileVM.StartTimets1 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimets1 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimets1 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimets1 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Tuesday")
                 {
-                    _docprofileVM.StartTimets2 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimets2 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimets2 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimets2 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Wednesday")
                 {
-                    _docprofileVM.StartTimets3 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimets3 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimets3 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimets3 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Thursday")
                 {
-                    _docprofileVM.StartTimets4 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimets4 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimets4 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimets4 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Friday")
                 {
-                    _docprofileVM.StartTimets5 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimets5 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimets5 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimets5 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Saturday")
                 {
-                    _docprofileVM.StartTimets6 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimets6 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimets6 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimets6 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Sunday")
                 {
-                    _docprofileVM.StartTimets7 = st1 + " " + item.StartSlot;
-                    _docprofileVM.EndTimets7 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimets7 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimets7 = et1 + " " + item.EndSlot;
                 }
 
 
             }
 
-            return View(_docprofileVM);
+            return View(homeDocSearchVM);
         }
 
-        #endregion DoctorProfile
-        public ActionResult Doctors()
+        #endregion 
+
+        #region Doctor Serarch result view
+        public ActionResult Doctors(int SpeID = 0, int RoleId = 0, int CityId = 0, string UserFirstName = " ", string UserLastName = " ", string ClinicName = " ")
         {
-            return View();
+            HomeDocSearchViewModel homeDocSearchVM = new HomeDocSearchViewModel();
+            //Binding the DropDownLists
+            homeDocSearchVM.GetSpecialitylist = docprofile.GetDocSpeciality().ToList();
+            homeDocSearchVM.GetCitys = docprofile.GetCity().ToList();
+            homeDocSearchVM.GetDoctorClinicInformation = docprofile.GetClinicInformation().ToList();
+            homeDocSearchVM.getDoctor = docprofile.getAllDoctor().ToList();
+
+            @TempData["Name"] = Session["Name"];
+            // HomeDocSearchViewModel homeDocSearchVM = new HomeDocSearchViewModel();
+
+           // homeDocSearchVM.getRoles = docprofile.GetRoles().ToList();
+            homeDocSearchVM.GetDoctorClinicInformation = docprofile.GetClinicInformation().ToList();
+            homeDocSearchVM.GetSpecialitylist = docprofile.GetDocSpeciality().ToList();
+
+
+
+
+            if (SpeID != 0 || RoleId != 0 || CityId != 0 || !string.IsNullOrEmpty(UserFirstName) || !string.IsNullOrEmpty(UserLastName) || !string.IsNullOrEmpty(ClinicName))
+            {
+
+                homeDocSearchVM.SpecialityID = SpeID;
+                homeDocSearchVM.RoleId = RoleId;
+                homeDocSearchVM.CityId = CityId;
+                string FirstName = UserFirstName;//Splitting first name
+                string[] strsplitaffil = FirstName.Split(' ');
+                UserFirstName = strsplitaffil[0];
+                UserLastName = strsplitaffil[1];
+
+
+                homeDocSearchVM.getSearchDoc = docprofile.SearchAllDoctor(SpeID, RoleId, CityId, UserFirstName, UserLastName, ClinicName).ToList();
+            }
+           
+            return View(homeDocSearchVM);
         }
+
+        [HttpPost]
+        public ActionResult Doctors(HomeDocSearchViewModel homeDocSearchVM)
+        {
+            int SpecialityID = 0;
+            int RoleId = 0;
+            int CityId = 0;
+            string Userfirstname = "";
+            string Userlastname = "";
+            string ClinicName = "";
+
+            if (homeDocSearchVM.SpecialityID != 0 || homeDocSearchVM.RoleId != 0 || homeDocSearchVM.CityId != 0)
+            {
+                SpecialityID = homeDocSearchVM.SpecialityID;
+                RoleId = homeDocSearchVM.RoleId;
+                CityId = homeDocSearchVM.CityId;
+
+            }
+
+            if (!string.IsNullOrEmpty(homeDocSearchVM.FirstName))
+            {
+                Userfirstname = homeDocSearchVM.FirstName;
+
+            }
+            if (!string.IsNullOrEmpty(homeDocSearchVM.LastName))
+            {
+                Userlastname = homeDocSearchVM.LastName;
+
+            }
+            if (!string.IsNullOrEmpty(homeDocSearchVM.ClinicName))
+            {
+                ClinicName = homeDocSearchVM.ClinicName;
+            }
+            return RedirectToAction("Doctors", new { SpeID = SpecialityID, RoleId = RoleId, CityId = CityId, UserFirstName = Userfirstname, UserLastName = Userlastname, ClinicName = ClinicName });
+
+
+
+        }
+
+        #endregion 
 
         #region ClinicProfile
-        public ActionResult ClinicProfile()
+        public ActionResult ClinicProfile(int Id = 0)
         {
-            ClinicProfileViewModel _clinicprofileVM = new ClinicProfileViewModel();
-            Session["ClinicProfileID"] = 2;
+            //ClinicProfileViewModel _clinicprofileVM = new ClinicProfileViewModel();
+            HomeDocSearchViewModel homeDocSearchVM = new HomeDocSearchViewModel();
+            homeDocSearchVM.GetSpecialitylist = docprofile.GetDocSpeciality().ToList();
+            homeDocSearchVM.GetCitys = docprofile.GetCity().ToList();
+            homeDocSearchVM.GetDoctorClinicInformation = docprofile.GetClinicInformation().ToList();
+            homeDocSearchVM.getDoctor = docprofile.getAllDoctor().ToList();
+
+            Session["ClinicProfileID"] = Id;
             int ClinicProfileID = Convert.ToInt32(Session["ClinicProfileID"]);
 
             List<DoctorClinicInformation> _ObClinicInfo = docprofile.GetDocClinicInfo().Where(x => x.LoginId == ClinicProfileID && x.InactiveFlag == "N").ToList();
             List<UserLoginSpeciality> _ObclinicLoginSpecialityInfo = docprofile.GetDocLoginSpeciality().Where(x => x.LoginId == ClinicProfileID).ToList();
             List<Media> _obclinicMediaInfo = docprofile.GetDocMediaInfo().Where(x => x.LoginId == ClinicProfileID && x.InactiveFlag == "N" && x.UploadType != "video/mp4").ToList();
             List<Media> _obclinicVideoInfo = docprofile.GetDocMediaInfo().Where(x => x.LoginId == ClinicProfileID && x.InactiveFlag == "N" && x.UploadType == "video/mp4").ToList();
-            List<ClinicTimeInformation> GetclinicTimeFirst = docprofile.GetAllClinicTime().Where(x => x.LoginId == ClinicProfileID && x.FirstSetting == "1st seating Timing").ToList();
-            List<ClinicTimeInformation> GetclinicTimeSecond = docprofile.GetAllClinicTime().Where(x => x.LoginId == ClinicProfileID && x.FirstSetting == "2nd seating Timing").ToList();
-            List<ClinicTimeInformation> GetclinicTimeThird = docprofile.GetAllClinicTime().Where(x => x.LoginId == ClinicProfileID && x.FirstSetting == "3rd seating Timing").ToList();
+            List<ClinicTimeInformation> GetclinicTimeFirst = docprofile.GetAllClinicTime().Where(x => x.LoginId == ClinicProfileID && x.Setting == 1).ToList();
+            List<ClinicTimeInformation> GetclinicTimeSecond = docprofile.GetAllClinicTime().Where(x => x.LoginId == ClinicProfileID && x.Setting == 2).ToList();
+            List<ClinicTimeInformation> GetclinicTimeThird = docprofile.GetAllClinicTime().Where(x => x.LoginId == ClinicProfileID && x.Setting == 3).ToList();
 
             foreach (var item in _ObClinicInfo)
             {
-                _clinicprofileVM.ClinicName = item.ClinicName;
-                _clinicprofileVM.ClinicAddress = item.ClinicAddress;
-                _clinicprofileVM.AboutClinic = item.AboutClinic;
-                _clinicprofileVM.ClinicFees = item.ClinicFees;
-                _clinicprofileVM.ClinicPhoneNo = item.ClinicPhoneNo;
+                homeDocSearchVM.ClinicName = item.ClinicName;
+                homeDocSearchVM.ClinicAddress = item.ClinicAddress;
+                homeDocSearchVM.AboutClinic = item.AboutClinic;
+                homeDocSearchVM.ClinicFees = item.ClinicFees;
+                homeDocSearchVM.ClinicPhoneNo = item.ClinicPhoneNo;
+
+                string address = item.ClinicAddress;
+                var locationService = new GoogleLocationService();
+                var point = locationService.GetLatLongFromAddress(address);
+                string Latitude = point.Latitude.ToString();
+                string Longitude = point.Longitude.ToString();
+                homeDocSearchVM.latitude = Latitude;
+                homeDocSearchVM.longitude = Longitude;
+
                 string strservice = item.ClinicServices;
                 string[] strspli = strservice.Split(',');
                 List<GetService> getservice = new List<GetService>();
@@ -332,10 +484,10 @@ namespace MCMD.Web.Controllers
                     getservice.Add(s);
 
                 }
-                _clinicprofileVM.getservices = getservice;
+                homeDocSearchVM.getservices = getservice;
 
                 //Profile Photo
-                _clinicprofileVM.FolderFilePath = item.FolderFilePath;
+                //  _clinicprofileVM.FolderFilePath = item.FolderFilePath;
             }
 
             foreach (var item in _ObclinicLoginSpecialityInfo)
@@ -343,15 +495,15 @@ namespace MCMD.Web.Controllers
                 List<Speciality> _ObclinicSpecialityInfo = docprofile.GetDocSpeciality().Where(x => x.SpecialityID == item.SpecialityID).ToList();
                 foreach (var item1 in _ObclinicSpecialityInfo)
                 {
-                    _clinicprofileVM.SpecialityName = item1.SpecialityName;
+                    homeDocSearchVM.SpecialityName = item1.SpecialityName;
                 }
             }
 
             // Clinic Photos from media
-            _clinicprofileVM.getclinicmedias = _obclinicMediaInfo;
+            homeDocSearchVM.getclinicmedias = _obclinicMediaInfo;
 
             //clinic Videos from media
-            _clinicprofileVM.getclinicvideos = _obclinicVideoInfo;
+            homeDocSearchVM.getclinicvideos = _obclinicVideoInfo;
 
             //first time seating
             foreach (var item in GetclinicTimeFirst)
@@ -367,38 +519,38 @@ namespace MCMD.Web.Controllers
                 string et1 = ed1.ToString("hh:mm");
                 if (item.Day == "Monday")
                 {
-                    _clinicprofileVM.StartTimefs1 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimefs1 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimefs1 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimefs1 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Tuesday")
                 {
-                    _clinicprofileVM.StartTimefs2 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimefs2 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimefs2 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimefs2 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Wednesday")
                 {
-                    _clinicprofileVM.StartTimefs3 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimefs3 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimefs3 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimefs3 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Thursday")
                 {
-                    _clinicprofileVM.StartTimefs4 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimefs4 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimefs4 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimefs4 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Friday")
                 {
-                    _clinicprofileVM.StartTimefs5 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimefs5 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimefs5 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimefs5 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Saturday")
                 {
-                    _clinicprofileVM.StartTimefs6 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimefs6 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimefs6 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimefs6 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Sunday")
                 {
-                    _clinicprofileVM.StartTimefs7 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimefs7 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimefs7 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimefs7 = et1 + " " + item.EndSlot;
                 }
             }
 
@@ -416,38 +568,38 @@ namespace MCMD.Web.Controllers
                 string et1 = ed1.ToString("hh:mm");
                 if (item.Day == "Monday")
                 {
-                    _clinicprofileVM.StartTimess1 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimess1 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimess1 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimess1 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Tuesday")
                 {
-                    _clinicprofileVM.StartTimess2 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimess2 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimess2 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimess2 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Wednesday")
                 {
-                    _clinicprofileVM.StartTimess3 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimess3 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimess3 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimess3 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Thursday")
                 {
-                    _clinicprofileVM.StartTimess4 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimess4 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimess4 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimess4 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Friday")
                 {
-                    _clinicprofileVM.StartTimess5 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimess5 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimess5 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimess5 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Saturday")
                 {
-                    _clinicprofileVM.StartTimess6 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimess6 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimess6 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimess6 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Sunday")
                 {
-                    _clinicprofileVM.StartTimess7 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimess7 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimess7 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimess7 = et1 + " " + item.EndSlot;
                 }
             }
 
@@ -465,44 +617,44 @@ namespace MCMD.Web.Controllers
                 string et1 = ed1.ToString("hh:mm");
                 if (item.Day == "Monday")
                 {
-                    _clinicprofileVM.StartTimets1 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimets1 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimets1 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimets1 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Tuesday")
                 {
-                    _clinicprofileVM.StartTimets2 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimets2 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimets2 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimets2 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Wednesday")
                 {
-                    _clinicprofileVM.StartTimets3 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimets3 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimets3 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimets3 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Thursday")
                 {
-                    _clinicprofileVM.StartTimets4 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimets4 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimets4 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimets4 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Friday")
                 {
-                    _clinicprofileVM.StartTimets5 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimets5 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimets5 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimets5 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Saturday")
                 {
-                    _clinicprofileVM.StartTimets6 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimets6 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimets6 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimets6 = et1 + " " + item.EndSlot;
                 }
                 if (item.Day == "Sunday")
                 {
-                    _clinicprofileVM.StartTimets7 = st1 + " " + item.StartSlot;
-                    _clinicprofileVM.EndTimets7 = et1 + " " + item.EndSlot;
+                    homeDocSearchVM.StartTimets7 = st1 + " " + item.StartSlot;
+                    homeDocSearchVM.EndTimets7 = et1 + " " + item.EndSlot;
                 }
 
 
             }
 
-            return View(_clinicprofileVM);
+            return View(homeDocSearchVM);
         }
         #endregion ClinicProfile
        public ActionResult doc()

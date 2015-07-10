@@ -111,7 +111,7 @@
                 <div class="control-group">
                     <label class="control-label">Phone #<span class="required">*</span></label>
                     <div class="controls">
-                        @Html.TextBoxFor(u => u.Userlogins.UserPhone, new { @class = "m-wrap span7", @type = "phone", @placeholder = "Enter Phone No format is{ 0123456789, 012-345-6789, (012)-345-6789 }", @maxlength = "15", @autocomplete = "off" })
+                        @Html.TextBoxFor(u => u.Userlogins.UserPhone, new { @class = "m-wrap span7", @type = "phone", @placeholder = "Enter Phone Number format is{ 0123456789, 012-345-6789, (012)-345-6789 }", @maxlength = "15", @autocomplete = "off" })
                         @Html.ValidationMessageFor(u => u.Userlogins.UserPhone, string.Empty, new { @class = "text-error" })
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label">ConfirmPassword<span class="required">*</span></label>
+                    <label class="control-label">Confirm Password<span class="required">*</span></label>
                     <div class="controls">
                         @Html.TextBoxFor(u => u.Userlogins.ConfirmPassword, new { @type = "password", @class = "m-wrap span7", @placeholder = "Enter Confirm Password", @maxlength = "50", autocomplete = "off" })
                         @Html.ValidationMessageFor(u => u.Userlogins.ConfirmPassword, string.Empty, new { @class = "text-error" })
